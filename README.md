@@ -21,6 +21,30 @@ Agentic React is a monorepo for React runtime inspection and local-dev MCP integ
 
 For full local-dev features, install the adapter for your bundler. The adapter depends on `@agentic-react/core` internally, so app users do not need to import both packages.
 
+## Release Smoke Test
+
+Run the release automation smoke test locally with:
+
+```bash
+pnpm run test:release-smoke
+```
+
+The test does not publish to npm or call GitHub. It reads
+`.github/workflows/release.yml`, creates temporary git fixtures, and uses fake
+`pnpm` and `gh` commands for the release automation branches.
+It protects the release regressions fixed in this workflow:
+
+- pending changeset detection ignores `.changeset/README.md`, runs
+  `version-packages` only when a real changeset Markdown file exists, commits
+  `chore: version packages`, and pushes that commit back to `main`
+- the release workflow remains a `main` push workflow and keeps publish order as
+  version, build, publish, tag push, GitHub release creation
+- package tags created during publishing are pushed with
+  `git push origin --tags`
+- GitHub releases are selected from tags that point at `HEAD` and filtered to
+  `@agentic-react/*`, so stale package tags and non-package tags do not create
+  releases
+
 ## Local Dev Usage
 
 ### Vite

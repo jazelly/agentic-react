@@ -19,7 +19,8 @@
     "version-packages": "changeset version",
     "release": "changeset publish",
     "test": "pnpm run test:e2e",
-    "test:e2e": "node scripts/run-e2e.mjs"
+    "test:e2e": "node scripts/run-e2e.mjs",
+    "test:release-smoke": "node scripts/release-smoke-test.mjs"
   },
   "pnpm": {
     "overrides": {
