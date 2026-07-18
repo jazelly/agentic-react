@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [ main, master ]
+    branches: [dev, main, master]
   push:
-    branches: [ main, master ]
+    branches: [dev, main, master]
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
       run: pnpm --filter agentic-react-vite-playground exec playwright install --with-deps chromium
 
     - name: Lint
-      run: pnpm run lint
+      run: pnpm exec biome lint .
 
     - name: Release smoke test
       run: pnpm run test:release-smoke

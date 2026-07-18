@@ -1,6 +1,23 @@
 # Agentic React
 
-Agentic React is a monorepo for React runtime inspection and local-dev MCP integrations. The packages are published under the `@agentic-react` namespace.
+[English](./README.md) | [中文](./README.zh-CN.md)
+
+**Give coding agents the exact React context behind the UI they are editing.**
+
+Agentic React annotates selected React UI with component names, DOM selectors, source file locations, source snippets, owner traces, and local MCP tools, so an agent can move from "this thing on the page" to the right code without guessing.
+
+```text
+<web_context type="react_component_location">
+component: ProfileField
+selector: #profile-field-email
+source: src/components/UserProfile/ProfileField.jsx:19
+source trace:
+  -> <ProfileField> at src/components/UserProfile/ProfileField.jsx:19
+  -> <ProfileContent> at src/components/UserProfile/ProfileContent.jsx:54
+</web_context>
+```
+
+Install one dev adapter, select one or many elements in the browser, and pass source-aware React context directly to your agent.
 
 ## Demos
 
@@ -11,6 +28,16 @@ Agentic React is a monorepo for React runtime inspection and local-dev MCP integ
 ### Multiselect
 
 ![Multiselect demo](./playground/demo/demo2-multiselect.gif)
+
+## Why Agentic React
+
+- **Source-aware selection:** click real UI and capture the React component, stable selector, source location, and nearby source code.
+- **Agent-ready context:** copy the selection as text or JSON, or expose it through MCP for local coding agents.
+- **Bundler-native adapters:** use the same runtime with Vite, Webpack, Next.js, and Nx/module-federation playgrounds.
+- **Dev-only bridge:** keep local source lookup and MCP transport in development tooling, outside production bundles.
+- **Multi-select and tuning:** collect several UI targets, inspect styling, and turn visual adjustments into prompt-ready instructions.
+
+The packages are published under the `@agentic-react` namespace.
 
 ## Packages
 
