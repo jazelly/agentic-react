@@ -35,6 +35,8 @@ const settingsClient = createAgenticReactSettingsClient({
 const selectionToolkit = createSelectionToolkit({
   initialConfig: agenticReactConfig.toolkit,
   settingsClient,
+  sourceLookup: (componentName, selector) =>
+    requestNodeBridge('source:resolve', { componentName, selector }),
 });
 
 const runtimeApi = {

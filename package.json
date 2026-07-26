@@ -18,7 +18,8 @@
     "changeset:status": "changeset status --since=origin/main",
     "version-packages": "changeset version",
     "release": "changeset publish",
-    "test": "pnpm run test:e2e",
+    "test": "pnpm run test:unit && pnpm run test:e2e",
+    "test:unit": "pnpm --filter @agentic-react/core run test && pnpm --filter @agentic-react/next run test && pnpm --filter @agentic-react/webpack run test",
     "test:e2e": "node scripts/run-e2e.mjs",
     "test:release-smoke": "node scripts/release-smoke-test.mjs"
   },

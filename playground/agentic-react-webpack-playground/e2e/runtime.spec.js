@@ -24,6 +24,20 @@ const parseToolResponse = (result) => {
   return JSON.parse(textContent.text);
 };
 
+const installClipboardStub = async (page) => {
+  await page.evaluate(() => {
+    window.__AGENTIC_REACT_TEST_CLIPBOARD__ = null;
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (text) => {
+          window.__AGENTIC_REACT_TEST_CLIPBOARD__ = String(text);
+        },
+      },
+    });
+  });
+};
+
 test('webpack playground injects runtime globals', async ({ page }) => {
   await page.goto('/');
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
@@ -148,8 +162,13 @@ test('webpack selection captures the primary CTA as userland AppContent source',
 }) => {
   await page.goto('/');
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  await installClipboardStub(page);
 
   await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
+  const contextBeforeSelection = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
+  );
+  expect(contextBeforeSelection).toBeNull();
 
   const primaryCta = page.locator('.primary-cta');
   await expect(primaryCta).toBeVisible();
@@ -169,11 +188,6 @@ test('webpack selection captures the primary CTA as userland AppContent source',
   );
 
   await primaryCta.click();
-  await page.waitForFunction(
-    () =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
-      '.hero > .hero-copy > .primary-cta',
-  );
   const selectedLabel = page.locator(
     '[data-agentic-react-selected-label="true"]',
   );
@@ -182,6 +196,17 @@ test('webpack selection captures the primary CTA as userland AppContent source',
   expect(selectedLabelBox).toBeTruthy();
   expect(selectedLabelBox.y + selectedLabelBox.height).toBeLessThanOrEqual(
     ctaBox.y,
+  );
+  const pendingCommittedContext = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
+  );
+  expect(pendingCommittedContext).toBeNull();
+
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(
+    () =>
+      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
+      '.hero > .hero-copy > .primary-cta',
   );
 
   const runtimeContext = await page.evaluate(() =>

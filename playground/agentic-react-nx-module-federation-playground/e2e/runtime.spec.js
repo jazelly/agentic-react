@@ -56,6 +56,42 @@ const getToolText = (result) => {
   return textContent.text;
 };
 
+const installClipboardStub = async (page) => {
+  await page.evaluate(() => {
+    window.__AGENTIC_REACT_TEST_CLIPBOARD__ = null;
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (text) => {
+          window.__AGENTIC_REACT_TEST_CLIPBOARD__ = String(text);
+        },
+      },
+    });
+  });
+};
+
+const waitForPendingSelectionOverlay = async (page) => {
+  await page.waitForFunction(() =>
+    Array.from(
+      document.querySelectorAll('[data-agentic-react-selected-label="true"]'),
+    ).some((element) => {
+      const parentElement = element.parentElement;
+      if (!parentElement) {
+        return false;
+      }
+
+      const style = window.getComputedStyle(element);
+      const parentStyle = window.getComputedStyle(parentElement);
+      return (
+        style.visibility !== 'hidden' &&
+        parentStyle.display !== 'none' &&
+        parentStyle.visibility !== 'hidden' &&
+        element.textContent.trim().length > 0
+      );
+    }),
+  );
+};
+
 const expectProfileMemberCardSource = (context) => {
   expect(context.resolvedSources).toContainEqual(
     expect.objectContaining({
@@ -82,20 +118,26 @@ const selectRemoteProfileMember = async (page, request) => {
   await page.goto('/profile');
   await expect(page.getByText('Federated team profile routes.')).toBeVisible();
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  await installClipboardStub(page);
 
   await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
+  const contextBeforeSelection = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
+  );
+  expect(contextBeforeSelection).toBeNull();
   await page.locator('#profile-member-sam-rivera').click();
 
-  const didCapture = await page.evaluate(() =>
-    Boolean(window.__AGENTIC_REACT__?.getLastSelectionContext()),
+  await waitForPendingSelectionOverlay(page);
+  const pendingCommittedContext = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
   );
-  if (!didCapture) {
-    await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
-    await page.locator('#profile-member-sam-rivera').click();
-  }
+  expect(pendingCommittedContext).toBeNull();
 
-  await page.waitForFunction(() =>
-    window.__AGENTIC_REACT__?.getLastSelectionContext(),
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(
+    () =>
+      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
+      '#profile-member-sam-rivera',
   );
 };
 
@@ -241,11 +283,25 @@ test('nx selection attributes external package components to local usage source'
   await page.goto('/profile');
   await expect(page.getByText('Federated team profile routes.')).toBeVisible();
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  await installClipboardStub(page);
 
   await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
+  const contextBeforeSelection = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
+  );
+  expect(contextBeforeSelection).toBeNull();
   await page.locator('#profile-external-component-probe').click();
-  await page.waitForFunction(() =>
-    window.__AGENTIC_REACT__?.getLastSelectionContext(),
+  await waitForPendingSelectionOverlay(page);
+  const pendingCommittedContext = await page.evaluate(() =>
+    window.__AGENTIC_REACT__.getLastSelectionContext(),
+  );
+  expect(pendingCommittedContext).toBeNull();
+
+  await page.getByRole('button', { name: 'Done' }).click();
+  await page.waitForFunction(
+    () =>
+      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
+      '#profile-external-component-probe',
   );
 
   const { client, transport } = await createMcpClient();

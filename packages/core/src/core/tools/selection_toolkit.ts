@@ -57,6 +57,10 @@ import {
 interface ToolkitRuntimeOptions {
   initialConfig?: ToolkitConfig;
   settingsClient?: AgenticReactSettingsClient;
+  sourceLookup?: (
+    componentName: string,
+    selector: string,
+  ) => Promise<SelectionResolvedSource | null>;
 }
 
 interface ToolkitRuntimeResult {
@@ -833,21 +837,33 @@ const placeResolvedSourceFirst = (
 
 const enrichSelectionContextSourceLocation = async (
   selectionContext: SelectionContext,
+  sourceLookup?: ToolkitRuntimeOptions['sourceLookup'],
 ): Promise<SelectionContext> => {
   if (!selectionContext.componentName || !selectionContext.selector) {
     return selectionContext;
   }
 
   try {
-    const lookupUrl = new URL(SOURCE_LOOKUP_PATH, window.location.origin);
-    lookupUrl.searchParams.set('component', selectionContext.componentName);
-    lookupUrl.searchParams.set('selector', selectionContext.selector);
-    const response = await fetch(lookupUrl, { cache: 'no-store' });
-    if (!response.ok) {
-      return selectionContext;
+    let source: SelectionResolvedSource | null;
+    if (sourceLookup) {
+      source = await sourceLookup(
+        selectionContext.componentName,
+        selectionContext.selector,
+      );
+    } else {
+      const lookupUrl = new URL(SOURCE_LOOKUP_PATH, window.location.origin);
+      lookupUrl.searchParams.set('component', selectionContext.componentName);
+      lookupUrl.searchParams.set('selector', selectionContext.selector);
+      const response = await fetch(lookupUrl, { cache: 'no-store' });
+      if (!response.ok) {
+        return selectionContext;
+      }
+      source = (await response.json()) as SelectionResolvedSource;
     }
 
-    const source = (await response.json()) as SelectionResolvedSource;
+    if (!source) {
+      return selectionContext;
+    }
     if (!source.filePath || !source.componentName) {
       return selectionContext;
     }
@@ -908,6 +924,7 @@ export const createSelectionToolkit = (
   options: ToolkitRuntimeOptions = {},
 ): ToolkitRuntimeResult => {
   const settingsClient = options.settingsClient;
+  const sourceLookup = options.sourceLookup;
   let settingsSnapshot: AgenticReactSettingsSnapshot | null =
     settingsClient?.getCachedSnapshot() || null;
   let toolkitConfig = mergeToolkitConfig(options.initialConfig, undefined);
@@ -2827,7 +2844,10 @@ export const createSelectionToolkit = (
             selectionContext,
           );
 
-          return enrichSelectionContextSourceLocation(selectionContext);
+          return enrichSelectionContextSourceLocation(
+            selectionContext,
+            sourceLookup,
+          );
         })
         .then((selectionContext) => {
           if (!selectionContext) {
@@ -3201,6 +3221,7 @@ export const createSelectionToolkit = (
     try {
       const selectionContext = await enrichSelectionContextSourceLocation(
         await buildSelectionContextForElement(selectedTarget),
+        sourceLookup,
       );
       if (captureSessionId !== selectionSessionId || !isSelectionMode) {
         return;
@@ -3377,8 +3398,10 @@ export const createSelectionToolkit = (
   const enrichSelectionContextSourceSnippets = async (
     selectionContext: SelectionContext,
   ): Promise<SelectionContext> => {
-    let enrichedSelectionContext =
-      await enrichSelectionContextSourceLocation(selectionContext);
+    let enrichedSelectionContext = await enrichSelectionContextSourceLocation(
+      selectionContext,
+      sourceLookup,
+    );
 
     if (enrichedSelectionContext.sourceSnippets.length > 0) {
       return enrichedSelectionContext;

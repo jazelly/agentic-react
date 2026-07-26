@@ -7,7 +7,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "shx rm -rf dist && tsc && shx cp -r src/assets dist/assets && shx cp ../../CHANGELOG dist/CHANGELOG",
-    "build:src": "shx rm -rf dist && tsc --project tsconfig.json --outDir dist --rootDir src && shx cp -r src/assets dist/assets && shx cp ../../CHANGELOG dist/CHANGELOG"
+    "build:src": "shx rm -rf dist && tsc --project tsconfig.json --outDir dist --rootDir src && shx cp -r src/assets dist/assets && shx cp ../../CHANGELOG dist/CHANGELOG",
+    "test": "pnpm run build && node --test test/*.test.mjs"
   },
   "keywords": [
     "agentic-react",
@@ -63,6 +64,10 @@
     "./select": {
       "types": "./dist/select.d.ts",
       "default": "./dist/select.js"
+    },
+    "./source-lookup": {
+      "types": "./dist/source_lookup.d.ts",
+      "default": "./dist/source_lookup.js"
     },
     "./shared/const": {
       "types": "./dist/shared/const.d.ts",

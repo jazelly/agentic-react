@@ -150,6 +150,9 @@ jobs:
       - name: Release smoke test
         run: pnpm run test:release-smoke
 
+      - name: Unit tests
+        run: pnpm run test:unit
+
       - name: Build packages
         run: pnpm run build
 

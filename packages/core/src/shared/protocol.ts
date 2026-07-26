@@ -18,9 +18,12 @@ export type SettingsBridgeRequestEvent =
   | 'settings:reset-icon'
   | 'settings:reset-shortcuts';
 
+export type SourceBridgeRequestEvent = 'source:resolve';
+
 export type BridgeRequestEvent =
   | RuntimeBridgeRequestEvent
-  | SettingsBridgeRequestEvent;
+  | SettingsBridgeRequestEvent
+  | SourceBridgeRequestEvent;
 
 export type BridgeMessage =
   | {

@@ -23,6 +23,7 @@ import type {
   AgenticReactToolkitConfig,
   CustomTool,
 } from '@agentic-react/core/shared/types';
+import { registerSourceLookupHandler } from '@agentic-react/core/source-lookup';
 
 interface NextWebpackContext {
   dev: boolean;
@@ -181,6 +182,7 @@ const createBridgeHttpServer = (
   settingsEngine: ReturnType<typeof createAgenticReactSettingsEngine>,
 ) => {
   const runtimeBridge = new RuntimeBridgeServer();
+  registerSourceLookupHandler(runtimeBridge, rootDir);
   settingsEngine.registerBridge(runtimeBridge);
   const handleMcpRequest = createStreamableHttpMcpHandler(() =>
     initMcpServer(runtimeBridge, rootDir, customTools),

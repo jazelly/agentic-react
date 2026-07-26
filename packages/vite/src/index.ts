@@ -16,6 +16,7 @@ import type {
   AgenticReactToolkitConfig,
   CustomTool,
 } from '@agentic-react/core/shared/types';
+import { registerSourceLookupHandler } from '@agentic-react/core/source-lookup';
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { type ViteDevServer, normalizePath } from 'vite';
 import type { Plugin, ResolvedConfig } from 'vite';
@@ -68,6 +69,7 @@ function AgenticReact(options: AgenticReactOptions = {}): Plugin {
       if (viteDevServer.httpServer) {
         runtimeBridge.attach(viteDevServer.httpServer);
       }
+      registerSourceLookupHandler(runtimeBridge, viteDevServer.config.root);
       settingsEngine.registerBridge(runtimeBridge);
 
       const createMcpServer = () =>
