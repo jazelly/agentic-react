@@ -263,6 +263,7 @@ const testWorkflowContract = () => {
   );
 
   const steps = [
+    'Prepare release refs',
     'Version packages from changesets',
     'Release smoke test',
     'Build packages',
@@ -283,6 +284,16 @@ const testWorkflowContract = () => {
     previous = index;
   }
 
+  assertContains(
+    extractRunCommand('Prepare release refs'),
+    'git fetch origin main:refs/remotes/origin/main',
+    'release remote main ref',
+  );
+  assertContains(
+    extractRunCommand('Prepare release refs'),
+    'git branch --force main origin/main',
+    'release local main ref',
+  );
   assertContains(
     extractRunCommand('Inspect release state'),
     'find .changeset -maxdepth 1 -name "*.md" ! -name "README.md" | grep -q .',

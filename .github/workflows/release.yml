@@ -91,6 +91,11 @@ jobs:
           ref: ${{ needs.preflight.outputs.release-sha }}
           fetch-depth: 0
 
+      - name: Prepare release refs
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git branch --force main origin/main
+
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
 
