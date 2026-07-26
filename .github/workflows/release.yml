@@ -84,6 +84,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -171,9 +172,46 @@ jobs:
 
       - name: Commit version packages
         if: needs.preflight.outputs.release-mode == 'version'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git commit -m "chore(release): version packages"
-          git push origin HEAD:main
+          release_branch="changeset-release/main"
+          release_subject="chore(release): version packages"
+          release_tree="$(git write-tree)"
+
+          git commit -m "$release_subject"
+          git push --force origin "HEAD:refs/heads/$release_branch"
+
+          pr_url="$(
+            gh pr list \
+              --state open \
+              --base main \
+              --head "$release_branch" \
+              --json url \
+              --jq '.[0].url'
+          )"
+
+          if [ -z "$pr_url" ]; then
+            pr_url="$(
+              gh pr create \
+                --base main \
+                --head "$release_branch" \
+                --title "$release_subject" \
+                --body "Automated package versions validated by the release workflow."
+            )"
+          fi
+
+          gh pr merge "$pr_url" \
+            --squash \
+            --delete-branch \
+            --subject "$release_subject" \
+            --body ""
+
+          git fetch origin main:refs/remotes/origin/main
+          git checkout --detach origin/main
+          test "$(git rev-parse 'HEAD^{tree}')" = "$release_tree"
+          test "$(git rev-parse HEAD^)" = \
+            "${{ needs.preflight.outputs.release-sha }}"
 
       - name: Publish packages
         id: publish
@@ -237,6 +275,8 @@ jobs:
           done
 
       - name: Clear recovery state
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch origin main:refs/remotes/origin/main
           git checkout --detach origin/main
@@ -247,5 +287,38 @@ jobs:
           fi
 
           git rm .changeset/release-pending.json .changeset/release-plan.json
-          git commit -m "chore(release): complete package publication"
-          git push origin HEAD:main
+          cleanup_branch="changeset-release/cleanup"
+          cleanup_subject="chore(release): complete package publication"
+          cleanup_tree="$(git write-tree)"
+
+          git commit -m "$cleanup_subject"
+          git push --force origin "HEAD:refs/heads/$cleanup_branch"
+
+          pr_url="$(
+            gh pr list \
+              --state open \
+              --base main \
+              --head "$cleanup_branch" \
+              --json url \
+              --jq '.[0].url'
+          )"
+
+          if [ -z "$pr_url" ]; then
+            pr_url="$(
+              gh pr create \
+                --base main \
+                --head "$cleanup_branch" \
+                --title "$cleanup_subject" \
+                --body "Remove release recovery state after verified publication."
+            )"
+          fi
+
+          gh pr merge "$pr_url" \
+            --squash \
+            --delete-branch \
+            --subject "$cleanup_subject" \
+            --body ""
+
+          git fetch origin main:refs/remotes/origin/main
+          git checkout --detach origin/main
+          test "$(git rev-parse 'HEAD^{tree}')" = "$cleanup_tree"

@@ -158,6 +158,64 @@ if [ "$1" = "release" ] && [ "$2" = "create" ]; then
   exit 0
 fi
 
+if [ "$1" = "pr" ] && [ "$2" = "list" ]; then
+  exit 0
+fi
+
+if [ "$1" = "pr" ] && [ "$2" = "create" ]; then
+  shift 2
+  head_branch=""
+
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --head)
+        head_branch="$2"
+        shift 2
+        ;;
+      *)
+        shift
+        ;;
+    esac
+  done
+
+  printf 'https://example.test/pull/%s\\n' "$head_branch"
+  exit 0
+fi
+
+if [ "$1" = "pr" ] && [ "$2" = "merge" ]; then
+  pr_url="$3"
+  head_branch="\${pr_url#https://example.test/pull/}"
+  subject=""
+  shift 3
+
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --subject)
+        subject="$2"
+        shift 2
+        ;;
+      *)
+        shift
+        ;;
+    esac
+  done
+
+  origin="$(git remote get-url origin)"
+  checkout="$(mktemp -d)"
+  trap 'rm -rf "$checkout"' EXIT
+
+  git clone --quiet --branch main "$origin" "$checkout/repo"
+  git -C "$checkout/repo" config user.name "github-actions[bot]"
+  git -C "$checkout/repo" config \
+    user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  git -C "$checkout/repo" fetch --quiet origin "$head_branch"
+  git -C "$checkout/repo" merge --squash "origin/$head_branch"
+  git -C "$checkout/repo" commit --quiet -m "$subject"
+  git -C "$checkout/repo" push --quiet origin HEAD:main
+  git --git-dir="$origin" update-ref -d "refs/heads/$head_branch"
+  exit 0
+fi
+
 exit 64
 `,
   );
@@ -258,6 +316,11 @@ const testWorkflowContract = () => {
   assertContains(workflow, 'fetch-depth: 0', 'release checkout');
   assertContains(
     workflow,
+    'pull-requests: write',
+    'protected branch pull request permission',
+  );
+  assertContains(
+    workflow,
     "if: github.ref == 'refs/heads/main' && needs.preflight.outputs.release-required == 'true'",
     'release preflight gate',
   );
@@ -320,13 +383,23 @@ const testWorkflowContract = () => {
     ),
     'versioning should not push before validation',
   );
+  const versionCommitBlock = extractRunCommand('Commit version packages');
   assertContains(
-    extractRunCommand('Commit version packages'),
-    'git push origin HEAD:main',
-    'validated version package push',
+    versionCommitBlock,
+    'git push --force origin "HEAD:refs/heads/$release_branch"',
+    'validated version release branch',
+  );
+  assertContains(
+    versionCommitBlock,
+    'gh pr merge "$pr_url"',
+    'protected main version merge',
   );
   assert.ok(
-    !extractRunCommand('Commit version packages').includes('git add -A'),
+    !versionCommitBlock.includes('git push origin HEAD:main'),
+    'version commits should not push directly to protected main',
+  );
+  assert.ok(
+    !versionCommitBlock.includes('git add -A'),
     'validation artifacts should not enter the version commit',
   );
   assert.equal(extractRunCommand('Publish packages'), 'pnpm run release');
@@ -357,6 +430,17 @@ const testWorkflowContract = () => {
     extractRunCommand('Clear recovery state'),
     'git rm .changeset/release-pending.json',
     'recovery cleanup',
+  );
+  assertContains(
+    extractRunCommand('Clear recovery state'),
+    'gh pr merge "$pr_url"',
+    'protected main cleanup merge',
+  );
+  assert.ok(
+    !extractRunCommand('Clear recovery state').includes(
+      'git push origin HEAD:main',
+    ),
+    'cleanup commits should not push directly to protected main',
   );
 };
 
@@ -423,6 +507,13 @@ const testReleasePreflight = (workspace) => {
 const testVersionLifecycle = (workspace) => {
   const fixture = makeGitFixture(workspace, 'version-lifecycle');
   const fakePnpm = makeFakePnpm(workspace, 'version-lifecycle');
+  const fakeGh = makeFakeGh(workspace, 'version-lifecycle-gh');
+  const fakeGhEnv = {
+    PATH: `${fakeGh.binDir}${path.delimiter}${process.env.PATH}`,
+    GH_EXISTING_RELEASES: '',
+    GH_LOG: fakeGh.logPath,
+    GH_TOKEN: 'fake-token',
+  };
   const sourceSha = run('git', ['rev-parse', 'HEAD'], { cwd: fixture.repo });
   const versionBlock = extractRunCommand('Version packages from changesets')
     .split('${{ needs.preflight.outputs.release-sha }}')
@@ -461,7 +552,14 @@ const testVersionLifecycle = (workspace) => {
     'versioning should not commit before validation',
   );
 
-  runShellBlock(fixture.repo, extractRunCommand('Commit version packages'));
+  runShellBlock(fixture.repo, extractRunCommand('Configure Git'));
+  runShellBlock(
+    fixture.repo,
+    extractRunCommand('Commit version packages')
+      .split('${{ needs.preflight.outputs.release-sha }}')
+      .join(sourceSha),
+    fakeGhEnv,
+  );
   assert.equal(
     run('git', ['log', '-1', '--pretty=%s'], { cwd: fixture.repo }),
     'chore(release): version packages',
@@ -470,7 +568,7 @@ const testVersionLifecycle = (workspace) => {
   assert.equal(
     run('git', ['rev-parse', 'HEAD'], { cwd: fixture.repo }),
     run('git', ['--git-dir', fixture.origin, 'rev-parse', 'main']),
-    'validated version commit should be pushed to main',
+    'validated version commit should be merged through protected main',
   );
 
   runShellBlock(fixture.repo, extractRunCommand('Reconcile release tags'));
@@ -482,13 +580,22 @@ const testVersionLifecycle = (workspace) => {
     'successful recovery should restore tags from the release plan',
   );
 
-  runShellBlock(fixture.repo, extractRunCommand('Clear recovery state'));
+  runShellBlock(
+    fixture.repo,
+    extractRunCommand('Clear recovery state'),
+    fakeGhEnv,
+  );
   assert.equal(
     fs.existsSync(
       path.join(fixture.repo, '.changeset/release-pending.json'),
     ),
     false,
     'successful release cleanup should remove the recovery marker',
+  );
+  assert.equal(
+    run('git', ['rev-parse', 'HEAD'], { cwd: fixture.repo }),
+    run('git', ['--git-dir', fixture.origin, 'rev-parse', 'main']),
+    'release cleanup should be merged through protected main',
   );
 };
 
