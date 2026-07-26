@@ -1259,6 +1259,14 @@ test('MCP built-in tooling endpoints all return expected outcomes', async ({
     await expect(page.locator('#profile-field-email')).toBeVisible();
     await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
     await page.locator('#profile-field-email').click();
+    await expect(
+      page.locator('[data-agentic-react-selected="true"]'),
+    ).toBeVisible();
+    expect(
+      await page.evaluate(() =>
+        window.__AGENTIC_REACT__.getLastSelectionContext(),
+      ),
+    ).toBeNull();
     await page.keyboard.press('Enter');
     await page.waitForFunction(
       () =>
