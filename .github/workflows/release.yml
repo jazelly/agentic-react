@@ -238,6 +238,10 @@ jobs:
           );
 
           for (const release of plan.releases) {
+            if (release.type === 'none' || !release.newVersion) {
+              continue;
+            }
+
             const tag = `${release.name}@${release.newVersion}`;
 
             try {

@@ -520,6 +520,20 @@ const testVersionLifecycle = (workspace) => {
     .join(sourceSha);
 
   runVersionBlock(fixture.repo, versionBlock, fakePnpm);
+  const releasePlanPath = path.join(
+    fixture.repo,
+    '.changeset/release-plan.json',
+  );
+  const releasePlan = JSON.parse(fs.readFileSync(releasePlanPath, 'utf8'));
+  releasePlan.releases.push({
+    name: 'ignored-playground',
+    type: 'none',
+  });
+  fs.writeFileSync(
+    releasePlanPath,
+    `${JSON.stringify(releasePlan, undefined, 2)}\n`,
+  );
+  run('git', ['add', '.changeset/release-plan.json'], { cwd: fixture.repo });
 
   assert.equal(
     fs.readFileSync(path.join(fixture.repo, 'versioned.txt'), 'utf8'),
@@ -543,7 +557,10 @@ const testVersionLifecycle = (workspace) => {
         'utf8',
       ),
     ).releases,
-    [{ name: '@agentic-react/core', newVersion: '1.0.0' }],
+    [
+      { name: '@agentic-react/core', newVersion: '1.0.0' },
+      { name: 'ignored-playground', type: 'none' },
+    ],
     'versioning should preserve the package release plan',
   );
   assert.equal(
@@ -578,6 +595,13 @@ const testVersionLifecycle = (workspace) => {
     }),
     '@agentic-react/core@1.0.0',
     'successful recovery should restore tags from the release plan',
+  );
+  assert.equal(
+    run('git', ['tag', '--list', 'ignored-playground@*'], {
+      cwd: fixture.repo,
+    }),
+    '',
+    'ignored workspaces should not receive release tags',
   );
 
   runShellBlock(
