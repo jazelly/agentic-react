@@ -1,4 +1,9 @@
 export { RuntimeBridgeServer } from './bridge/server.js';
+export {
+  AgenticReactSettingsEngine,
+  createAgenticReactSettingsEngine,
+  NodeSettingsStore,
+} from './core/settings/node.js';
 export { createStreamableHttpMcpHandler, initMcpServer } from './mcp/index.js';
 export {
   buildSelectionContextForElement,
@@ -12,6 +17,26 @@ export {
 } from './select.js';
 export type {
   AgenticReactConfig,
+  AgenticReactAppearanceSettings,
+  AgenticReactProjectSettingsDefaults,
+  AgenticReactSettings,
+  AgenticReactSettingsBootstrap,
+  AgenticReactSettingsCapability,
+  AgenticReactSettingsClient,
+  AgenticReactSettingsError,
+  AgenticReactSettingsErrorCode,
+  AgenticReactSettingsRpcFailure,
+  AgenticReactSettingsRpcResult,
+  AgenticReactSettingsRpcSuccess,
+  AgenticReactSettingsSnapshot,
+  AgenticReactSettingsSource,
+  AgenticReactSettingsSources,
+  AgenticReactShortcutKey,
+  AgenticReactShortcutSettings,
+  AgenticReactToolkitConfig,
+  AgenticReactToolboxIconFilename,
+  AgenticReactToolboxIconMetadata,
+  AgenticReactToolboxIconMime,
   CustomClientFunction,
   CustomTool,
   JsonValue,

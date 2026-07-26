@@ -60,6 +60,118 @@ export interface ToolkitTuningModalConfig {
   tokens?: Record<string, ToolkitTuningModalStyleValue>;
 }
 
+export type AgenticReactShortcutKey =
+  | 'singleSelect'
+  | 'multiSelect'
+  | 'toggleToolbox'
+  | 'done';
+
+export type AgenticReactShortcutSettings = Record<
+  AgenticReactShortcutKey,
+  string
+>;
+
+export type AgenticReactSettingsSource = 'global' | 'project' | 'package';
+
+export type AgenticReactToolboxIconMime = 'image/webp' | 'image/png';
+
+export type AgenticReactToolboxIconFilename =
+  | 'toolbox-icon.webp'
+  | 'toolbox-icon.png';
+
+export interface AgenticReactToolboxIconMetadata {
+  filename: AgenticReactToolboxIconFilename;
+  mime: AgenticReactToolboxIconMime;
+  updatedAt: number;
+}
+
+export interface AgenticReactAppearanceSettings {
+  toolboxIcon: AgenticReactToolboxIconMetadata | null;
+  toolboxIconUrl: string | null;
+}
+
+export interface AgenticReactSettings {
+  schemaVersion: 1;
+  shortcuts: AgenticReactShortcutSettings;
+  appearance: AgenticReactAppearanceSettings;
+}
+
+export interface AgenticReactSettingsSources {
+  shortcuts: Record<AgenticReactShortcutKey, AgenticReactSettingsSource>;
+  appearance: {
+    toolboxIcon: AgenticReactSettingsSource;
+  };
+}
+
+export type AgenticReactSettingsErrorCode =
+  | 'settings_unavailable'
+  | 'unauthorized'
+  | 'invalid_payload'
+  | 'invalid_settings'
+  | 'unsupported_schema'
+  | 'read_failed'
+  | 'write_failed';
+
+export interface AgenticReactSettingsError {
+  code: AgenticReactSettingsErrorCode;
+  message: string;
+  detail?: string;
+}
+
+export interface AgenticReactSettingsSnapshot {
+  effectiveSettings: AgenticReactSettings;
+  sources: AgenticReactSettingsSources;
+  errors: AgenticReactSettingsError[];
+}
+
+export interface AgenticReactSettingsCapability {
+  available: boolean;
+  token?: string;
+  reason?: string;
+}
+
+export interface AgenticReactSettingsBootstrap
+  extends AgenticReactSettingsSnapshot {
+  capability: AgenticReactSettingsCapability;
+}
+
+export interface AgenticReactSettingsRpcSuccess
+  extends AgenticReactSettingsSnapshot {
+  success: true;
+}
+
+export interface AgenticReactSettingsRpcFailure
+  extends AgenticReactSettingsSnapshot {
+  success: false;
+  error: AgenticReactSettingsError;
+}
+
+export type AgenticReactSettingsRpcResult =
+  | AgenticReactSettingsRpcSuccess
+  | AgenticReactSettingsRpcFailure;
+
+export interface AgenticReactProjectSettingsDefaults {
+  shortcuts?: Partial<AgenticReactShortcutSettings>;
+}
+
+export interface AgenticReactSettingsClient {
+  getEffectiveSettings: () => Promise<AgenticReactSettingsRpcResult>;
+  updateShortcuts: (
+    shortcuts: Partial<AgenticReactShortcutSettings>,
+  ) => Promise<AgenticReactSettingsRpcResult>;
+  resetShortcut: (
+    key: AgenticReactShortcutKey,
+  ) => Promise<AgenticReactSettingsRpcResult>;
+  applyIcon: (input: {
+    data: string;
+    mime?: AgenticReactToolboxIconMime;
+  }) => Promise<AgenticReactSettingsRpcResult>;
+  resetIcon: () => Promise<AgenticReactSettingsRpcResult>;
+  resetShortcuts: () => Promise<AgenticReactSettingsRpcResult>;
+  getCachedSnapshot: () => AgenticReactSettingsSnapshot;
+  getCapability: () => AgenticReactSettingsCapability;
+}
+
 export interface ToolkitConfig {
   enabled?: boolean;
   defaultVisible?: boolean;
@@ -72,9 +184,14 @@ export interface ToolkitConfig {
   tuningModal?: ToolkitTuningModalConfig;
 }
 
+export type AgenticReactToolkitConfig = ToolkitConfig & {
+  settings?: AgenticReactProjectSettingsDefaults;
+};
+
 export interface AgenticReactConfig {
-  toolkit?: ToolkitConfig;
+  toolkit?: AgenticReactToolkitConfig;
   sourceRoot?: string;
+  settings?: AgenticReactSettingsBootstrap;
 }
 
 export interface SelectionStackFrame {

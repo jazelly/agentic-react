@@ -1,5 +1,6 @@
 import type {
   AgenticReactConfig,
+  AgenticReactSettingsClient,
   SelectionContext,
   ToolResultValue,
   ToolkitConfig,
@@ -49,6 +50,7 @@ type AgenticReactRuntime = {
     error?: string;
   }>;
   registerTuningModalExtension: (extension: TuningModalExtension) => () => void;
+  settings: AgenticReactSettingsClient;
 };
 
 declare global {

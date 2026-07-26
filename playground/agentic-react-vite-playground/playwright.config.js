@@ -1,7 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
+import { mkdtempSync } from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+const settingsRoot = mkdtempSync(
+  path.join(os.tmpdir(), 'agentic-react-vite-e2e-settings-'),
+);
+process.env.AGENTIC_REACT_E2E_SETTINGS_ROOT = settingsRoot;
 
 export default defineConfig({
   testDir: './e2e',
+  globalSetup: './e2e/global-setup.js',
   timeout: 30000,
   expect: {
     timeout: 5000,
@@ -16,6 +25,9 @@ export default defineConfig({
     url: 'http://127.0.0.1:51423',
     reuseExistingServer: false,
     timeout: 30000,
+    env: {
+      AGENTIC_REACT_E2E_SETTINGS_ROOT: settingsRoot,
+    },
   },
   projects: [
     {

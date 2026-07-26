@@ -1,4 +1,5 @@
 import * as bippy from 'bippy';
+import { createAgenticReactSettingsClient } from './core/settings/browser.js';
 import { highlightComponent } from './core/tools/component_highlighter.js';
 import { getComponentStates } from './core/tools/component_state_viewer.js';
 import { getComponentTree } from './core/tools/component_viewer.js';
@@ -26,8 +27,14 @@ const registerCustomTool = (name, handler) => {
 };
 
 const agenticReactConfig = target[__AGENTIC_REACT_CONFIG__] || {};
+const settingsClient = createAgenticReactSettingsClient({
+  initialSettings: agenticReactConfig.settings,
+  request: (event, payload, timeoutMs) =>
+    requestNodeBridge(event, payload, timeoutMs),
+});
 const selectionToolkit = createSelectionToolkit({
   initialConfig: agenticReactConfig.toolkit,
+  settingsClient,
 });
 
 const runtimeApi = {
@@ -42,6 +49,7 @@ const runtimeApi = {
     selectionToolkit.copyLastSelectionContext(format),
   registerTuningModalExtension: (extension) =>
     selectionToolkit.registerTuningModalExtension(extension),
+  settings: settingsClient,
 };
 
 const builtInTools = {
@@ -348,6 +356,64 @@ const getBridgeUrl = () => {
   return `${protocol}//${window.location.host}${BRIDGE_WS_PATH}`;
 };
 
+const pendingNodeRequests = new Map();
+let activeBridgeSocket = null;
+
+const createBrowserRequestId = () => {
+  const cryptoApi = target.crypto;
+  if (cryptoApi?.randomUUID) {
+    return cryptoApi.randomUUID();
+  }
+
+  return `browser-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
+const requestNodeBridge = (event, payload, timeoutMs = 10000) =>
+  new Promise((resolve, reject) => {
+    if (
+      !activeBridgeSocket ||
+      activeBridgeSocket.readyState !== WebSocket.OPEN
+    ) {
+      reject(new Error('Bridge connection is not open'));
+      return;
+    }
+
+    const requestId = createBrowserRequestId();
+    const timeoutId = setTimeout(() => {
+      pendingNodeRequests.delete(requestId);
+      reject(new Error(`Bridge request timed out for ${event}`));
+    }, timeoutMs);
+
+    pendingNodeRequests.set(requestId, {
+      resolve,
+      reject,
+      timeoutId,
+    });
+
+    try {
+      activeBridgeSocket.send(
+        JSON.stringify({
+          type: 'bridge:request',
+          id: requestId,
+          event,
+          payload,
+        }),
+      );
+    } catch (error) {
+      clearTimeout(timeoutId);
+      pendingNodeRequests.delete(requestId);
+      reject(error instanceof Error ? error : new Error('Bridge send failed'));
+    }
+  });
+
+const rejectPendingNodeRequests = (message) => {
+  for (const [requestId, pendingRequest] of pendingNodeRequests) {
+    clearTimeout(pendingRequest.timeoutId);
+    pendingRequest.reject(new Error(message));
+    pendingNodeRequests.delete(requestId);
+  }
+};
+
 const connectBridge = () => {
   let socket;
   let shouldReconnect = true;
@@ -386,6 +452,24 @@ const connectBridge = () => {
         return;
       }
 
+      if (message?.type === 'bridge:response') {
+        const pendingRequest = pendingNodeRequests.get(message.id);
+        if (!pendingRequest) {
+          return;
+        }
+        pendingNodeRequests.delete(message.id);
+        clearTimeout(pendingRequest.timeoutId);
+
+        if (message.ok) {
+          pendingRequest.resolve(message.payload);
+        } else {
+          pendingRequest.reject(
+            new Error(message.error || 'Bridge response failed'),
+          );
+        }
+        return;
+      }
+
       if (message?.type !== 'bridge:request') {
         return;
       }
@@ -416,9 +500,17 @@ const connectBridge = () => {
     });
 
     socket.addEventListener('close', () => {
+      if (activeBridgeSocket === socket) {
+        activeBridgeSocket = null;
+      }
+      rejectPendingNodeRequests('Bridge connection closed before response');
       if (shouldReconnect) {
         setTimeout(establishConnection, 1000);
       }
+    });
+
+    socket.addEventListener('open', () => {
+      activeBridgeSocket = socket;
     });
 
     socket.addEventListener('error', () => {

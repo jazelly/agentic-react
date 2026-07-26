@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { createAgenticReactSettingsEngine } from '@agentic-react/core';
 import { RuntimeBridgeServer } from '@agentic-react/core/bridge';
 import {
   createStreamableHttpMcpHandler,
@@ -17,9 +18,10 @@ import {
 } from '@agentic-react/core/shared/custom-tools-script';
 import { SOURCE_LOOKUP_PATH } from '@agentic-react/core/shared/protocol';
 import type {
+  AgenticReactSettingsBootstrap,
+  AgenticReactToolkitConfig,
   CustomTool,
   SelectionResolvedSource,
-  ToolkitConfig,
 } from '@agentic-react/core/shared/types';
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
 
@@ -27,10 +29,20 @@ interface WebpackEnv {
   mode?: string;
 }
 
+const resolveWebpackMode = (
+  config: Record<string, unknown>,
+  env: WebpackEnv,
+): string | undefined => {
+  if (typeof env.mode === 'string') return env.mode;
+  if (typeof config.mode === 'string') return config.mode;
+  return process.env.NODE_ENV;
+};
+
 export interface AgenticReactWebpackOptions {
   customTools?: CustomTool[];
   rootDir?: string;
-  toolkit?: ToolkitConfig;
+  settingsRoot?: string;
+  toolkit?: AgenticReactToolkitConfig;
 }
 
 type WebpackDevServer = {
@@ -61,7 +73,8 @@ const writeWebpackClientEntry = (
   rootDir: string,
   generatedEntryName: string,
   customTools: CustomTool[],
-  toolkitConfig: ToolkitConfig,
+  toolkitConfig: AgenticReactToolkitConfig,
+  settingsBootstrap: AgenticReactSettingsBootstrap,
 ): string => {
   const coreDistPath = getCoreDistPath();
   const generatedDirectory = generatedEntryName
@@ -102,6 +115,7 @@ if (typeof window !== 'undefined') {
       ...(existingAgenticReactConfig.toolkit || {}),
       ...${JSON.stringify(toolkitConfig)},
     },
+    settings: existingAgenticReactConfig.settings || ${JSON.stringify(settingsBootstrap)},
   };
 
   if (!window[${__AGENTIC_REACT_BRIDGE_URL__}]) {
@@ -330,8 +344,7 @@ export const withAgenticReactWebpack = (
   env: WebpackEnv = {},
   options: AgenticReactWebpackOptions = {},
 ) => {
-  const isDevelopmentMode = env.mode ? env.mode === 'development' : true;
-  if (!isDevelopmentMode) {
+  if (resolveWebpackMode(config, env) !== 'development') {
     return config;
   }
 
@@ -341,13 +354,19 @@ export const withAgenticReactWebpack = (
     (typeof nextConfig.context === 'string'
       ? nextConfig.context
       : process.cwd());
+  const settingsEngine = createAgenticReactSettingsEngine({
+    projectToolkitConfig: options.toolkit || {},
+    settingsRoot: options.settingsRoot,
+  });
   const entryPath = writeWebpackClientEntry(
     rootDir,
     getGeneratedEntryName(nextConfig),
     options.customTools || [],
     options.toolkit || {},
+    settingsEngine.getBootstrap(),
   );
   const runtimeBridge = new RuntimeBridgeServer();
+  settingsEngine.registerBridge(runtimeBridge);
   const createMcpServer = () =>
     initMcpServer(runtimeBridge, rootDir, options.customTools || []);
   const mcpMiddlewares = [
@@ -395,6 +414,26 @@ export const withAgenticReactWebpack = (
 export default withAgenticReactWebpack;
 export type {
   AgenticReactConfig,
+  AgenticReactAppearanceSettings,
+  AgenticReactProjectSettingsDefaults,
+  AgenticReactSettings,
+  AgenticReactSettingsBootstrap,
+  AgenticReactSettingsCapability,
+  AgenticReactSettingsClient,
+  AgenticReactSettingsError,
+  AgenticReactSettingsErrorCode,
+  AgenticReactSettingsRpcFailure,
+  AgenticReactSettingsRpcResult,
+  AgenticReactSettingsRpcSuccess,
+  AgenticReactSettingsSnapshot,
+  AgenticReactSettingsSource,
+  AgenticReactSettingsSources,
+  AgenticReactShortcutKey,
+  AgenticReactShortcutSettings,
+  AgenticReactToolkitConfig,
+  AgenticReactToolboxIconFilename,
+  AgenticReactToolboxIconMetadata,
+  AgenticReactToolboxIconMime,
   CustomClientFunction,
   CustomTool,
   JsonValue,

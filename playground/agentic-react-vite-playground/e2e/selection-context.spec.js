@@ -1,8 +1,25 @@
 import { expect, test } from '@playwright/test';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+import { fileURLToPath } from 'node:url';
 
 const MCP_SERVER_URL = 'http://127.0.0.1:51423/mcp';
+const TOOLBOX_ICON_FIXTURE = fileURLToPath(
+  new URL(
+    '../../../packages/core/src/assets/agentic-react-toolkit-logo.png',
+    import.meta.url,
+  ),
+);
+const ACTIVATION_EVENTS = [
+  'pointerdown',
+  'pointerup',
+  'mousedown',
+  'mouseup',
+  'click',
+  'touchstart',
+  'touchend',
+  'contextmenu',
+];
 
 const createMcpClient = async () => {
   const client = new Client({
@@ -37,26 +54,86 @@ const selectProfileEmailField = async (page) => {
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
   await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
   await page.locator('#profile-field-email').click();
-
-  const didCapture = await page
-    .waitForFunction(
-      () => Boolean(window.__AGENTIC_REACT__?.getLastSelectionContext()),
-      null,
-      { timeout: 1000 },
-    )
-    .then(() => true)
-    .catch(() => false);
-  if (!didCapture) {
-    await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
-    await page.locator('#profile-field-email').click();
-    await page.waitForFunction(() =>
-      Boolean(window.__AGENTIC_REACT__?.getLastSelectionContext()),
-    );
-  }
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(
+    () =>
+      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
+      '#profile-field-email',
+  );
 };
 
 const getToolkitRoot = (page) =>
   page.locator('[data-agentic-react-toolkit="true"]');
+
+const setClipboardMarker = async (page, marker) => {
+  await page.evaluate((value) => navigator.clipboard.writeText(value), marker);
+};
+
+const installHostEventRecorder = async (page) => {
+  await page.evaluate((eventNames) => {
+    window.__AGENTIC_REACT_E2E_HOST_EVENTS__ = [];
+    const popover = document.createElement('div');
+    popover.id = 'agentic-react-e2e-transient-popover';
+    popover.textContent = 'Transient host UI';
+    document.body.appendChild(popover);
+
+    for (const eventName of eventNames) {
+      document.addEventListener(eventName, (event) => {
+        window.__AGENTIC_REACT_E2E_HOST_EVENTS__.push(event.type);
+        popover.remove();
+      });
+    }
+  }, ACTIVATION_EVENTS);
+};
+
+const expectHostDidNotReceiveActivation = async (page) => {
+  await expect(page.locator('#agentic-react-e2e-transient-popover')).toBeVisible();
+  expect(
+    await page.evaluate(() => window.__AGENTIC_REACT_E2E_HOST_EVENTS__),
+  ).toEqual([]);
+};
+
+const dispatchActivationEvents = async (locator) => {
+  await locator.evaluate((element, eventNames) => {
+    for (const eventName of eventNames) {
+      const EventConstructor = eventName.startsWith('pointer')
+        ? PointerEvent
+        : eventName.startsWith('touch')
+          ? Event
+          : MouseEvent;
+      element.dispatchEvent(
+        new EventConstructor(eventName, {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+        }),
+      );
+    }
+  }, ACTIVATION_EVENTS);
+};
+
+const openSettings = async (page) => {
+  const toolkitRoot = getToolkitRoot(page);
+  await openToolkitPanel(page);
+  const settingsButton = toolkitRoot.getByRole('button', {
+    name: 'Settings',
+    exact: true,
+  });
+  if ((await settingsButton.getAttribute('aria-expanded')) !== 'true') {
+    await settingsButton.click();
+  }
+  await expect(
+    toolkitRoot.locator('[data-agentic-react-settings="true"]'),
+  ).toBeVisible();
+};
+
+const getShortcutRow = (page, label) =>
+  getToolkitRoot(page)
+    .locator('[data-agentic-react-settings="true"]')
+    .getByText(label, { exact: true })
+    .locator('..')
+    .locator('..');
 
 const openToolkitPanel = async (page) => {
   const toolkitRoot = getToolkitRoot(page);
@@ -82,20 +159,26 @@ const openToolkitPanel = async (page) => {
   await expect(selectButton).toBeVisible();
 };
 
-const captureWithToolkitUi = async (page, selector) => {
+const capturePendingWithToolkitUi = async (page, selector) => {
   const toolkitRoot = getToolkitRoot(page);
   await openToolkitPanel(page);
   await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
   await page.locator(selector).click();
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
+  await expect(
+    toolkitRoot.getByText('Captured', { exact: false }),
+  ).toBeVisible();
+};
+
+const captureWithToolkitUi = async (page, selector) => {
+  await capturePendingWithToolkitUi(page, selector);
+  await page.keyboard.press('Enter');
   await page.waitForFunction(
     (selectedSelector) =>
       window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
       selectedSelector,
     selector,
   );
-  await expect(
-    toolkitRoot.getByText('Captured', { exact: false }),
-  ).toBeVisible();
 };
 
 test('copying without a selection returns a no-selection response', async ({
@@ -136,17 +219,31 @@ test('selecting a profile field captures its React source context', async ({
   );
 });
 
-test('toolkit select copies the selected context automatically', async ({
+test('toolkit single select waits for Done before copying', async ({
   page,
 }) => {
   await page.goto('/profile/1');
   await page.getByRole('button', { name: 'Edit Profile', exact: true }).click();
+  await setClipboardMarker(page, 'single-select-not-committed');
 
-  await captureWithToolkitUi(page, '#profile-field-email');
+  await capturePendingWithToolkitUi(page, '#profile-field-email');
 
-  const clipboardText = await page.evaluate(() =>
-    navigator.clipboard.readText(),
+  const toolkitRoot = getToolkitRoot(page);
+  const doneButton = toolkitRoot.getByRole('button', {
+    name: 'Done',
+    exact: true,
+  });
+  await expect(doneButton).toBeVisible();
+  await expect(doneButton).toBeEnabled();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    'single-select-not-committed',
   );
+
+  await doneButton.click();
+  await expect
+    .poll(() => page.evaluate(() => navigator.clipboard.readText()))
+    .toContain('selector: #profile-field-email');
+  const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
   expect(clipboardText).toContain('component: ProfileField');
   expect(clipboardText).toContain('selector: #profile-field-email');
   expect(clipboardText).toContain(
@@ -157,6 +254,258 @@ test('toolkit select copies the selected context automatically', async ({
   expect(clipboardText).toContain(
     '/playground/agentic-react-vite-playground/src/components/UserProfile/ProfileField.jsx',
   );
+  await expect(doneButton).toBeHidden();
+});
+
+test('Enter commits a pending single selection', async ({ page }) => {
+  await page.goto('/profile/1');
+  await page.getByRole('button', { name: 'Edit Profile', exact: true }).click();
+  await setClipboardMarker(page, 'enter-not-committed');
+
+  await capturePendingWithToolkitUi(page, '#profile-field-email');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    'enter-not-committed',
+  );
+
+  await page.keyboard.press('Enter');
+  await expect
+    .poll(() => page.evaluate(() => navigator.clipboard.readText()))
+    .toContain('selector: #profile-field-email');
+  await expect(
+    getToolkitRoot(page).getByRole('button', { name: 'Done', exact: true }),
+  ).toBeHidden();
+});
+
+test('Escape cancels active and pending selections without reaching the host', async ({
+  page,
+}) => {
+  await page.goto('/profile/1');
+  await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  await setClipboardMarker(page, 'escape-must-not-copy');
+  await page.evaluate(() => {
+    window.__AGENTIC_REACT_E2E_ESCAPE_EVENTS__ = [];
+    for (const eventName of ['keydown', 'keyup']) {
+      document.addEventListener(
+        eventName,
+        (event) => {
+          if (event.key === 'Escape') {
+            window.__AGENTIC_REACT_E2E_ESCAPE_EVENTS__.push(event.type);
+          }
+        },
+        true,
+      );
+    }
+  });
+
+  const toolkitRoot = getToolkitRoot(page);
+  await openToolkitPanel(page);
+  await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
+  await page.keyboard.press('Escape');
+  await expect(toolkitRoot).toContainText('Selection cancelled');
+  await expect(
+    toolkitRoot.getByRole('button', { name: 'Select', exact: true }),
+  ).toBeVisible();
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeHidden();
+
+  await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
+  await page.locator('#profile-display-email-value').click();
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeHidden();
+  expect(
+    await page.evaluate(() => window.__AGENTIC_REACT__.getLastSelectionContext()),
+  ).toBeNull();
+
+  await toolkitRoot
+    .getByRole('button', { name: 'Multiselect', exact: true })
+    .click();
+  await page.locator('#profile-display-email-value').click();
+  await page.locator('#profile-header-occupation-value').click();
+  await expect(
+    page.locator('[data-agentic-react-multi-selected="true"]'),
+  ).toHaveCount(2);
+  await page.keyboard.press('Escape');
+  await expect(
+    page.locator('[data-agentic-react-multi-selected="true"]'),
+  ).toHaveCount(0);
+  await expect(toolkitRoot).toContainText('Selection cancelled');
+  await expect(
+    toolkitRoot.getByRole('button', { name: 'Select', exact: true }),
+  ).toBeVisible();
+
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    'escape-must-not-copy',
+  );
+  expect(
+    await page.evaluate(() => window.__AGENTIC_REACT_E2E_ESCAPE_EVENTS__),
+  ).toEqual([]);
+});
+
+test('toolbox, selection controls, and tuning UI do not activate the host app', async ({
+  page,
+}) => {
+  await page.goto('/profile/1');
+  await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  const toolkitRoot = getToolkitRoot(page);
+  await openToolkitPanel(page);
+  await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
+  await page.locator('#profile-display-email-value').click();
+  const selectedActions = page.locator(
+    '[data-agentic-react-selected-actions="true"]',
+  );
+  await selectedActions
+    .getByRole('button', { name: 'Adjust selection', exact: true })
+    .click({ force: true });
+  const tuningModal = page.locator('[data-agentic-react-tuning-modal="true"]');
+  await expect(tuningModal).toBeVisible();
+
+  await installHostEventRecorder(page);
+  await dispatchActivationEvents(
+    toolkitRoot.locator('[data-agentic-react-launcher="true"]'),
+  );
+  await dispatchActivationEvents(
+    toolkitRoot.getByRole('button', { name: 'Settings', exact: true }),
+  );
+  await dispatchActivationEvents(selectedActions);
+  await dispatchActivationEvents(tuningModal);
+
+  await expectHostDidNotReceiveActivation(page);
+});
+
+test('settings record, reject duplicates, persist, and reset one shortcut', async ({
+  page,
+}) => {
+  await page.goto('/profile/1');
+  await page.waitForFunction(() => window.__AGENTIC_REACT__?.settings);
+  await openSettings(page);
+
+  const toolkitRoot = getToolkitRoot(page);
+  const singleRow = getShortcutRow(page, 'Single select');
+  await expect(singleRow).toContainText('Ctrl+Alt+Shift+S');
+  await expect(singleRow).toContainText('Project configuration');
+  await expect(getShortcutRow(page, 'Multi select')).toContainText(
+    'Ctrl+Alt+Shift+M',
+  );
+  await expect(getShortcutRow(page, 'Toggle toolbox')).toContainText(
+    'Ctrl+Alt+Shift+A',
+  );
+  await expect(getShortcutRow(page, 'Done')).toContainText('Enter');
+  await expect(toolkitRoot).toContainText('Cancel selection');
+  await expect(toolkitRoot).toContainText('Escape');
+
+  await singleRow.getByRole('button').first().click();
+  await page.keyboard.press('Control+Alt+Shift+Y');
+  await expect(toolkitRoot).toContainText('Saved Ctrl+Alt+Shift+Y.');
+  await expect(getShortcutRow(page, 'Single select')).toContainText(
+    'Global override',
+  );
+
+  const updatedSingleRow = getShortcutRow(page, 'Single select');
+  await updatedSingleRow.getByRole('button').first().click();
+  await page.keyboard.press('Control+Alt+Shift+M');
+  await expect(toolkitRoot).toContainText(
+    'already assigned to Multi select',
+  );
+  await page.keyboard.press('Escape');
+  await expect(toolkitRoot).toContainText('Shortcut recording cancelled.');
+
+  await page.reload();
+  await page.waitForFunction(() => window.__AGENTIC_REACT__?.settings);
+  await openSettings(page);
+  await expect(getShortcutRow(page, 'Single select')).toContainText(
+    'Ctrl+Alt+Shift+Y',
+  );
+  await expect(getShortcutRow(page, 'Single select')).toContainText(
+    'Global override',
+  );
+
+  await page.keyboard.press('Control+Alt+Shift+Y');
+  await expect(getToolkitRoot(page)).toContainText('Selection mode enabled.');
+  await page.keyboard.press('Escape');
+
+  const persistedSingleRow = getShortcutRow(page, 'Single select');
+  await persistedSingleRow.getByRole('button', { name: 'Reset' }).click();
+  await expect(getToolkitRoot(page)).toContainText(
+    'Reset Single select shortcut.',
+  );
+  await expect(getShortcutRow(page, 'Single select')).toContainText(
+    'Ctrl+Alt+Shift+S',
+  );
+  await expect(getShortcutRow(page, 'Single select')).toContainText(
+    'Project configuration',
+  );
+});
+
+test('toolbox icon crop persists globally without activating the host and resets to project icon', async ({
+  page,
+}) => {
+  await page.goto('/profile/1');
+  await page.waitForFunction(() => window.__AGENTIC_REACT__?.settings);
+  await openSettings(page);
+  const toolkitRoot = getToolkitRoot(page);
+  await expect(
+    toolkitRoot.getByText('Toolbox icon', { exact: true }).locator('..'),
+  ).toContainText('Project configuration');
+
+  await installHostEventRecorder(page);
+  await toolkitRoot
+    .locator('input[type="file"]')
+    .setInputFiles(TOOLBOX_ICON_FIXTURE);
+  const cropDialog = page.getByRole('dialog', { name: 'Crop toolbox icon' });
+  await expect(cropDialog).toBeVisible();
+  await dispatchActivationEvents(cropDialog);
+  await expectHostDidNotReceiveActivation(page);
+
+  const zoom = cropDialog.getByLabel('Zoom icon crop');
+  await zoom.focus();
+  await zoom.press('ArrowRight');
+  await cropDialog.getByRole('button', { name: 'Rotate right' }).click();
+  await cropDialog.getByRole('button', { name: 'Apply' }).click();
+  await expect(cropDialog).toBeHidden();
+  await expectHostDidNotReceiveActivation(page);
+  await expect(toolkitRoot).toContainText('Updated toolbox icon.');
+  await expect
+    .poll(() =>
+      toolkitRoot
+        .locator('[data-agentic-react-launcher="true"] img')
+        .getAttribute('src'),
+    )
+    .toMatch(/^data:image\/(webp|png);base64,/);
+  await expect(
+    toolkitRoot.getByText('Toolbox icon', { exact: true }).locator('..'),
+  ).toContainText('Global override');
+
+  await page.reload();
+  await page.waitForFunction(() => window.__AGENTIC_REACT__?.settings);
+  await openSettings(page);
+  const reloadedToolkitRoot = getToolkitRoot(page);
+  await expect
+    .poll(() =>
+      reloadedToolkitRoot
+        .locator('[data-agentic-react-launcher="true"] img')
+        .getAttribute('src'),
+    )
+    .toMatch(/^data:image\/(webp|png);base64,/);
+  await expect(
+    reloadedToolkitRoot
+      .getByText('Toolbox icon', { exact: true })
+      .locator('..'),
+  ).toContainText('Global override');
+
+  await reloadedToolkitRoot.getByRole('button', { name: 'Reset' }).last().click();
+  await expect(reloadedToolkitRoot).toContainText('Reset toolbox icon.');
+  await expect
+    .poll(() =>
+      reloadedToolkitRoot
+        .locator('[data-agentic-react-launcher="true"] img')
+        .getAttribute('src'),
+    )
+    .toBe('/agentic-react-logo.png');
+  await expect(
+    reloadedToolkitRoot
+      .getByText('Toolbox icon', { exact: true })
+      .locator('..'),
+  ).toContainText('Project configuration');
 });
 
 test('toolkit multiselect appends selections and copies all on done', async ({
@@ -198,23 +547,18 @@ test('toolkit multiselect appends selections and copies all on done', async ({
   expect(doneStyles.color).toBe('rgb(255, 255, 255)');
 
   await page.locator('#profile-display-email-value').click();
-  await page.waitForFunction(
-    () =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
-      '#profile-display-email-value',
-  );
   await expect(
     page.locator('[data-agentic-react-multi-selected="true"]'),
   ).toHaveCount(1);
   await page.locator('#profile-header-occupation-value').click();
-  await page.waitForFunction(
-    () =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
-      '#profile-header-occupation-value',
-  );
   await expect(
     page.locator('[data-agentic-react-multi-selected="true"]'),
   ).toHaveCount(2);
+
+  await setClipboardMarker(page, 'multi-select-not-committed');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    'multi-select-not-committed',
+  );
   await expect(clearAllButton).toBeEnabled();
 
   await clearAllButton.click();
@@ -225,17 +569,10 @@ test('toolkit multiselect appends selections and copies all on done', async ({
   await expect(toolkitRoot).toContainText('Cleared all selections');
 
   await page.locator('#profile-display-email-value').click();
-  await page.waitForFunction(
-    () =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
-      '#profile-display-email-value',
-  );
+  await expect(
+    page.locator('[data-agentic-react-multi-selected="true"]'),
+  ).toHaveCount(1);
   await page.locator('#profile-header-occupation-value').click();
-  await page.waitForFunction(
-    () =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
-      '#profile-header-occupation-value',
-  );
   await expect(
     page.locator('[data-agentic-react-multi-selected="true"]'),
   ).toHaveCount(2);
@@ -483,9 +820,7 @@ test('toolkit tuning exposes layout controls for container elements', async ({
   await openToolkitPanel(page);
   await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
   await page.locator('#layout-tuning-fixture').click();
-  await page.waitForFunction(() =>
-    window.__AGENTIC_REACT__?.getLastSelectionContext(),
-  );
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
 
   await page
     .locator('[data-agentic-react-selected="true"]')
@@ -560,9 +895,7 @@ test('toolkit tuning modal extensions can wrap and add modal content', async ({
   await openToolkitPanel(page);
   await toolkitRoot.getByRole('button', { name: 'Select', exact: true }).click();
   await page.locator('#profile-display-email-value').click();
-  await page.waitForFunction(() =>
-    window.__AGENTIC_REACT__?.getLastSelectionContext(),
-  );
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
 
   await page
     .locator('[data-agentic-react-selected="true"]')
@@ -624,6 +957,8 @@ test('selecting an element without an id still returns a usable fallback selecto
 
   await page.evaluate(() => window.__AGENTIC_REACT__.enterSelectionMode());
   await page.locator('label', { hasText: 'Email' }).first().click();
+  await expect(page.locator('[data-agentic-react-selected="true"]')).toBeVisible();
+  await page.keyboard.press('Enter');
 
   const context = await page.waitForFunction(() =>
     window.__AGENTIC_REACT__?.getLastSelectionContext(),
@@ -924,6 +1259,7 @@ test('MCP built-in tooling endpoints all return expected outcomes', async ({
     await expect(page.locator('#profile-field-email')).toBeVisible();
     await page.evaluate(() => window.__AGENTIC_REACT__.setSelectionMode(true));
     await page.locator('#profile-field-email').click();
+    await page.keyboard.press('Enter');
     await page.waitForFunction(
       () =>
         window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===

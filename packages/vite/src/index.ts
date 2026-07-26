@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { createAgenticReactSettingsEngine } from '@agentic-react/core';
 import { RuntimeBridgeServer } from '@agentic-react/core/bridge';
 import {
   createStreamableHttpMcpHandler,
@@ -12,8 +13,8 @@ import {
 import { generateCustomToolsScript } from '@agentic-react/core/shared/custom-tools-script';
 import { BRIDGE_WS_PATH } from '@agentic-react/core/shared/protocol';
 import type {
+  AgenticReactToolkitConfig,
   CustomTool,
-  ToolkitConfig,
 } from '@agentic-react/core/shared/types';
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { type ViteDevServer, normalizePath } from 'vite';
@@ -44,13 +45,18 @@ function instrumentViteDevServer(
 
 export interface AgenticReactOptions {
   customTools?: CustomTool[];
-  toolkit?: ToolkitConfig;
+  settingsRoot?: string;
+  toolkit?: AgenticReactToolkitConfig;
 }
 
 function AgenticReact(options: AgenticReactOptions = {}): Plugin {
   let config: ResolvedConfig;
   const customTools = options.customTools || [];
   const toolkitConfig = options.toolkit || {};
+  const settingsEngine = createAgenticReactSettingsEngine({
+    projectToolkitConfig: toolkitConfig,
+    settingsRoot: options.settingsRoot,
+  });
 
   return {
     name: 'agentic-react',
@@ -62,6 +68,7 @@ function AgenticReact(options: AgenticReactOptions = {}): Plugin {
       if (viteDevServer.httpServer) {
         runtimeBridge.attach(viteDevServer.httpServer);
       }
+      settingsEngine.registerBridge(runtimeBridge);
 
       const createMcpServer = () =>
         initMcpServer(runtimeBridge, viteDevServer.config.root, customTools);
@@ -97,6 +104,7 @@ function AgenticReact(options: AgenticReactOptions = {}): Plugin {
         window.${__AGENTIC_REACT_CONFIG__} = ${JSON.stringify({
           toolkit: toolkitConfig,
           sourceRoot: config.root,
+          settings: settingsEngine.getBootstrap(),
         })};
       `;
 
@@ -179,6 +187,26 @@ function toClientImportSpecifier(
 export default AgenticReact;
 export type {
   AgenticReactConfig,
+  AgenticReactAppearanceSettings,
+  AgenticReactProjectSettingsDefaults,
+  AgenticReactSettings,
+  AgenticReactSettingsBootstrap,
+  AgenticReactSettingsCapability,
+  AgenticReactSettingsClient,
+  AgenticReactSettingsError,
+  AgenticReactSettingsErrorCode,
+  AgenticReactSettingsRpcFailure,
+  AgenticReactSettingsRpcResult,
+  AgenticReactSettingsRpcSuccess,
+  AgenticReactSettingsSnapshot,
+  AgenticReactSettingsSource,
+  AgenticReactSettingsSources,
+  AgenticReactShortcutKey,
+  AgenticReactShortcutSettings,
+  AgenticReactToolkitConfig,
+  AgenticReactToolboxIconFilename,
+  AgenticReactToolboxIconMetadata,
+  AgenticReactToolboxIconMime,
   CustomClientFunction,
   CustomTool,
   JsonValue,

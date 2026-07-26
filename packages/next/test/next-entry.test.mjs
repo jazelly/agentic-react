@@ -29,6 +29,7 @@ test('dev client entry is generated outside .next and restored when missing', as
       {},
       {
         rootDir,
+        settingsRoot: path.join(rootDir, '.agentic-react-test'),
         server: { enabled: false },
       },
     );

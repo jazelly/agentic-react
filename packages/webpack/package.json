@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "shx rm -rf dist && tsc"
+    "build": "shx rm -rf dist && tsc",
+    "test": "pnpm run build && node --test test/*.test.mjs"
   },
   "keywords": [
     "agentic-react",
