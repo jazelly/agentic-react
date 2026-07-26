@@ -489,11 +489,16 @@ const makeVersionedReleaseFixture = (workspace, name, tamperPlan = false) => {
   );
 
   run('git', ['clone', '--quiet', '--no-local', rootDir, repo]);
-  run('git', ['checkout', '-B', 'main', 'origin/main'], { cwd: repo });
+  // Keep the fixture independent from shallow CI history and remote refs.
+  fs.rmSync(path.join(repo, '.git'), { force: true, recursive: true });
+  run('git', ['init'], { cwd: repo });
   run('git', ['config', 'user.name', 'Release Smoke'], { cwd: repo });
   run('git', ['config', 'user.email', 'release-smoke@example.com'], {
     cwd: repo,
   });
+  run('git', ['branch', '-M', 'main'], { cwd: repo });
+  run('git', ['add', '.'], { cwd: repo });
+  run('git', ['commit', '-m', 'release smoke fixture'], { cwd: repo });
   fs.writeFileSync(
     path.join(repo, '.changeset/release-core.md'),
     '---\n"@agentic-react/core": patch\n---\n\nRelease core.\n',
