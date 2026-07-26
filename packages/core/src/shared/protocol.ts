@@ -1,4 +1,4 @@
-export type BridgeRequestEvent =
+export type RuntimeBridgeRequestEvent =
   | 'highlight-component'
   | 'get-component-tree'
   | 'get-component-states'
@@ -9,6 +9,21 @@ export type BridgeRequestEvent =
   | 'get-html-elements'
   | 'get-react-source-code'
   | 'custom-tool';
+
+export type SettingsBridgeRequestEvent =
+  | 'settings:get-effective'
+  | 'settings:update-shortcuts'
+  | 'settings:reset-shortcut'
+  | 'settings:apply-icon'
+  | 'settings:reset-icon'
+  | 'settings:reset-shortcuts';
+
+export type SourceBridgeRequestEvent = 'source:resolve';
+
+export type BridgeRequestEvent =
+  | RuntimeBridgeRequestEvent
+  | SettingsBridgeRequestEvent
+  | SourceBridgeRequestEvent;
 
 export type BridgeMessage =
   | {

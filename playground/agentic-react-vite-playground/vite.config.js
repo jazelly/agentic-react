@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     AgenticReact({
+      settingsRoot: process.env.AGENTIC_REACT_E2E_SETTINGS_ROOT,
       customTools: [
         {
           name: 'log1',
@@ -21,6 +22,14 @@ export default defineConfig({
       ],
       toolkit: {
         iconUrl: '/agentic-react-logo.png',
+        settings: {
+          shortcuts: {
+            singleSelect: 'Ctrl+Alt+Shift+S',
+            multiSelect: 'Ctrl+Alt+Shift+M',
+            toggleToolbox: 'Ctrl+Alt+Shift+A',
+            done: 'Enter',
+          },
+        },
         tuningModal: {
           classNames: {
             surface: 'vite-playground-tuning-surface',

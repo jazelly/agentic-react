@@ -22,6 +22,10 @@ interface RuntimeBridgeRequestOptions {
   timeoutMs?: number;
 }
 
+type BrowserBridgeRequestHandler = (
+  payload: unknown,
+) => unknown | Promise<unknown>;
+
 const isBridgeMessage = (value: unknown): value is BridgeMessage => {
   if (!value || typeof value !== 'object') {
     return false;
@@ -33,11 +37,24 @@ const isBridgeMessage = (value: unknown): value is BridgeMessage => {
   );
 };
 
+const MAX_BRIDGE_MESSAGE_BYTES = 2 * 1024 * 1024;
+
 export class RuntimeBridgeServer {
   private wsServer: WebSocketServer | null = null;
   private activeSocket: WebSocket | null = null;
   private readonly pendingRequests = new Map<string, PendingRequest>();
+  private readonly requestHandlers = new Map<
+    BridgeRequestEvent,
+    BrowserBridgeRequestHandler
+  >();
   private readonly sockets = new Set<WebSocket>();
+
+  registerHandler(
+    event: BridgeRequestEvent,
+    handler: BrowserBridgeRequestHandler,
+  ) {
+    this.requestHandlers.set(event, handler);
+  }
 
   attach(httpServer: any) {
     this.wsServer = new WebSocketServer({ noServer: true });
@@ -61,13 +78,22 @@ export class RuntimeBridgeServer {
 
       websocket.on('message', (messageBuffer) => {
         try {
-          const parsedMessage = JSON.parse(messageBuffer.toString()) as unknown;
+          const messageText = messageBuffer.toString();
+          if (
+            Buffer.byteLength(messageText, 'utf8') > MAX_BRIDGE_MESSAGE_BYTES
+          ) {
+            websocket.close(1009, 'Bridge message too large');
+            return;
+          }
+
+          const parsedMessage = JSON.parse(messageText) as unknown;
 
           if (!isBridgeMessage(parsedMessage)) {
             return;
           }
 
-          if (parsedMessage.type !== 'bridge:response') {
+          if (parsedMessage.type === 'bridge:request') {
+            void this.handleBrowserRequest(websocket, parsedMessage);
             return;
           }
 
@@ -230,6 +256,49 @@ export class RuntimeBridgeServer {
         );
       }
     });
+  }
+
+  private async handleBrowserRequest(
+    socket: WebSocket,
+    message: Extract<BridgeMessage, { type: 'bridge:request' }>,
+  ) {
+    const handler = this.requestHandlers.get(message.event);
+    if (!handler) {
+      this.sendResponse(socket, {
+        type: 'bridge:response',
+        id: message.id,
+        ok: false,
+        error: `Unsupported bridge event: ${message.event}`,
+      });
+      return;
+    }
+
+    try {
+      const payload = await handler(message.payload);
+      this.sendResponse(socket, {
+        type: 'bridge:response',
+        id: message.id,
+        ok: true,
+        payload,
+      });
+    } catch (error) {
+      this.sendResponse(socket, {
+        type: 'bridge:response',
+        id: message.id,
+        ok: false,
+        error: error instanceof Error ? error.message : 'Bridge request failed',
+      });
+    }
+  }
+
+  private sendResponse(
+    socket: WebSocket,
+    message: Extract<BridgeMessage, { type: 'bridge:response' }>,
+  ) {
+    if (socket.readyState !== socket.OPEN) {
+      return;
+    }
+    socket.send(JSON.stringify(message));
   }
 
   private getOpenSockets(): WebSocket[] {

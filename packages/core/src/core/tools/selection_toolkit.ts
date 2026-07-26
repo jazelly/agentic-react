@@ -12,6 +12,9 @@ import {
   toAbsoluteSourcePath,
 } from '../../shared/source_path.js';
 import type {
+  AgenticReactSettingsClient,
+  AgenticReactSettingsSnapshot,
+  AgenticReactShortcutKey,
   SelectionContext,
   SelectionResolvedSource,
   ToolkitConfig,
@@ -23,6 +26,25 @@ import type {
   TuningModalExtension,
   TuningModalExtensionCleanup,
 } from '../../shared/types.js';
+import { openToolboxIconCropper } from '../settings/icon_modal.js';
+import {
+  CONFIGURABLE_SHORTCUT_KEYS,
+  LOCKED_ESCAPE_SHORTCUT,
+  createEscapeKeyCycleGuard,
+  createShortcutDispatcher,
+  findDuplicateShortcut,
+  getShortcutActionLabel,
+  normalizeShortcutFromEvent,
+  normalizeShortcutString,
+} from '../settings/shortcuts.js';
+import {
+  createKeycap,
+  createSettingsSectionTitle,
+  createSmallButton,
+  createSourceBadge,
+  setDisabled,
+  stopHostActivationEvents,
+} from '../settings/ui.js';
 import {
   buildSelectionContextForElement,
   getSelectionElementComponentName,
@@ -34,6 +56,11 @@ import {
 
 interface ToolkitRuntimeOptions {
   initialConfig?: ToolkitConfig;
+  settingsClient?: AgenticReactSettingsClient;
+  sourceLookup?: (
+    componentName: string,
+    selector: string,
+  ) => Promise<SelectionResolvedSource | null>;
 }
 
 interface ToolkitRuntimeResult {
@@ -665,6 +692,15 @@ const copyText = async (text: string): Promise<boolean> => {
   }
 };
 
+const preloadImage = (url: string): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve();
+    image.onerror = () => reject(new Error('Image could not be loaded.'));
+    image.decoding = 'async';
+    image.src = url;
+  });
+
 const createOverlayIconButton = (
   label: string,
   iconPathMarkup: string,
@@ -801,21 +837,33 @@ const placeResolvedSourceFirst = (
 
 const enrichSelectionContextSourceLocation = async (
   selectionContext: SelectionContext,
+  sourceLookup?: ToolkitRuntimeOptions['sourceLookup'],
 ): Promise<SelectionContext> => {
   if (!selectionContext.componentName || !selectionContext.selector) {
     return selectionContext;
   }
 
   try {
-    const lookupUrl = new URL(SOURCE_LOOKUP_PATH, window.location.origin);
-    lookupUrl.searchParams.set('component', selectionContext.componentName);
-    lookupUrl.searchParams.set('selector', selectionContext.selector);
-    const response = await fetch(lookupUrl, { cache: 'no-store' });
-    if (!response.ok) {
-      return selectionContext;
+    let source: SelectionResolvedSource | null;
+    if (sourceLookup) {
+      source = await sourceLookup(
+        selectionContext.componentName,
+        selectionContext.selector,
+      );
+    } else {
+      const lookupUrl = new URL(SOURCE_LOOKUP_PATH, window.location.origin);
+      lookupUrl.searchParams.set('component', selectionContext.componentName);
+      lookupUrl.searchParams.set('selector', selectionContext.selector);
+      const response = await fetch(lookupUrl, { cache: 'no-store' });
+      if (!response.ok) {
+        return selectionContext;
+      }
+      source = (await response.json()) as SelectionResolvedSource;
     }
 
-    const source = (await response.json()) as SelectionResolvedSource;
+    if (!source) {
+      return selectionContext;
+    }
     if (!source.filePath || !source.componentName) {
       return selectionContext;
     }
@@ -875,13 +923,22 @@ const buildSourceSnippet = (
 export const createSelectionToolkit = (
   options: ToolkitRuntimeOptions = {},
 ): ToolkitRuntimeResult => {
+  const settingsClient = options.settingsClient;
+  const sourceLookup = options.sourceLookup;
+  let settingsSnapshot: AgenticReactSettingsSnapshot | null =
+    settingsClient?.getCachedSnapshot() || null;
   let toolkitConfig = mergeToolkitConfig(options.initialConfig, undefined);
   let isToolkitVisible = toolkitConfig.defaultVisible && toolkitConfig.enabled;
   let isPanelOpen = toolkitConfig.defaultExpanded;
+  let isSettingsSectionOpen = false;
   let isSelectionMode = false;
   let isMultiSelectionMode = false;
+  let pendingSingleSelectionContext: SelectionContext | null = null;
   let lastSelectionContext: SelectionContext | null = null;
   let multiSelectionContexts: SelectionContext[] = [];
+  let recordingShortcutAction: AgenticReactShortcutKey | null = null;
+  let selectionSessionId = 0;
+  const escapeKeyCycleGuard = createEscapeKeyCycleGuard();
 
   const toolkitRootElement = document.createElement('div');
   const launcherButtonElement = document.createElement('button');
@@ -891,6 +948,14 @@ export const createSelectionToolkit = (
   const selectButtonElement = document.createElement('button');
   const multiselectButtonElement = document.createElement('button');
   const doneButtonElement = document.createElement('button');
+  const settingsButtonElement = document.createElement('button');
+  const settingsSectionElement = document.createElement('div');
+  const shortcutsSectionElement = document.createElement('div');
+  const appearanceSectionElement = document.createElement('div');
+  const iconPreviewElement = document.createElement('img');
+  const iconFileInputElement = document.createElement('input');
+  const iconChangeButtonElement = createSmallButton('Change', { muted: true });
+  const iconResetButtonElement = createSmallButton('Reset', { muted: true });
   const clearAllButtonElement = document.createElement('button');
   const clearAllIconElement = document.createElementNS(
     'http://www.w3.org/2000/svg',
@@ -1039,11 +1104,41 @@ export const createSelectionToolkit = (
   createButton(selectButtonElement, 'Select');
   createButton(multiselectButtonElement, 'Multiselect');
   createButton(doneButtonElement, 'Done');
+  createButton(settingsButtonElement, 'Settings');
   createTrashIconButton();
 
   doneButtonElement.style.background = '#dc2626';
   doneButtonElement.style.color = '#ffffff';
   doneButtonElement.style.display = 'none';
+  settingsButtonElement.setAttribute('aria-expanded', 'false');
+  settingsButtonElement.setAttribute('aria-controls', 'agentic-react-settings');
+  settingsButtonElement.style.background = '#334155';
+  settingsButtonElement.style.color = '#ffffff';
+
+  settingsSectionElement.id = 'agentic-react-settings';
+  settingsSectionElement.setAttribute('data-agentic-react-settings', 'true');
+  settingsSectionElement.style.display = 'none';
+  settingsSectionElement.style.flexDirection = 'column';
+  settingsSectionElement.style.gap = '10px';
+  settingsSectionElement.style.paddingTop = '2px';
+
+  shortcutsSectionElement.style.display = 'flex';
+  shortcutsSectionElement.style.flexDirection = 'column';
+  shortcutsSectionElement.style.gap = '8px';
+  appearanceSectionElement.style.display = 'flex';
+  appearanceSectionElement.style.flexDirection = 'column';
+  appearanceSectionElement.style.gap = '8px';
+
+  iconPreviewElement.alt = 'Current toolbox icon';
+  iconPreviewElement.style.width = `${LAUNCHER_SIZE}px`;
+  iconPreviewElement.style.height = `${LAUNCHER_SIZE}px`;
+  iconPreviewElement.style.borderRadius = '999px';
+  iconPreviewElement.style.objectFit = 'cover';
+  iconPreviewElement.style.boxShadow = '0 0 0 1px rgba(15, 23, 42, 0.16)';
+
+  iconFileInputElement.type = 'file';
+  iconFileInputElement.accept = 'image/png,image/jpeg,image/webp,image/gif';
+  iconFileInputElement.style.display = 'none';
 
   statusElement.style.fontSize = '11px';
   statusElement.style.color = '#111827';
@@ -1058,6 +1153,11 @@ export const createSelectionToolkit = (
   panelElement.appendChild(multiselectButtonElement);
   panelElement.appendChild(doneButtonElement);
   panelElement.appendChild(clearAllButtonElement);
+  panelElement.appendChild(settingsButtonElement);
+  settingsSectionElement.appendChild(shortcutsSectionElement);
+  settingsSectionElement.appendChild(appearanceSectionElement);
+  panelElement.appendChild(settingsSectionElement);
+  panelElement.appendChild(iconFileInputElement);
   panelElement.appendChild(statusElement);
 
   toolkitRootElement.appendChild(panelElement);
@@ -1177,6 +1277,9 @@ export const createSelectionToolkit = (
   tuningModalElement.appendChild(tuningArrowElement);
   tuningSurfaceElement.appendChild(tuningPanelElement);
   tuningModalElement.appendChild(tuningSurfaceElement);
+  stopHostActivationEvents(toolkitRootElement);
+  stopHostActivationEvents(tuningModalElement);
+  stopHostActivationEvents(selectedActions.actionsElement);
 
   const getTuningModalConfig = () => toolkitConfig.tuningModal || {};
 
@@ -1425,14 +1528,59 @@ export const createSelectionToolkit = (
     (document.head || document.documentElement).appendChild(styleElement);
   };
 
+  let renderSettingsPanel = () => {};
+
   const updateStatus = (message: string, shouldDisplay = true) => {
     statusElement.textContent = message;
     statusElement.style.display = shouldDisplay ? 'block' : 'none';
   };
 
+  const getEffectiveShortcutSettings = () =>
+    settingsSnapshot?.effectiveSettings.shortcuts;
+
+  const getEffectiveIconUrl = () =>
+    settingsSnapshot?.effectiveSettings.appearance.toolboxIconUrl ||
+    toolkitConfig.iconUrl ||
+    DEFAULT_TOOLKIT_ICON_DATA_URL;
+
+  const getSettingsCapabilityMessage = () => {
+    const capability = settingsClient?.getCapability();
+    if (capability?.available) {
+      return '';
+    }
+    return (
+      capability?.reason ||
+      'Settings persistence is unavailable in this runtime. Changes cannot be saved.'
+    );
+  };
+
+  const applySettingsSnapshot = async (
+    result: Awaited<
+      ReturnType<AgenticReactSettingsClient['getEffectiveSettings']>
+    >,
+  ) => {
+    settingsSnapshot = {
+      effectiveSettings: result.effectiveSettings,
+      sources: result.sources,
+      errors: result.errors,
+    };
+    await renderLauncherLogo();
+    renderSettingsPanel();
+    renderPanelVisibility();
+  };
+
   const renderMultiSelectionControls = () => {
     const hasSelections = multiSelectionContexts.length > 0;
-    doneButtonElement.style.display = isMultiSelectionMode ? 'block' : 'none';
+    const hasPendingSingleSelection =
+      !!pendingSingleSelectionContext && !!selectedTargetElement;
+    doneButtonElement.style.display =
+      isMultiSelectionMode || hasPendingSingleSelection ? 'block' : 'none';
+    doneButtonElement.disabled =
+      isMultiSelectionMode && !hasSelections && !hasPendingSingleSelection;
+    doneButtonElement.style.opacity = doneButtonElement.disabled ? '0.45' : '1';
+    doneButtonElement.style.cursor = doneButtonElement.disabled
+      ? 'not-allowed'
+      : 'pointer';
     clearAllButtonElement.style.display = isMultiSelectionMode
       ? 'flex'
       : 'none';
@@ -1448,12 +1596,28 @@ export const createSelectionToolkit = (
 
   const renderPanelVisibility = () => {
     renderMultiSelectionControls();
+    settingsButtonElement.setAttribute(
+      'aria-expanded',
+      String(isSettingsSectionOpen),
+    );
+    settingsSectionElement.style.display = isSettingsSectionOpen
+      ? 'flex'
+      : 'none';
     panelElement.style.display = isPanelOpen ? 'flex' : 'none';
   };
 
-  const renderLauncherLogo = () => {
-    launcherIconElement.src =
-      (toolkitConfig.iconUrl || '').trim() || DEFAULT_TOOLKIT_ICON_DATA_URL;
+  const renderLauncherLogo = async () => {
+    const nextIconUrl = getEffectiveIconUrl();
+    try {
+      if (nextIconUrl !== DEFAULT_TOOLKIT_ICON_DATA_URL) {
+        await preloadImage(nextIconUrl);
+      }
+      launcherIconElement.src = nextIconUrl;
+      iconPreviewElement.src = nextIconUrl;
+    } catch (_error) {
+      launcherIconElement.src = DEFAULT_TOOLKIT_ICON_DATA_URL;
+      iconPreviewElement.src = DEFAULT_TOOLKIT_ICON_DATA_URL;
+    }
   };
 
   const updateToolkitStyle = () => {
@@ -1516,7 +1680,8 @@ export const createSelectionToolkit = (
       dimElement.style.zIndex = String(Math.max(0, toolkitConfig.zIndex - 3));
     }
     applyTuningModalStaticStyles();
-    renderLauncherLogo();
+    renderSettingsPanel();
+    void renderLauncherLogo();
     renderPanelVisibility();
   };
 
@@ -1525,6 +1690,177 @@ export const createSelectionToolkit = (
     overlayElement.style.top = `${rect.top}px`;
     overlayElement.style.width = `${rect.width}px`;
     overlayElement.style.height = `${rect.height}px`;
+  };
+
+  const createSettingsHelpText = (text: string) => {
+    const element = document.createElement('div');
+    element.textContent = text;
+    element.style.fontSize = '11px';
+    element.style.lineHeight = '1.35';
+    element.style.color = '#64748b';
+    return element;
+  };
+
+  const renderShortcutRows = () => {
+    shortcutsSectionElement.replaceChildren(
+      createSettingsSectionTitle('Shortcuts'),
+    );
+
+    const shortcuts = getEffectiveShortcutSettings();
+    const sources = settingsSnapshot?.sources.shortcuts;
+    if (!shortcuts || !sources) {
+      shortcutsSectionElement.appendChild(
+        createSettingsHelpText(getSettingsCapabilityMessage()),
+      );
+      return;
+    }
+
+    for (const action of CONFIGURABLE_SHORTCUT_KEYS) {
+      const rowElement = document.createElement('div');
+      const textWrapElement = document.createElement('div');
+      const labelElement = document.createElement('div');
+      const controlsElement = document.createElement('div');
+      const normalized = normalizeShortcutString(shortcuts[action]);
+      const keyButtonElement = createSmallButton(
+        recordingShortcutAction === action
+          ? 'Press shortcut'
+          : normalized.success
+            ? normalized.label
+            : shortcuts[action],
+        { muted: true },
+      );
+      const resetButtonElement = createSmallButton('Reset', { muted: true });
+
+      rowElement.style.display = 'grid';
+      rowElement.style.gridTemplateColumns = 'minmax(0, 1fr) auto';
+      rowElement.style.gap = '8px';
+      rowElement.style.alignItems = 'center';
+
+      labelElement.textContent = getShortcutActionLabel(action);
+      labelElement.style.fontSize = '12px';
+      labelElement.style.fontWeight = '800';
+      labelElement.style.color = '#111827';
+      textWrapElement.style.display = 'flex';
+      textWrapElement.style.flexDirection = 'column';
+      textWrapElement.style.gap = '4px';
+      textWrapElement.appendChild(labelElement);
+      textWrapElement.appendChild(createSourceBadge(sources[action]));
+
+      controlsElement.style.display = 'grid';
+      controlsElement.style.gridTemplateColumns = 'minmax(78px, 1fr) auto';
+      controlsElement.style.gap = '6px';
+      controlsElement.appendChild(keyButtonElement);
+      controlsElement.appendChild(resetButtonElement);
+
+      keyButtonElement.addEventListener('click', () => {
+        if (!settingsClient?.getCapability().available) {
+          updateStatus(getSettingsCapabilityMessage());
+          return;
+        }
+        recordingShortcutAction = action;
+        renderSettingsPanel();
+        updateStatus(`Recording ${getShortcutActionLabel(action)} shortcut.`);
+      });
+
+      resetButtonElement.addEventListener('click', () => {
+        if (!settingsClient?.getCapability().available) {
+          updateStatus(getSettingsCapabilityMessage());
+          return;
+        }
+        setDisabled(resetButtonElement, true);
+        void settingsClient
+          .resetShortcut(action)
+          .then((result) => {
+            if (result.success === false) {
+              updateStatus(result.error.message);
+              renderSettingsPanel();
+              return;
+            }
+            return applySettingsSnapshot(result).then(() => {
+              updateStatus(`Reset ${getShortcutActionLabel(action)} shortcut.`);
+            });
+          })
+          .catch((error) => {
+            updateStatus(
+              error instanceof Error
+                ? error.message
+                : 'Failed to reset shortcut.',
+            );
+            renderSettingsPanel();
+          });
+      });
+
+      rowElement.appendChild(textWrapElement);
+      rowElement.appendChild(controlsElement);
+      shortcutsSectionElement.appendChild(rowElement);
+    }
+
+    const escapeRowElement = document.createElement('div');
+    const escapeLabelElement = document.createElement('div');
+    escapeRowElement.style.display = 'grid';
+    escapeRowElement.style.gridTemplateColumns = 'minmax(0, 1fr) auto';
+    escapeRowElement.style.gap = '8px';
+    escapeRowElement.style.alignItems = 'center';
+    escapeLabelElement.textContent = LOCKED_ESCAPE_SHORTCUT.description;
+    escapeLabelElement.style.fontSize = '12px';
+    escapeLabelElement.style.fontWeight = '800';
+    escapeLabelElement.style.color = '#111827';
+    escapeRowElement.appendChild(escapeLabelElement);
+    escapeRowElement.appendChild(createKeycap(LOCKED_ESCAPE_SHORTCUT.label));
+    shortcutsSectionElement.appendChild(escapeRowElement);
+  };
+
+  const renderAppearanceSettings = () => {
+    appearanceSectionElement.replaceChildren(
+      createSettingsSectionTitle('Appearance'),
+    );
+
+    const source =
+      settingsSnapshot?.sources.appearance.toolboxIcon || 'package';
+    const controlsElement = document.createElement('div');
+    const previewRowElement = document.createElement('div');
+    const textWrapElement = document.createElement('div');
+    const titleElement = document.createElement('div');
+    const capabilityMessage = getSettingsCapabilityMessage();
+
+    previewRowElement.style.display = 'grid';
+    previewRowElement.style.gridTemplateColumns = `${LAUNCHER_SIZE}px minmax(0, 1fr)`;
+    previewRowElement.style.gap = '10px';
+    previewRowElement.style.alignItems = 'center';
+
+    titleElement.textContent = 'Toolbox icon';
+    titleElement.style.fontSize = '12px';
+    titleElement.style.fontWeight = '800';
+    titleElement.style.color = '#111827';
+    textWrapElement.style.display = 'flex';
+    textWrapElement.style.flexDirection = 'column';
+    textWrapElement.style.gap = '5px';
+    textWrapElement.appendChild(titleElement);
+    textWrapElement.appendChild(createSourceBadge(source));
+
+    controlsElement.style.display = 'flex';
+    controlsElement.style.gap = '6px';
+    controlsElement.style.flexWrap = 'wrap';
+    controlsElement.appendChild(iconChangeButtonElement);
+    if (source === 'global') {
+      controlsElement.appendChild(iconResetButtonElement);
+    }
+    textWrapElement.appendChild(controlsElement);
+
+    previewRowElement.appendChild(iconPreviewElement);
+    previewRowElement.appendChild(textWrapElement);
+    appearanceSectionElement.appendChild(previewRowElement);
+
+    if (capabilityMessage) {
+      appearanceSectionElement.appendChild(
+        createSettingsHelpText(capabilityMessage),
+      );
+    }
+  };
+
+  renderSettingsPanel = () => {
+    renderShortcutRows();
+    renderAppearanceSettings();
   };
 
   const updateOverlayLabelForElement = (
@@ -2508,7 +2844,10 @@ export const createSelectionToolkit = (
             selectionContext,
           );
 
-          return enrichSelectionContextSourceLocation(selectionContext);
+          return enrichSelectionContextSourceLocation(
+            selectionContext,
+            sourceLookup,
+          );
         })
         .then((selectionContext) => {
           if (!selectionContext) {
@@ -2580,6 +2919,7 @@ export const createSelectionToolkit = (
 
     overlayElement.appendChild(labelElement);
     overlayElement.appendChild(actions.actionsElement);
+    stopHostActivationEvents(actions.actionsElement);
     document.body.appendChild(overlayElement);
 
     const overlay = {
@@ -2715,10 +3055,37 @@ export const createSelectionToolkit = (
     renderMultiSelectionControls();
   };
 
+  const clearPendingSingleSelection = () => {
+    pendingSingleSelectionContext = null;
+    hideSelectedOverlay();
+  };
+
+  const cancelPendingSelection = () => {
+    selectionSessionId += 1;
+    isSelectionMode = false;
+    isMultiSelectionMode = false;
+    clearPendingSingleSelection();
+    clearMultiSelections();
+    hideHoverOverlay();
+    hideDimOverlay();
+    closeTuningModal();
+    clearSelectableElementCache();
+    selectButtonElement.textContent = 'Select';
+    multiselectButtonElement.textContent = 'Multiselect';
+    launcherButtonElement.setAttribute(
+      'aria-label',
+      'Open Agentic React toolkit',
+    );
+    isPanelOpen = true;
+    renderPanelVisibility();
+    updateStatus('Selection cancelled');
+  };
+
   const showSelectedForElement = (
     element: Element,
     shouldPulse = false,
-    selectionContext: SelectionContext | null = lastSelectionContext,
+    selectionContext: SelectionContext | null = pendingSingleSelectionContext ||
+      lastSelectionContext,
   ) => {
     if (toolkitRootElement.contains(element)) {
       hideSelectedOverlay();
@@ -2849,16 +3216,22 @@ export const createSelectionToolkit = (
     mouseEvent.stopImmediatePropagation();
 
     let didCaptureSelection = false;
+    const captureSessionId = selectionSessionId;
 
     try {
       const selectionContext = await enrichSelectionContextSourceLocation(
         await buildSelectionContextForElement(selectedTarget),
+        sourceLookup,
       );
-      lastSelectionContext = selectionContext;
+      if (captureSessionId !== selectionSessionId || !isSelectionMode) {
+        return;
+      }
       if (isMultiSelectionMode) {
+        pendingSingleSelectionContext = null;
         hideSelectedOverlay();
         showMultiSelectedForElement(selectedTarget, selectionContext, true);
       } else {
+        pendingSingleSelectionContext = selectionContext;
         showSelectedForElement(selectedTarget, true, selectionContext);
       }
       showDimForElement(selectedTarget);
@@ -2883,51 +3256,54 @@ export const createSelectionToolkit = (
           `Added ${capturedSelectionLabel}. ${multiSelectionContexts.length} selected. Click Done to copy all.`,
         );
       } else {
-        const copyResult = await copyLastSelectionContext('text');
-        updateStatus(
-          copyResult.success
-            ? `Captured and copied ${capturedSelectionLabel}`
-            : `Captured ${capturedSelectionLabel}. ${copyResult.error || 'Failed to copy context.'}`,
-        );
+        updateStatus(`Captured ${capturedSelectionLabel}. Click Done to copy.`);
       }
     } catch (error) {
       const message =
         error instanceof Error
           ? error.message
           : 'Failed to capture selection context';
-      updateStatus(message);
+      if (captureSessionId === selectionSessionId) {
+        updateStatus(message);
+      }
     } finally {
-      if (isMultiSelectionMode && didCaptureSelection) {
-        isSelectionMode = true;
-        multiselectButtonElement.textContent = 'Selecting...';
-        launcherButtonElement.setAttribute(
-          'aria-label',
-          'Multiselect mode active for Agentic React toolkit',
-        );
-      } else {
-        isSelectionMode = false;
-        selectButtonElement.textContent = 'Select';
-        multiselectButtonElement.textContent = 'Multiselect';
-        doneButtonElement.style.display = 'none';
-        launcherButtonElement.setAttribute(
-          'aria-label',
-          'Open Agentic React toolkit',
-        );
+      // A prior async capture can finish after Escape and a new selection
+      // session have already started. It must not reset the new session's
+      // mode, controls, overlays, or selectable-element cache.
+      if (captureSessionId === selectionSessionId) {
+        if (isMultiSelectionMode && didCaptureSelection) {
+          isSelectionMode = true;
+          multiselectButtonElement.textContent = 'Selecting...';
+          launcherButtonElement.setAttribute(
+            'aria-label',
+            'Multiselect mode active for Agentic React toolkit',
+          );
+        } else {
+          isSelectionMode = false;
+          selectButtonElement.textContent = 'Select';
+          multiselectButtonElement.textContent = 'Multiselect';
+          launcherButtonElement.setAttribute(
+            'aria-label',
+            'Open Agentic React toolkit',
+          );
+        }
+        renderMultiSelectionControls();
+        hideHoverOverlay();
+        if (!didCaptureSelection) {
+          hideDimOverlay();
+        }
+        clearSelectableElementCache();
       }
-      hideHoverOverlay();
-      if (!didCaptureSelection) {
-        hideDimOverlay();
-      }
-      clearSelectableElementCache();
     }
   };
 
   const enterSelectionMode = () => {
+    selectionSessionId += 1;
     isSelectionMode = true;
     isMultiSelectionMode = false;
     clearMultiSelections();
+    clearPendingSingleSelection();
     clearSelectableElementCache();
-    hideSelectedOverlay();
     isPanelOpen = true;
     renderPanelVisibility();
     selectButtonElement.textContent = 'Selecting...';
@@ -2943,11 +3319,12 @@ export const createSelectionToolkit = (
   };
 
   const enterMultiSelectionMode = () => {
+    selectionSessionId += 1;
     isSelectionMode = true;
     isMultiSelectionMode = true;
     clearMultiSelections();
+    clearPendingSingleSelection();
     clearSelectableElementCache();
-    hideSelectedOverlay();
     isPanelOpen = true;
     renderPanelVisibility();
     selectButtonElement.textContent = 'Select';
@@ -2961,12 +3338,14 @@ export const createSelectionToolkit = (
   };
 
   const exitSelectionMode = () => {
+    selectionSessionId += 1;
     isSelectionMode = false;
     isMultiSelectionMode = false;
+    pendingSingleSelectionContext = null;
     clearMultiSelections();
+    hideSelectedOverlay();
     selectButtonElement.textContent = 'Select';
     multiselectButtonElement.textContent = 'Multiselect';
-    doneButtonElement.style.display = 'none';
     launcherButtonElement.setAttribute(
       'aria-label',
       'Open Agentic React toolkit',
@@ -2975,6 +3354,7 @@ export const createSelectionToolkit = (
     hideHoverOverlay();
     hideDimOverlay();
     clearSelectableElementCache();
+    renderMultiSelectionControls();
   };
 
   const togglePanel = () => {
@@ -3018,8 +3398,10 @@ export const createSelectionToolkit = (
   const enrichSelectionContextSourceSnippets = async (
     selectionContext: SelectionContext,
   ): Promise<SelectionContext> => {
-    let enrichedSelectionContext =
-      await enrichSelectionContextSourceLocation(selectionContext);
+    let enrichedSelectionContext = await enrichSelectionContextSourceLocation(
+      selectionContext,
+      sourceLookup,
+    );
 
     if (enrichedSelectionContext.sourceSnippets.length > 0) {
       return enrichedSelectionContext;
@@ -3188,10 +3570,246 @@ export const createSelectionToolkit = (
     };
   };
 
+  const hasPendingSelection = () =>
+    !!pendingSingleSelectionContext || multiSelectionContexts.length > 0;
+
+  const commitPendingSelection = () => {
+    doneButtonElement.click();
+  };
+
+  const shortcutDispatcher = createShortcutDispatcher({
+    getShortcuts: () =>
+      settingsSnapshot?.effectiveSettings.shortcuts ||
+      target[__AGENTIC_REACT_CONFIG__]?.settings?.effectiveSettings
+        .shortcuts || {
+        singleSelect: 'Ctrl+Alt+Shift+S',
+        multiSelect: 'Ctrl+Alt+Shift+M',
+        toggleToolbox: 'Ctrl+Alt+Shift+A',
+        done: 'Enter',
+      },
+    isPaused: () => recordingShortcutAction !== null,
+    isActionApplicable: (action) => {
+      if (!toolkitConfig.enabled) {
+        return false;
+      }
+      if (action === 'done') {
+        return hasPendingSelection();
+      }
+      return true;
+    },
+    onAction: (action) => {
+      if (action === 'singleSelect') {
+        enterSelectionMode();
+      } else if (action === 'multiSelect') {
+        enterMultiSelectionMode();
+      } else if (action === 'toggleToolbox') {
+        togglePanel();
+      } else {
+        commitPendingSelection();
+      }
+    },
+  });
+
+  const handleShortcutRecording = (event: KeyboardEvent): boolean => {
+    if (!recordingShortcutAction) {
+      return false;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    if (event.key === 'Escape') {
+      escapeKeyCycleGuard.handleKeyDown(event.key, true);
+      recordingShortcutAction = null;
+      renderSettingsPanel();
+      updateStatus('Shortcut recording cancelled.');
+      return true;
+    }
+
+    const normalized = normalizeShortcutFromEvent(event);
+    if (normalized.success === false) {
+      updateStatus(normalized.reason);
+      renderSettingsPanel();
+      return true;
+    }
+
+    const existingShortcuts = getEffectiveShortcutSettings();
+    if (!existingShortcuts || !settingsClient) {
+      updateStatus(getSettingsCapabilityMessage());
+      recordingShortcutAction = null;
+      renderSettingsPanel();
+      return true;
+    }
+
+    const duplicateAction = findDuplicateShortcut(
+      normalized.label,
+      existingShortcuts,
+      recordingShortcutAction,
+    );
+    if (duplicateAction) {
+      updateStatus(
+        `${normalized.label} is already assigned to ${getShortcutActionLabel(
+          duplicateAction,
+        )}.`,
+      );
+      renderSettingsPanel();
+      return true;
+    }
+
+    const actionToSave = recordingShortcutAction;
+    recordingShortcutAction = null;
+    renderSettingsPanel();
+    updateStatus(`Saving ${getShortcutActionLabel(actionToSave)} shortcut.`);
+    void settingsClient
+      .updateShortcuts({ [actionToSave]: normalized.label })
+      .then((result) => {
+        if (result.success === false) {
+          updateStatus(result.error.message);
+          renderSettingsPanel();
+          return;
+        }
+        return applySettingsSnapshot(result).then(() => {
+          updateStatus(`Saved ${normalized.label}.`);
+        });
+      })
+      .catch((error) => {
+        updateStatus(
+          error instanceof Error ? error.message : 'Failed to save shortcut.',
+        );
+        renderSettingsPanel();
+      });
+    return true;
+  };
+
+  const handleEscapeKeyDown = (event: KeyboardEvent): boolean => {
+    const ownsEscape =
+      !!activeTuningSession || isSelectionMode || hasPendingSelection();
+    const disposition = escapeKeyCycleGuard.handleKeyDown(
+      event.key,
+      ownsEscape,
+    );
+    if (disposition === 'ignore') {
+      return false;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    if (disposition === 'repeat') {
+      return true;
+    }
+
+    if (activeTuningSession) {
+      closeTuningModal();
+      return true;
+    }
+
+    if (isSelectionMode || hasPendingSelection()) {
+      cancelPendingSelection();
+    }
+    return true;
+  };
+
+  const onGlobalKeyDown = (event: KeyboardEvent) => {
+    if (handleShortcutRecording(event)) {
+      return;
+    }
+    if (event.key === 'Escape' && handleEscapeKeyDown(event)) {
+      return;
+    }
+    shortcutDispatcher.handleKeyDown(event);
+  };
+
+  const onGlobalKeyUp = (event: KeyboardEvent) => {
+    if (!escapeKeyCycleGuard.handleKeyUp(event.key)) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+  };
+
+  settingsButtonElement.addEventListener('click', () => {
+    isSettingsSectionOpen = !isSettingsSectionOpen;
+    if (isSettingsSectionOpen) {
+      renderSettingsPanel();
+    }
+    renderPanelVisibility();
+  });
+
+  iconChangeButtonElement.addEventListener('click', () => {
+    if (!settingsClient?.getCapability().available) {
+      updateStatus(getSettingsCapabilityMessage());
+      return;
+    }
+    iconFileInputElement.click();
+  });
+
+  iconFileInputElement.addEventListener('change', () => {
+    const file = iconFileInputElement.files?.[0];
+    iconFileInputElement.value = '';
+    if (!file) {
+      return;
+    }
+    void openToolboxIconCropper({
+      file,
+      zIndex: toolkitConfig.zIndex + 2,
+      restoreFocusTo: iconChangeButtonElement,
+      onError: (message) => updateStatus(message),
+      onCancel: () => updateStatus('Icon change cancelled.'),
+      onApply: async (icon) => {
+        if (!settingsClient) {
+          throw new Error(getSettingsCapabilityMessage());
+        }
+        const result = await settingsClient.applyIcon(icon);
+        if (result.success === false) {
+          throw new Error(result.error.message);
+        }
+        await preloadImage(
+          result.effectiveSettings.appearance.toolboxIconUrl || '',
+        );
+        await applySettingsSnapshot(result);
+        updateStatus('Updated toolbox icon.');
+      },
+    }).catch((error) => {
+      updateStatus(
+        error instanceof Error ? error.message : 'Failed to process image.',
+      );
+    });
+  });
+
+  iconResetButtonElement.addEventListener('click', () => {
+    if (!settingsClient?.getCapability().available) {
+      updateStatus(getSettingsCapabilityMessage());
+      return;
+    }
+    setDisabled(iconResetButtonElement, true);
+    void settingsClient
+      .resetIcon()
+      .then((result) => {
+        if (result.success === false) {
+          updateStatus(result.error.message);
+          renderSettingsPanel();
+          return;
+        }
+        return applySettingsSnapshot(result).then(() => {
+          updateStatus('Reset toolbox icon.');
+        });
+      })
+      .catch((error) => {
+        updateStatus(
+          error instanceof Error ? error.message : 'Failed to reset icon.',
+        );
+        renderSettingsPanel();
+      });
+  });
+
   selectedActions.tuneButtonElement.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
-    if (!selectedTargetElement || !lastSelectionContext) {
+    if (!selectedTargetElement || !pendingSingleSelectionContext) {
       updateStatus('No selection to adjust.');
       return;
     }
@@ -3199,9 +3817,9 @@ export const createSelectionToolkit = (
     openTuningModal({
       anchorElement: selectedActions.tuneButtonElement,
       element: selectedTargetElement,
-      selectionContext: lastSelectionContext,
+      selectionContext: pendingSingleSelectionContext,
       setSelectionContext: (nextSelectionContext) => {
-        lastSelectionContext = nextSelectionContext;
+        pendingSingleSelectionContext = nextSelectionContext;
       },
     });
   });
@@ -3209,10 +3827,11 @@ export const createSelectionToolkit = (
   selectedActions.deleteButtonElement.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
-    lastSelectionContext = null;
+    pendingSingleSelectionContext = null;
     hideSelectedOverlay();
     hideDimOverlay();
     closeTuningModal();
+    renderMultiSelectionControls();
     updateStatus('Cleared selected context.');
   });
 
@@ -3263,23 +3882,49 @@ export const createSelectionToolkit = (
 
   doneButtonElement.addEventListener('click', () => {
     void (async () => {
-      const selectionContextsToCopy = multiSelectionContexts.slice();
-      const copyResult = await copySelectionContexts(selectionContextsToCopy);
-      const copiedMessage = `Copied ${copyResult.contexts.length} selected ${
-        copyResult.contexts.length === 1 ? 'context' : 'contexts'
-      }`;
-      if (copyResult.success) {
-        lastSelectionContext =
-          copyResult.contexts[copyResult.contexts.length - 1] ??
-          lastSelectionContext;
-      } else {
-        updateStatus(copyResult.error || 'Failed to copy selections');
+      if (isMultiSelectionMode) {
+        const selectionContextsToCopy = multiSelectionContexts.slice();
+        const copyResult = await copySelectionContexts(selectionContextsToCopy);
+        const copiedMessage = `Copied ${copyResult.contexts.length} selected ${
+          copyResult.contexts.length === 1 ? 'context' : 'contexts'
+        }`;
+        if (copyResult.success) {
+          lastSelectionContext =
+            copyResult.contexts[copyResult.contexts.length - 1] ??
+            lastSelectionContext;
+        } else {
+          updateStatus(copyResult.error || 'Failed to copy selections');
+          return;
+        }
+        exitSelectionMode();
+        isPanelOpen = true;
+        renderPanelVisibility();
+        if (copyResult.success) {
+          updateStatus(copiedMessage);
+        }
+        return;
       }
-      exitSelectionMode();
-      isPanelOpen = true;
-      renderPanelVisibility();
-      if (copyResult.success) {
-        updateStatus(copiedMessage);
+
+      if (pendingSingleSelectionContext) {
+        const selectionContextToCopy =
+          await enrichSelectionContextSourceSnippets(
+            pendingSingleSelectionContext,
+          );
+        // Keep the enriched pending value available when clipboard access
+        // fails so Done can be retried without losing the transaction.
+        pendingSingleSelectionContext = selectionContextToCopy;
+        const copied = await copyText(toTextContext(selectionContextToCopy));
+        if (!copied) {
+          updateStatus('Failed to copy context to clipboard');
+          return;
+        }
+        lastSelectionContext = selectionContextToCopy;
+        exitSelectionMode();
+        isPanelOpen = true;
+        renderPanelVisibility();
+        updateStatus('Copied selected context');
+      } else {
+        updateStatus('No selection to copy.');
       }
     })();
   });
@@ -3326,6 +3971,8 @@ export const createSelectionToolkit = (
   document.addEventListener('mousemove', onMouseMove, true);
   document.addEventListener('click', onSelect, true);
   document.addEventListener('scroll', updateSelectionOverlays, true);
+  window.addEventListener('keydown', onGlobalKeyDown, true);
+  window.addEventListener('keyup', onGlobalKeyUp, true);
   window.addEventListener('resize', updateSelectionOverlays);
 
   return {

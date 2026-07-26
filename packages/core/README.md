@@ -19,6 +19,28 @@ For full local-dev MCP features, install an adapter instead:
 
 Adapters depend on `@agentic-react/core` internally and add runtime injection, bridge transport, MCP endpoints, and source-root context.
 
+## Settings Availability
+
+`@agentic-react/core` contains the browser UI and shared types for toolbox Settings, but persistent Settings require an adapter-hosted bridge. Direct runtime usage cannot read or write `~/.agentic-react/settings.json`, cannot persist a custom toolbox icon, and cannot save shortcut changes unless you provide your own `AgenticReactSettingsClient`.
+
+Without that bridge, the selection toolkit can still use package defaults and code-provided `toolkit` defaults. The package shortcut defaults are `Ctrl+Alt+Shift+S` for single select, `Ctrl+Alt+Shift+M` for multiselect, `Ctrl+Alt+Shift+A` for toggling the toolbox, and `Enter` for Done. `Escape` is reserved for cancelling pending selection.
+
+Adapter-backed Settings resolve values as:
+
+```text
+global user override
+  > project configuration default
+  > package default
+```
+
+Project defaults are supplied by adapters through `toolkit.settings.shortcuts` and `toolkit.iconUrl`. Runtime-only integrations should treat those as code defaults, not persisted user preferences.
+
+## Selection Confirmation
+
+Single selection is pending until the user confirms it. Clicking a target captures and highlights the context, but does not copy it. Clicking Done, or pressing the configured Done shortcut, copies that pending context and commits it as the last selection. If clipboard writing fails, the pending context stays available for retry.
+
+Multiselect collects pending contexts until Done copies the complete set. `Escape` cancels pending single and multiselect contexts without copying and leaves the last committed selection intact.
+
 ## Tuning Modal Runtime API
 
 The browser runtime exposes the tuning modal through the selection toolkit and `window.__AGENTIC_REACT__`.

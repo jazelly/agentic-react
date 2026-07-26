@@ -48,7 +48,21 @@ const extractRunCommand = (stepName) => {
   const start = workflow.indexOf(marker);
   assert.notEqual(start, -1, `release workflow should include ${stepName}`);
 
-  const next = workflow.indexOf('\n      - name:', start + marker.length);
+  const lineStart = workflow.lastIndexOf('\n', start) + 1;
+  const indentation = workflow.slice(lineStart, start);
+  const nextStep = workflow.indexOf(
+    `\n${indentation}- name:`,
+    start + marker.length,
+  );
+  const remainingWorkflow = workflow.slice(start + marker.length);
+  const shallowerBoundary = remainingWorkflow.match(
+    new RegExp(`\\n {0,${indentation.length - 1}}\\S`),
+  );
+  const nextSection = shallowerBoundary
+    ? start + marker.length + shallowerBoundary.index
+    : -1;
+  const boundaries = [nextStep, nextSection].filter((index) => index !== -1);
+  const next = boundaries.length > 0 ? Math.min(...boundaries) : -1;
   const step = workflow.slice(start, next === -1 ? undefined : next);
   const scalarRun = step.match(/\n        run: ([^\n]+)/);
 
@@ -104,6 +118,11 @@ const makeFakePnpm = (workspace, name) => {
     `#!/bin/sh
 echo "$@" >> "$PNPM_LOG"
 
+if [ "$1" = "changeset" ] && [ "$2" = "status" ] && [ "$3" = "--output" ]; then
+  printf '{"releases":[{"name":"@agentic-react/core","newVersion":"1.0.0"}]}\n' > "$4"
+  exit 0
+fi
+
 if [ "$1" = "run" ] && [ "$2" = "version-packages" ]; then
   printf "versioned\\n" > versioned.txt
   exit 0
@@ -157,6 +176,60 @@ const runVersionBlock = (repo, command, fakePnpm) => {
   });
 };
 
+const runShellBlock = (repo, command, env = {}) => {
+  run('bash', ['-c', command], {
+    cwd: repo,
+    env,
+  });
+};
+
+const commitAndPush = (repo, message) => {
+  run('git', ['add', '.'], { cwd: repo });
+  run('git', ['commit', '-m', message], { cwd: repo });
+  run('git', ['push', 'origin', 'HEAD:main'], { cwd: repo });
+};
+
+const commitReleaseMarker = (repo) => {
+  const sourceSha = run('git', ['rev-parse', 'HEAD'], { cwd: repo });
+  fs.writeFileSync(
+    path.join(repo, '.changeset/release-pending.json'),
+    `${JSON.stringify({ sourceSha }, undefined, 2)}\n`,
+  );
+  run('git', ['add', '.changeset/release-pending.json'], { cwd: repo });
+  run(
+    'git',
+    [
+      '-c',
+      'user.name=github-actions[bot]',
+      '-c',
+      'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+      'commit',
+      '-m',
+      'chore(release): version packages',
+    ],
+    { cwd: repo },
+  );
+  run('git', ['push', 'origin', 'HEAD:main'], { cwd: repo });
+};
+
+const inspectReleaseState = (workspace, fixture, name) => {
+  const outputPath = path.join(workspace, `${name}-output.txt`);
+  const summaryPath = path.join(workspace, `${name}-summary.md`);
+
+  runShellBlock(fixture.repo, extractRunCommand('Inspect release state'), {
+    GITHUB_OUTPUT: outputPath,
+    GITHUB_STEP_SUMMARY: summaryPath,
+  });
+
+  return Object.fromEntries(
+    fs
+      .readFileSync(outputPath, 'utf8')
+      .trim()
+      .split('\n')
+      .map((line) => line.split('=')),
+  );
+};
+
 const list = (value) => value.split('\n').filter(Boolean).sort();
 
 const runGitHubReleaseBlock = (
@@ -178,14 +251,29 @@ const runGitHubReleaseBlock = (
 
 const testWorkflowContract = () => {
   assertContains(workflow, 'branches: [main]', 'release trigger');
+  assert.ok(
+    !workflow.includes('workflow_dispatch:'),
+    'release workflow should not be manually dispatchable from dev',
+  );
   assertContains(workflow, 'fetch-depth: 0', 'release checkout');
+  assertContains(
+    workflow,
+    "if: github.ref == 'refs/heads/main' && needs.preflight.outputs.release-required == 'true'",
+    'release preflight gate',
+  );
 
   const steps = [
     'Version packages from changesets',
+    'Release smoke test',
     'Build packages',
+    'Test',
+    'Commit version packages',
     'Publish packages',
+    'Ensure package publication succeeded',
+    'Reconcile release tags',
     'Push release tags',
     'Create GitHub releases',
+    'Clear recovery state',
   ];
   let previous = -1;
 
@@ -196,16 +284,51 @@ const testWorkflowContract = () => {
   }
 
   assertContains(
-    extractRunCommand('Version packages from changesets'),
+    extractRunCommand('Inspect release state'),
     'find .changeset -maxdepth 1 -name "*.md" ! -name "README.md" | grep -q .',
-    'changeset version gate',
+    'changeset preflight gate',
   );
   assertContains(
     extractRunCommand('Version packages from changesets'),
+    '> .changeset/release-pending.json',
+    'durable recovery marker',
+  );
+  assertContains(
+    extractRunCommand('Version packages from changesets'),
+    'git add -A',
+    'release changes staged before validation',
+  );
+  assertContains(
+    extractRunCommand('Validate recovery state'),
+    'expected_tree="$(git write-tree)"',
+    'deterministic recovery verification',
+  );
+  assert.ok(
+    !extractRunCommand('Version packages from changesets').includes(
+      'git push origin HEAD:main',
+    ),
+    'versioning should not push before validation',
+  );
+  assertContains(
+    extractRunCommand('Commit version packages'),
     'git push origin HEAD:main',
-    'version package push',
+    'validated version package push',
+  );
+  assert.ok(
+    !extractRunCommand('Commit version packages').includes('git add -A'),
+    'validation artifacts should not enter the version commit',
   );
   assert.equal(extractRunCommand('Publish packages'), 'pnpm run release');
+  assertContains(
+    workflow,
+    'continue-on-error: true',
+    'partial publication recovery',
+  );
+  assertContains(
+    extractRunCommand('Reconcile release tags'),
+    "readFileSync('.changeset/release-plan.json', 'utf8')",
+    'release plan tag recovery',
+  );
   assert.equal(
     extractRunCommand('Push release tags'),
     'git push origin --tags',
@@ -219,49 +342,238 @@ const testWorkflowContract = () => {
   );
   assertContains(releaseBlock, 'gh release view "$tag"', 'release idempotency');
   assertContains(releaseBlock, 'gh release create "$tag"', 'release creation');
+  assertContains(
+    extractRunCommand('Clear recovery state'),
+    'git rm .changeset/release-pending.json',
+    'recovery cleanup',
+  );
 };
 
-const testPendingChangesetDetection = (workspace) => {
-  const versionBlock = extractRunCommand('Version packages from changesets');
-
+const testReleasePreflight = (workspace) => {
   const noChangesRepo = makeGitFixture(workspace, 'no-pending-changesets');
-  const noChangesPnpm = makeFakePnpm(workspace, 'no-pending-changesets');
-  runVersionBlock(noChangesRepo.repo, versionBlock, noChangesPnpm);
-
-  assert.equal(
-    fs.existsSync(noChangesPnpm.logPath),
-    false,
-    'changeset README alone should not run version-packages',
+  const noChanges = inspectReleaseState(
+    workspace,
+    noChangesRepo,
+    'no-pending-changesets',
   );
-  assert.equal(
-    run('git', ['log', '-1', '--pretty=%s'], { cwd: noChangesRepo.repo }),
-    'initial fixture',
-    'no pending changesets should not create a version commit',
-  );
+  assert.equal(noChanges['release-required'], 'false');
+  assert.equal(noChanges['release-mode'], 'none');
 
   const pendingRepo = makeGitFixture(workspace, 'pending-changesets');
-  const pendingPnpm = makeFakePnpm(workspace, 'pending-changesets');
   fs.writeFileSync(
     path.join(pendingRepo.repo, '.changeset/release-core.md'),
     '---\n"@agentic-react/core": patch\n---\n\nRelease core.\n',
   );
+  commitAndPush(pendingRepo.repo, 'add core changeset');
+  const pending = inspectReleaseState(
+    workspace,
+    pendingRepo,
+    'pending-changesets',
+  );
+  assert.equal(pending['release-required'], 'true');
+  assert.equal(pending['release-mode'], 'version');
 
-  runVersionBlock(pendingRepo.repo, versionBlock, pendingPnpm);
+  const recoveryRepo = makeGitFixture(workspace, 'release-recovery');
+  fs.writeFileSync(
+    path.join(recoveryRepo.repo, '.changeset/release-core.md'),
+    '---\n"@agentic-react/core": patch\n---\n\nRelease core.\n',
+  );
+  commitAndPush(recoveryRepo.repo, 'add recovery changeset');
+  commitReleaseMarker(recoveryRepo.repo);
+  const recoveryCommit = run('git', ['rev-parse', 'HEAD'], {
+    cwd: recoveryRepo.repo,
+  });
+  const recovery = inspectReleaseState(
+    workspace,
+    recoveryRepo,
+    'release-recovery',
+  );
+  assert.equal(recovery['release-required'], 'true');
+  assert.equal(recovery['release-mode'], 'recovery');
+  assert.equal(recovery['release-sha'], recoveryCommit);
+
+  const untrustedRepo = makeGitFixture(workspace, 'untrusted-recovery');
+  fs.writeFileSync(
+    path.join(untrustedRepo.repo, '.changeset/release-pending.json'),
+    '{"sourceSha":"fixture"}\n',
+  );
+  commitAndPush(untrustedRepo.repo, 'add untrusted recovery marker');
+  assert.throws(
+    () =>
+      inspectReleaseState(
+        workspace,
+        untrustedRepo,
+        'untrusted-recovery',
+      ),
+    /release recovery marker was not created by the release workflow/,
+  );
+};
+
+const testVersionLifecycle = (workspace) => {
+  const fixture = makeGitFixture(workspace, 'version-lifecycle');
+  const fakePnpm = makeFakePnpm(workspace, 'version-lifecycle');
+  const sourceSha = run('git', ['rev-parse', 'HEAD'], { cwd: fixture.repo });
+  const versionBlock = extractRunCommand('Version packages from changesets')
+    .split('${{ needs.preflight.outputs.release-sha }}')
+    .join(sourceSha);
+
+  runVersionBlock(fixture.repo, versionBlock, fakePnpm);
 
   assert.equal(
-    fs.readFileSync(path.join(pendingRepo.repo, 'versioned.txt'), 'utf8'),
+    fs.readFileSync(path.join(fixture.repo, 'versioned.txt'), 'utf8'),
     'versioned\n',
     'pending changesets should run version-packages',
   );
-  assert.equal(
-    run('git', ['log', '-1', '--pretty=%s'], { cwd: pendingRepo.repo }),
-    'chore: version packages',
-    'pending changesets should create the expected version commit',
+  assert.deepEqual(
+    JSON.parse(
+      fs.readFileSync(
+        path.join(fixture.repo, '.changeset/release-pending.json'),
+        'utf8',
+      ),
+    ),
+    { sourceSha },
+    'versioning should create a durable release marker',
+  );
+  assert.deepEqual(
+    JSON.parse(
+      fs.readFileSync(
+        path.join(fixture.repo, '.changeset/release-plan.json'),
+        'utf8',
+      ),
+    ).releases,
+    [{ name: '@agentic-react/core', newVersion: '1.0.0' }],
+    'versioning should preserve the package release plan',
   );
   assert.equal(
-    run('git', ['rev-parse', 'HEAD'], { cwd: pendingRepo.repo }),
-    run('git', ['--git-dir', pendingRepo.origin, 'rev-parse', 'main']),
-    'version commit should be pushed back to main',
+    run('git', ['log', '-1', '--pretty=%s'], { cwd: fixture.repo }),
+    'initial fixture',
+    'versioning should not commit before validation',
+  );
+
+  runShellBlock(fixture.repo, extractRunCommand('Commit version packages'));
+  assert.equal(
+    run('git', ['log', '-1', '--pretty=%s'], { cwd: fixture.repo }),
+    'chore(release): version packages',
+    'validated version state should be committed',
+  );
+  assert.equal(
+    run('git', ['rev-parse', 'HEAD'], { cwd: fixture.repo }),
+    run('git', ['--git-dir', fixture.origin, 'rev-parse', 'main']),
+    'validated version commit should be pushed to main',
+  );
+
+  runShellBlock(fixture.repo, extractRunCommand('Reconcile release tags'));
+  assert.equal(
+    run('git', ['tag', '--list', '@agentic-react/core@1.0.0'], {
+      cwd: fixture.repo,
+    }),
+    '@agentic-react/core@1.0.0',
+    'successful recovery should restore tags from the release plan',
+  );
+
+  runShellBlock(fixture.repo, extractRunCommand('Clear recovery state'));
+  assert.equal(
+    fs.existsSync(
+      path.join(fixture.repo, '.changeset/release-pending.json'),
+    ),
+    false,
+    'successful release cleanup should remove the recovery marker',
+  );
+};
+
+const makeVersionedReleaseFixture = (workspace, name, tamperPlan = false) => {
+  const repo = path.join(workspace, name);
+  const changesetsBin = path.join(
+    rootDir,
+    'node_modules/@changesets/cli/bin.js',
+  );
+
+  run('git', ['clone', '--quiet', '--no-local', rootDir, repo]);
+  // Keep the fixture independent from shallow CI history and remote refs.
+  fs.rmSync(path.join(repo, '.git'), { force: true, recursive: true });
+  run('git', ['init'], { cwd: repo });
+  run('git', ['config', 'user.name', 'Release Smoke'], { cwd: repo });
+  run('git', ['config', 'user.email', 'release-smoke@example.com'], {
+    cwd: repo,
+  });
+  run('git', ['branch', '-M', 'main'], { cwd: repo });
+  run('git', ['add', '.'], { cwd: repo });
+  run('git', ['commit', '-m', 'release smoke fixture'], { cwd: repo });
+  fs.writeFileSync(
+    path.join(repo, '.changeset/release-core.md'),
+    '---\n"@agentic-react/core": patch\n---\n\nRelease core.\n',
+  );
+  run('git', ['add', '.changeset/release-core.md'], { cwd: repo });
+  run('git', ['commit', '-m', 'add core release'], { cwd: repo });
+
+  const sourceSha = run('git', ['rev-parse', 'HEAD'], { cwd: repo });
+  run('node', [changesetsBin, 'status', '--output', '.changeset/release-plan.json'], {
+    cwd: repo,
+  });
+  run('node', [changesetsBin, 'version'], { cwd: repo });
+  fs.writeFileSync(
+    path.join(repo, '.changeset/release-pending.json'),
+    `${JSON.stringify({ sourceSha }, undefined, 2)}\n`,
+  );
+
+  if (tamperPlan) {
+    const planPath = path.join(repo, '.changeset/release-plan.json');
+    const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
+    plan.releases[0].newVersion = '99.0.0';
+    fs.writeFileSync(planPath, `${JSON.stringify(plan, undefined, 2)}\n`);
+  }
+
+  run('git', ['add', '.'], { cwd: repo });
+  run(
+    'git',
+    [
+      '-c',
+      'user.name=github-actions[bot]',
+      '-c',
+      'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+      'commit',
+      '-m',
+      'chore(release): version packages',
+    ],
+    { cwd: repo },
+  );
+
+  return {
+    repo,
+    releaseSha: run('git', ['rev-parse', 'HEAD'], { cwd: repo }),
+  };
+};
+
+const testRecoveryTreeVerification = (workspace) => {
+  const validationBlock = extractRunCommand('Validate recovery state');
+  const valid = makeVersionedReleaseFixture(
+    workspace,
+    'valid-recovery-tree',
+  );
+  runShellBlock(
+    valid.repo,
+    validationBlock
+      .split('${{ needs.preflight.outputs.release-sha }}')
+      .join(valid.releaseSha),
+    { GITHUB_WORKSPACE: rootDir },
+  );
+
+  const tampered = makeVersionedReleaseFixture(
+    workspace,
+    'tampered-recovery-tree',
+    true,
+  );
+  assert.throws(
+    () =>
+      runShellBlock(
+        tampered.repo,
+        validationBlock
+          .split('${{ needs.preflight.outputs.release-sha }}')
+          .join(tampered.releaseSha),
+        { GITHUB_WORKSPACE: rootDir },
+      ),
+    /failed with exit code 1/,
+    'recovery should reject a forged release plan even with bot metadata',
   );
 };
 
@@ -337,9 +649,11 @@ const workspace = fs.mkdtempSync(
 try {
   const tests = [
     ['workflow contract', () => testWorkflowContract()],
+    ['release preflight', () => testReleasePreflight(workspace)],
+    ['version lifecycle', () => testVersionLifecycle(workspace)],
     [
-      'pending changeset detection',
-      () => testPendingChangesetDetection(workspace),
+      'recovery tree verification',
+      () => testRecoveryTreeVerification(workspace),
     ],
     ['release tag push', () => testTagPush(workspace)],
     [

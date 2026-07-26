@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { createAgenticReactSettingsEngine } from '@agentic-react/core';
 import { RuntimeBridgeServer } from '@agentic-react/core/bridge';
 import {
   createStreamableHttpMcpHandler,
@@ -18,9 +19,11 @@ import {
 } from '@agentic-react/core/shared/custom-tools-script';
 import { BRIDGE_WS_PATH } from '@agentic-react/core/shared/protocol';
 import type {
+  AgenticReactSettingsBootstrap,
+  AgenticReactToolkitConfig,
   CustomTool,
-  ToolkitConfig,
 } from '@agentic-react/core/shared/types';
+import { registerSourceLookupHandler } from '@agentic-react/core/source-lookup';
 
 interface NextWebpackContext {
   dev: boolean;
@@ -38,7 +41,8 @@ interface NextConfig {
 export interface AgenticReactNextOptions {
   customTools?: CustomTool[];
   rootDir?: string;
-  toolkit?: ToolkitConfig;
+  settingsRoot?: string;
+  toolkit?: AgenticReactToolkitConfig;
   bridgeUrl?: string;
   server?: {
     enabled?: boolean;
@@ -50,6 +54,7 @@ export interface AgenticReactNextOptions {
 interface BridgeServerState {
   started: boolean;
   server?: http.Server;
+  settingsEngine: ReturnType<typeof createAgenticReactSettingsEngine>;
 }
 
 const DEFAULT_BRIDGE_HOST = '127.0.0.1';
@@ -65,7 +70,8 @@ const writeNextClientEntry = (
   rootDir: string,
   bridgeUrl: string | null,
   customTools: CustomTool[],
-  toolkitConfig: ToolkitConfig,
+  toolkitConfig: AgenticReactToolkitConfig,
+  settingsBootstrap: AgenticReactSettingsBootstrap,
 ): string => {
   const coreDistPath = getCoreDistPath();
   const generatedDirectory = path.join(rootDir, '.agentic-react-next');
@@ -104,6 +110,7 @@ if (typeof window !== 'undefined') {
       ...(existingAgenticReactConfig.toolkit || {}),
       ...${JSON.stringify(toolkitConfig)},
     },
+    settings: existingAgenticReactConfig.settings || ${JSON.stringify(settingsBootstrap)},
   };
 
   if (!window[${__AGENTIC_REACT_BRIDGE_URL__}]) {
@@ -169,8 +176,14 @@ const getBridgeServerRegistry = (): Map<string, BridgeServerState> => {
   return globalRecord[NEXT_BRIDGE_STATE_KEY];
 };
 
-const createBridgeHttpServer = (rootDir: string, customTools: CustomTool[]) => {
+const createBridgeHttpServer = (
+  rootDir: string,
+  customTools: CustomTool[],
+  settingsEngine: ReturnType<typeof createAgenticReactSettingsEngine>,
+) => {
   const runtimeBridge = new RuntimeBridgeServer();
+  registerSourceLookupHandler(runtimeBridge, rootDir);
+  settingsEngine.registerBridge(runtimeBridge);
   const handleMcpRequest = createStreamableHttpMcpHandler(() =>
     initMcpServer(runtimeBridge, rootDir, customTools),
   );
@@ -201,9 +214,27 @@ const createBridgeHttpServer = (rootDir: string, customTools: CustomTool[]) => {
 
 const startNextBridgeServer = (
   options: AgenticReactNextOptions,
-): string | null => {
+): {
+  bridgeUrl: string | null;
+  settingsBootstrap: AgenticReactSettingsBootstrap;
+} => {
+  const projectToolkitConfig = options.toolkit || {};
+  const disabledSettingsEngine = createAgenticReactSettingsEngine({
+    projectToolkitConfig,
+    settingsRoot: options.settingsRoot,
+  });
+
   if (options.server?.enabled === false) {
-    return options.bridgeUrl || null;
+    return {
+      bridgeUrl: options.bridgeUrl || null,
+      settingsBootstrap: {
+        ...disabledSettingsEngine.store.getSnapshot(),
+        capability: {
+          available: false,
+          reason: 'Next bridge server is disabled.',
+        },
+      },
+    };
   }
 
   const host = options.server?.host || DEFAULT_BRIDGE_HOST;
@@ -215,14 +246,25 @@ const startNextBridgeServer = (
   const existingState = registry.get(registryKey);
 
   if (existingState) {
-    return bridgeUrl;
+    return {
+      bridgeUrl,
+      settingsBootstrap: existingState.settingsEngine.getBootstrap(),
+    };
   }
 
-  const serverState: BridgeServerState = { started: false };
+  const settingsEngine = createAgenticReactSettingsEngine({
+    projectToolkitConfig,
+    settingsRoot: options.settingsRoot,
+  });
+  const serverState: BridgeServerState = { started: false, settingsEngine };
   registry.set(registryKey, serverState);
 
   const rootDir = options.rootDir || process.cwd();
-  const httpServer = createBridgeHttpServer(rootDir, options.customTools || []);
+  const httpServer = createBridgeHttpServer(
+    rootDir,
+    options.customTools || [],
+    settingsEngine,
+  );
   serverState.server = httpServer;
 
   httpServer.once('error', (error) => {
@@ -241,7 +283,10 @@ const startNextBridgeServer = (
     );
   });
 
-  return bridgeUrl;
+  return {
+    bridgeUrl,
+    settingsBootstrap: settingsEngine.getBootstrap(),
+  };
 };
 
 export const withAgenticReactNext = (
@@ -262,7 +307,7 @@ export const withAgenticReactNext = (
       }
 
       const rootDir = options.rootDir || process.cwd();
-      const bridgeUrl = startNextBridgeServer(options);
+      const { bridgeUrl, settingsBootstrap } = startNextBridgeServer(options);
       const originalEntry = transformedConfig.entry;
 
       transformedConfig.entry = async () => {
@@ -271,6 +316,7 @@ export const withAgenticReactNext = (
           bridgeUrl,
           options.customTools || [],
           options.toolkit || {},
+          settingsBootstrap,
         );
         const resolvedEntry =
           typeof originalEntry === 'function'
@@ -288,6 +334,26 @@ export const withAgenticReactNext = (
 export default withAgenticReactNext;
 export type {
   AgenticReactConfig,
+  AgenticReactAppearanceSettings,
+  AgenticReactProjectSettingsDefaults,
+  AgenticReactSettings,
+  AgenticReactSettingsBootstrap,
+  AgenticReactSettingsCapability,
+  AgenticReactSettingsClient,
+  AgenticReactSettingsError,
+  AgenticReactSettingsErrorCode,
+  AgenticReactSettingsRpcFailure,
+  AgenticReactSettingsRpcResult,
+  AgenticReactSettingsRpcSuccess,
+  AgenticReactSettingsSnapshot,
+  AgenticReactSettingsSource,
+  AgenticReactSettingsSources,
+  AgenticReactShortcutKey,
+  AgenticReactShortcutSettings,
+  AgenticReactToolkitConfig,
+  AgenticReactToolboxIconFilename,
+  AgenticReactToolboxIconMetadata,
+  AgenticReactToolboxIconMime,
   CustomClientFunction,
   CustomTool,
   JsonValue,

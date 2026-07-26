@@ -25,6 +25,20 @@ const parseToolResponse = (result) => {
   return JSON.parse(textContent.text);
 };
 
+const installClipboardStub = async (page) => {
+  await page.evaluate(() => {
+    window.__AGENTIC_REACT_TEST_CLIPBOARD__ = null;
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (text) => {
+          window.__AGENTIC_REACT_TEST_CLIPBOARD__ = String(text);
+        },
+      },
+    });
+  });
+};
+
 test('next playground injects runtime globals', async ({ page }) => {
   await page.goto('/');
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
@@ -68,8 +82,16 @@ test('next playground injects runtime globals', async ({ page }) => {
 });
 
 test('next playground MCP tools return expected outcomes', async ({ page }) => {
+  const legacySourceLookupRequests = [];
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname === '/__agentic_react_source') {
+      legacySourceLookupRequests.push(request.url());
+    }
+  });
+
   await page.goto('/');
   await page.waitForFunction(() => window.__AGENTIC_REACT__);
+  await installClipboardStub(page);
 
   const { client, transport } = await createMcpClient();
   try {
@@ -117,9 +139,39 @@ test('next playground MCP tools return expected outcomes', async ({ page }) => {
     expect(enableSelection.success).toBe(true);
     expect(enableSelection.enabled).toBe(true);
 
+    const contextBeforeSelectionRaw = await client.callTool({
+      name: 'get-last-selection-context',
+      arguments: {
+        includeSourceSnippets: true,
+        contextLines: 3,
+        maxFiles: 3,
+      },
+    });
+    const contextBeforeSelection = parseToolResponse(contextBeforeSelectionRaw);
+    expect(contextBeforeSelection.success).toBe(false);
+    expect(contextBeforeSelection.context).toBeNull();
+
     await page.locator('#next-copy-target').click();
-    await page.waitForFunction(() =>
-      window.__AGENTIC_REACT__?.getLastSelectionContext(),
+    await expect(
+      page.locator('[data-agentic-react-selected-label="true"]'),
+    ).toBeVisible();
+    const pendingContextRaw = await client.callTool({
+      name: 'get-last-selection-context',
+      arguments: {
+        includeSourceSnippets: true,
+        contextLines: 3,
+        maxFiles: 3,
+      },
+    });
+    const pendingContext = parseToolResponse(pendingContextRaw);
+    expect(pendingContext.success).toBe(false);
+    expect(pendingContext.context).toBeNull();
+
+    await page.getByRole('button', { name: 'Done' }).click();
+    await page.waitForFunction(
+      () =>
+        window.__AGENTIC_REACT__?.getLastSelectionContext()?.selector ===
+        '#next-copy-target',
     );
     const contextRaw = await client.callTool({
       name: 'get-last-selection-context',
@@ -140,6 +192,7 @@ test('next playground MCP tools return expected outcomes', async ({ page }) => {
     const copyResponse = parseToolResponse(copyRaw);
     expect(copyResponse.success).toBe(true);
     expect(copyResponse.copied).toBe(true);
+    expect(legacySourceLookupRequests).toEqual([]);
   } finally {
     await transport.close();
   }

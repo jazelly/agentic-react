@@ -1,6 +1,23 @@
 # Agentic React
 
-Agentic React is a monorepo for React runtime inspection and local-dev MCP integrations. The packages are published under the `@agentic-react` namespace.
+[English](./README.md) | [中文](./README.zh-CN.md)
+
+**Give coding agents the exact React context behind the UI they are editing.**
+
+Agentic React annotates selected React UI with component names, DOM selectors, source file locations, source snippets, owner traces, and local MCP tools, so an agent can move from "this thing on the page" to the right code without guessing.
+
+```text
+<web_context type="react_component_location">
+component: ProfileField
+selector: #profile-field-email
+source: src/components/UserProfile/ProfileField.jsx:19
+source trace:
+  -> <ProfileField> at src/components/UserProfile/ProfileField.jsx:19
+  -> <ProfileContent> at src/components/UserProfile/ProfileContent.jsx:54
+</web_context>
+```
+
+Install one dev adapter, select one or many elements in the browser, and pass source-aware React context directly to your agent.
 
 ## Demos
 
@@ -11,6 +28,16 @@ Agentic React is a monorepo for React runtime inspection and local-dev MCP integ
 ### Multiselect
 
 ![Multiselect demo](./playground/demo/demo2-multiselect.gif)
+
+## Why Agentic React
+
+- **Source-aware selection:** click real UI and capture the React component, stable selector, source location, and nearby source code.
+- **Agent-ready context:** copy the selection as text or JSON, or expose it through MCP for local coding agents.
+- **Bundler-native adapters:** use the same runtime with Vite, Webpack, Next.js, and Nx/module-federation playgrounds.
+- **Dev-only bridge:** keep local source lookup and MCP transport in development tooling, outside production bundles.
+- **Multi-select and tuning:** collect several UI targets, inspect styling, and turn visual adjustments into prompt-ready instructions.
+
+The packages are published under the `@agentic-react` namespace.
 
 ## Packages
 
@@ -135,7 +162,81 @@ Bundler adapters add local-dev capabilities that the runtime cannot know on its 
 - attach a local MCP Streamable HTTP `/mcp` endpoint
 - bridge MCP calls from Node to the browser runtime
 - provide local source-root context for source lookup
+- persist toolbox Settings through the adapter-hosted bridge
 - keep dev-only tooling out of production bundles
+
+## Settings and Selection Confirmation
+
+The toolbox includes a Settings section when it runs through a supported dev adapter. Settings can configure the single-select, multiselect, toolbox-toggle, and Done shortcuts, and can replace the launcher icon with a cropped custom image.
+
+User settings are global to the local machine and are stored under `~/.agentic-react/`. They are not scoped to a project, browser origin, hostname, port, or bundler. Effective values are resolved in this order:
+
+```text
+global user override
+  > project configuration default
+  > package default
+```
+
+Resetting a setting removes only the global override, revealing the project default when one exists and otherwise the package default. Project defaults come from adapter options: `toolkit.settings.shortcuts` for shortcut defaults and `toolkit.iconUrl` for the default toolbox icon.
+
+The package defaults are:
+
+| Action | Default shortcut |
+| --- | --- |
+| Single select | `Ctrl+Alt+Shift+S` |
+| Multi select | `Ctrl+Alt+Shift+M` |
+| Toggle toolbox | `Ctrl+Alt+Shift+A` |
+| Done | `Enter` |
+
+`Escape` is reserved for cancellation and is not configurable. Shortcut recording validates one non-modifier key, supported keys only, and no duplicate normalized shortcuts.
+
+`settingsRoot` is an adapter option for isolated environments such as tests, demos, and temporary sandboxes. Production-like local usage should normally omit it so Agentic React uses the user's global `~/.agentic-react` directory.
+
+```ts
+// Vite
+AgenticReact({
+  settingsRoot: '/tmp/agentic-react-settings',
+  toolkit: {
+    iconUrl: '/agentic-react-logo.png',
+    settings: {
+      shortcuts: {
+        singleSelect: 'Ctrl+Shift+S',
+        done: 'Enter',
+      },
+    },
+  },
+});
+
+// Webpack
+withAgenticReactWebpack(config, { mode: 'development' }, {
+  settingsRoot: '/tmp/agentic-react-settings',
+  toolkit: {
+    iconUrl: '/agentic-react-logo.png',
+    settings: {
+      shortcuts: {
+        multiSelect: 'Ctrl+Shift+M',
+      },
+    },
+  },
+});
+
+// Next.js
+withAgenticReactNext(nextConfig, {
+  settingsRoot: '/tmp/agentic-react-settings',
+  toolkit: {
+    iconUrl: '/agentic-react-logo.png',
+    settings: {
+      shortcuts: {
+        toggleToolbox: 'Ctrl+Shift+A',
+      },
+    },
+  },
+});
+```
+
+Selection is an explicit transaction. Clicking a target captures and displays context as pending; it does not copy immediately. Click Done or press the configured Done shortcut, `Enter` by default, to copy and commit the pending selection. In multiselect mode, Done copies the complete pending set. `Escape` cancels pending single and multiselect work without copying and preserves the last committed selection.
+
+Runtime-only `@agentic-react/core` usage can still run browser-side selection APIs and code-provided toolkit defaults, but it has no persistent Settings without an adapter-hosted bridge.
 
 ## Tuning Modal API
 

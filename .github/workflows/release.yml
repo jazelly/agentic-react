@@ -5,20 +5,90 @@ on:
     branches: [main]
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-main
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  id-token: write
-
 jobs:
-  release:
+  preflight:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      release-required: ${{ steps.release-state.outputs.release-required }}
+      release-mode: ${{ steps.release-state.outputs.release-mode }}
+      release-sha: ${{ steps.release-state.outputs.release-sha }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+
+      - name: Inspect release state
+        id: release-state
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          release_sha="$(git rev-parse origin/main)"
+          git checkout --detach "$release_sha"
+
+          if [ -f .changeset/release-pending.json ]; then
+            marker_commit="$(git log -1 --format=%H -- .changeset/release-pending.json)"
+            marker_parent="$(git rev-parse "$marker_commit^")"
+            marker_source="$(sed -n 's/.*"sourceSha": "\([0-9a-f]*\)".*/\1/p' .changeset/release-pending.json)"
+            marker_subject="$(git show -s --format=%s "$marker_commit")"
+            marker_author="$(git show -s --format='%an <%ae>' "$marker_commit")"
+
+            if [ "$marker_parent" != "$marker_source" ] || \
+              [ "$marker_subject" != "chore(release): version packages" ] || \
+              [ "$marker_author" != "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" ] || \
+              ! git ls-tree -r --name-only "$marker_parent" .changeset | \
+                grep -E '^\.changeset/[^/]+\.md$' | \
+                grep -v '^\.changeset/README\.md$' | grep -q .; then
+              echo "::error::The release recovery marker was not created by the release workflow."
+              exit 1
+            fi
+
+            release_sha="$marker_commit"
+            release_required=true
+            release_mode=recovery
+            reason="A previous package publication is pending."
+          elif find .changeset -maxdepth 1 -name "*.md" ! -name "README.md" | grep -q .; then
+            release_required=true
+            release_mode=version
+            reason="Pending changesets require a package release."
+          else
+            release_required=false
+            release_mode=none
+            reason="No pending changesets or interrupted release were found."
+          fi
+
+          {
+            echo "release-required=$release_required"
+            echo "release-mode=$release_mode"
+            echo "release-sha=$release_sha"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Release preflight"
+            echo
+            echo "- Required: $release_required"
+            echo "- Mode: $release_mode"
+            echo "- Main SHA: $release_sha"
+            echo "- Reason: $reason"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  release:
+    needs: preflight
+    if: github.ref == 'refs/heads/main' && needs.preflight.outputs.release-required == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.preflight.outputs.release-sha }}
           fetch-depth: 0
 
       - name: Setup PNPM
@@ -34,30 +104,110 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Version packages from changesets
+        if: needs.preflight.outputs.release-mode == 'version'
+        run: |
+          pnpm changeset status --output .changeset/release-plan.json
+          pnpm run version-packages
+          printf '{\n  "sourceSha": "%s"\n}\n' \
+            "${{ needs.preflight.outputs.release-sha }}" \
+            > .changeset/release-pending.json
+          git add -A
+
+      - name: Validate recovery state
+        if: needs.preflight.outputs.release-mode == 'recovery'
+        run: |
+          test -f .changeset/release-pending.json
+          test -f .changeset/release-plan.json
+
+          verification_dir="$(mktemp -d)"
+          trap 'git worktree remove --force "$verification_dir"' EXIT
+          git worktree add --detach \
+            "$verification_dir" \
+            "${{ needs.preflight.outputs.release-sha }}^"
+
+          (
+            cd "$verification_dir"
+            node "$GITHUB_WORKSPACE/node_modules/@changesets/cli/bin.js" \
+              status --output .changeset/release-plan.json
+            node "$GITHUB_WORKSPACE/node_modules/@changesets/cli/bin.js" version
+            printf '{\n  "sourceSha": "%s"\n}\n' \
+              "$(git rev-parse HEAD)" \
+              > .changeset/release-pending.json
+            git add -A
+
+            expected_tree="$(git write-tree)"
+            release_tree="$(git rev-parse '${{ needs.preflight.outputs.release-sha }}^{tree}')"
+            test "$expected_tree" = "$release_tree"
+          )
+
+      - name: Install Playwright Chromium
+        run: pnpm --filter agentic-react-vite-playground exec playwright install --with-deps chromium
+
+      - name: Lint
+        run: pnpm exec biome lint .
+
+      - name: Release smoke test
+        run: pnpm run test:release-smoke
+
+      - name: Unit tests
+        run: pnpm run test:unit
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test:e2e -- --reporter=line --workers=1
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Version packages from changesets
+      - name: Commit version packages
+        if: needs.preflight.outputs.release-mode == 'version'
         run: |
-          if find .changeset -maxdepth 1 -name "*.md" ! -name "README.md" | grep -q .; then
-            pnpm run version-packages
-            git add -A
-            git commit -m "chore: version packages"
-            git push origin HEAD:main
-          else
-            echo "No pending changesets to version."
-          fi
-
-      - name: Build packages
-        run: pnpm run build
+          git commit -m "chore(release): version packages"
+          git push origin HEAD:main
 
       - name: Publish packages
+        id: publish
+        continue-on-error: true
         run: pnpm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Ensure package publication succeeded
+        if: steps.publish.outcome != 'success'
+        run: |
+          echo "Package publication failed; recovery state has been retained."
+          exit 1
+
+      - name: Reconcile release tags
+        run: |
+          node --input-type=module <<'NODE'
+          import { execFileSync } from 'node:child_process';
+          import { readFileSync } from 'node:fs';
+
+          const plan = JSON.parse(
+            readFileSync('.changeset/release-plan.json', 'utf8'),
+          );
+
+          for (const release of plan.releases) {
+            const tag = `${release.name}@${release.newVersion}`;
+
+            try {
+              execFileSync('git', ['rev-parse', '--verify', `refs/tags/${tag}`], {
+                stdio: 'ignore',
+              });
+              console.info(`Existing tag: ${tag}`);
+            } catch {
+              execFileSync('git', ['tag', tag]);
+              console.info(`New tag: ${tag}`);
+            }
+          }
+          NODE
 
       - name: Push release tags
         run: git push origin --tags
@@ -80,3 +230,17 @@ jobs:
               gh release create "$tag" --title "$tag" --generate-notes --latest
             fi
           done
+
+      - name: Clear recovery state
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git checkout --detach origin/main
+
+          if [ ! -f .changeset/release-pending.json ]; then
+            echo "Recovery state was already cleared."
+            exit 0
+          fi
+
+          git rm .changeset/release-pending.json .changeset/release-plan.json
+          git commit -m "chore(release): complete package publication"
+          git push origin HEAD:main
