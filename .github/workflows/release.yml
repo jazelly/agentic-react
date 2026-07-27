@@ -256,27 +256,56 @@ jobs:
           }
           NODE
 
+      - name: Prepare GitHub family release
+        id: github-release
+        run: |
+          node scripts/github-release-metadata.mjs \
+            .changeset/release-plan.json \
+            "$(git rev-parse HEAD)" \
+            "$GITHUB_REPOSITORY" \
+            "$RUNNER_TEMP/package-release-notes.md" \
+            "$GITHUB_OUTPUT"
+
+      - name: Reconcile family release tag
+        if: steps.github-release.outputs.has-release == 'true'
+        env:
+          FAMILY_RELEASE_TAG: ${{ steps.github-release.outputs.tag }}
+        run: |
+          if git rev-parse --verify "refs/tags/$FAMILY_RELEASE_TAG" \
+            >/dev/null 2>&1; then
+            existing_commit="$(git rev-list -n 1 "$FAMILY_RELEASE_TAG")"
+            release_commit="$(git rev-parse HEAD)"
+
+            if [ "$existing_commit" != "$release_commit" ]; then
+              echo "::error::Family tag $FAMILY_RELEASE_TAG points at $existing_commit, not $release_commit."
+              exit 1
+            fi
+
+            echo "Existing family tag: $FAMILY_RELEASE_TAG"
+          else
+            git tag "$FAMILY_RELEASE_TAG"
+            echo "New family tag: $FAMILY_RELEASE_TAG"
+          fi
+
       - name: Push release tags
         run: git push origin --tags
 
-      - name: Create GitHub releases
+      - name: Create GitHub family release
+        if: steps.github-release.outputs.has-release == 'true'
         env:
+          FAMILY_RELEASE_NOTES: ${{ steps.github-release.outputs.notes }}
+          FAMILY_RELEASE_TAG: ${{ steps.github-release.outputs.tag }}
+          FAMILY_RELEASE_TITLE: ${{ steps.github-release.outputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mapfile -t release_tags < <(git tag --points-at HEAD | grep "^@agentic-react/" || true)
-
-          if [ "${#release_tags[@]}" -eq 0 ]; then
-            echo "No package release tags point at HEAD."
-            exit 0
+          if gh release view "$FAMILY_RELEASE_TAG" >/dev/null 2>&1; then
+            echo "GitHub family release already exists for $FAMILY_RELEASE_TAG."
+          else
+            gh release create "$FAMILY_RELEASE_TAG" \
+              --title "$FAMILY_RELEASE_TITLE" \
+              --notes-file "$FAMILY_RELEASE_NOTES" \
+              --latest
           fi
-
-          for tag in "${release_tags[@]}"; do
-            if gh release view "$tag" >/dev/null 2>&1; then
-              echo "GitHub release already exists for $tag."
-            else
-              gh release create "$tag" --title "$tag" --generate-notes --latest
-            fi
-          done
 
       - name: Clear recovery state
         env:

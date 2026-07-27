@@ -5,6 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { createGitHubReleaseMetadata } from './github-release-metadata.mjs';
+
 const __filename = fileURLToPath(import.meta.url);
 const rootDir = path.resolve(path.dirname(__filename), '..');
 const workflowPath = path.join(rootDir, '.github/workflows/release.yml');
@@ -295,6 +297,7 @@ const runGitHubReleaseBlock = (
   command,
   fakeGh,
   existingReleases = [],
+  env = {},
 ) => {
   run('bash', ['-c', command], {
     cwd: repo,
@@ -303,6 +306,7 @@ const runGitHubReleaseBlock = (
       GH_EXISTING_RELEASES: existingReleases.join(' '),
       GH_LOG: fakeGh.logPath,
       GH_TOKEN: 'fake-token',
+      ...env,
     },
   });
 };
@@ -335,8 +339,10 @@ const testWorkflowContract = () => {
     'Publish packages',
     'Ensure package publication succeeded',
     'Reconcile release tags',
+    'Prepare GitHub family release',
+    'Reconcile family release tag',
     'Push release tags',
-    'Create GitHub releases',
+    'Create GitHub family release',
     'Clear recovery state',
   ];
   let previous = -1;
@@ -418,14 +424,33 @@ const testWorkflowContract = () => {
     'git push origin --tags',
   );
 
-  const releaseBlock = extractRunCommand('Create GitHub releases');
+  const metadataBlock = extractRunCommand('Prepare GitHub family release');
+  assertContains(
+    metadataBlock,
+    'scripts/github-release-metadata.mjs',
+    'family release metadata',
+  );
+  const familyTagBlock = extractRunCommand('Reconcile family release tag');
+  assertContains(
+    familyTagBlock,
+    'git rev-list -n 1 "$FAMILY_RELEASE_TAG"',
+    'family tag target verification',
+  );
+  const releaseBlock = extractRunCommand('Create GitHub family release');
   assertContains(
     releaseBlock,
-    'git tag --points-at HEAD | grep "^@agentic-react/"',
-    'release tag selection',
+    'gh release view "$FAMILY_RELEASE_TAG"',
+    'release idempotency',
   );
-  assertContains(releaseBlock, 'gh release view "$tag"', 'release idempotency');
-  assertContains(releaseBlock, 'gh release create "$tag"', 'release creation');
+  assertContains(
+    releaseBlock,
+    'gh release create "$FAMILY_RELEASE_TAG"',
+    'family release creation',
+  );
+  assert.ok(
+    !releaseBlock.includes('^@agentic-react/'),
+    'package tags should not create individual GitHub releases',
+  );
   assertContains(
     extractRunCommand('Clear recovery state'),
     'git rm .changeset/release-pending.json',
@@ -721,67 +746,140 @@ const testRecoveryTreeVerification = (workspace) => {
 
 const testTagPush = (workspace) => {
   const tagFixture = makeGitFixture(workspace, 'tag-push');
+  const familyTagCommand = extractRunCommand('Reconcile family release tag');
   const tagPushCommand = extractRunCommand('Push release tags');
+  const familyTag = 'packages@0123456789ab';
 
   run('git', ['tag', '@agentic-react/core@1.0.0'], {
     cwd: tagFixture.repo,
   });
   run('git', ['tag', 'v1.0.0'], { cwd: tagFixture.repo });
+  runShellBlock(tagFixture.repo, familyTagCommand, {
+    FAMILY_RELEASE_TAG: familyTag,
+  });
+  runShellBlock(tagFixture.repo, familyTagCommand, {
+    FAMILY_RELEASE_TAG: familyTag,
+  });
   run('/bin/sh', ['-c', tagPushCommand], { cwd: tagFixture.repo });
 
   assert.deepEqual(
     list(run('git', ['--git-dir', tagFixture.origin, 'tag', '--list'])),
-    ['@agentic-react/core@1.0.0', 'v1.0.0'],
+    ['@agentic-react/core@1.0.0', familyTag, 'v1.0.0'],
     'release tags should be pushed to origin',
+  );
+
+  const mismatchedFixture = makeGitFixture(
+    workspace,
+    'mismatched-family-tag',
+  );
+  run('git', ['tag', familyTag], { cwd: mismatchedFixture.repo });
+  fs.appendFileSync(path.join(mismatchedFixture.repo, 'README.md'), '\nnext\n');
+  run('git', ['add', 'README.md'], { cwd: mismatchedFixture.repo });
+  run('git', ['commit', '-m', 'move release head'], {
+    cwd: mismatchedFixture.repo,
+  });
+
+  assert.throws(
+    () =>
+      runShellBlock(mismatchedFixture.repo, familyTagCommand, {
+        FAMILY_RELEASE_TAG: familyTag,
+      }),
+    /failed with exit code 1/,
+    'an existing family tag must point at the release commit',
   );
 };
 
 const testGitHubReleaseCreation = (workspace) => {
-  const releaseFixture = makeGitFixture(workspace, 'github-release-selection');
-  const fakeGh = makeFakeGh(workspace, 'github-release-selection');
-  const releaseBlock = extractRunCommand('Create GitHub releases');
-  const oldHead = run('git', ['rev-parse', 'HEAD'], {
+  const releaseFixture = makeGitFixture(workspace, 'github-family-release');
+  const fakeGh = makeFakeGh(workspace, 'github-family-release');
+  const releaseBlock = extractRunCommand('Create GitHub family release');
+  const sha = run('git', ['rev-parse', 'HEAD'], {
     cwd: releaseFixture.repo,
+  });
+  const rootDir = path.join(workspace, 'github-family-release-metadata');
+  const coreDir = path.join(rootDir, 'packages/core');
+  const viteDir = path.join(rootDir, 'packages/vite');
+
+  fs.mkdirSync(coreDir, { recursive: true });
+  fs.mkdirSync(viteDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(coreDir, 'CHANGELOG.md'),
+    '# Core\n\n## 1.0.0\n\n### Major Changes\n\n- Stable API.\n',
+  );
+  fs.writeFileSync(
+    path.join(viteDir, 'CHANGELOG.md'),
+    '# Vite\n\n## 1.0.0\n\n### Major Changes\n\n- Stable adapter.\n',
+  );
+
+  const metadata = createGitHubReleaseMetadata({
+    plan: {
+      releases: [
+        {
+          name: '@agentic-react/vite',
+          newVersion: '1.0.0',
+          type: 'major',
+        },
+        {
+          name: 'ignored-playground',
+          newVersion: '0.0.0',
+          type: 'none',
+        },
+        {
+          name: '@agentic-react/core',
+          newVersion: '1.0.0',
+          type: 'major',
+        },
+      ],
+    },
+    repository: 'example/agentic-react',
+    rootDir,
+    sha,
   });
 
-  run('git', ['tag', '@agentic-react/core@0.9.0', oldHead], {
-    cwd: releaseFixture.repo,
-  });
-  fs.appendFileSync(path.join(releaseFixture.repo, 'README.md'), '\nnext\n');
-  run('git', ['add', 'README.md'], { cwd: releaseFixture.repo });
-  run('git', ['commit', '-m', 'second fixture commit'], {
-    cwd: releaseFixture.repo,
-  });
-  run('git', ['tag', '@agentic-react/core@1.0.0'], {
-    cwd: releaseFixture.repo,
-  });
-  run('git', ['tag', '@agentic-react/vite@1.0.0'], {
-    cwd: releaseFixture.repo,
-  });
-  run('git', ['tag', 'v1.0.0'], { cwd: releaseFixture.repo });
+  assert.equal(metadata.tag, `packages@${sha.slice(0, 12)}`);
+  assert.equal(metadata.title, 'Agentic React packages v1.0.0');
+  assertContains(metadata.notes, '| `@agentic-react/core` | `1.0.0` |');
+  assertContains(metadata.notes, '### `@agentic-react/vite`');
+  assertContains(metadata.notes, '- Stable adapter.');
+  assert.ok(!metadata.notes.includes('ignored-playground'));
 
-  runGitHubReleaseBlock(releaseFixture.repo, releaseBlock, fakeGh, [
-    '@agentic-react/vite@1.0.0',
+  const notesPath = path.join(workspace, 'github-family-release-notes.md');
+  fs.writeFileSync(notesPath, metadata.notes);
+  const releaseEnv = {
+    FAMILY_RELEASE_NOTES: notesPath,
+    FAMILY_RELEASE_TAG: metadata.tag,
+    FAMILY_RELEASE_TITLE: metadata.title,
+  };
+
+  runGitHubReleaseBlock(
+    releaseFixture.repo,
+    releaseBlock,
+    fakeGh,
+    [],
+    releaseEnv,
+  );
+
+  let ghCalls = fs.readFileSync(fakeGh.logPath, 'utf8').trim().split('\n');
+  assert.deepEqual(ghCalls, [
+    `release view ${metadata.tag}`,
+    [
+      `release create ${metadata.tag}`,
+      '--title Agentic React packages v1.0.0',
+      `--notes-file ${notesPath}`,
+      '--latest',
+    ].join(' '),
   ]);
 
-  const ghCalls = fs.readFileSync(fakeGh.logPath, 'utf8').trim().split('\n');
-
-  assert.deepEqual(
-    ghCalls,
-    [
-      'release view @agentic-react/core@1.0.0',
-      [
-        'release create @agentic-react/core@1.0.0',
-        '--title @agentic-react/core@1.0.0',
-        '--generate-notes --latest',
-      ].join(' '),
-      'release view @agentic-react/vite@1.0.0',
-    ],
-    [
-      'GitHub release workflow should create missing package releases',
-      'at HEAD only',
-    ].join(' '),
+  fs.writeFileSync(fakeGh.logPath, '');
+  runGitHubReleaseBlock(
+    releaseFixture.repo,
+    releaseBlock,
+    fakeGh,
+    [metadata.tag],
+    releaseEnv,
   );
+  ghCalls = fs.readFileSync(fakeGh.logPath, 'utf8').trim().split('\n');
+  assert.deepEqual(ghCalls, [`release view ${metadata.tag}`]);
 };
 
 const workspace = fs.mkdtempSync(
