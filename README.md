@@ -1,6 +1,9 @@
 # Agentic React
 
-[English](./README.md) | [中文](./README.zh-CN.md)
+<p align="center">
+  <a href="./README.md">English</a> ·
+  <a href="./README.zh-CN.md">简体中文</a>
+</p>
 
 **Give coding agents the exact React context behind the UI they are editing.**
 
@@ -36,6 +39,12 @@ Install one dev adapter, select one or many elements in the browser, and pass so
 - **Bundler-native adapters:** use the same runtime with Vite, Webpack, Next.js, and Nx/module-federation playgrounds.
 - **Dev-only bridge:** keep local source lookup and MCP transport in development tooling, outside production bundles.
 - **Multi-select and tuning:** collect several UI targets, inspect styling, and turn visual adjustments into prompt-ready instructions.
+
+### Measured Source-Location Benchmark
+
+In a controlled three-area benchmark on the Webpack Issue Tracking Playground, pasted Agentic React UI context used **53.6% fewer total tokens** than cropped screenshot inputs for the same correct source-location tasks, with **66.1% lower API-equivalent cost** under the recorded gpt-5.4 pricing assumptions.
+
+This is measured evidence from three UI areas, not a general guarantee. See the [benchmark write-up](./docs/blog/agentic-react-ui-context-token-benchmark.md) and [raw evidence manifest](./docs/benchmarks/ui-context-token-study/results.json) for setup, prompts, costs, hashes, limitations, and the full matrix.
 
 The packages are published under the `@agentic-react` namespace.
 

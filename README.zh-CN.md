@@ -1,6 +1,9 @@
 # Agentic React
 
-[English](./README.md) | [中文](./README.zh-CN.md)
+<p align="center">
+  <a href="./README.md">English</a> ·
+  <a href="./README.zh-CN.md">简体中文</a>
+</p>
 
 **把 UI 背后的 React 上下文和源码位置，直接交给 coding agent。**
 
@@ -36,6 +39,12 @@ source trace:
 - **Bundler-native adapters:** 同一套 runtime 支持 Vite、Webpack、Next.js，以及 Nx/module-federation playground。
 - **Dev-only bridge:** 本地源码查找和 MCP transport 只存在于开发工具链，不进入 production bundle。
 - **Multi-select and tuning:** 一次收集多个 UI target，检查样式，并把视觉调整转成 prompt-ready instructions。
+
+### 实测源码定位 Benchmark
+
+在 Webpack Issue Tracking Playground 的三组受控测试中，针对相同且均能正确定位源码的任务，粘贴 Agentic React UI context 相比输入裁剪截图，**总 token 使用量减少了 53.6%**；按照测试所记录的 gpt-5.4 定价假设换算，**API 等价成本降低了 66.1%**。
+
+这组数据来自三个 UI 区域，不代表对所有场景的普遍保证。完整的测试设置、prompt、成本公式、文件哈希、限制条件和对照矩阵，请参阅 [Benchmark 文章](./docs/blog/agentic-react-ui-context-token-benchmark.md)与[原始证据清单](./docs/benchmarks/ui-context-token-study/results.json)。
 
 packages 发布在 `@agentic-react` namespace 下。
 

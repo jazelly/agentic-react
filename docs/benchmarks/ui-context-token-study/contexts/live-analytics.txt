@@ -1,0 +1,10 @@
+<web_context type="react_component_location">
+component: AnalyticsPanel
+selector: .feature-grid > article:nth-of-type(3) > h3
+source: /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:415
+
+details:
+  in AnalyticsPanel (at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:415)
+component: AnalyticsPanel
+selector: .feature-grid > article:nth-of-type(3) > h3
+</web_context>

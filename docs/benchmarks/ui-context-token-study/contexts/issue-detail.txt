@@ -1,0 +1,16 @@
+<web_context type="react_component_location">
+component: Inspector
+selector: div > .inspector > h2
+source: /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:303
+
+details:
+source trace:
+  Inspector at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:589:3
+  -> WorkspacePreview at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:801:96
+  -> <MantineThemeProvider> from @mantine/core
+  -> App at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:589:3
+  -> App at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:801:96
+  -> <Context.Provider> from @mantine/core
+component: Inspector
+selector: div > .inspector > h2
+</web_context>
