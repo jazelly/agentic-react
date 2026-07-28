@@ -1,0 +1,16 @@
+<web_context type="react_component_location">
+component: IssueList
+selector: .issue-rows > button:nth-of-type(1) > span:nth-of-type(2)
+source: /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:275
+
+details:
+source trace:
+  IssueList at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:388:3
+  -> WorkspacePreview at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:801:96
+  -> <MantineThemeProvider> from @mantine/core
+  -> App at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:388:3
+  -> App at /Users/jazelly/Desktop/github/my-proj/agentic-react/playground/agentic-react-webpack-playground/src/App.jsx:801:96
+  -> <Context.Provider> from @mantine/core
+component: IssueList
+selector: .issue-rows > button:nth-of-type(1) > span:nth-of-type(2)
+</web_context>
