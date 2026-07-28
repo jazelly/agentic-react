@@ -1,5 +1,10 @@
 # Agentic React UI Context Token Benchmark
 
+<p align="center">
+  <a href="./agentic-react-ui-context-token-benchmark.md">English</a> ·
+  <a href="./agentic-react-ui-context-token-benchmark.zh-CN.md">简体中文</a>
+</p>
+
 Date: 2026-07-28
 
 This controlled benchmark compares two ways to ask a coding agent to locate the source code for a visible React UI target:

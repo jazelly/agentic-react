@@ -44,7 +44,7 @@ source trace:
 
 在 Webpack Issue Tracking Playground 的三组受控测试中，针对相同且均能正确定位源码的任务，粘贴 Agentic React UI context 相比输入裁剪截图，**总 token 使用量减少了 53.6%**；按照测试所记录的 gpt-5.4 定价假设换算，**API 等价成本降低了 66.1%**。
 
-这组数据来自三个 UI 区域，不代表对所有场景的普遍保证。完整的测试设置、prompt、成本公式、文件哈希、限制条件和对照矩阵，请参阅 [Benchmark 文章](./docs/blog/agentic-react-ui-context-token-benchmark.md)与[原始证据清单](./docs/benchmarks/ui-context-token-study/results.json)。
+这组数据来自三个 UI 区域，不代表对所有场景的普遍保证。完整的测试设置、prompt、成本公式、文件哈希、限制条件和对照矩阵，请参阅[中文 Benchmark 文章](./docs/blog/agentic-react-ui-context-token-benchmark.zh-CN.md)与[原始证据清单](./docs/benchmarks/ui-context-token-study/results.json)。
 
 packages 发布在 `@agentic-react` namespace 下。
 
