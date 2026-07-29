@@ -5,13 +5,40 @@
   <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
-**把 UI 背后的 React 上下文和源码位置，直接交给 coding agent。**
+**让 coding agent 用更少的 token 和搜索时间找到并修改 UI 背后的 React 源码，而且不要求模型具备 multimodal 能力。**
 
-Agentic React 会为你选中的 React UI 标注 component name、DOM selector、source file location、source snippet、owner trace，并通过本地 MCP tools 暴露给 agent。这样 agent 不需要靠猜测从“页面上这个东西”定位到代码，而是可以直接拿到可执行的 React/source context。
+在浏览器中选择一个或多个元素。Agentic React 会把 selection 转换成 source-aware text/JSON，其中包含 React component、稳定 selector、source file、附近源码、owner trace，以及已经准备好的 UI tuning prompts。
+
+## 真实源码定位任务实测
+
+在三个 UI 区域的受控 benchmark 中，两种输入方式都找到了正确的 React 源码。用粘贴的 Agentic React UI context 代替裁剪截图后，agent 定位这些源码所使用的 token 和观察到的运行时间均有下降：
+
+| 实测结果             | 裁剪截图 | Agentic React context |      降幅 |
+| -------------------- | -------: | --------------------: | --------: |
+| 总 token             |  388,694 |               180,302 | **53.6%** |
+| 观察到的源码定位时间 |   84.63s |                66.20s | **21.8%** |
+| API 等价成本         |  $0.3699 |               $0.1254 | **66.1%** |
+
+这组数据来自三个 UI 区域，不代表对所有场景的普遍保证。完整的受控 prompt、对照矩阵、文件哈希、定价假设和限制条件，请参阅[中文 Benchmark 文章](./docs/blog/agentic-react-ui-context-token-benchmark.zh-CN.md)与[原始证据清单](./docs/benchmarks/ui-context-token-study/results.json)。
+
+## 为什么用 Agentic React
+
+- **减少定位源码所需的 token：** 直接给 agent component、selector、source location 和附近源码，不再让它从像素内容推断这些信息。
+- **不要求 multimodal model：** 复制出的 context 是结构化 text/JSON，因此源码定位流程不依赖截图理解或 vision-capable model。
+- **覆盖 React 生态：** bundler-agnostic core 配合 Vite、Webpack、Next.js adapters，并提供 Nx/module-federation playground。
+- **为 agent handoff 而设计：** 可以直接复制 context，也可以通过本地 MCP tools 暴露；选中的 UI 和对应源码始终放在一起。
+- **预先生成 UI tuning prompt：** 在 tuning modal 中选择颜色、字体、尺寸、间距或 layout。Agentic React 会把具体修改要求与 agent 应该编辑的准确源码位置放进同一份内容。
+
+## 复制的是修改要求，不只是 Selector
+
+在 tuning modal 中选择新的文字颜色或 font family 后，Agentic React 会生成明确指令。复制出的 payload 会把指令、component 和 source trace 一起交给 agent：
 
 ```text
 <web_context type="react_component_location">
 component: ProfileField
+tuning prompts:
+- Change <ProfileField> in src/components/UserProfile/ProfileField.jsx:19 text color to rgb(15, 118, 110).
+- Change <ProfileField> in src/components/UserProfile/ProfileField.jsx:19 font family to Inter.
 selector: #profile-field-email
 source: src/components/UserProfile/ProfileField.jsx:19
 source trace:
@@ -20,7 +47,7 @@ source trace:
 </web_context>
 ```
 
-安装一个 dev adapter，在浏览器里选择一个或多个元素，然后把 source-aware React context 直接传给你的 agent。
+agent 同时拿到期望的 UI 修改，以及这项修改应该落在 codebase 的什么位置。
 
 ## Demo
 
@@ -31,20 +58,6 @@ source trace:
 ### Multiselect
 
 ![Multiselect demo](./playground/demo/demo2-multiselect.gif)
-
-## 为什么用 Agentic React
-
-- **Source-aware selection:** 点击真实 UI，捕获 React component、稳定 selector、源码位置和附近源码。
-- **Agent-ready context:** selection 可以复制成 text/JSON，也可以通过 MCP 暴露给本地 coding agent。
-- **Bundler-native adapters:** 同一套 runtime 支持 Vite、Webpack、Next.js，以及 Nx/module-federation playground。
-- **Dev-only bridge:** 本地源码查找和 MCP transport 只存在于开发工具链，不进入 production bundle。
-- **Multi-select and tuning:** 一次收集多个 UI target，检查样式，并把视觉调整转成 prompt-ready instructions。
-
-### 实测源码定位 Benchmark
-
-在 Webpack Issue Tracking Playground 的三组受控测试中，针对相同且均能正确定位源码的任务，粘贴 Agentic React UI context 相比输入裁剪截图，**总 token 使用量减少了 53.6%**；按照测试所记录的 gpt-5.4 定价假设换算，**API 等价成本降低了 66.1%**。
-
-这组数据来自三个 UI 区域，不代表对所有场景的普遍保证。完整的测试设置、prompt、成本公式、文件哈希、限制条件和对照矩阵，请参阅[中文 Benchmark 文章](./docs/blog/agentic-react-ui-context-token-benchmark.zh-CN.md)与[原始证据清单](./docs/benchmarks/ui-context-token-study/results.json)。
 
 packages 发布在 `@agentic-react` namespace 下。
 

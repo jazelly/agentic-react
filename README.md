@@ -5,13 +5,40 @@
   <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
-**Give coding agents the exact React context behind the UI they are editing.**
+**Help coding agents find and change the React source behind a UI with fewer tokens and less search time—without requiring a multimodal model.**
 
-Agentic React annotates selected React UI with component names, DOM selectors, source file locations, source snippets, owner traces, and local MCP tools, so an agent can move from "this thing on the page" to the right code without guessing.
+Select one or many elements in the browser. Agentic React turns each selection into source-aware text or JSON containing the React component, stable selector, source file, nearby code, owner trace, and any prepared UI tuning prompts.
+
+## Measured on Real Source-Location Tasks
+
+In a controlled three-area benchmark, both input methods found the correct React source. Replacing cropped screenshots with pasted Agentic React UI context reduced the tokens and observed runtime used by the agent to locate that source:
+
+| Measured result                  | Cropped screenshots | Agentic React context | Reduction |
+| -------------------------------- | ------------------: | --------------------: | --------: |
+| Total tokens                     |             388,694 |               180,302 | **53.6%** |
+| Observed source-location runtime |              84.63s |                66.20s | **21.8%** |
+| API-equivalent cost              |             $0.3699 |               $0.1254 | **66.1%** |
+
+This is measured evidence from three UI areas, not a general guarantee. See the [benchmark write-up](./docs/blog/agentic-react-ui-context-token-benchmark.md) and [raw evidence manifest](./docs/benchmarks/ui-context-token-study/results.json) for the controlled prompt, full matrix, hashes, pricing assumptions, and limitations.
+
+## Why Agentic React
+
+- **Spend fewer tokens locating source:** give the agent a component, selector, source location, and nearby code instead of making it infer all of that from pixels.
+- **No multimodal model required:** copied context is structured text or JSON, so source-location workflows do not depend on screenshot interpretation or vision-capable models.
+- **Works across the React ecosystem:** use a bundler-agnostic core with adapters for Vite, Webpack, and Next.js, plus Nx/module-federation playgrounds.
+- **Built for agent handoff:** copy context directly or expose it through local MCP tools, with the selected UI and its source kept together.
+- **Prepared UI tuning prompts:** choose colors, typography, dimensions, spacing, or layout in the tuning modal. Agentic React places the resulting change request beside the exact source location the agent should edit.
+
+## Copy a Change Request, Not Just a Selector
+
+The tuning modal turns choices such as a new text color or font family into explicit instructions. The copied payload carries those instructions with the component and source trace:
 
 ```text
 <web_context type="react_component_location">
 component: ProfileField
+tuning prompts:
+- Change <ProfileField> in src/components/UserProfile/ProfileField.jsx:19 text color to rgb(15, 118, 110).
+- Change <ProfileField> in src/components/UserProfile/ProfileField.jsx:19 font family to Inter.
 selector: #profile-field-email
 source: src/components/UserProfile/ProfileField.jsx:19
 source trace:
@@ -20,7 +47,7 @@ source trace:
 </web_context>
 ```
 
-Install one dev adapter, select one or many elements in the browser, and pass source-aware React context directly to your agent.
+The agent receives both the desired UI change and the place in the codebase where that change belongs.
 
 ## Demos
 
@@ -32,20 +59,6 @@ Install one dev adapter, select one or many elements in the browser, and pass so
 
 ![Multiselect demo](./playground/demo/demo2-multiselect.gif)
 
-## Why Agentic React
-
-- **Source-aware selection:** click real UI and capture the React component, stable selector, source location, and nearby source code.
-- **Agent-ready context:** copy the selection as text or JSON, or expose it through MCP for local coding agents.
-- **Bundler-native adapters:** use the same runtime with Vite, Webpack, Next.js, and Nx/module-federation playgrounds.
-- **Dev-only bridge:** keep local source lookup and MCP transport in development tooling, outside production bundles.
-- **Multi-select and tuning:** collect several UI targets, inspect styling, and turn visual adjustments into prompt-ready instructions.
-
-### Measured Source-Location Benchmark
-
-In a controlled three-area benchmark on the Webpack Issue Tracking Playground, pasted Agentic React UI context used **53.6% fewer total tokens** than cropped screenshot inputs for the same correct source-location tasks, with **66.1% lower API-equivalent cost** under the recorded gpt-5.4 pricing assumptions.
-
-This is measured evidence from three UI areas, not a general guarantee. See the [benchmark write-up](./docs/blog/agentic-react-ui-context-token-benchmark.md) and [raw evidence manifest](./docs/benchmarks/ui-context-token-study/results.json) for setup, prompts, costs, hashes, limitations, and the full matrix.
-
 The packages are published under the `@agentic-react` namespace.
 
 ## Packages
@@ -56,30 +69,6 @@ The packages are published under the `@agentic-react` namespace.
 - `@agentic-react/next`: Next.js adapter for local dev.
 
 For full local-dev features, install the adapter for your bundler. The adapter depends on `@agentic-react/core` internally, so app users do not need to import both packages.
-
-## Release Smoke Test
-
-Run the release automation smoke test locally with:
-
-```bash
-pnpm run test:release-smoke
-```
-
-The test does not publish to npm or call GitHub. It reads
-`.github/workflows/release.yml`, creates temporary git fixtures, and uses fake
-`pnpm` and `gh` commands for the release automation branches.
-It protects the release regressions fixed in this workflow:
-
-- pending changeset detection ignores `.changeset/README.md`, runs
-  `version-packages` only when a real changeset Markdown file exists, commits
-  `chore: version packages`, and pushes that commit back to `main`
-- the release workflow remains a `main` push workflow and keeps publish order as
-  version, build, publish, tag push, GitHub release creation
-- package tags created during publishing are pushed with
-  `git push origin --tags`
-- GitHub releases are selected from tags that point at `HEAD` and filtered to
-  `@agentic-react/*`, so stale package tags and non-package tags do not create
-  releases
 
 ## Local Dev Usage
 
@@ -190,12 +179,12 @@ Resetting a setting removes only the global override, revealing the project defa
 
 The package defaults are:
 
-| Action | Default shortcut |
-| --- | --- |
-| Single select | `Ctrl+Alt+Shift+S` |
-| Multi select | `Ctrl+Alt+Shift+M` |
+| Action         | Default shortcut   |
+| -------------- | ------------------ |
+| Single select  | `Ctrl+Alt+Shift+S` |
+| Multi select   | `Ctrl+Alt+Shift+M` |
 | Toggle toolbox | `Ctrl+Alt+Shift+A` |
-| Done | `Enter` |
+| Done           | `Enter`            |
 
 `Escape` is reserved for cancellation and is not configurable. Shortcut recording validates one non-modifier key, supported keys only, and no duplicate normalized shortcuts.
 
@@ -217,17 +206,21 @@ AgenticReact({
 });
 
 // Webpack
-withAgenticReactWebpack(config, { mode: 'development' }, {
-  settingsRoot: '/tmp/agentic-react-settings',
-  toolkit: {
-    iconUrl: '/agentic-react-logo.png',
-    settings: {
-      shortcuts: {
-        multiSelect: 'Ctrl+Shift+M',
+withAgenticReactWebpack(
+  config,
+  { mode: 'development' },
+  {
+    settingsRoot: '/tmp/agentic-react-settings',
+    toolkit: {
+      iconUrl: '/agentic-react-logo.png',
+      settings: {
+        shortcuts: {
+          multiSelect: 'Ctrl+Shift+M',
+        },
       },
     },
-  },
-});
+  }
+);
 
 // Next.js
 withAgenticReactNext(nextConfig, {
@@ -400,6 +393,30 @@ export default defineConfig({
   ],
 });
 ```
+
+## Release Smoke Test
+
+Run the release automation smoke test locally with:
+
+```bash
+pnpm run test:release-smoke
+```
+
+The test does not publish to npm or call GitHub. It reads
+`.github/workflows/release.yml`, creates temporary git fixtures, and uses fake
+`pnpm` and `gh` commands for the release automation branches.
+It protects the release regressions fixed in this workflow:
+
+- pending changeset detection ignores `.changeset/README.md`, runs
+  `version-packages` only when a real changeset Markdown file exists, commits
+  `chore: version packages`, and pushes that commit back to `main`
+- the release workflow remains a `main` push workflow and keeps publish order as
+  version, build, publish, tag push, GitHub release creation
+- package tags created during publishing are pushed with
+  `git push origin --tags`
+- GitHub releases are selected from tags that point at `HEAD` and filtered to
+  `@agentic-react/*`, so stale package tags and non-package tags do not create
+  releases
 
 ## Development
 
