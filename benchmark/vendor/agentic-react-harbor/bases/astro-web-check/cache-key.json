@@ -1,0 +1,7 @@
+{
+  "repoId": "astro-web-check",
+  "sha": "fd08be81f700254214ef49d093e71a991567841f",
+  "key": "3c1e7d2834c4",
+  "image": "agentic-react/base-astro-web-check:3c1e7d2834c4",
+  "nodeImage": "node:24-bookworm"
+}

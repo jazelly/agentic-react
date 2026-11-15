@@ -1,4 +1,7 @@
 #!/bin/bash
 set -euo pipefail
-echo "No reference solution for this task (oracle not provided)." >&2
-exit 1
+cd /app
+APP_DIR="${BENCH_APP_DIR:-.}"
+node /solution/apply-edits.mjs "/app/${APP_DIR}" /solution/solution-edits.json
+git add -A
+git -c user.email=oracle@local -c user.name=oracle commit -qm "oracle solution" --allow-empty --no-verify || true

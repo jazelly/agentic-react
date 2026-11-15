@@ -1,0 +1,7 @@
+{
+  "repoId": "rsbuild-rsdoctor",
+  "sha": "32e78e6fb6af229e0a556ec9acafec58f61f9ab8",
+  "key": "64801ea3f590",
+  "image": "agentic-react/base-rsbuild-rsdoctor:64801ea3f590",
+  "nodeImage": "node:24-bookworm"
+}

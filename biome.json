@@ -22,7 +22,8 @@
       ".next",
       "playground/**/.next/**",
       "playground/**/test-results/**",
-      "css-to-tailwind.ts"
+      "css-to-tailwind.ts",
+      "benchmark/**"
     ]
   },
   "formatter": {

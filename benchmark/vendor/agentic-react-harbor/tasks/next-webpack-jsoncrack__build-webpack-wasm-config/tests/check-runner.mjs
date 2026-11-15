@@ -66,6 +66,17 @@ function changedFiles() {
     .map((l) => l.slice(3).replace(/^.* -> /, ''));
 }
 
+/** Paths that tooling rewrites during @build/@typecheck; not agent edits. */
+function isIgnorableChangedPath(f) {
+  return (
+    /(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f) ||
+    /(^|\/)next-env\.d\.ts$/.test(f) ||
+    /(^|\/)tsconfig\.tsbuildinfo$/.test(f) ||
+    /(^|\/)prisma\/data\.db(-journal)?$/.test(f) ||
+    /(^|\/)other\/cache\.db(-journal)?$/.test(f)
+  );
+}
+
 function resolveCmd(run) {
   if (!run.startsWith('@')) return { cmd: run, cwdKind: 'app' };
   const key = run.slice(1);
@@ -145,9 +156,8 @@ for (const s of meta.check?.steps ?? []) {
     } else if (s.type === 'only-changed') {
       const prefix =
         meta.appDir && meta.appDir !== '.' ? meta.appDir.replace(/\/$/, '') + '/' : '';
-      const changed = changedFiles().filter(
-        (f) => !/(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f),
-      );
+      // Ignore build/tooling noise (Next rewrites next-env.d.ts on build/typecheck).
+      const changed = changedFiles().filter((f) => !isIgnorableChangedPath(f));
       const extra = changed.filter(
         (f) => !(f.startsWith(prefix) && s.allow.some((g) => globToRe(g).test(f.slice(prefix.length)))),
       );
@@ -172,6 +182,29 @@ for (const s of meta.check?.steps ?? []) {
         ? 'exit 0'
         : `exit ${r.status}${r.timedOut ? ' (timeout)' : ''}: ${r.output.slice(-1500)}`;
     } else if (s.type === 'hidden-test') {
+      if (/--browser|browser\.headless|playwright/i.test(String(s.run ?? ''))) {
+        // Fallback if the image skipped browser install somehow.
+        const hasChromium = sh(
+          'ls "$HOME/.cache/ms-playwright" 2>/dev/null | grep -qi chromium',
+          { cwd: appRoot, timeoutSec: 30 },
+        ).ok;
+        if (!hasChromium) {
+          console.log('playwright chromium missing — installing…');
+          const inst = sh(
+            'if [ -x node_modules/.bin/playwright ]; then ./node_modules/.bin/playwright install chromium --with-deps; ' +
+              'elif pnpm exec playwright --version >/dev/null 2>&1; then pnpm exec playwright install chromium --with-deps; ' +
+              'else npx --yes playwright@1.59.1 install chromium --with-deps; fi',
+            { cwd: appRoot, timeoutSec: 600 },
+          );
+          if (!inst.ok) {
+            ok = false;
+            detail = `playwright install failed: ${inst.output.slice(-800)}`;
+            steps.push({ type: s.type, ok, detail });
+            console.log(`FAIL ${s.type}: ${detail.slice(0, 500)}`);
+            continue;
+          }
+        }
+      }
       const hiddenBase = meta.hiddenBase || '/tests/hidden';
       const src = path.join(hiddenBase, path.basename(s.src));
       // Prefer exact relative path under hidden/ when nested

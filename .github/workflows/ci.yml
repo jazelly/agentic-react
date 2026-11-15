@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pin 24.04: ubuntu-latest moved to 26.04, which Playwright does not support yet.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
 
     strategy:

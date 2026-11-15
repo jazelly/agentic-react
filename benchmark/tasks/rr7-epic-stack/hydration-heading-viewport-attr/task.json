@@ -12,7 +12,23 @@
       }
     ]
   },
-  "solution": "none (needs a small hook; oracle not provided)",
+  "solution": [
+    {
+      "file": "app/routes/_marketing/index.tsx",
+      "find": "import {\n\tTooltip,\n\tTooltipContent,\n\tTooltipProvider,\n\tTooltipTrigger,\n} from '#app/components/ui/tooltip.tsx'\n",
+      "replace": "import { useEffect, useState } from 'react'\nimport {\n\tTooltip,\n\tTooltipContent,\n\tTooltipProvider,\n\tTooltipTrigger,\n} from '#app/components/ui/tooltip.tsx'\n"
+    },
+    {
+      "file": "app/routes/_marketing/index.tsx",
+      "find": "export default function Index() {\n\treturn (\n",
+      "replace": "export default function Index() {\n\tconst [viewport, setViewport] = useState<string | undefined>()\n\tuseEffect(() => {\n\t\tconst update = () => setViewport(window.innerWidth >= 1280 ? 'xl' : 'sm')\n\t\tupdate()\n\t\twindow.addEventListener('resize', update)\n\t\treturn () => window.removeEventListener('resize', update)\n\t}, [])\n\treturn (\n"
+    },
+    {
+      "file": "app/routes/_marketing/index.tsx",
+      "find": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n\t\t\t\t\t\tdata-viewport={typeof window === 'undefined' ? 'server' : window.innerWidth >= 1280 ? 'xl' : 'sm'}\n",
+      "replace": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n\t\t\t\t\t\t{...(viewport ? { 'data-viewport': viewport } : {})}\n"
+    }
+  ],
   "check": {
     "steps": [
       {
