@@ -120,6 +120,20 @@ WORKDIR /app
 `
     : '';
 
+  // Repo-specific pre-install (manifest.harbor.preInstall): pin unpublished workspace deps, etc.
+  const preInstallCmds = []
+    .concat(repo.harbor?.preInstall ?? [])
+    .map((c) => String(c).trim())
+    .filter(Boolean);
+  const preInstallBlock = preInstallCmds.length
+    ? `
+# Harbor pre-install (${repo.id}).
+WORKDIR ${installWorkdir}
+RUN ${preInstallCmds.join(' \\\n && ')}
+WORKDIR /app
+`
+    : '';
+
   // Repo-specific post-install (manifest.harbor.postInstall): env files, prisma --sql, selective builds.
   const postInstallCmds = []
     .concat(repo.harbor?.postInstall ?? [])
@@ -164,6 +178,7 @@ RUN git clone${repo.sparse?.length ? ' --sparse' : ''} "$REPO_URL" . \\
  && (git gc --prune=now || true) \\
  && (git submodule update --init --recursive || true)
 
+${preInstallBlock}
 # Package manager install (from manifest.json). ${pmHint}
 # Setup edits are applied AFTER install/postInstall so injected bugs do not
 # break image builds (e.g. rsdoctor prepare/client build, next typegen).

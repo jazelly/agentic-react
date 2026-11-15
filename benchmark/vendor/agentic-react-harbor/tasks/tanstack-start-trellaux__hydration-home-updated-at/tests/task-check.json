@@ -2,7 +2,7 @@
   "appDir": "examples/react/start-trellaux",
   "commands": {
     "install": "pnpm install --ignore-workspace",
-    "installNote": "No lockfile in the example dir (monorepo lock does not apply) -> resolution drifts. OPEN DECISION: freeze a lockfile under benchmark/locks/.",
+    "installNote": "No lockfile in the example dir (monorepo lock does not apply). Pinned SHA package.json asks for @tanstack/react-start@^1.169.6 which was never published (workspace-only); Harbor preInstall pins 1.169.5.",
     "dev": "pnpm --ignore-workspace dev",
     "devUrl": "http://localhost:3000",
     "build": "pnpm --ignore-workspace build",

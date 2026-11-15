@@ -56,7 +56,8 @@
       "packageManager": "pnpm",
       "appDir": ".",
       "commands": {
-        "install": "pnpm install --ignore-workspace --frozen-lockfile",
+        "install": "pnpm install --ignore-workspace --no-frozen-lockfile",
+        "installNote": "Frozen fails with ERR_PNPM_LOCKFILE_CONFIG_MISMATCH (pnpmfileChecksum vs package.json pnpm.configDependencies @pnpm/plugin-types-fixer).",
         "dev": "pnpm --ignore-workspace dev",
         "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
         "build": "pnpm --ignore-workspace build",
@@ -227,7 +228,7 @@
       "appDir": "examples/react/start-trellaux",
       "commands": {
         "install": "pnpm install --ignore-workspace",
-        "installNote": "No lockfile in the example dir (monorepo lock does not apply) -> resolution drifts. OPEN DECISION: freeze a lockfile under benchmark/locks/.",
+        "installNote": "No lockfile in the example dir (monorepo lock does not apply). Pinned SHA package.json asks for @tanstack/react-start@^1.169.6 which was never published (workspace-only); Harbor preInstall pins 1.169.5.",
         "dev": "pnpm --ignore-workspace dev",
         "devUrl": "http://localhost:3000",
         "build": "pnpm --ignore-workspace build",
@@ -245,7 +246,11 @@
       },
       "commandsCwd": "appDir",
       "harbor": {
-        "nodeImage": "node:24-bookworm"
+        "nodeImage": "node:24-bookworm",
+        "preInstall": [
+          "node -e \"const fs=require('fs');const p='package.json';const j=JSON.parse(fs.readFileSync(p,'utf8'));const d=j.dependencies||{};if(d['@tanstack/react-start']==='^1.169.6'){d['@tanstack/react-start']='1.169.5';fs.writeFileSync(p,JSON.stringify(j,null,2)+'\\n')}\""
+        ],
+        "preInstallWhy": "example deps target unpublished workspace versions; pin react-start to latest npm 1.169.5"
       }
     },
     {

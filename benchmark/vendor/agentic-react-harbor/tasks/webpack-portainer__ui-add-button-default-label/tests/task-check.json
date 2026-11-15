@@ -1,7 +1,8 @@
 {
   "appDir": ".",
   "commands": {
-    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "install": "pnpm install --ignore-workspace --no-frozen-lockfile",
+    "installNote": "Frozen fails with ERR_PNPM_LOCKFILE_CONFIG_MISMATCH (pnpmfileChecksum vs package.json pnpm.configDependencies @pnpm/plugin-types-fixer).",
     "dev": "pnpm --ignore-workspace dev",
     "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
     "build": "pnpm --ignore-workspace build",

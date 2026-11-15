@@ -31,6 +31,8 @@ const filter = arg('filter', '');
 const concurrency = Number(arg('concurrency', '2'));
 // Default: all 32 agentic trees (overlay or agentic≡control). Pass --overlay-only to skip ≡control.
 const overlayOnly = args.includes('--overlay-only');
+// Reuse existing jobs/*/…/reward.txt == 1 (avoids re-building passed images).
+const skipOk = args.includes('--skip-ok');
 const harborBin = path.join(BENCH, '.venv/bin/harbor');
 
 function listTasks(variant) {
@@ -74,6 +76,13 @@ function readReward(jobDir) {
 function runOne(variant, slug) {
   const taskPath = path.join(variantsRoot, variant, slug);
   const out = path.join(BENCH, 'jobs', `oracle-${variant}`, slug);
+  if (skipOk) {
+    const prev = readReward(out);
+    if (prev === 1) {
+      console.log(`[${variant}] SKIP ${slug} reward=1 (existing)`);
+      return { variant, slug, reward: 1, status: 0, ok: true, skipped: true };
+    }
+  }
   fs.rmSync(out, { recursive: true, force: true });
   fs.mkdirSync(path.dirname(out), { recursive: true });
   console.log(`[${variant}] START ${slug}`);

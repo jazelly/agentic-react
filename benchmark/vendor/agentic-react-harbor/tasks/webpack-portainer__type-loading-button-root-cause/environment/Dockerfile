@@ -28,11 +28,12 @@ RUN git clone "$REPO_URL" . \
  && (git gc --prune=now || true) \
  && (git submodule update --init --recursive || true)
 
+
 # Package manager install (from manifest.json). pnpm
 # Setup edits are applied AFTER install/postInstall so injected bugs do not
 # break image builds (e.g. rsdoctor prepare/client build, next typegen).
 WORKDIR /app
-RUN pnpm config set dangerouslyAllowAllBuilds true && pnpm install --ignore-workspace --frozen-lockfile
+RUN pnpm config set dangerouslyAllowAllBuilds true && pnpm install --ignore-workspace --no-frozen-lockfile
 WORKDIR /app
 
 COPY apply-edits.mjs /opt/bench/apply-edits.mjs

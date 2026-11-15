@@ -104,14 +104,24 @@ export function isIgnorableChangedPath(f) {
 }
 
 /**
- * Local-path counterpart of Harbor `manifest.harbor.postInstall`.
- * Idempotent: copy .env, prisma migrate + generate --sql, selective builds, etc.
+ * Local-path counterpart of Harbor `manifest.harbor.preInstall` + `postInstall`.
+ * Idempotent: pin unpublished deps, copy .env, prisma migrate + generate --sql, etc.
  * Call before local `--oracle` when the pinned clone was only `npm ci`/`pnpm install`.
  */
 export function ensureRepoReady(repo) {
   const repoRoot = path.join(REPOS, repo.id);
   if (!fs.existsSync(repoRoot)) {
     throw new Error(`missing clone ${repoRoot}; run node scripts/clone.mjs`);
+  }
+  const appRoot = path.join(repoRoot, repo.appDir ?? '.');
+  const pre = []
+    .concat(repo.harbor?.preInstall ?? [])
+    .map((c) => String(c).trim())
+    .filter(Boolean);
+  if (pre.length) {
+    const cwd = repo.commandsCwd === 'appDir' ? appRoot : repoRoot;
+    const r = sh(pre.join(' && '), { cwd, timeoutSec: 300, quiet: true });
+    if (!r.ok) throw new Error(`ensureRepoReady(${repo.id}) preInstall failed: ${r.output.slice(-1200)}`);
   }
   const cmds = []
     .concat(repo.harbor?.postInstall ?? [])

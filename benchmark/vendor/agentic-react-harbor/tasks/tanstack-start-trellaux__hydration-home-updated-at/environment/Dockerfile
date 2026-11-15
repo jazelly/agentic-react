@@ -28,6 +28,12 @@ RUN git clone --sparse "$REPO_URL" . \
  && (git gc --prune=now || true) \
  && (git submodule update --init --recursive || true)
 
+
+# Harbor pre-install (tanstack-start-trellaux).
+WORKDIR /app/examples/react/start-trellaux
+RUN node -e "const fs=require('fs');const p='package.json';const j=JSON.parse(fs.readFileSync(p,'utf8'));const d=j.dependencies||{};if(d['@tanstack/react-start']==='^1.169.6'){d['@tanstack/react-start']='1.169.5';fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n')}"
+WORKDIR /app
+
 # Package manager install (from manifest.json). pnpm
 # Setup edits are applied AFTER install/postInstall so injected bugs do not
 # break image builds (e.g. rsdoctor prepare/client build, next typegen).
