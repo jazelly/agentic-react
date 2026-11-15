@@ -10,9 +10,9 @@ Counts: 10 tasks × 7 stacks = 70 combos; ported ✓ 70, ported ✗ 0, N/A 0, to
 | next-evals/agent-055-stale-build-error | next-evals | build-type-error | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | next-evals/agent-056-status-display | next-evals | runtime-logic | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | terminal-bench/cumulative-layout-shift-lite | terminal-bench | perf-cls | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
-| web-bench/react-task-1 | web-bench | ui-build-from-spec | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | reactbench/coreui-react-460 | reactbench | write-react/state-bug | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | reactbench/coreui-react-470 | reactbench | write-react/perf-resource-leak | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
+| reactbench/openflipbook-72 | reactbench | ui-locate-edit/async-ui-state | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | reactbench/react-pro-sidebar-267 | reactbench | hydration-ssr | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | reactbench/same-recursive-file-drop | reactbench | write-react/runtime-async-failure | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |
 | reactbench/yarl-slideshowcontext | reactbench | write-react/runtime-timer-async-bug | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ | ported ✓ |

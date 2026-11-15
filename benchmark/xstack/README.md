@@ -10,6 +10,7 @@ stacks/<id>/stack.json         dev/build/start commands, agentic overlay (adapte
 stacks/<id>/pnpm-lock.<v>.yaml pinned lockfiles (base / agentic)
 tasks/<suite>__<id>/           public tasks: task.json, app/ (initial), solution/, tests/{component,e2e}
 archive/self-tasks/            retired self-authored tasks (not in any tag set; kept for reference only)
+archive/public-tasks/          retired public tasks (web-bench/react-task-1, retired 2026-11-15: Web-Bench considered outdated)
 private/tasks/                 ReactBench-derived (upstream has NO LICENSE): internal only, gitignored, never commit/redistribute
 verifier/                      isolated @playwright/test install (hidden E2E runner)
 harness/                       lib, install-stacks, oracle, run (A/B agent runner), usage, matrix, browser-keeper, mcp-probe
@@ -82,7 +83,7 @@ Since 2026-11-13 core10 contains **no self-authored tasks**: every task is porte
 
 | # | task | source benchmark | category | upstream verifier kept |
 |---|---|---|---|---|
-| 1 | web-bench/react-task-1 | Web-Bench (ByteDance, Apache-2.0, arXiv:2505.07473) `projects/react` task-1 | UI build from spec | `test/task-1.spec.js` (byte-identical) + `@web-bench/test-util` |
+| 1 | reactbench/openflipbook-72 | ReactBench `tasks/eren23-openflipbook-72`; origin openflipbook PR #72 (MIT, React 19) | UI locate/edit: add empty-state action + async UI state | Vitest (20) + Playwright (2), unchanged |
 | 2 | reactbench/coreui-react-460 | ReactBench (millionco) `tasks/coreui-coreui-react-460`; origin coreui-react (MIT) | component state bug | Vitest + Playwright specs |
 | 3 | next-evals/agent-024-avoid-redundant-usestate | Next.js agent evals (vercel/next.js `evals/evals/agent-024-…`, MIT) | derived state | ported specs |
 | 4 | next-evals/agent-055-stale-build-error | Next.js agent evals (equivalent variant) | build/type error | strict tsc + specs |
@@ -93,11 +94,11 @@ Since 2026-11-13 core10 contains **no self-authored tasks**: every task is porte
 | 9 | terminal-bench/cumulative-layout-shift-lite | Terminal-Bench / frontier-bench `tasks/cumulative-layout-shift` (Apache-2.0, reduced) | perf / CLS | ported specs |
 | 10 | reactbench/coreui-react-470 | ReactBench; origin coreui-react PR #470 (MIT) | perf / listener leak | Vitest + CDP `DOMDebugger.getEventListeners` Playwright |
 
-All 10 apply to all 7 stacks (70 combos). ReactBench has **no LICENSE**: its 5 tasks live in gitignored `private/tasks/` for internal evaluation only and must not be committed or redistributed. The React Doctor gate that ReactBench also uses is not ported (behavior-only grading).
+All 10 apply to all 7 stacks (70 combos). ReactBench has **no LICENSE**: its 6 tasks live in gitignored `private/tasks/` for internal evaluation only and must not be committed or redistributed. The React Doctor gate that ReactBench also uses is not ported (behavior-only grading).
 
-Category gaps: no public benchmark task was found that is a clean "runtime crash" (uncaught render error) on a self-contained React app; tasks 5–7 cover runtime logic/async failures instead. Considered and rejected: ReactBench internxt usetrashpagination (its failing signal is only the React Doctor lint gate; behavior tests pass on the initial state), crowdsec/leafwiki/treely/suomifi/lobe-ui (heavy tailwind/radix/chakra/antd/router deps), Terminal-Bench react-lead-form (mostly a Node CLI), most Next.js evals (Next-only APIs), Web-Bench tasks 2–20 (no published intermediate states).
+Category gaps: no public benchmark task was found that is a clean "runtime crash" (uncaught render error) on a self-contained React app; tasks 5–7 cover runtime logic/async failures instead. Considered and rejected: ReactBench internxt usetrashpagination (its failing signal is only the React Doctor lint gate; behavior tests pass on the initial state), crowdsec/leafwiki/treely/suomifi/lobe-ui (heavy tailwind/radix/chakra/antd/router deps), Terminal-Bench react-lead-form (mostly a Node CLI), most Next.js evals (Next-only APIs), Web-Bench (retired 2026-11-15 as outdated; task-1 archived in `archive/public-tasks/`). Replacement search 2026-11-15: Terminal-Bench/frontier-bench frontend tasks are Node-pipeline (react-lead-form), Next-only (nextjs-performance) or full-stack builds (vba-userform-port); current Next.js evals need Next APIs; tracecat-2879 (ReactBench) is AGPL with radix/react-hook-form/zod deps; so another ReactBench task (openflipbook-72, MIT, zero extra deps) was the strongest portable option.
 
-Oracle: **70/70** combos pass (full run `results/oracle-2026-11-13T06-23-26-030Z.jsonl` 69/70; yarl @ react-router-7 then fixed by excluding one latency-dependent upstream e2e test, see its portingNotes; yarl re-run twice on all 7 stacks, 7/7 both times). `MATRIX.md` / `results/matrix.csv` use the latest result per pair. Harness additions this round: `e2eSupport` entries can be `{from,to}`, `e2eGrepInvert`, Vitest include `{test,spec}`, one server-start retry on a fresh port. `tools/mk-core10-{a,b}.py` are historical (they also emit the archived self tasks).
+Oracle: **70/70** combos pass (latest result per pair: `results/oracle-2026-11-13T06-23-26-030Z.jsonl` + yarl re-runs + openflipbook-72 run on 2026-11-15, 7/7). yarl excludes one latency-dependent upstream e2e test (see its portingNotes). On next-turbopack the openflipbook initial state also fails the build (the fixture passes the not-yet-existing props, which Next's build-time tsc rejects); behavior checks fail on all stacks. Harness additions: `e2eSupport` `{from,to}`, `e2eGrepInvert`, Vitest include `{test,spec}`, one server-start retry. `tools/mk-core10-{a,b}.py` are historical.
 
 ## Sweep plan (proposal, not run)
 
