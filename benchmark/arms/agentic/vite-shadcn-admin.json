@@ -1,0 +1,21 @@
+{
+  "note": "Arm B overlay: applied (after task setup) to the scratch workspace / Harbor agent image only. Requires @agentic-react/vite.",
+  "package": "@agentic-react/vite",
+  "install": { "package": "@agentic-react/vite@0.3.0", "dev": true },
+  "edits": [
+    {
+      "file": "vite.config.ts",
+      "find": "import { playwright } from '@vitest/browser-playwright'\n",
+      "replace": "import { playwright } from '@vitest/browser-playwright'\nimport AgenticReact from '@agentic-react/vite'\n"
+    },
+    {
+      "file": "vite.config.ts",
+      "find": "    react(),\n    tailwindcss(),\n  ],",
+      "replace": "    react(),\n    tailwindcss(),\n    AgenticReact(),\n  ],"
+    }
+  ],
+  "agentConfig": {
+    "mcp": "http://localhost:5173/mcp",
+    "instructions": "arms/agentic/AGENTS.snippet.md"
+  }
+}

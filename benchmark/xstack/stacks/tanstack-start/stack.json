@@ -1,0 +1,31 @@
+{
+  "id": "tanstack-start",
+  "bundler": "vite 8 + TanStack Start plugin",
+  "framework": "TanStack Start",
+  "render": "ssr",
+  "dev": "vite dev --port $PORT --strictPort --host 127.0.0.1",
+  "build": "vite build",
+  "start": "srvx --prod -p $PORT -s ../client dist/server/server.js",
+  "agentic": {
+    "adapter": "@agentic-react/vite",
+    "packages": [
+      "@agentic-react/vite@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "vite.config.ts",
+        "find": "import viteReact from '@vitejs/plugin-react'\n",
+        "replace": "import viteReact from '@vitejs/plugin-react'\nimport AgenticReact from '@agentic-react/vite'\n"
+      },
+      {
+        "file": "vite.config.ts",
+        "find": "plugins: [tanstackStart(), viteReact()],",
+        "replace": "plugins: [tanstackStart(), viteReact(), AgenticReact()],"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$PORT/mcp",
+    "note": "SSR: verify the client runtime is injected via the Start client entry"
+  },
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

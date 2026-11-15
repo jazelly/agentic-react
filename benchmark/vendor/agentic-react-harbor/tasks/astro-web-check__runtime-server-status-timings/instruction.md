@@ -1,0 +1,1 @@
+For some targets the Server Status card crashes the results view with `TypeError: Cannot read properties of undefined (reading 'dns')` — the API omits `timings` when the timing probe fails. Fix it so the card renders without the timing rows in that case.

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/pages/index.astro",
+    "find": "  <HomeBackground client:only=\"react\" />",
+    "replace": "  <HomeBackground client:load />"
+  }
+]

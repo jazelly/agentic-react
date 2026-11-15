@@ -1,0 +1,34 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build-local",
+    "typecheck": "npm run check:types",
+    "test": "npm test",
+    "e2e": "npm run test:e2e"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/CurrentCount.tsx",
+        "pattern": "result!\\.count",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/CurrentCount.tsx",
+        "pattern": "result\\?\\.count|if \\(!result\\)",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (next-turbopack-boilerplate)"
+      }
+    ]
+  }
+}

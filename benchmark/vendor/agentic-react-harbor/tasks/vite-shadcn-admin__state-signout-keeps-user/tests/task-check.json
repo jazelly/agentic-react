@@ -1,0 +1,31 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devUrl": "http://localhost:5173",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace exec tsc -b",
+    "test": "pnpm --ignore-workspace test",
+    "testNote": "Vitest browser mode (playwright chromium). One-time: pnpm --ignore-workspace test:browser:install"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "hidden-test",
+        "src": "hidden/auth-store.reset.test.ts",
+        "dest": "src/stores/__bench__/auth-store.reset.test.ts",
+        "run": "pnpm --ignore-workspace exec vitest run --browser.headless src/stores/__bench__",
+        "timeoutSec": 600,
+        "why": "Vitest browser mode; needs `pnpm --ignore-workspace test:browser:install` once"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  },
+  "hiddenBase": "/tests/hidden"
+}

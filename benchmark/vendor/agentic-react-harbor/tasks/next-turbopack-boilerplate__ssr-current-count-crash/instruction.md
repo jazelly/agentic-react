@@ -1,0 +1,1 @@
+Visiting /counter on a fresh database (no counter row yet) returns a 500: `TypeError: Cannot read properties of undefined (reading 'count')`, thrown from a Server Component. A fresh database should simply show a count of 0.

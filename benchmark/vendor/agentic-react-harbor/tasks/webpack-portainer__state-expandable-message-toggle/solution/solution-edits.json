@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/react/components/ExpandableMessageByLines.tsx",
+    "find": "setIsTruncated(el.scrollHeight < el.clientHeight);",
+    "replace": "setIsTruncated(el.scrollHeight > el.clientHeight);"
+  }
+]

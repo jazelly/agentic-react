@@ -1,0 +1,42 @@
+{
+  "id": "next-turbopack-boilerplate/ssr-current-count-crash",
+  "repo": "next-turbopack-boilerplate",
+  "category": "ssr-error",
+  "prompt": "Visiting /counter on a fresh database (no counter row yet) returns a 500: `TypeError: Cannot read properties of undefined (reading 'count')`, thrown from a Server Component. A fresh database should simply show a count of 0.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/components/CurrentCount.tsx",
+        "find": "  const count = result?.count ?? 0;",
+        "replace": "  const count = result!.count;"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/CurrentCount.tsx",
+        "pattern": "result!\\.count",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/CurrentCount.tsx",
+        "pattern": "result\\?\\.count|if \\(!result\\)",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (next-turbopack-boilerplate)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

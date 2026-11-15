@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/next-turbopack-boilerplate__validation-counter-range"
+version = "1.0.0"
+description = "On /counter the form says you can increment by 1 to 3, but entering 2 or 3 shows the range error (and the API rejects it too). Fix it; 0 and 4 must still be rejected."
+keywords = ["react", "agentic-react", "state-bug", "turbopack"]
+
+[metadata]
+category = "state-bug"
+repo_id = "next-turbopack-boilerplate"
+source_task_id = "next-turbopack-boilerplate/validation-counter-range"
+bundler = "turbopack"
+framework = "Next.js 16.4 App Router (RSC, next-intl, Drizzle + PGlite, Clerk)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

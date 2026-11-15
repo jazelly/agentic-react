@@ -1,0 +1,34 @@
+# Smoke: 1–2 light tasks through Harbor + cursor-cli. Run ONE trial at a time, e.g.
+#   primase run experiments/cursor-smoke.yaml --model composer-2.5 --variant control --max-trials 1
+# Do NOT commit secrets. env_file path is a local reference only (chmod 600).
+name: cursor-smoke
+description: end-to-end smoke of cursor-cli on agentic-react Harbor tasks (agent capped)
+root: ..
+env_file: ~/.config/agentic-node/bench.env
+secrets: [CURSOR_API_KEY]
+agent:
+  name: cursor-cli
+  plugin:
+    included_models: [composer-2.5, grok-4.7-low, grok-4.7-medium, grok-4.7-high, grok-4.7-xhigh]
+    allow_non_included_models: false
+models:
+  - {id: composer-2.5, label: Composer 2.5}
+  - {id: grok-4.7-high, label: Grok 4.7 High}
+variants:
+  control:
+    description: stock React app (no agentic-react adapter)
+    dir: control
+  agentic:
+    description: arms/agentic overlay enabling @agentic-react/* when supported for the repo
+    dir: agentic
+baseline: control
+tiers: [low]
+suites:
+  - {id: agentic-react, backend: harbor, tasks: [vite-shadcn-admin__ui-dashboard-export-button, next-webpack-jsoncrack__ui-bottom-bar-valid-label]}
+trials: 1
+concurrency: 1
+network: open
+budget:
+  stop_on_billed_cost: true
+  max_reported_cost_usd: 0
+  max_estimated_cost_usd: 5

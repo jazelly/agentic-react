@@ -1,0 +1,1 @@
+`pnpm typecheck` started failing with a large number of errors across the app after a recent change to the shared button components. Find the root cause and fix it with a minimal change. Don't edit the call sites and don't use @ts-ignore.

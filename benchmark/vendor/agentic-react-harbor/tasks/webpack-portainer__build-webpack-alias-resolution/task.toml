@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/webpack-portainer__build-webpack-alias-resolution"
+version = "1.0.0"
+description = "`pnpm build` (webpack) fails with hundreds of `Module not found: Error: Can't resolve '@@/...'` / `'@/...'` errors, while `pnpm typecheck` and the unit tests still pass. Fix the webpack setup so the p"
+keywords = ["react", "agentic-react", "build-type-error", "webpack"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "webpack-portainer"
+source_task_id = "webpack-portainer/build-webpack-alias-resolution"
+bundler = "webpack"
+framework = "React 17 SPA (AngularJS hybrid, UI-Router)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

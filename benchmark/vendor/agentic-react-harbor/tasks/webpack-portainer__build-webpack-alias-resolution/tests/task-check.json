@@ -1,0 +1,28 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace typecheck",
+    "test": "pnpm --ignore-workspace exec vitest run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "only-changed",
+        "allow": [
+          "webpack/**",
+          "webpack.config.js",
+          "tsconfig.json"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  }
+}

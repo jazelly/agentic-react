@@ -1,0 +1,13 @@
+{
+  "id": "next-turbopack",
+  "bundler": "turbopack",
+  "framework": "Next.js 16 App Router",
+  "render": "ssr",
+  "dev": "next dev -p $PORT -H 127.0.0.1",
+  "build": "next build",
+  "start": "next start -p $PORT -H 127.0.0.1",
+  "agentic": null,
+  "agentic_note": "@agentic-react/next only hooks the webpack config: no Turbopack adapter yet, agentic arm == baseline",
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

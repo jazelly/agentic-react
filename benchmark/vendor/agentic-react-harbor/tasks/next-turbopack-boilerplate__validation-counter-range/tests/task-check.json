@@ -1,0 +1,21 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build-local",
+    "typecheck": "npm run check:types",
+    "test": "npm test",
+    "e2e": "npm run test:e2e"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "node --input-type=module -e \"const {CounterValidation:v}=await import('./src/validations/CounterValidation.ts');const ok=n=>v.safeParse({increment:n}).success;if(!(ok(1)&&ok(2)&&ok(3)&&!ok(0)&&!ok(4)))process.exit(1)\"",
+        "timeoutSec": 60
+      }
+    ]
+  }
+}

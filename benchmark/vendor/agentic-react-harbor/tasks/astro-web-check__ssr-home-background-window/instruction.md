@@ -1,0 +1,1 @@
+`astro build` fails while prerendering `/` with `ReferenceError: window is not defined`, coming from the animated home-page background (a React island). Keep the background working in the browser, but fix the build.

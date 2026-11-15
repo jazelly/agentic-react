@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/features/editor/BottomBar.tsx",
+    "find": "    if (data?.name) window.document.title",
+    "replace": "    if (data.name) window.document.title"
+  }
+]

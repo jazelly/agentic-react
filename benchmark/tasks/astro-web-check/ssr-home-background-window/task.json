@@ -1,0 +1,35 @@
+{
+  "id": "astro-web-check/ssr-home-background-window",
+  "repo": "astro-web-check",
+  "category": "ssr-error",
+  "prompt": "`astro build` fails while prerendering `/` with `ReferenceError: window is not defined`, coming from the animated home-page background (a React island). Keep the background working in the browser, but fix the build.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/pages/index.astro",
+        "find": "  <HomeBackground client:only=\"react\" />",
+        "replace": "  <HomeBackground client:load />"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/pages/index.astro",
+        "pattern": "<HomeBackground\\b",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "npx astro build",
+        "timeoutSec": 1200
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

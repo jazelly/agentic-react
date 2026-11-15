@@ -1,0 +1,54 @@
+{
+  "id": "next-turbopack-boilerplate/ui-counter-button-color",
+  "repo": "next-turbopack-boilerplate",
+  "category": "ui-locate-edit",
+  "prompt": "On the /counter page, make the Increment button green (Tailwind `bg-emerald-600`, hover `bg-emerald-700`) instead of blue. Keep the focus-ring and disabled styles.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/components/CounterForm.tsx",
+      "find": "bg-blue-500 px-5 py-1 font-bold text-white hover:bg-blue-600",
+      "replace": "bg-emerald-600 px-5 py-1 font-bold text-white hover:bg-emerald-700"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/CounterForm.tsx",
+        "pattern": "bg-emerald-600",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/components/CounterForm.tsx",
+        "pattern": "hover:bg-emerald-700",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/components/CounterForm.tsx",
+        "pattern": "bg-blue-500|hover:bg-blue-600",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/CounterForm.tsx",
+        "pattern": "focus:ring-3.*disabled:opacity-50",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/components/CounterForm.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rsbuild",
+  "bundler": "rspack (rsbuild 2)",
+  "framework": "React SPA",
+  "render": "csr",
+  "dev": "rsbuild dev --port $PORT --host 127.0.0.1",
+  "build": "rsbuild build",
+  "start": "rsbuild preview --port $PORT --host 127.0.0.1",
+  "agentic": null,
+  "agentic_note": "no @agentic-react/rsbuild adapter yet: agentic arm == baseline",
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

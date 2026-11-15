@@ -1,0 +1,9 @@
+{
+  "name": "xstack-verifier",
+  "private": true,
+  "type": "module",
+  "description": "Stack-agnostic E2E verifier (Playwright). Installed in isolation: pnpm install --ignore-workspace",
+  "devDependencies": {
+    "@playwright/test": "1.65.0"
+  }
+}

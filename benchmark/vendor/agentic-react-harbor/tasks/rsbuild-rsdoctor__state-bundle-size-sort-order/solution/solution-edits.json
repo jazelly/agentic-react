@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/pages/BundleSize/components/module-tree-sort.ts",
+    "find": "(sizes.get(a.key)?.[sortBy] ?? 0) - (sizes.get(b.key)?.[sortBy] ?? 0),",
+    "replace": "(sizes.get(b.key)?.[sortBy] ?? 0) - (sizes.get(a.key)?.[sortBy] ?? 0),"
+  }
+]

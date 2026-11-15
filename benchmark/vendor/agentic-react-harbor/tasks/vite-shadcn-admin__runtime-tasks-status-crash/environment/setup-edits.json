@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/features/tasks/components/tasks-columns.tsx",
+    "find": "      const status = statuses.find(\n        (status) => status.value === row.getValue('status')\n      )\n\n      if (!status) {\n        return null\n      }\n",
+    "replace": "      const status = statuses.find(\n        (status) => status.value === row.getValue('label')\n      )!\n"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/features/dashboard/index.tsx",
+    "find": "<Button>Download</Button>",
+    "replace": "<Button variant='outline'>Export report</Button>"
+  }
+]

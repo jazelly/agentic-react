@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rsbuild-rsdoctor__logic-windows-asset-paths"
+version = "1.0.0"
+description = "With stats generated on Windows (paths like `static\\\\js\\\\main.js`), the Bundle Size page can't match assets: asset titles fall back to bare file names instead of resolving the asset. POSIX paths work."
+keywords = ["react", "agentic-react", "state-bug", "rsbuild"]
+
+[metadata]
+category = "state-bug"
+repo_id = "rsbuild-rsdoctor"
+source_task_id = "rsbuild-rsdoctor/logic-windows-asset-paths"
+bundler = "rsbuild"
+framework = "React SPA (antd)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

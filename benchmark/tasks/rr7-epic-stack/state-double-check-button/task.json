@@ -1,0 +1,29 @@
+{
+  "id": "rr7-epic-stack/state-double-check-button",
+  "repo": "rr7-epic-stack",
+  "category": "state-bug",
+  "prompt": "Destructive buttons that ask \"Are you sure?\" (e.g. delete note) switch to the confirm state on the first click, but the second click never actually submits. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "app/utils/misc.tsx",
+        "find": "\t\t\tdoubleCheck\n\t\t\t\t? undefined\n",
+        "replace": "\t\t\tdoubleCheck\n\t\t\t\t? (e) => e.preventDefault()\n"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "npx vitest run app/utils/misc.use-double-check.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

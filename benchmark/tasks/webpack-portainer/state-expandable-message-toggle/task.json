@@ -1,0 +1,29 @@
+{
+  "id": "webpack-portainer/state-expandable-message-toggle",
+  "repo": "webpack-portainer",
+  "category": "state-bug",
+  "prompt": "Long messages rendered with the line-clamped expandable message component (used for long errors/logs) no longer show the \"Show more\" toggle, so they are clipped with no way to expand them. Short messages look fine. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "app/react/components/ExpandableMessageByLines.tsx",
+        "find": "setIsTruncated(el.scrollHeight > el.clientHeight);",
+        "replace": "setIsTruncated(el.scrollHeight < el.clientHeight);"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "pnpm --ignore-workspace exec vitest run app/react/components/ExpandableMessageByLines.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

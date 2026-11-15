@@ -1,0 +1,27 @@
+{
+  "id": "next-webpack",
+  "bundler": "webpack 5 (next --webpack)",
+  "framework": "Next.js 16 App Router",
+  "render": "ssr",
+  "dev": "next dev --webpack -p $PORT -H 127.0.0.1",
+  "build": "next build --webpack",
+  "start": "next start -p $PORT -H 127.0.0.1",
+  "agentic": {
+    "adapter": "@agentic-react/next",
+    "packages": [
+      "@agentic-react/next@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "next.config.mjs",
+        "find": "export default nextConfig\n",
+        "replace": "import withAgenticReactNext from '@agentic-react/next'\n\n// bridge port is per-run (default 51426 would collide across parallel runs)\nexport default withAgenticReactNext(nextConfig, { server: { port: Number(process.env.AGENTIC_REACT_BRIDGE_PORT) || undefined } })\n"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$BRIDGE_PORT/mcp",
+    "note": "Next adapter runs its own bridge server (options.server.port); harness sets AGENTIC_REACT_BRIDGE_PORT per run."
+  },
+  "agentic_note": null,
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

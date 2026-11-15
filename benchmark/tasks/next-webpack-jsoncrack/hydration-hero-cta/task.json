@@ -1,0 +1,36 @@
+{
+  "id": "next-webpack-jsoncrack/hydration-hero-cta",
+  "repo": "next-webpack-jsoncrack",
+  "category": "hydration",
+  "prompt": "On narrow (mobile) screens the landing page logs a hydration text mismatch around the hero's \"Go to Editor\" button and the label flickers. Fix it; the label can simply be \"Go to Editor\" everywhere.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/layout/Landing/HeroSection.tsx",
+        "find": "              fw=\"500\"\n              mt=\"sm\"\n            >\n              Go to Editor\n",
+        "replace": "              fw=\"500\"\n              mt=\"sm\"\n            >\n              {typeof window !== \"undefined\" && window.innerWidth < 400 ? \"Open\" : \"Go to Editor\"}\n"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/layout/Landing/HeroSection.tsx",
+        "pattern": "typeof window",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/layout/Landing/HeroSection.tsx",
+        "pattern": "Go to Editor",
+        "expect": true
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

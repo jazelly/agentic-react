@@ -1,0 +1,48 @@
+{
+  "id": "rr7-epic-stack/hydration-heading-viewport-attr",
+  "repo": "rr7-epic-stack",
+  "category": "hydration",
+  "prompt": "The home page logs a React hydration warning about a mismatched `data-viewport` attribute on the main heading. Analytics needs that attribute for viewport bucketing, but it's fine if it only appears after hydration. Fix the warning without dropping the attribute.",
+  "setup": {
+    "edits": [
+      {
+        "file": "app/routes/_marketing/index.tsx",
+        "find": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n",
+        "replace": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n\t\t\t\t\t\tdata-viewport={typeof window === 'undefined' ? 'server' : window.innerWidth >= 1280 ? 'xl' : 'sm'}\n"
+      }
+    ]
+  },
+  "solution": "none (needs a small hook; oracle not provided)",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "data-viewport",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "typeof window === 'undefined' \\? 'server'",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "useEffect|useHydrated|useIsHydrated|ClientOnly|useSyncExternalStore",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (rr7-epic-stack)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

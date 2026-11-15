@@ -1,0 +1,231 @@
+/**
+ * Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.blog-title {
+  width: fit-content;
+  font-size: 24px;
+}
+
+header {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  flex-grow: 1;
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+.list-item {
+  cursor: pointer;
+  padding: 0.5rem;
+  height: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.2s ease;
+}
+
+.list-item:hover {
+  background-color: #e9ecef;
+}
+
+.list-item.selected {
+  background-color: #cfe2ff;
+  border-left: 3px solid #0d6efd;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #343a40;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  color: #212529;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+button {
+  padding: 0.625rem 1.25rem;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
+}
+
+button:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(13, 110, 253, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
+}
+
+.submit-btn {
+  align-self: flex-start;
+  background-color: #198754;
+  box-shadow: 0 2px 4px rgba(25, 135, 84, 0.2);
+}
+
+.submit-btn:hover {
+  background-color: #157347;
+  box-shadow: 0 4px 6px rgba(25, 135, 84, 0.25);
+}
+
+.visible-count {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.delete-btn:hover {
+  background-color: #bb2d3b;
+  box-shadow: 0 4px 6px rgba(220, 53, 69, 0.25);
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: #000;
+  box-shadow: 0 2px 4px rgba(255, 193, 7, 0.2);
+}
+
+.edit-btn:hover {
+  background-color: #ffca2c;
+  box-shadow: 0 4px 6px rgba(255, 193, 7, 0.25);
+}
+
+.comment-item {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 3px solid #0d6efd;
+}
+
+.comment-btn {
+  background-color: #198754;
+  box-shadow: 0 2px 4px rgba(25, 135, 84, 0.2);
+}
+
+.comment-btn:hover {
+  background-color: #157347;
+  box-shadow: 0 4px 6px rgba(25, 135, 84, 0.25);
+}
+
+.blog-list-len {
+  color: #20c997;
+  font-size: 0.9em;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(32, 201, 151, 0.1);
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}

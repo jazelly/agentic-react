@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/tanstack-start-trellaux__state-column-card-order"
+version = "1.0.0"
+description = "Cards inside every column render in reverse order: a newly added card appears at the top, and after drag-and-drop the card lands in the wrong slot. The columns themselves are ordered correctly. Fix it"
+keywords = ["react", "agentic-react", "state-bug", "vite"]
+
+[metadata]
+category = "state-bug"
+repo_id = "tanstack-start-trellaux"
+source_task_id = "tanstack-start-trellaux/state-column-card-order"
+bundler = "vite"
+framework = "TanStack Start (SSR, server functions, TanStack Query, DnD board)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,30 @@
+{
+  "id": "react-router-7",
+  "bundler": "vite 8 + @react-router/dev",
+  "framework": "React Router v7 framework mode",
+  "render": "ssr",
+  "dev": "react-router dev --port $PORT --strictPort --host 127.0.0.1",
+  "build": "react-router build",
+  "start": "PORT=$PORT HOST=127.0.0.1 react-router-serve ./build/server/index.js",
+  "agentic": {
+    "adapter": "@agentic-react/vite",
+    "packages": [
+      "@agentic-react/vite@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "vite.config.ts",
+        "find": "import { defineConfig } from 'vite'\n",
+        "replace": "import { defineConfig } from 'vite'\nimport AgenticReact from '@agentic-react/vite'\n"
+      },
+      {
+        "file": "vite.config.ts",
+        "find": "plugins: [reactRouter()],",
+        "replace": "plugins: [reactRouter(), AgenticReact()],"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$PORT/mcp"
+  },
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

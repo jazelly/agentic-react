@@ -1,0 +1,42 @@
+{
+  "id": "next-webpack-jsoncrack/build-webpack-wasm-config",
+  "repo": "next-webpack-jsoncrack",
+  "category": "build-type-error",
+  "prompt": "`next build --webpack` now fails with a WebAssembly-related webpack error after someone \"cleaned up\" next.config.js. Fix the config. We must stay on webpack (`--webpack`); don't switch to Turbopack.",
+  "setup": {
+    "edits": [
+      {
+        "file": "next.config.js",
+        "find": "    config.output.webassemblyModuleFilename = \"static/wasm/[modulehash].wasm\";\n    config.experiments = { asyncWebAssembly: true, layers: true };\n",
+        "replace": "    config.output.webassemblyModuleFilename = \"static/wasm/[modulehash].wasm\";\n"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "next.config.js",
+        "pattern": "asyncWebAssembly:\\s*true",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "next.config.js"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  },
+  "notes": "Verified 2026-11-13: without asyncWebAssembly, webpack fails with \"Module parse failed\" on json_typegen_wasm_bg.wasm."
+}

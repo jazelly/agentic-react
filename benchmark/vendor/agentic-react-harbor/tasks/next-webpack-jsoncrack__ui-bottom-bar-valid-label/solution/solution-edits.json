@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/features/editor/BottomBar.tsx",
+    "find": "<Text size=\"xs\">Valid</Text>",
+    "replace": "<Text size=\"xs\">Valid JSON</Text>"
+  }
+]

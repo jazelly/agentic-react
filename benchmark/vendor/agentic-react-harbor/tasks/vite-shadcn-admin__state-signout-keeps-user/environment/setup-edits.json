@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/stores/auth-store.ts",
+    "find": "            auth: { ...state.auth, user: null, accessToken: '' },",
+    "replace": "            auth: { ...state.auth, accessToken: '' },"
+  }
+]

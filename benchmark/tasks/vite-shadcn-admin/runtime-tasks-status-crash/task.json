@@ -1,0 +1,42 @@
+{
+  "id": "vite-shadcn-admin/runtime-tasks-status-crash",
+  "repo": "vite-shadcn-admin",
+  "category": "runtime-error",
+  "prompt": "Opening /tasks crashes the app with `TypeError: Cannot read properties of undefined (reading 'icon')` and the route error boundary is shown. Fix it so the Status column shows each task's status again; a task with an unknown status should render an empty cell instead of crashing.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/features/tasks/components/tasks-columns.tsx",
+        "find": "      const status = statuses.find(\n        (status) => status.value === row.getValue('status')\n      )\n\n      if (!status) {\n        return null\n      }\n",
+        "replace": "      const status = statuses.find(\n        (status) => status.value === row.getValue('label')\n      )!\n"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/tasks/components/tasks-columns.tsx",
+        "pattern": "status\\.value === row\\.getValue\\(['\"]status['\"]\\)",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/features/tasks/components/tasks-columns.tsx",
+        "pattern": "getValue\\(['\"]label['\"]\\)\\s*\\)\\s*!",
+        "expect": false
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

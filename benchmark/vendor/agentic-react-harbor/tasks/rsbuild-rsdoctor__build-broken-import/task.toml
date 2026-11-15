@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rsbuild-rsdoctor__build-broken-import"
+version = "1.0.0"
+description = "`pnpm --filter @rsdoctor/client build` fails during type checking, and the Plugins page throws at runtime in dev. Fix it."
+keywords = ["react", "agentic-react", "build-type-error", "rsbuild"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "rsbuild-rsdoctor"
+source_task_id = "rsbuild-rsdoctor/build-broken-import"
+bundler = "rsbuild"
+framework = "React SPA (antd)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,46 @@
+{
+  "id": "next-evals/agent-024-avoid-redundant-usestate",
+  "suite": "next-evals",
+  "category": "feature-write/derived-state",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "repo": "https://github.com/vercel/next.js",
+    "path": "evals/evals/agent-024-avoid-redundant-usestate",
+    "ref": "canary",
+    "license": "MIT"
+  },
+  "prompt": "Complete the UserStats component to display statistics about the users. Show the active users count, inactive users count, and percentage of active users. Follow the existing patterns in this codebase for handling derived values.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/userstats.spec.ts"
+    ],
+    "component": [
+      "tests/component/userstats.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    },
+    "static": [
+      {
+        "file": "src/ui/UserStats.tsx",
+        "pattern": "useEffect",
+        "expect": false
+      },
+      {
+        "file": "src/ui/UserStats.tsx",
+        "pattern": "useState.*(active|count|percentage)|(active|count|percentage).*useState",
+        "flags": "mi",
+        "expect": false
+      }
+    ]
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "Upstream app/page.tsx ('use client') -> src/ui/App.tsx, app/UserStats.tsx -> src/ui/UserStats.tsx, prompt unchanged. Upstream EVAL.ts is regex-only; we keep its two negative regexes (no useEffect / no useState for derived values) as static checks and add behavioral checks: correct numbers on the production server (E2E) and a re-render test that fails on stale useState-derived values (component). The heuristic 'has .filter/.length' regex is replaced by the behavioral checks. The oracle solution was written for this port (upstream ships none)."
+}

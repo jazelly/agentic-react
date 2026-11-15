@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/react/components/buttons/LoadingButton.tsx",
+    "find": "  loadingText: string;",
+    "replace": "  loadingText: number;"
+  }
+]

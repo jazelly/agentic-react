@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/routes/_marketing/index.tsx",
+    "find": "<a href=\"https://www.epicweb.dev/stack\">The Epic Stack</a>",
+    "replace": "<a href=\"https://www.epicweb.dev/stack\">Epic Notes</a>"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/routes/users/$username/index.tsx",
+    "find": "\t})\n\n\tinvariantResponse(user, 'User not found', { status: 404 })\n\n\treturn { user,",
+    "replace": "\t})\n\n\treturn { user,"
+  }
+]

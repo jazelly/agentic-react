@@ -1,0 +1,6 @@
+# installed stacks, oracle/agent run workspaces, playwright browsers
+work/
+results/
+# ReactBench-derived tasks: upstream has NO LICENSE -> internal evaluation only, never commit/redistribute
+private/
+node_modules/

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/react/components/buttons/AddButton.tsx",
+    "find": "{children || 'Add'}",
+    "replace": "{children || 'Create'}"
+  }
+]

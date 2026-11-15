@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/vite-shadcn-admin__runtime-tasks-status-crash"
+version = "1.0.0"
+description = "Opening /tasks crashes the app with `TypeError: Cannot read properties of undefined (reading 'icon')` and the route error boundary is shown. Fix it so the Status column shows each task's status again;"
+keywords = ["react", "agentic-react", "runtime-error", "vite"]
+
+[metadata]
+category = "runtime-error"
+repo_id = "vite-shadcn-admin"
+source_task_id = "vite-shadcn-admin/runtime-tasks-status-crash"
+bundler = "vite"
+framework = "React SPA + TanStack Router"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

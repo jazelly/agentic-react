@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/pages/Plugins/index.tsx",
+    "find": "title=\"Plugins Overall\"",
+    "replace": "title=\"Plugin Overview\""
+  },
+  {
+    "file": "src/pages/Plugins/index.tsx",
+    "find": "<Typography.Text>Hooks</Typography.Text>",
+    "replace": "<Typography.Text>Hook names</Typography.Text>"
+  }
+]

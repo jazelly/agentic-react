@@ -1,0 +1,30 @@
+{
+  "id": "astro-web-check/island-results-not-hydrated",
+  "repo": "astro-web-check",
+  "category": "hydration",
+  "prompt": "Opening /check/example.com in `yarn dev:astro` gives a 500 / blank page and no scan ever starts. It worked last week. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/layouts/Results.astro",
+        "find": "  <Main client:only=\"react\" />",
+        "replace": "  <Main />"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/layouts/Results.astro",
+        "pattern": "<Main\\s+client:(only=\"react\"|load|idle|visible)",
+        "expect": true
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

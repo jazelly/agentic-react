@@ -1,0 +1,21 @@
+{
+  "note": "Vite adapter on TanStack Start example. MCP at the Vite/Start dev server /mcp. appDir=examples/react/start-trellaux.",
+  "package": "@agentic-react/vite",
+  "install": { "package": "@agentic-react/vite@0.3.0", "dev": true },
+  "edits": [
+    {
+      "file": "vite.config.ts",
+      "find": "import viteReact from '@vitejs/plugin-react'\n",
+      "replace": "import viteReact from '@vitejs/plugin-react'\nimport AgenticReact from '@agentic-react/vite'\n"
+    },
+    {
+      "file": "vite.config.ts",
+      "find": "  plugins: [tailwindcss(), tanstackStart(), viteReact()],",
+      "replace": "  plugins: [tailwindcss(), tanstackStart(), viteReact(), AgenticReact()],"
+    }
+  ],
+  "agentConfig": {
+    "mcp": "http://localhost:3000/mcp",
+    "instructions": "arms/agentic/AGENTS.snippet.md"
+  }
+}

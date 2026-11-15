@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/vite-shadcn-admin__type-refactor-column-header-label"
+version = "1.0.0"
+description = "We're renaming the `title` prop of `DataTableColumnHeader` to `label`. The component itself is already migrated, but `pnpm build` now fails with TypeScript errors. Finish the refactor across the codeb"
+keywords = ["react", "agentic-react", "build-type-error", "vite"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "vite-shadcn-admin"
+source_task_id = "vite-shadcn-admin/type-refactor-column-header-label"
+bundler = "vite"
+framework = "React SPA + TanStack Router"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,8 @@
+node_modules
+dist
+.next
+build
+.output
+.react-router
+.astro
+.tanstack

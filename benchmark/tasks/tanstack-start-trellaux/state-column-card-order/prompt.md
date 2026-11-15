@@ -1,0 +1,1 @@
+Cards inside every column render in reverse order: a newly added card appears at the top, and after drag-and-drop the card lands in the wrong slot. The columns themselves are ordered correctly. Fix it.

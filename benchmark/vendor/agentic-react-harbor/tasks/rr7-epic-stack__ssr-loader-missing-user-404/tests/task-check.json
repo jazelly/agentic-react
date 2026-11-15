@@ -1,0 +1,34 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "setup": "npm run setup  # build + prisma migrate + playwright install",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build",
+    "typecheck": "npm run typecheck",
+    "test": "npx vitest run",
+    "e2e": "npm run test:e2e:run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/users/$username/index.tsx",
+        "pattern": "invariantResponse\\(\\s*user|status:\\s*404",
+        "expect": true
+      },
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (rr7-epic-stack)"
+      }
+    ]
+  }
+}

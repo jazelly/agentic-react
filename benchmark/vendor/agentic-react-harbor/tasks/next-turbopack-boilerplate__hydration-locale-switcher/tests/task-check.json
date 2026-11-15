@@ -1,0 +1,36 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build-local",
+    "typecheck": "npm run check:types",
+    "test": "npm test",
+    "e2e": "npm run test:e2e"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/LocaleSwitcher.tsx",
+        "pattern": "typeof window",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/LocaleSwitcher.tsx",
+        "pattern": "elt\\.toUpperCase\\(\\)",
+        "expect": true
+      },
+      {
+        "type": "browser",
+        "optional": true,
+        "start": "@dev",
+        "url": "/",
+        "failOnConsole": "hydrat",
+        "why": "optional runtime confirmation (needs playwright + env)"
+      }
+    ]
+  }
+}

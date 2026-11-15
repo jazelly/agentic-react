@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/features/tasks/components/tasks-columns.tsx",
+    "regex": true,
+    "all": true,
+    "find": "(DataTableColumnHeader column=\\{column\\}) title=",
+    "replace": "$1 label="
+  },
+  {
+    "file": "src/features/users/components/users-columns.tsx",
+    "regex": true,
+    "all": true,
+    "find": "(DataTableColumnHeader column=\\{column\\}) title=",
+    "replace": "$1 label="
+  }
+]

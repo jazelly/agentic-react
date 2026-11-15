@@ -1,0 +1,44 @@
+{
+  "id": "next-turbopack-boilerplate/hydration-locale-switcher",
+  "repo": "next-turbopack-boilerplate",
+  "category": "hydration",
+  "prompt": "Every page logs `Hydration failed because the server rendered text didn't match the client` and React re-renders the tree on the client. The component stack points at the language selector in the header. Fix the mismatch; the options should show upper-case locale codes (EN, FR).",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/components/LocaleSwitcher.tsx",
+        "find": "          {elt.toUpperCase()}",
+        "replace": "          {typeof window === 'undefined' ? elt.toUpperCase() : elt}"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/LocaleSwitcher.tsx",
+        "pattern": "typeof window",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/LocaleSwitcher.tsx",
+        "pattern": "elt\\.toUpperCase\\(\\)",
+        "expect": true
+      },
+      {
+        "type": "browser",
+        "optional": true,
+        "start": "@dev",
+        "url": "/",
+        "failOnConsole": "hydrat",
+        "why": "optional runtime confirmation (needs playwright + env)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

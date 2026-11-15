@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/webpack-portainer__type-loading-button-root-cause"
+version = "1.0.0"
+description = "`pnpm typecheck` started failing with a large number of errors across the app after a recent change to the shared button components. Find the root cause and fix it with a minimal change. Don't edit th"
+keywords = ["react", "agentic-react", "build-type-error", "webpack"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "webpack-portainer"
+source_task_id = "webpack-portainer/type-loading-button-root-cause"
+bundler = "webpack"
+framework = "React 17 SPA (AngularJS hybrid, UI-Router)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

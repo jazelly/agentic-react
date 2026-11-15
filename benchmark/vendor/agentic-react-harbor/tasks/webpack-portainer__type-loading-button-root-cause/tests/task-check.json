@@ -1,0 +1,37 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace typecheck",
+    "test": "pnpm --ignore-workspace exec vitest run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "only-changed",
+        "allow": [
+          "app/react/components/buttons/LoadingButton.tsx"
+        ]
+      },
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (webpack-portainer)"
+      },
+      {
+        "type": "cmd",
+        "run": "pnpm --ignore-workspace exec vitest run app/react/components/buttons/LoadingButton.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  }
+}

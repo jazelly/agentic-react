@@ -1,0 +1,31 @@
+{
+  "appDir": "apps/www",
+  "commands": {
+    "install": "pnpm install --frozen-lockfile",
+    "dev": "pnpm --filter jsoncrack-react build && pnpm --filter www dev",
+    "devUrl": "http://localhost:3000",
+    "build": "pnpm exec turbo run build --filter=www...",
+    "typecheck": "pnpm --filter jsoncrack-react build && pnpm --filter www exec tsc --noEmit"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "next.config.js",
+        "pattern": "asyncWebAssembly:\\s*true",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "next.config.js"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  }
+}

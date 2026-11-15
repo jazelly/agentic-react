@@ -1,0 +1,32 @@
+{
+  "id": "self/ui-dashboard-export-button",
+  "suite": "self",
+  "category": "ui-locate-edit",
+  "tags": [
+    "core10",
+    "pilot"
+  ],
+  "source": {
+    "derivedFrom": "benchmark/tasks/vite-shadcn-admin/ui-dashboard-export-button (satnaing/shadcn-admin, MIT)",
+    "license": "MIT (fixture authored for this benchmark)"
+  },
+  "prompt": "On the Dashboard page, the button next to the \"Dashboard\" heading says \"Download\". Change it to an outline-style button labelled \"Export report\". Don't change any other button.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/export-button.spec.ts"
+    ],
+    "component": [
+      "tests/component/export-button.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "The shadcn-admin dashboard is re-created as a framework-free mini admin app (layout, sidebar, header, tabs, stat cards, chart, recent sales, team table; 12 files, several buttons) so the locate-then-edit shape is preserved while the code runs on all 8 stacks. Regex checks from the native task became behavioral checks (role/name + data-variant) in a component test and a production-server E2E test."
+}

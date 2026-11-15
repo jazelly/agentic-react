@@ -1,0 +1,7 @@
+[
+  {
+    "file": "next.config.js",
+    "find": "    config.output.webassemblyModuleFilename = \"static/wasm/[modulehash].wasm\";\n    config.experiments = { asyncWebAssembly: true, layers: true };\n",
+    "replace": "    config.output.webassemblyModuleFilename = \"static/wasm/[modulehash].wasm\";\n"
+  }
+]

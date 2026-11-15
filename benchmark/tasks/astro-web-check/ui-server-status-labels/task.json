@@ -1,0 +1,42 @@
+{
+  "id": "astro-web-check/ui-server-status-labels",
+  "repo": "astro-web-check",
+  "category": "ui-locate-edit",
+  "prompt": "In the scan results, the \"Server Status\" card shows a row \"Is Up?\" with \"Online\"/\"Offline\". Rename the row to \"Status\" and show \"Up\"/\"Down\" instead.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/client/components/Results/ServerStatus.tsx",
+      "find": "<Row lbl=\"Is Up?\" val={serverStatus.isUp} yes=\"Online\" no=\"Offline\" />",
+      "replace": "<Row lbl=\"Status\" val={serverStatus.isUp} yes=\"Up\" no=\"Down\" />"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/client/components/Results/ServerStatus.tsx",
+        "pattern": "lbl=\"Status\"[^>]*yes=\"Up\"[^>]*no=\"Down\"",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/client/components/Results/ServerStatus.tsx",
+        "pattern": "Is Up\\?|\"Online\"|\"Offline\"",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/client/components/Results/ServerStatus.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

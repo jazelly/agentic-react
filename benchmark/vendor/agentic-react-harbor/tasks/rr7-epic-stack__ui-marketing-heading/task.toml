@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rr7-epic-stack__ui-marketing-heading"
+version = "1.0.0"
+description = "On the marketing home page, the big heading link reads \"The Epic Stack\". Change the visible text to \"Epic Notes\" but keep the link target."
+keywords = ["react", "agentic-react", "ui-locate-edit", "vite"]
+
+[metadata]
+category = "ui-locate-edit"
+repo_id = "rr7-epic-stack"
+source_task_id = "rr7-epic-stack/ui-marketing-heading"
+bundler = "vite"
+framework = "React Router v7 framework mode (SSR, loaders/actions) + Express + Prisma/SQLite"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

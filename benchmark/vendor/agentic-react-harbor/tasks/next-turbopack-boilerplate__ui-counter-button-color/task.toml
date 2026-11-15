@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/next-turbopack-boilerplate__ui-counter-button-color"
+version = "1.0.0"
+description = "On the /counter page, make the Increment button green (Tailwind `bg-emerald-600`, hover `bg-emerald-700`) instead of blue. Keep the focus-ring and disabled styles."
+keywords = ["react", "agentic-react", "ui-locate-edit", "turbopack"]
+
+[metadata]
+category = "ui-locate-edit"
+repo_id = "next-turbopack-boilerplate"
+source_task_id = "next-turbopack-boilerplate/ui-counter-button-color"
+bundler = "turbopack"
+framework = "Next.js 16.4 App Router (RSC, next-intl, Drizzle + PGlite, Clerk)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

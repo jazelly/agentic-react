@@ -1,0 +1,35 @@
+{
+  "id": "next-evals/agent-056-status-display",
+  "suite": "next-evals",
+  "category": "runtime-logic",
+  "tags": [
+    "core10",
+    "pilot"
+  ],
+  "source": {
+    "repo": "https://github.com/vercel/next.js",
+    "path": "evals/evals/agent-056-agent-feedback-routine-debugging",
+    "ref": "canary",
+    "license": "MIT",
+    "upstreamPrompt": "The status page says the API is unavailable even though its data marks it as operational. Fix the display logic and make sure the production build still passes."
+  },
+  "prompt": "The status page says the API is unavailable even though its data marks it as operational. Fix the display logic and make sure the production build still passes.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/status.spec.ts"
+    ],
+    "component": [
+      "tests/component/status.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "Core is framework-free (a status component), so it runs unchanged on all 8 stacks. Upstream page.tsx became src/ui/App.tsx. Upstream EVAL.ts asserted a regex on app/page.tsx plus 'agent did not run `next feedback`' (transcript check, Next-only) -> replaced by a behavioral E2E check on the production server + a component test; the transcript check is dropped (N/A outside Next)."
+}
