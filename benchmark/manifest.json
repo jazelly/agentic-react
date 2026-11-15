@@ -157,7 +157,8 @@
       },
       "harbor": {
         "nodeImage": "node:24-bookworm",
-        "nodeImageWhy": "pinned repo engines.node is >=24"
+        "nodeImageWhy": "pinned repo engines.node is >=24",
+        "nextTypegen": true
       },
       "engines": {
         "node": ">=24"

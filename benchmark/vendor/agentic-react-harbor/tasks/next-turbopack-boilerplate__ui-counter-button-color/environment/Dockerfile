@@ -41,6 +41,11 @@ COPY prefetch-google-fonts.mjs /opt/bench/prefetch-google-fonts.mjs
 RUN node /opt/bench/prefetch-google-fonts.mjs --out /opt/bench --app "/app"
 ENV NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/opt/bench/mocked-google-fonts.cjs
 
+# Generate next-env.d.ts + .next/types (not committed upstream).
+WORKDIR /app
+RUN npx next typegen
+WORKDIR /app
+
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.
 RUN git config user.email bench@local \
  && git config user.name bench \
