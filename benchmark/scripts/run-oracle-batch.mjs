@@ -3,8 +3,10 @@
  * Run Harbor oracle on control (all tasks) and agentic (overlay-supported only).
  * Usage:
  *   node scripts/run-oracle-batch.mjs [--variant control|agentic|both] [--filter substr] [--concurrency N]
+ *                                    [--skip-ok] [--skip-bases]
  *
- * Writes jobs/oracle-<variant>/ and a CSV summary under experiments/oracle-rewards.csv
+ * Ensures shared repo base images exist, then runs trials.
+ * Writes jobs/oracle-<variant>/, experiments/oracle-rewards.csv, experiments/oracle-timings.csv
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,11 +31,19 @@ const arg = (k, d) => {
 const variantSel = arg('variant', 'both');
 const filter = arg('filter', '');
 const concurrency = Number(arg('concurrency', '2'));
-// Default: all 32 agentic trees (overlay or agentic≡control). Pass --overlay-only to skip ≡control.
 const overlayOnly = args.includes('--overlay-only');
-// Reuse existing jobs/*/…/reward.txt == 1 (avoids re-building passed images).
 const skipOk = args.includes('--skip-ok');
+const skipBases = args.includes('--skip-bases');
 const harborBin = path.join(BENCH, '.venv/bin/harbor');
+
+if (!skipBases) {
+  console.log('ensuring repo base images…');
+  const br = spawnSync(process.execPath, [path.join(BENCH, 'scripts/build-repo-bases.mjs')], {
+    cwd: BENCH,
+    stdio: 'inherit',
+  });
+  if (br.status !== 0) process.exit(br.status ?? 1);
+}
 
 function listTasks(variant) {
   const dir = path.join(variantsRoot, variant);
@@ -50,7 +60,6 @@ function listTasks(variant) {
 }
 
 function readReward(jobDir) {
-  // Harbor writes under jobs/<job>/.../verifier/reward.txt — search recursively
   const stack = [jobDir];
   while (stack.length) {
     const cur = stack.pop();
@@ -65,12 +74,47 @@ function readReward(jobDir) {
       }
       if (st.isDirectory()) stack.push(p);
       else if (name === 'reward.txt') {
-        const v = fs.readFileSync(p, 'utf8').trim();
-        return Number(v);
+        return Number(fs.readFileSync(p, 'utf8').trim());
       }
     }
   }
   return null;
+}
+
+function readHarborTiming(jobDir) {
+  // Prefer trial result.json started_at/finished_at + environment_setup span.
+  const stack = [jobDir];
+  while (stack.length) {
+    const cur = stack.pop();
+    if (!fs.existsSync(cur)) continue;
+    for (const name of fs.readdirSync(cur)) {
+      const p = path.join(cur, name);
+      let st;
+      try {
+        st = fs.statSync(p);
+      } catch {
+        continue;
+      }
+      if (st.isDirectory()) stack.push(p);
+      else if (name === 'result.json') {
+        try {
+          const j = JSON.parse(fs.readFileSync(p, 'utf8'));
+          if (!j.started_at || !j.finished_at) continue;
+          const total =
+            (Date.parse(j.finished_at) - Date.parse(j.started_at)) / 1000;
+          const env = j.environment_setup || {};
+          const envS =
+            env.started_at && env.finished_at
+              ? (Date.parse(env.finished_at) - Date.parse(env.started_at)) / 1000
+              : null;
+          return { total_s: total, env_setup_s: envS };
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+  }
+  return { total_s: null, env_setup_s: null };
 }
 
 function runOne(variant, slug) {
@@ -79,28 +123,41 @@ function runOne(variant, slug) {
   if (skipOk) {
     const prev = readReward(out);
     if (prev === 1) {
+      const timing = readHarborTiming(out);
       console.log(`[${variant}] SKIP ${slug} reward=1 (existing)`);
-      return { variant, slug, reward: 1, status: 0, ok: true, skipped: true };
+      return {
+        variant,
+        slug,
+        reward: 1,
+        status: 0,
+        ok: true,
+        skipped: true,
+        wall_s: 0,
+        ...timing,
+      };
     }
   }
   fs.rmSync(out, { recursive: true, force: true });
   fs.mkdirSync(path.dirname(out), { recursive: true });
   console.log(`[${variant}] START ${slug}`);
+  const t0 = Date.now();
   const r = spawnSync(
     harborBin,
     ['run', '-a', 'oracle', '-p', taskPath, '-o', out, '-y', '-n', '1'],
     { cwd: BENCH, encoding: 'utf8', env: process.env, timeout: 3 * 60 * 60 * 1000 },
   );
+  const wall_s = (Date.now() - t0) / 1000;
   const reward = readReward(out);
+  const timing = readHarborTiming(out);
   const ok = reward === 1;
   console.log(
-    `[${variant}] ${ok ? 'PASS' : 'FAIL'} ${slug} reward=${reward} status=${r.status}${r.error ? ' err=' + r.error.message : ''}`,
+    `[${variant}] ${ok ? 'PASS' : 'FAIL'} ${slug} reward=${reward} status=${r.status} wall=${wall_s.toFixed(1)}s env=${timing.env_setup_s?.toFixed?.(1) ?? '?'}s${r.error ? ' err=' + r.error.message : ''}`,
   );
   if (!ok) {
     const tail = `${r.stdout ?? ''}${r.stderr ?? ''}`.slice(-2000);
     if (tail) console.log(tail);
   }
-  return { variant, slug, reward, status: r.status, ok };
+  return { variant, slug, reward, status: r.status, ok, skipped: false, wall_s, ...timing };
 }
 
 async function runPool(items, worker) {
@@ -130,12 +187,32 @@ const results = await runPool(jobs, ({ variant, slug }) =>
   Promise.resolve().then(() => runOne(variant, slug)),
 );
 
+fs.mkdirSync(path.join(BENCH, 'experiments'), { recursive: true });
 const summaryPath = path.join(BENCH, 'experiments', 'oracle-rewards.csv');
-fs.mkdirSync(path.dirname(summaryPath), { recursive: true });
 const lines = ['variant,task,reward,ok'];
 for (const r of results) lines.push(`${r.variant},${r.slug},${r.reward ?? ''},${r.ok ? 1 : 0}`);
 fs.writeFileSync(summaryPath, lines.join('\n') + '\n');
 console.log(`wrote ${summaryPath}`);
+
+const timingsPath = path.join(BENCH, 'experiments', 'oracle-timings.csv');
+const tlines = ['variant,task,reward,ok,skipped,wall_s,total_s,env_setup_s'];
+for (const r of results) {
+  tlines.push(
+    [
+      r.variant,
+      r.slug,
+      r.reward ?? '',
+      r.ok ? 1 : 0,
+      r.skipped ? 1 : 0,
+      r.wall_s ?? '',
+      r.total_s ?? '',
+      r.env_setup_s ?? '',
+    ].join(','),
+  );
+}
+fs.writeFileSync(timingsPath, tlines.join('\n') + '\n');
+console.log(`wrote ${timingsPath}`);
+
 const failed = results.filter((r) => !r.ok);
 console.log(`done: ${results.length - failed.length}/${results.length} reward=1`);
 if (failed.length) {

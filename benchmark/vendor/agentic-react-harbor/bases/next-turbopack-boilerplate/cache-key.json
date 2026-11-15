@@ -1,0 +1,7 @@
+{
+  "repoId": "next-turbopack-boilerplate",
+  "sha": "b83157a8018f55b926a3c25a4b7a7e14b0dfbc35",
+  "key": "96237baea691",
+  "image": "agentic-react/base-next-turbopack-boilerplate:96237baea691",
+  "nodeImage": "node:24-bookworm"
+}

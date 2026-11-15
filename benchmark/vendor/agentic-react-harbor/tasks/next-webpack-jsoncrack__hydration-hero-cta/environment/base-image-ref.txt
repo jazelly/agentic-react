@@ -1,0 +1,1 @@
+agentic-react/base-next-webpack-jsoncrack:c2afa5d5b7c0

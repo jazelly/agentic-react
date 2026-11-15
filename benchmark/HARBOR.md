@@ -8,7 +8,9 @@ This directory keeps the original `task.json` harness (`scripts/run.mjs`, `valid
 benchmark/
 ├── tasks/…/task.json              # source of truth (unchanged)
 ├── harbor-runtime/                # apply-edits.mjs, check-runner.mjs (copied into each Harbor task)
-├── vendor/agentic-react-harbor/   # generated Harbor tasks (committed; regenerate with convert)
+├── vendor/agentic-react-harbor/
+│   ├── bases/<repo>/              # shared repo Dockerfiles (clone+install+browsers)
+│   └── tasks/<repo>__<task>/      # thin task packages (FROM base + setup edits)
 ├── work/variants/agentic-react/   # control + agentic (gitignored; prepare-variants)
 ├── arms/agentic/<repo>.json       # agentic-react overlay per repo
 ├── suites.json                    # primase registry
@@ -20,8 +22,9 @@ benchmark/
 
 ```bash
 cd benchmark
-node scripts/convert-to-harbor.mjs          # task.json → vendor/agentic-react-harbor/tasks/
-node scripts/prepare-variants.mjs           # → work/variants/agentic-react/{control,agentic}/
+node scripts/convert-to-harbor.mjs          # tasks + bases/<repo>/Dockerfile
+node scripts/build-repo-bases.mjs           # docker build/tag agentic-react/base-<repo>:<key>
+node scripts/prepare-variants.mjs           # builds bases if needed → work/variants/…/{control,agentic}/
 
 python3 -m venv .venv && .venv/bin/pip install -r requirements-primase.txt
 .venv/bin/primase plan     experiments/cursor-smoke.yaml
@@ -77,13 +80,25 @@ Each Harbor Dockerfile uses `manifest.harbor.nodeImage` so the image satisfies t
 
 Local `validate-tasks --oracle` calls `assertHostNodeForRepo` and fails fast when the host Node major is outside that range (e.g. jsoncrack on Node 22).
 
+### Shared repo base images
+
+Heavy work (git clone @ pinned SHA, package install, `preInstall`/`postInstall`, Google-font prefetch, `next typegen`, Playwright chromium when any task for that repo needs browsers) lives in **one base image per repo**:
+
+- Dockerfile: `vendor/agentic-react-harbor/bases/<repo>/Dockerfile`
+- Tag: `agentic-react/base-<repo>:<cacheKey>`
+- `cacheKey` = first 12 hex chars of `sha256(Dockerfile + repo.sha + lockfiles under repos/<repo>/)`
+- Builder: `node scripts/build-repo-bases.mjs` (skips when the tag already exists locally; `--force` rebuilds)
+- `prepare-variants.mjs` and `run-oracle-batch.mjs` call the builder unless `--skip-bases`
+
+Each **task** Dockerfile is thin: `FROM` that base, apply `setup-edits.json`, commit the scratch baseline. The **agentic** variant adds another thin layer (install `@agentic-react/*`, overlay edits, AGENTS snippet) before the baseline. Tasks for the same repo share the base and only rebuild when SHA / lockfile / base Dockerfile inputs change. Grading (`check.steps` / `check-runner.mjs`) is unchanged.
+
 ### Playwright
 
-Tasks whose required checks use Vitest browser mode (or a non-optional `browser` step) install Chromium in the image (`playwright install chromium --with-deps`). Local oracle auto-runs the repo's `test:browser:install` (or `playwright install`) when the cache is empty.
+When any required check for a repo uses Vitest browser mode (or a non-optional `browser` step), Chromium is installed **in the repo base** (`playwright install chromium --with-deps`). Local oracle auto-runs the repo's `test:browser:install` (or `playwright install`) when the cache is empty.
 
 ### Harbor post-install
 
-`manifest.harbor.postInstall` (shell commands) runs after package install and before the scratch baseline commit. Local `validate-tasks --oracle` mirrors this via `ensureRepoReady`.
+`manifest.harbor.postInstall` (shell commands) runs in the **repo base** after package install. Local `validate-tasks --oracle` mirrors pre/post install via `ensureRepoReady`.
 
 | Repo | Notes |
 |------|-------|
@@ -92,7 +107,7 @@ Tasks whose required checks use Vitest browser mode (or a non-optional `browser`
 | `tanstack-start-trellaux` | `preInstall` pins `@tanstack/react-start` to npm `1.169.5` (SHA asks for unpublished `^1.169.6`) |
 | `webpack-portainer` | install uses `--no-frozen-lockfile` (`pnpmfileChecksum` vs `configDependencies` mismatch) |
 
-Setup edits are applied **after** install/postInstall (and typegen/fonts/playwright) so injected build breaks do not fail the image build; the scratch baseline commit still includes the bug.
+Setup edits are applied in the **thin task image** (after the shared base) so injected build breaks do not fail the base build; the scratch baseline commit still includes the bug.
 
 ## xstack
 
@@ -104,12 +119,13 @@ Setup edits are applied **after** install/postInstall (and typegen/fonts/playwri
 
 ```bash
 # Full Harbor oracle matrix (control × 32 + agentic × 32); needs Docker
-node scripts/prepare-variants.mjs
-node scripts/run-oracle-batch.mjs --variant both --concurrency 2
+node scripts/prepare-variants.mjs          # also builds/caches repo bases
+node scripts/run-oracle-batch.mjs --variant both --concurrency 4
+# --skip-ok reuses jobs with reward=1; timings → experiments/oracle-timings.csv
 ```
 
 ## Validation notes
 
-See the PR / `experiments/oracle-rewards.csv` for the full 32×2 reward table. Local host artefacts (wrong Node major, missing Playwright browsers before the auto-install landed) are not grading bugs when Harbor reward is 1.
+See the PR / `experiments/oracle-rewards.csv` for the full 32×2 reward table and `experiments/oracle-timings.csv` for per-task wall / env_setup seconds (before vs after base-image caching). Local host artefacts (wrong Node major, missing Playwright browsers before the auto-install landed) are not grading bugs when Harbor reward is 1.
 
 No model trials. No secrets committed.

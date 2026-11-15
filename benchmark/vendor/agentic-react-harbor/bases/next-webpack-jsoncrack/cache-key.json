@@ -1,0 +1,7 @@
+{
+  "repoId": "next-webpack-jsoncrack",
+  "sha": "a46d0d0adb098e12e577a083e87ead7f61f90098",
+  "key": "c2afa5d5b7c0",
+  "image": "agentic-react/base-next-webpack-jsoncrack:c2afa5d5b7c0",
+  "nodeImage": "node:24-bookworm"
+}

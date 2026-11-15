@@ -1,0 +1,7 @@
+{
+  "repoId": "webpack-portainer",
+  "sha": "66c22cf97b3afb4a3968753f7a70ac1924ec4ef0",
+  "key": "a7ff2f7810dd",
+  "image": "agentic-react/base-webpack-portainer:a7ff2f7810dd",
+  "nodeImage": "node:22-bookworm"
+}

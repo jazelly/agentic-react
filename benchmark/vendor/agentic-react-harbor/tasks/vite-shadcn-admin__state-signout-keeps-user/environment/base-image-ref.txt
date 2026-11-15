@@ -1,0 +1,1 @@
+agentic-react/base-vite-shadcn-admin:6f2ff9a88a8a

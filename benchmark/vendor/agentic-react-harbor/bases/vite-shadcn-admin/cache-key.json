@@ -1,0 +1,7 @@
+{
+  "repoId": "vite-shadcn-admin",
+  "sha": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+  "key": "6f2ff9a88a8a",
+  "image": "agentic-react/base-vite-shadcn-admin:6f2ff9a88a8a",
+  "nodeImage": "node:24-bookworm"
+}

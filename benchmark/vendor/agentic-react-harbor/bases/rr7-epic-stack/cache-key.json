@@ -1,0 +1,7 @@
+{
+  "repoId": "rr7-epic-stack",
+  "sha": "893610db76127fb5a5f1ffa786bee6b050637429",
+  "key": "764c6d30a24e",
+  "image": "agentic-react/base-rr7-epic-stack:764c6d30a24e",
+  "nodeImage": "node:22-bookworm"
+}

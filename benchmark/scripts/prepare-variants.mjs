@@ -4,13 +4,14 @@
  *   work/variants/agentic-react/control/<task>  = converted Harbor task (stock)
  *   work/variants/agentic-react/agentic/<task>  = same + arms/agentic overlay when available
  *
- * Agentic arm (when arms/agentic/<repo>.json exists):
+ * Agentic arm (when arms/agentic/<repo>.json exists) is a thin layer on the task image:
  *   - installs @agentic-react/<adapter>@pinned during image build
  *   - applies overlay edits before the bench-baseline commit
  *   - appends AGENTS.snippet.md into the workspace
+ * Repo clone/deps/playwright live in the shared base image (see build-repo-bases.mjs).
  *
  * Usage:
- *   node scripts/prepare-variants.mjs [--filter <substr>] [--out work/variants]
+ *   node scripts/prepare-variants.mjs [--filter <substr>] [--out work/variants] [--skip-bases]
  *   node scripts/convert-to-harbor.mjs   # run first (or this script runs it)
  */
 import fs from 'node:fs';
@@ -28,6 +29,7 @@ const outRoot = path.resolve(BENCH, arg('out', 'work/variants/agentic-react'));
 const vendorTasks = path.join(BENCH, 'vendor/agentic-react-harbor/tasks');
 const armsDir = path.join(BENCH, 'arms/agentic');
 const snippetPath = path.join(armsDir, 'AGENTS.snippet.md');
+const skipBases = args.includes('--skip-bases');
 
 // Ensure Harbor tasks exist
 if (!fs.existsSync(vendorTasks) || fs.readdirSync(vendorTasks).length === 0) {
@@ -37,6 +39,15 @@ if (!fs.existsSync(vendorTasks) || fs.readdirSync(vendorTasks).length === 0) {
     stdio: 'inherit',
   });
   if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+// Build/cache shared per-repo base images so task FROM lines resolve locally.
+if (!skipBases) {
+  console.log('building/caching repo base images…');
+  const baseArgs = [path.join(BENCH, 'scripts/build-repo-bases.mjs')];
+  if (filter) baseArgs.push('--filter', filter.split('__')[0]);
+  const br = spawnSync(process.execPath, baseArgs, { cwd: BENCH, stdio: 'inherit' });
+  if (br.status !== 0) process.exit(br.status ?? 1);
 }
 
 const overlayStatus = {
@@ -81,8 +92,9 @@ function agenticDockerfile(baseDf, repo, overlay) {
   }
 
   const workdir = appDir === '.' ? '/app' : `/app/${appDir}`;
+  // Thin overlay on top of the task image (which itself FROMs the shared repo base).
   const block = [
-    '# --- agentic-react overlay (arm B) ---',
+    '# --- agentic-react overlay (arm B; thin layer on task image) ---',
     `COPY agentic-overlay-edits.json /opt/bench/agentic-overlay-edits.json`,
     `COPY AGENTS.snippet.md /opt/bench/AGENTS.snippet.md`,
     `WORKDIR ${workdir}`,

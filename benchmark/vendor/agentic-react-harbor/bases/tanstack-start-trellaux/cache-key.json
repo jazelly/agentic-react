@@ -1,0 +1,7 @@
+{
+  "repoId": "tanstack-start-trellaux",
+  "sha": "e7358c36d8cde5275fc3c32cd5fd5bbf7ecc30f9",
+  "key": "d44ae96ff1ee",
+  "image": "agentic-react/base-tanstack-start-trellaux:d44ae96ff1ee",
+  "nodeImage": "node:24-bookworm"
+}
