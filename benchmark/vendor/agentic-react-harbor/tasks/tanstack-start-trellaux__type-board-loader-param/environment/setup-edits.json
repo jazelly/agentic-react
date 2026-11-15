@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/routes/boards.$boardId.tsx",
+    "find": "boardQueries.detail(params.boardId)",
+    "replace": "boardQueries.detail(params.id)"
+  }
+]

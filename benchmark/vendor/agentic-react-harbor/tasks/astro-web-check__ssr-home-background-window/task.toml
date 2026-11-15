@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/astro-web-check__ssr-home-background-window"
+version = "1.0.0"
+description = "`astro build` fails while prerendering `/` with `ReferenceError: window is not defined`, coming from the animated home-page background (a React island). Keep the background working in the browser, but"
+keywords = ["react", "agentic-react", "ssr-error", "vite"]
+
+[metadata]
+category = "ssr-error"
+repo_id = "astro-web-check"
+source_task_id = "astro-web-check/ssr-home-background-window"
+bundler = "vite"
+framework = "Astro 7 + @astrojs/react islands (client:only) + Svelte, Node adapter"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

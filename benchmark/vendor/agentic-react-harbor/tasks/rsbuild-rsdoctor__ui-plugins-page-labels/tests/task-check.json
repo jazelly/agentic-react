@@ -1,0 +1,38 @@
+{
+  "appDir": "packages/client",
+  "commands": {
+    "install": "corepack pnpm install --frozen-lockfile",
+    "dev": "corepack pnpm --filter @rsdoctor/client dev",
+    "build": "corepack pnpm --filter @rsdoctor/client... build",
+    "typecheck": "corepack pnpm --filter @rsdoctor/client exec tsc --noEmit -p tsconfig.json",
+    "test": "corepack pnpm --filter @rsdoctor/client test"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": "title=\"Plugin Overview\"",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": ">\\s*Hook names\\s*<",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": "Plugins Overall|>\\s*Hooks\\s*<",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/pages/Plugins/index.tsx"
+        ]
+      }
+    ]
+  }
+}

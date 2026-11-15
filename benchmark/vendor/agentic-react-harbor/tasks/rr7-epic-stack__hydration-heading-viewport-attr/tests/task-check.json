@@ -1,0 +1,41 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "setup": "npm run setup  # build + prisma migrate + playwright install",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build",
+    "typecheck": "npm run typecheck",
+    "test": "npx vitest run",
+    "e2e": "npm run test:e2e:run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "data-viewport",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "typeof window === 'undefined' \\? 'server'",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "useEffect|useHydrated|useIsHydrated|ClientOnly|useSyncExternalStore",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (rr7-epic-stack)"
+      }
+    ]
+  }
+}

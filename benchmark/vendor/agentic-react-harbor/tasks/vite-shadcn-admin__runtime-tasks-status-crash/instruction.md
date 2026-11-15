@@ -1,0 +1,1 @@
+Opening /tasks crashes the app with `TypeError: Cannot read properties of undefined (reading 'icon')` and the route error boundary is shown. Fix it so the Status column shows each task's status again; a task with an unknown status should render an empty cell instead of crashing.

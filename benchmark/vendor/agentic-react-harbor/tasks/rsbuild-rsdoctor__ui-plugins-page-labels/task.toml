@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rsbuild-rsdoctor__ui-plugins-page-labels"
+version = "1.0.0"
+description = "On the Plugins page, rename the main card title from \"Plugins Overall\" to \"Plugin Overview\", and change the \"Hooks\" filter label next to the hook selector to \"Hook names\". Nothing else should change."
+keywords = ["react", "agentic-react", "ui-locate-edit", "rsbuild"]
+
+[metadata]
+category = "ui-locate-edit"
+repo_id = "rsbuild-rsdoctor"
+source_task_id = "rsbuild-rsdoctor/ui-plugins-page-labels"
+bundler = "rsbuild"
+framework = "React SPA (antd)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

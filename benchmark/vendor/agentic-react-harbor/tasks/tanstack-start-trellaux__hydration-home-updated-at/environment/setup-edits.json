@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/routes/index.tsx",
+    "find": "      <h1 className=\"text-2xl font-black\">Boards</h1>",
+    "replace": "      <h1 className=\"text-2xl font-black\">\n        Boards{' '}\n        <span className=\"text-xs text-slate-400\">\n          updated {new Date().toLocaleTimeString()}\n        </span>\n      </h1>"
+  }
+]

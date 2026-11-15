@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/vite-shadcn-admin__state-signout-keeps-user"
+version = "1.0.0"
+description = "After clicking \"Sign out\" in the profile dropdown, the app still shows the previous user's name/email (e.g. in the sidebar) until a full page reload. The access-token cookie is cleared correctly. Fix "
+keywords = ["react", "agentic-react", "state-bug", "vite"]
+
+[metadata]
+category = "state-bug"
+repo_id = "vite-shadcn-admin"
+source_task_id = "vite-shadcn-admin/state-signout-keeps-user"
+bundler = "vite"
+framework = "React SPA + TanStack Router"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,1 @@
+The home page logs a React hydration warning about a mismatched `data-viewport` attribute on the main heading. Analytics needs that attribute for viewport bucketing, but it's fine if it only appears after hydration. Fix the warning without dropping the attribute.

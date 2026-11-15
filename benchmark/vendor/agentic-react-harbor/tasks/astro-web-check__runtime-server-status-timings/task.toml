@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/astro-web-check__runtime-server-status-timings"
+version = "1.0.0"
+description = "For some targets the Server Status card crashes the results view with `TypeError: Cannot read properties of undefined (reading 'dns')` — the API omits `timings` when the timing probe fails. Fix it so "
+keywords = ["react", "agentic-react", "runtime-error", "vite"]
+
+[metadata]
+category = "runtime-error"
+repo_id = "astro-web-check"
+source_task_id = "astro-web-check/runtime-server-status-timings"
+bundler = "vite"
+framework = "Astro 7 + @astrojs/react islands (client:only) + Svelte, Node adapter"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

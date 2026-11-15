@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/pages/BundleSize/components/asset-path.ts",
+    "find": "assetPath.replace('\\\\', '/');",
+    "replace": "assetPath.replace(/\\\\/g, '/');"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "appDir": "apps/www",
+  "commands": {
+    "install": "pnpm install --frozen-lockfile",
+    "dev": "pnpm --filter jsoncrack-react build && pnpm --filter www dev",
+    "devUrl": "http://localhost:3000",
+    "build": "pnpm exec turbo run build --filter=www...",
+    "typecheck": "pnpm --filter jsoncrack-react build && pnpm --filter www exec tsc --noEmit"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/layout/Landing/HeroSection.tsx",
+        "pattern": "typeof window",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/layout/Landing/HeroSection.tsx",
+        "pattern": "Go to Editor",
+        "expect": true
+      }
+    ]
+  }
+}

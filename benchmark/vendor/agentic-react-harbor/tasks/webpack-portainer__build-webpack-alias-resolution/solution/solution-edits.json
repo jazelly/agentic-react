@@ -1,0 +1,7 @@
+[
+  {
+    "file": "webpack/webpack.common.js",
+    "find": "    extensions: ['.js', '.ts', '.tsx'],\n",
+    "replace": "    extensions: ['.js', '.ts', '.tsx'],\n    tsconfig: path.resolve(projectRoot, 'tsconfig.json'),\n"
+  }
+]

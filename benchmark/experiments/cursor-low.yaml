@@ -1,0 +1,32 @@
+# Default experiment: tier low only × 2 models × 2 variants × 3 trials.
+name: cursor-low
+description: agentic-react Harbor tasks (low tier) with cursor-cli; control=stock / agentic=adapter overlay
+root: ..
+env_file: ~/.config/agentic-node/bench.env
+secrets: [CURSOR_API_KEY]
+agent:
+  name: cursor-cli
+  plugin:
+    included_models: [composer-2.5, grok-4.7-low, grok-4.7-medium, grok-4.7-high, grok-4.7-xhigh]
+    allow_non_included_models: false
+models:
+  - {id: composer-2.5, label: Composer 2.5}
+  - {id: grok-4.7-high, label: Grok 4.7 High}
+variants:
+  control:
+    description: stock React app
+    dir: control
+  agentic:
+    description: agentic-react adapter overlay (no-op image when repo overlay missing)
+    dir: agentic
+baseline: control
+tiers: [low]
+suites:
+  - {id: agentic-react, backend: harbor}
+trials: 3
+concurrency: 1
+network: open
+budget:
+  stop_on_billed_cost: true
+  max_reported_cost_usd: 0
+  max_estimated_cost_usd: 50

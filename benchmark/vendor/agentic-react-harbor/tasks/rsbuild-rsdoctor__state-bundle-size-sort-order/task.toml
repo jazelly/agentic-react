@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rsbuild-rsdoctor__state-bundle-size-sort-order"
+version = "1.0.0"
+description = "On the Bundle Size page, sorting the module tree by size puts the smallest modules/folders first. It should be largest first (the \"original order\" option must stay unchanged)."
+keywords = ["react", "agentic-react", "state-bug", "rsbuild"]
+
+[metadata]
+category = "state-bug"
+repo_id = "rsbuild-rsdoctor"
+source_task_id = "rsbuild-rsdoctor/state-bundle-size-sort-order"
+bundler = "rsbuild"
+framework = "React SPA (antd)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,26 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "yarn install --frozen-lockfile",
+    "installNote": "engines.node is ^22.23.4 || ^24.16.0 || >=26.3.0; Node 24.15 needs an upgrade or --ignore-engines.",
+    "dev": "yarn dev:astro",
+    "devUrl": "http://localhost:4321",
+    "build": "yarn build",
+    "typecheck": "yarn typecheck"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/pages/index.astro",
+        "pattern": "<HomeBackground\\b",
+        "expect": true
+      },
+      {
+        "type": "cmd",
+        "run": "npx astro build",
+        "timeoutSec": 1200
+      }
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+With stats generated on Windows (paths like `static\\js\\main.js`), the Bundle Size page can't match assets: asset titles fall back to bare file names instead of resolving the asset. POSIX paths work. Fix the path handling.

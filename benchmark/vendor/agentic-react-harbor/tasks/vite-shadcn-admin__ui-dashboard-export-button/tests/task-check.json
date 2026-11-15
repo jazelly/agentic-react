@@ -1,0 +1,40 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devUrl": "http://localhost:5173",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace exec tsc -b",
+    "test": "pnpm --ignore-workspace test",
+    "testNote": "Vitest browser mode (playwright chromium). One-time: pnpm --ignore-workspace test:browser:install"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/dashboard/index.tsx",
+        "pattern": "<Button[^>]*variant=\\{?['\"]outline['\"]\\}?[^>]*>\\s*Export report\\s*</Button>",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/features/dashboard/index.tsx",
+        "pattern": ">\\s*Download\\s*<",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/features/dashboard/index.tsx"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  }
+}

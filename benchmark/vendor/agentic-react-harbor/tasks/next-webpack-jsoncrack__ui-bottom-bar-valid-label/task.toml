@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/next-webpack-jsoncrack__ui-bottom-bar-valid-label"
+version = "1.0.0"
+description = "In the editor's bottom status bar, the validity indicator next to the check icon says \"Valid\". Change it to \"Valid JSON\". Leave the \"Invalid\" state alone."
+keywords = ["react", "agentic-react", "ui-locate-edit", "webpack"]
+
+[metadata]
+category = "ui-locate-edit"
+repo_id = "next-webpack-jsoncrack"
+source_task_id = "next-webpack-jsoncrack/ui-bottom-bar-valid-label"
+bundler = "webpack"
+framework = "Next.js 16.3 Pages Router, output: export (SSG + hydration)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

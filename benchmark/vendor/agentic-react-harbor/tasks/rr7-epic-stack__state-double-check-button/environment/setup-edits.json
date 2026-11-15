@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/utils/misc.tsx",
+    "find": "\t\t\tdoubleCheck\n\t\t\t\t? undefined\n",
+    "replace": "\t\t\tdoubleCheck\n\t\t\t\t? (e) => e.preventDefault()\n"
+  }
+]

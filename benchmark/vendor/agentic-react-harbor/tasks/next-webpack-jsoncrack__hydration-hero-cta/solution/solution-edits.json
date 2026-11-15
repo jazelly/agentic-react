@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/layout/Landing/HeroSection.tsx",
+    "find": "              fw=\"500\"\n              mt=\"sm\"\n            >\n              {typeof window !== \"undefined\" && window.innerWidth < 400 ? \"Open\" : \"Go to Editor\"}\n",
+    "replace": "              fw=\"500\"\n              mt=\"sm\"\n            >\n              Go to Editor\n"
+  }
+]

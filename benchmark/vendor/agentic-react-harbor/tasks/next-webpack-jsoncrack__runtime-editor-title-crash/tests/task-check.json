@@ -1,0 +1,26 @@
+{
+  "appDir": "apps/www",
+  "commands": {
+    "install": "pnpm install --frozen-lockfile",
+    "dev": "pnpm --filter jsoncrack-react build && pnpm --filter www dev",
+    "devUrl": "http://localhost:3000",
+    "build": "pnpm exec turbo run build --filter=www...",
+    "typecheck": "pnpm --filter jsoncrack-react build && pnpm --filter www exec tsc --noEmit"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/editor/BottomBar.tsx",
+        "pattern": "if \\(data\\.name\\)",
+        "expect": false
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (next-webpack-jsoncrack)"
+      }
+    ]
+  }
+}

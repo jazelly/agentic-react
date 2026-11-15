@@ -1,0 +1,22 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "setup": "npm run setup  # build + prisma migrate + playwright install",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build",
+    "typecheck": "npm run typecheck",
+    "test": "npx vitest run",
+    "e2e": "npm run test:e2e:run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "npx vitest run app/utils/misc.use-double-check.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  }
+}

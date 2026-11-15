@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/pages/Plugins/index.tsx",
+    "find": "import { Sizes as Size } from '../../constants';",
+    "replace": "import { Size } from '../../constants';"
+  }
+]

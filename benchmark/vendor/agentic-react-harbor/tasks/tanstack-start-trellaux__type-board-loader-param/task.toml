@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/tanstack-start-trellaux__type-board-loader-param"
+version = "1.0.0"
+description = "Opening any board shows the error boundary instead of the board, and `pnpm build` fails at the `tsc --noEmit` step. Fix it."
+keywords = ["react", "agentic-react", "build-type-error", "vite"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "tanstack-start-trellaux"
+source_task_id = "tanstack-start-trellaux/type-board-loader-param"
+bundler = "vite"
+framework = "TanStack Start (SSR, server functions, TanStack Query, DnD board)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

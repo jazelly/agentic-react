@@ -1,0 +1,9 @@
+[
+  {
+    "file": "src/components/data-table/column-header.tsx",
+    "regex": true,
+    "all": true,
+    "find": "\\btitle\\b",
+    "replace": "label"
+  }
+]

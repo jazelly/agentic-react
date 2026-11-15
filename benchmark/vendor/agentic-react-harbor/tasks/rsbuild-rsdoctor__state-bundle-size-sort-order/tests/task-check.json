@@ -1,0 +1,19 @@
+{
+  "appDir": "packages/client",
+  "commands": {
+    "install": "corepack pnpm install --frozen-lockfile",
+    "dev": "corepack pnpm --filter @rsdoctor/client dev",
+    "build": "corepack pnpm --filter @rsdoctor/client... build",
+    "typecheck": "corepack pnpm --filter @rsdoctor/client exec tsc --noEmit -p tsconfig.json",
+    "test": "corepack pnpm --filter @rsdoctor/client test"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "corepack pnpm --filter @rsdoctor/client test -- module-tree-sort",
+        "timeoutSec": 600
+      }
+    ]
+  }
+}
