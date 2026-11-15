@@ -66,8 +66,18 @@ function AgenticReact(options: AgenticReactOptions = {}): Plugin {
 
     configureServer(viteDevServer: ViteDevServer) {
       const runtimeBridge = new RuntimeBridgeServer();
-      if (viteDevServer.httpServer) {
-        runtimeBridge.attach(viteDevServer.httpServer);
+      const middlewareHttpServer =
+        typeof viteDevServer.config.server.middlewareMode === 'object'
+          ? viteDevServer.config.server.middlewareMode.server
+          : undefined;
+      const bridgeHttpServer =
+        viteDevServer.httpServer ??
+        middlewareHttpServer ??
+        (typeof viteDevServer.config.server.hmr === 'object'
+          ? viteDevServer.config.server.hmr.server
+          : undefined);
+      if (bridgeHttpServer) {
+        runtimeBridge.attach(bridgeHttpServer);
       }
       registerSourceLookupHandler(runtimeBridge, viteDevServer.config.root);
       settingsEngine.registerBridge(runtimeBridge);
