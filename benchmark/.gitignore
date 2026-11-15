@@ -4,5 +4,11 @@ repos/
 runs/
 # Raw run results (commit curated summaries elsewhere if needed)
 results/
+# Primase / Harbor local state (regenerate with prepare-variants.mjs)
+work/
+jobs/
+.venv/
 node_modules/
 .DS_Store
+.env
+*.env

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/components/LocaleSwitcher.tsx",
+    "find": "          {elt.toUpperCase()}",
+    "replace": "          {typeof window === 'undefined' ? elt.toUpperCase() : elt}"
+  }
+]

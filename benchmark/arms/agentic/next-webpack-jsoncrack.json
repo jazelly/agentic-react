@@ -1,0 +1,16 @@
+{
+  "note": "Next.js webpack-mode adapter. MCP bridge defaults to http://127.0.0.1:51426/mcp. appDir=apps/www.",
+  "package": "@agentic-react/next",
+  "install": { "package": "@agentic-react/next@0.3.0", "dev": true },
+  "edits": [
+    {
+      "file": "next.config.js",
+      "find": "module.exports = configExport();",
+      "replace": "const withAgenticReactNext = require('@agentic-react/next').default;\nmodule.exports = withAgenticReactNext(configExport());"
+    }
+  ],
+  "agentConfig": {
+    "mcp": "http://127.0.0.1:51426/mcp",
+    "instructions": "arms/agentic/AGENTS.snippet.md"
+  }
+}

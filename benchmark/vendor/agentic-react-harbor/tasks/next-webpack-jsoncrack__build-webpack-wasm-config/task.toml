@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/next-webpack-jsoncrack__build-webpack-wasm-config"
+version = "1.0.0"
+description = "`next build --webpack` now fails with a WebAssembly-related webpack error after someone \"cleaned up\" next.config.js. Fix the config. We must stay on webpack (`--webpack`); don't switch to Turbopack."
+keywords = ["react", "agentic-react", "build-type-error", "webpack"]
+
+[metadata]
+category = "build-type-error"
+repo_id = "next-webpack-jsoncrack"
+source_task_id = "next-webpack-jsoncrack/build-webpack-wasm-config"
+bundler = "webpack"
+framework = "Next.js 16.3 Pages Router, output: export (SSG + hydration)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

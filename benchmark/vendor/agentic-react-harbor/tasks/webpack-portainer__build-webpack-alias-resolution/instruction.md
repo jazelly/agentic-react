@@ -1,0 +1,1 @@
+`pnpm build` (webpack) fails with hundreds of `Module not found: Error: Can't resolve '@@/...'` / `'@/...'` errors, while `pnpm typecheck` and the unit tests still pass. Fix the webpack setup so the path aliases resolve again. Don't rewrite the imports.

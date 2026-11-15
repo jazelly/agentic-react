@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/client/components/Results/ServerStatus.tsx",
+    "find": "<Row lbl=\"Is Up?\" val={serverStatus.isUp} yes=\"Online\" no=\"Offline\" />",
+    "replace": "<Row lbl=\"Status\" val={serverStatus.isUp} yes=\"Up\" no=\"Down\" />"
+  }
+]

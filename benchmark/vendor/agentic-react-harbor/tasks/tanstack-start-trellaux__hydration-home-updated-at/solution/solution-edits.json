@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/routes/index.tsx",
+    "find": "          updated {new Date().toLocaleTimeString()}",
+    "replace": "          updated <span suppressHydrationWarning>{new Date().toLocaleTimeString()}</span>"
+  }
+]

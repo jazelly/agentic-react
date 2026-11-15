@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/vite-shadcn-admin__ui-dashboard-export-button"
+version = "1.0.0"
+description = "On the Dashboard page, the button next to the \"Dashboard\" heading says \"Download\". Change it to an outline-style button labelled \"Export report\". Don't change any other button."
+keywords = ["react", "agentic-react", "ui-locate-edit", "vite"]
+
+[metadata]
+category = "ui-locate-edit"
+repo_id = "vite-shadcn-admin"
+source_task_id = "vite-shadcn-admin/ui-dashboard-export-button"
+bundler = "vite"
+framework = "React SPA + TanStack Router"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/components/CurrentCount.tsx",
+    "find": "  const count = result!.count;",
+    "replace": "  const count = result?.count ?? 0;"
+  }
+]

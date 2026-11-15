@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/components/CounterForm.tsx",
+    "find": "bg-blue-500 px-5 py-1 font-bold text-white hover:bg-blue-600",
+    "replace": "bg-emerald-600 px-5 py-1 font-bold text-white hover:bg-emerald-700"
+  }
+]

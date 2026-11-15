@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/components/Card.tsx",
+    "find": "              <div className=\"opacity-50 text-xs\">{order}</div>\n",
+    "replace": ""
+  }
+]

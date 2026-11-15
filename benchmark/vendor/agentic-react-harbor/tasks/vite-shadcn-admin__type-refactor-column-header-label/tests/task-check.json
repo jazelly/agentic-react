@@ -1,0 +1,41 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devUrl": "http://localhost:5173",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace exec tsc -b",
+    "test": "pnpm --ignore-workspace test",
+    "testNote": "Vitest browser mode (playwright chromium). One-time: pnpm --ignore-workspace test:browser:install"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "files": [
+          "src/**/*.tsx"
+        ],
+        "pattern": "<DataTableColumnHeader[^>]*\\btitle=",
+        "expect": false
+      },
+      {
+        "type": "regex",
+        "file": "src/components/data-table/column-header.tsx",
+        "pattern": "\\btitle\\b",
+        "expect": false
+      },
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  }
+}

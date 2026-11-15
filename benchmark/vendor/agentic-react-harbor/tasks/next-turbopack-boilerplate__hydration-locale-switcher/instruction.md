@@ -1,0 +1,1 @@
+Every page logs `Hydration failed because the server rendered text didn't match the client` and React re-renders the tree on the client. The component stack points at the language selector in the header. Fix the mismatch; the options should show upper-case locale codes (EN, FR).

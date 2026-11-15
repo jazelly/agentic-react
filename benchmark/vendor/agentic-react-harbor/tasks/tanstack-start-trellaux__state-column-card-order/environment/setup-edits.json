@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/components/Column.tsx",
+    "find": "() => [...items].sort((a, b) => a.order - b.order),",
+    "replace": "() => [...items].sort((a, b) => b.order - a.order),"
+  }
+]

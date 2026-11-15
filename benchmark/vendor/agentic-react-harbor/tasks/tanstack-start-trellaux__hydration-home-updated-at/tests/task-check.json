@@ -1,0 +1,35 @@
+{
+  "appDir": "examples/react/start-trellaux",
+  "commands": {
+    "install": "pnpm install --ignore-workspace",
+    "installNote": "No lockfile in the example dir (monorepo lock does not apply) -> resolution drifts. OPEN DECISION: freeze a lockfile under benchmark/locks/.",
+    "dev": "pnpm --ignore-workspace dev",
+    "devUrl": "http://localhost:3000",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace exec tsc --noEmit"
+  },
+  "commandsCwd": "appDir",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/routes/index.tsx",
+        "pattern": "updated",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/routes/index.tsx",
+        "pattern": "useEffect|useHydrated|ClientOnly|suppressHydrationWarning|useSyncExternalStore",
+        "expect": true
+      },
+      {
+        "type": "browser",
+        "optional": true,
+        "start": "@dev",
+        "url": "/",
+        "failOnConsole": "hydrat"
+      }
+    ]
+  }
+}

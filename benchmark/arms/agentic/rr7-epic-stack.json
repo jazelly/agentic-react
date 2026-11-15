@@ -1,0 +1,21 @@
+{
+  "note": "Vite adapter on React Router v7 (epic-stack). File uses tabs. MCP at the Vite/RR7 dev server /mcp.",
+  "package": "@agentic-react/vite",
+  "install": { "package": "@agentic-react/vite@0.3.0", "dev": true },
+  "edits": [
+    {
+      "file": "vite.config.ts",
+      "find": "import { iconsSpritesheet } from 'vite-plugin-icons-spritesheet'\n",
+      "replace": "import { iconsSpritesheet } from 'vite-plugin-icons-spritesheet'\nimport AgenticReact from '@agentic-react/vite'\n"
+    },
+    {
+      "file": "vite.config.ts",
+      "find": "\t\ticonsSpritesheet({\n",
+      "replace": "\t\tAgenticReact(),\n\t\ticonsSpritesheet({\n"
+    }
+  ],
+  "agentConfig": {
+    "mcp": "http://localhost:3000/mcp",
+    "instructions": "arms/agentic/AGENTS.snippet.md"
+  }
+}

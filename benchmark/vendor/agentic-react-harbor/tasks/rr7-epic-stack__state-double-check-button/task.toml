@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/rr7-epic-stack__state-double-check-button"
+version = "1.0.0"
+description = "Destructive buttons that ask \"Are you sure?\" (e.g. delete note) switch to the confirm state on the first click, but the second click never actually submits. Fix it."
+keywords = ["react", "agentic-react", "state-bug", "vite"]
+
+[metadata]
+category = "state-bug"
+repo_id = "rr7-epic-stack"
+source_task_id = "rr7-epic-stack/state-double-check-button"
+bundler = "vite"
+framework = "React Router v7 framework mode (SSR, loaders/actions) + Express + Prisma/SQLite"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

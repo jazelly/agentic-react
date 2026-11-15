@@ -1,0 +1,66 @@
+{
+  "$comment": "Primase/Harbor registry for the agentic-react real-repo benchmark. Convert tasks with scripts/convert-to-harbor.mjs; prepare control/agentic with scripts/prepare-variants.mjs.",
+  "tiers": {
+    "low": {
+      "default": true,
+      "criteria": "regex/only-changed style checks; smoke UI locate-edit"
+    },
+    "medium": {
+      "default": false,
+      "criteria": "typecheck/build/hidden-test on mid-size apps (vite-shadcn-admin, jsoncrack, …)"
+    },
+    "high": {
+      "default": false,
+      "criteria": "large installs (epic-stack, portainer, rsdoctor) or heavy builds"
+    }
+  },
+  "suites": [
+    {
+      "id": "agentic-react",
+      "role": "main",
+      "repo": "https://github.com/jazelly/agentic-react",
+      "publisher": "agentic-react",
+      "license": "MIT",
+      "vendor": "vendor/agentic-react-harbor",
+      "tasks_dir": "tasks",
+      "runner": "harbor",
+      "tasks_file": "suites/agentic-react/tasks.txt",
+      "default_tier": "medium",
+      "agent_network": "allow",
+      "task_tiers": {
+        "vite-shadcn-admin__ui-dashboard-export-button": "low",
+        "vite-shadcn-admin__runtime-tasks-status-crash": "medium",
+        "vite-shadcn-admin__type-refactor-column-header-label": "medium",
+        "vite-shadcn-admin__state-signout-keeps-user": "medium",
+        "next-webpack-jsoncrack__ui-bottom-bar-valid-label": "low",
+        "next-webpack-jsoncrack__runtime-editor-title-crash": "medium",
+        "next-webpack-jsoncrack__hydration-hero-cta": "medium",
+        "next-webpack-jsoncrack__build-webpack-wasm-config": "medium",
+        "tanstack-start-trellaux__ui-card-remove-order-badge": "low",
+        "tanstack-start-trellaux__state-column-card-order": "medium",
+        "tanstack-start-trellaux__type-board-loader-param": "medium",
+        "tanstack-start-trellaux__hydration-home-updated-at": "medium",
+        "astro-web-check__ui-server-status-labels": "low",
+        "astro-web-check__runtime-server-status-timings": "medium",
+        "astro-web-check__island-results-not-hydrated": "medium",
+        "astro-web-check__ssr-home-background-window": "medium",
+        "rsbuild-rsdoctor__ui-plugins-page-labels": "low",
+        "rsbuild-rsdoctor__state-bundle-size-sort-order": "high",
+        "rsbuild-rsdoctor__logic-windows-asset-paths": "high",
+        "rsbuild-rsdoctor__build-broken-import": "high",
+        "webpack-portainer__ui-add-button-default-label": "medium",
+        "webpack-portainer__state-expandable-message-toggle": "high",
+        "webpack-portainer__type-loading-button-root-cause": "high",
+        "webpack-portainer__build-webpack-alias-resolution": "high",
+        "next-turbopack-boilerplate__ui-counter-button-color": "low",
+        "next-turbopack-boilerplate__validation-counter-range": "medium",
+        "next-turbopack-boilerplate__ssr-current-count-crash": "medium",
+        "next-turbopack-boilerplate__hydration-locale-switcher": "medium",
+        "rr7-epic-stack__ui-marketing-heading": "low",
+        "rr7-epic-stack__state-double-check-button": "high",
+        "rr7-epic-stack__ssr-loader-missing-user-404": "high",
+        "rr7-epic-stack__hydration-heading-viewport-attr": "high"
+      }
+    }
+  ]
+}

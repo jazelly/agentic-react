@@ -1,0 +1,20 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "pnpm install --ignore-workspace --frozen-lockfile",
+    "dev": "pnpm --ignore-workspace dev",
+    "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
+    "build": "pnpm --ignore-workspace build",
+    "typecheck": "pnpm --ignore-workspace typecheck",
+    "test": "pnpm --ignore-workspace exec vitest run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "pnpm --ignore-workspace exec vitest run app/react/components/ExpandableMessageByLines.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  }
+}

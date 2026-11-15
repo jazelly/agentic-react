@@ -83,16 +83,33 @@ node scripts/summarize.mjs
 
 runner 做的事：APFS copy-on-write 复制 pinned clone → 删除上游 `.git` → 应用 setup 注入 → 新建 scratch baseline commit → （B 组）应用 `arms/agentic/<repo>.json` + 写 MCP 配置 → 启动 agent → 解析用量 → 跑 checks → 追加到 `results/results.jsonl`。
 
+## Harbor / primase
+
+See [`HARBOR.md`](HARBOR.md). Short path:
+
+```bash
+node scripts/convert-to-harbor.mjs      # → vendor/agentic-react-harbor/tasks/ (32 tasks, committed)
+node scripts/prepare-variants.mjs       # → work/variants/agentic-react/{control,agentic}/
+pip install -r requirements-primase.txt # primase @ fc930e5
+primase plan experiments/cursor-smoke.yaml
+primase validate experiments/cursor-smoke.yaml
+harbor run -a oracle -p work/variants/agentic-react/control/<task> -o jobs -y
+```
+
+Existing `clone.mjs` / `validate-tasks.mjs` / `run.mjs` / `summarize.mjs` and `xstack/` stay supported.
+
 ## B 组（agentic-react enabled）怎么接入
 
 | 仓库 | adapter | 状态 |
 |---|---|---|
-| vite-shadcn-admin / rr7-epic-stack / tanstack-start-trellaux | `@agentic-react/vite` | 有 adapter；示例 overlay 见 `arms/agentic/vite-shadcn-admin.json`；SSR 框架需确认 runtime 注入只在客户端 |
-| webpack-portainer | `@agentic-react/webpack` | 有 adapter，overlay 待写 |
-| next-webpack-jsoncrack | `@agentic-react/next` | 有 adapter（webpack 模式），overlay 待写 |
-| next-turbopack-boilerplate | `@agentic-react/next` | **缺**：现有 adapter 只改 webpack 配置，Turbopack 需要新的注入方式 |
-| rsbuild-rsdoctor | — | **缺**：需验证 webpack adapter 在 Rspack 下可用，或新做 `@agentic-react/rsbuild` |
-| astro-web-check | `@agentic-react/vite`（经 `astro.config` 的 `vite.plugins`） | **待验证**：islands 下 runtime 需要按 island root 挂载 |
+| vite-shadcn-admin | `@agentic-react/vite` | overlay: `arms/agentic/vite-shadcn-admin.json` |
+| next-webpack-jsoncrack | `@agentic-react/next` | overlay: `arms/agentic/next-webpack-jsoncrack.json`（webpack 模式） |
+| tanstack-start-trellaux | `@agentic-react/vite` | overlay: `arms/agentic/tanstack-start-trellaux.json` |
+| rr7-epic-stack | `@agentic-react/vite` | overlay: `arms/agentic/rr7-epic-stack.json` |
+| webpack-portainer | `@agentic-react/webpack` | adapter 有；Harbor overlay 未写（CJS webpack 入口 / Angular 混合） |
+| next-turbopack-boilerplate | `@agentic-react/next` | **缺**：现有 adapter 只改 webpack，Turbopack 需新注入 |
+| rsbuild-rsdoctor | — | **缺**：Rspack/Rsbuild adapter TODO |
+| astro-web-check | `@agentic-react/vite`（经 `astro.config`） | **缺**：islands 按 root 挂载 TODO |
 
 ## 已知问题 / 注意
 

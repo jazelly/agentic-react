@@ -1,0 +1,1 @@
+The Boards home page logs a React hydration mismatch (`Text content does not match server-rendered HTML`) coming from the small "updated …" time next to the heading. Keep showing the time, but fix the hydration error.

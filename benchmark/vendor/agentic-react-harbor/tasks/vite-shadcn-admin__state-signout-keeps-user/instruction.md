@@ -1,0 +1,1 @@
+After clicking "Sign out" in the profile dropdown, the app still shows the previous user's name/email (e.g. in the sidebar) until a full page reload. The access-token cookie is cleared correctly. Fix the sign-out state handling.

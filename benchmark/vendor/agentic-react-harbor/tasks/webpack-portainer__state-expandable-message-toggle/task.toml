@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/webpack-portainer__state-expandable-message-toggle"
+version = "1.0.0"
+description = "Long messages rendered with the line-clamped expandable message component (used for long errors/logs) no longer show the \"Show more\" toggle, so they are clipped with no way to expand them. Short messa"
+keywords = ["react", "agentic-react", "state-bug", "webpack"]
+
+[metadata]
+category = "state-bug"
+repo_id = "webpack-portainer"
+source_task_id = "webpack-portainer/state-expandable-message-toggle"
+bundler = "webpack"
+framework = "React 17 SPA (AngularJS hybrid, UI-Router)"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

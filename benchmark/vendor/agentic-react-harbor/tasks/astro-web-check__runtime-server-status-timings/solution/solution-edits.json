@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/client/components/Results/ServerStatus.tsx",
+    "find": "serverStatus.timings[key] > 0 &&",
+    "replace": "serverStatus.timings?.[key] > 0 &&"
+  }
+]

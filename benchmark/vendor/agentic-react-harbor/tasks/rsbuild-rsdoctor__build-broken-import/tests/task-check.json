@@ -1,0 +1,24 @@
+{
+  "appDir": "packages/client",
+  "commands": {
+    "install": "corepack pnpm install --frozen-lockfile",
+    "dev": "corepack pnpm --filter @rsdoctor/client dev",
+    "build": "corepack pnpm --filter @rsdoctor/client... build",
+    "typecheck": "corepack pnpm --filter @rsdoctor/client exec tsc --noEmit -p tsconfig.json",
+    "test": "corepack pnpm --filter @rsdoctor/client test"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  }
+}

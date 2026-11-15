@@ -1,0 +1,7 @@
+[
+  {
+    "file": "app/routes/_marketing/index.tsx",
+    "find": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n",
+    "replace": "\t\t\t\t\t<h1\n\t\t\t\t\t\tdata-heading\n\t\t\t\t\t\tdata-viewport={typeof window === 'undefined' ? 'server' : window.innerWidth >= 1280 ? 'xl' : 'sm'}\n"
+  }
+]

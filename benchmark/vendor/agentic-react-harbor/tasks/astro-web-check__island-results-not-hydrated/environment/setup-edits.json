@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/layouts/Results.astro",
+    "find": "  <Main client:only=\"react\" />",
+    "replace": "  <Main />"
+  }
+]

@@ -1,0 +1,29 @@
+schema_version = "1.4"
+
+[task]
+name = "agentic-react/astro-web-check__island-results-not-hydrated"
+version = "1.0.0"
+description = "Opening /check/example.com in `yarn dev:astro` gives a 500 / blank page and no scan ever starts. It worked last week. Fix it."
+keywords = ["react", "agentic-react", "hydration", "vite"]
+
+[metadata]
+category = "hydration"
+repo_id = "astro-web-check"
+source_task_id = "astro-web-check/island-results-not-hydrated"
+bundler = "vite"
+framework = "Astro 7 + @astrojs/react islands (client:only) + Svelte, Node adapter"
+source = "converted from benchmark/tasks via scripts/convert-to-harbor.mjs"
+
+[verifier]
+timeout_sec = 900.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 40960
+gpus = 0

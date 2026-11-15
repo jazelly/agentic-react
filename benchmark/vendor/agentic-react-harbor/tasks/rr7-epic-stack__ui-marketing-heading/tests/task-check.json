@@ -1,0 +1,29 @@
+{
+  "appDir": ".",
+  "commands": {
+    "install": "npm ci",
+    "setup": "npm run setup  # build + prisma migrate + playwright install",
+    "dev": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "build": "npm run build",
+    "typecheck": "npm run typecheck",
+    "test": "npx vitest run",
+    "e2e": "npm run test:e2e:run"
+  },
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "<a href=\"https://www\\.epicweb\\.dev/stack\">\\s*Epic Notes\\s*</a>",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "app/routes/_marketing/index.tsx"
+        ]
+      }
+    ]
+  }
+}

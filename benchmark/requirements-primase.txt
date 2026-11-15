@@ -1,0 +1,4 @@
+# Pin primase to the Harbor/general-variants release used by this benchmark.
+# Install:  uv pip install -r requirements-primase.txt
+#       or: pip install -r requirements-primase.txt
+primase[harbor] @ git+https://github.com/vertile-ai/primase.git@fc930e599db30427a77d2fcb80c39f440c083ff2
