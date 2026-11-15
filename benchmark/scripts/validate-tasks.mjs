@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { listTasks, repoById, REPOS, applyEdits, reverseEdits, prepareWorkspace, runChecks, RUNS } from '../lib/task-kit.mjs';
+import { listTasks, repoById, REPOS, applyEdits, reverseEdits, prepareWorkspace, runChecks, RUNS, assertHostNodeForRepo } from '../lib/task-kit.mjs';
 
 const args = process.argv.slice(2);
 const oracle = args.includes('--oracle');
@@ -16,6 +16,9 @@ for (const task of listTasks(filter)) {
   const repo = repoById(task.repo);
   const appRoot = path.join(REPOS, repo.id, repo.appDir ?? '.');
   const problems = [];
+  if (oracle) {
+    try { assertHostNodeForRepo(repo); } catch (e) { problems.push(`node: ${e.message}`); }
+  }
   try { applyEdits(appRoot, task.setup?.edits, { dryRun: true }); } catch (e) { problems.push(`setup: ${e.message}`); }
   if (Array.isArray(task.solution)) {
     // solution edits apply to the post-setup tree; validate against a temp copy of only the touched files

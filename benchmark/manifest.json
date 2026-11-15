@@ -29,7 +29,7 @@
         "status": "supported",
         "configFile": "vite.config.ts"
       },
-      "why": "Popular (16k★), actively maintained admin dashboard; Vite 8 + Rolldown; many routes/forms/tables; has Vitest browser tests.",
+      "why": "Popular (16k\u2605), actively maintained admin dashboard; Vite 8 + Rolldown; many routes/forms/tables; has Vitest browser tests.",
       "verified": {
         "clone": true,
         "install": true,
@@ -37,6 +37,9 @@
         "buildSeconds": 6.4,
         "date": "2026-11-13",
         "node": "24.15.0"
+      },
+      "harbor": {
+        "nodeImage": "node:24-bookworm"
       }
     },
     {
@@ -65,11 +68,18 @@
         "status": "supported",
         "configFile": "webpack/webpack.common.js"
       },
-      "why": "Real, large, actively maintained product (38k★) on plain webpack 5; React 17 (older React = different fiber/debug info); jsdom Vitest suite gives behavioral checks.",
+      "why": "Real, large, actively maintained product (38k\u2605) on plain webpack 5; React 17 (older React = different fiber/debug info); jsdom Vitest suite gives behavioral checks.",
       "verified": {
         "clone": true,
         "install": false,
         "build": false
+      },
+      "harbor": {
+        "nodeImage": "node:22-bookworm",
+        "nodeImageWhy": "pinned repo engines.node is ^22.22.1; Node 24 is outside the caret range"
+      },
+      "engines": {
+        "node": "^22.22.1"
       }
     },
     {
@@ -100,6 +110,12 @@
         "clone": true,
         "install": false,
         "build": false
+      },
+      "harbor": {
+        "nodeImage": "node:24-bookworm"
+      },
+      "engines": {
+        "node": ">=22.18.0"
       }
     },
     {
@@ -133,11 +149,18 @@
         "package": "@agentic-react/next",
         "status": "todo: current adapter hooks Next's webpack config only; Turbopack needs a new injection path"
       },
-      "why": "13k★, actively maintained, Next 16 + Turbopack defaults, real server components/route handlers/i18n; Vitest + Playwright tests. Uses `logging.browserToTerminal` (Next's own agent-friendly feature) — useful as a strong baseline.",
+      "why": "13k\u2605, actively maintained, Next 16 + Turbopack defaults, real server components/route handlers/i18n; Vitest + Playwright tests. Uses `logging.browserToTerminal` (Next's own agent-friendly feature) \u2014 useful as a strong baseline.",
       "verified": {
         "clone": true,
         "install": false,
         "build": false
+      },
+      "harbor": {
+        "nodeImage": "node:24-bookworm",
+        "nodeImageWhy": "pinned repo engines.node is >=24"
+      },
+      "engines": {
+        "node": ">=24"
       }
     },
     {
@@ -163,7 +186,7 @@
         "package": "@agentic-react/next",
         "status": "supported (webpack mode)"
       },
-      "why": "44k★, real product (JSON graph editor, Mantine + styled-components + zustand), explicitly runs Next on webpack with a custom webpack config — the Next --webpack cell.",
+      "why": "44k\u2605, real product (JSON graph editor, Mantine + styled-components + zustand), explicitly runs Next on webpack with a custom webpack config \u2014 the Next --webpack cell.",
       "verified": {
         "clone": true,
         "install": true,
@@ -172,6 +195,13 @@
         "date": "2026-11-13",
         "node": "24.15.0",
         "note": "plain `next build` in apps/www fails until workspace package jsoncrack-react is built; use the turbo build command"
+      },
+      "harbor": {
+        "nodeImage": "node:24-bookworm",
+        "nodeImageWhy": "pinned repo engines.node is >=24"
+      },
+      "engines": {
+        "node": ">=24"
       }
     },
     {
@@ -207,7 +237,10 @@
         "install": false,
         "build": false
       },
-      "commandsCwd": "appDir"
+      "commandsCwd": "appDir",
+      "harbor": {
+        "nodeImage": "node:24-bookworm"
+      }
     },
     {
       "id": "astro-web-check",
@@ -233,11 +266,17 @@
         "package": "@agentic-react/vite via astro.config vite.plugins",
         "status": "todo (islands: runtime must attach per island root)"
       },
-      "why": "35k★, actively maintained, real Astro site where the main app is a React island; exercises island/hydration-directive bugs that SPAs never see.",
+      "why": "35k\u2605, actively maintained, real Astro site where the main app is a React island; exercises island/hydration-directive bugs that SPAs never see.",
       "verified": {
         "clone": true,
         "install": false,
         "build": false
+      },
+      "harbor": {
+        "nodeImage": "node:24-bookworm"
+      },
+      "engines": {
+        "node": "^22.23.4 || ^24.16.0 || >=26.3.0"
       }
     },
     {
@@ -266,11 +305,18 @@
         "package": "@agentic-react/vite",
         "status": "supported (SSR)"
       },
-      "why": "Kent C. Dodds' production-grade RR7 starter (5.5k★), real auth/notes/settings flows, mocks for external services, Vitest + Playwright.",
+      "why": "Kent C. Dodds' production-grade RR7 starter (5.5k\u2605), real auth/notes/settings flows, mocks for external services, Vitest + Playwright.",
       "verified": {
         "clone": true,
         "install": false,
         "build": false
+      },
+      "harbor": {
+        "nodeImage": "node:22-bookworm",
+        "nodeImageWhy": "pinned repo engines.node is ^22.18.0; Node 24 is outside the caret range"
+      },
+      "engines": {
+        "node": "^22.18.0"
       }
     }
   ],

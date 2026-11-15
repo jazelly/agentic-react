@@ -92,6 +92,72 @@ export function changedFiles(wsDir) {
   return r.output.split('\n').filter(Boolean).map((l) => l.slice(3).replace(/^.* -> /, ''));
 }
 
+/** Paths that tooling rewrites during @build/@typecheck; not agent edits. */
+export function isIgnorableChangedPath(f) {
+  return (
+    /(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f) ||
+    /(^|\/)next-env\.d\.ts$/.test(f) ||
+    /(^|\/)tsconfig\.tsbuildinfo$/.test(f)
+  );
+}
+
+/**
+ * Fail fast when host Node is outside the pinned repo engines.node.
+ * Harbor images (`manifest.harbor.nodeImage`) are chosen to satisfy the same range.
+ */
+export function assertHostNodeForRepo(repo) {
+  const range = String(repo.engines?.node ?? '').trim();
+  if (!range) return;
+  const image = repo.harbor?.nodeImage ?? '';
+  const major = Number(process.versions.node.split('.')[0]);
+  const caret22Only = /^\^22(\.|$)/.test(range) && !range.includes('||');
+  const needs24 = />=\s*24/.test(range) || (/\^\s*24/.test(range) && !range.includes('||'));
+  // Astro-style unions (^22.23.4 || ^24.16.0 || >=26) — accept 22/24/26 majors present in the union.
+  const unionOk =
+    range.includes('||') &&
+    ((/\^22/.test(range) && major === 22) ||
+      (/\^24|>=\s*24/.test(range) && major === 24) ||
+      (/>=\s*26|\^26/.test(range) && major >= 26));
+  if (unionOk) return;
+  if (caret22Only && major !== 22) {
+    throw new Error(
+      `${repo.id} requires Node 22 (engines.node=${range}, harbor=${image || 'n/a'}); host is v${process.versions.node}.`,
+    );
+  }
+  if (needs24 && major < 24) {
+    throw new Error(
+      `${repo.id} requires Node >=24 (engines.node=${range}, harbor=${image || 'n/a'}); host is v${process.versions.node}.`,
+    );
+  }
+}
+
+/** Ensure Playwright chromium is present for browser-mode hidden tests / local oracle. */
+export function ensurePlaywrightBrowsers(appRoot, repo) {
+  const cache = path.join(os.homedir(), '.cache', 'ms-playwright');
+  if (fs.existsSync(cache) && fs.readdirSync(cache).some((n) => /chromium/i.test(n))) return;
+
+  let cmd = null;
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(appRoot, 'package.json'), 'utf8'));
+    if (pkg.scripts?.['test:browser:install']) {
+      if (repo.packageManager?.startsWith('npm')) cmd = 'npm run test:browser:install';
+      else if (repo.packageManager?.startsWith('yarn')) cmd = 'yarn test:browser:install';
+      else cmd = 'pnpm --ignore-workspace test:browser:install';
+    }
+  } catch {
+    /* ignore */
+  }
+  if (!cmd) {
+    if (fs.existsSync(path.join(appRoot, 'node_modules', 'playwright')) ||
+        fs.existsSync(path.join(appRoot, 'node_modules', '@playwright', 'test'))) {
+      cmd = 'pnpm exec playwright install chromium --with-deps || npx playwright install chromium --with-deps';
+    }
+  }
+  if (!cmd) return;
+  const r = sh(cmd, { cwd: appRoot, timeoutSec: 600, quiet: true });
+  if (!r.ok) throw new Error(`playwright browser install failed: ${r.output.slice(-800)}`);
+}
+
 const globToRe = (g) => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*\//g, '(?:.*/)?').replace(/\*\*/g, '.*').replace(/\*/g, '[^/]*') + '$');
 const walk = (dir, base = dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((d) => {
   if (d.name === 'node_modules' || d.name.startsWith('.')) return [];
@@ -122,7 +188,8 @@ export async function runChecks(task, { wsDir, appRoot, repo }, { includeOptiona
         detail = `${s.expect ? 'expected' : 'forbidden'} /${s.pattern}/ hits=${hit.join(',') || 0}`;
       } else if (s.type === 'only-changed') {
         const prefix = repo.appDir && repo.appDir !== '.' ? repo.appDir.replace(/\/$/, '') + '/' : '';
-        const changed = changedFiles(wsDir).filter((f) => !/(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f));
+        // Ignore build/tooling noise (Next rewrites next-env.d.ts on build/typecheck).
+        const changed = changedFiles(wsDir).filter((f) => !isIgnorableChangedPath(f));
         const extra = changed.filter((f) => !(f.startsWith(prefix) && s.allow.some((g) => globToRe(g).test(f.slice(prefix.length)))));
         ok = extra.length === 0; detail = extra.length ? `unexpected changes: ${extra.join(', ')}` : `changed: ${changed.join(', ')}`;
       } else if (s.type === 'forbid') {
@@ -134,6 +201,9 @@ export async function runChecks(task, { wsDir, appRoot, repo }, { includeOptiona
         const r = sh(cmd, { cwd: s.cwd === 'repo' || cwdKind === 'repo' ? wsDir : appRoot, timeoutSec: s.timeoutSec ?? 600, quiet: true });
         ok = r.ok; detail = r.ok ? 'exit 0' : `exit ${r.status}${r.timedOut ? ' (timeout)' : ''}: ${r.output.slice(-1500)}`;
       } else if (s.type === 'hidden-test') {
+        if (/--browser|browser\.headless|playwright/i.test(String(s.run ?? ''))) {
+          ensurePlaywrightBrowsers(appRoot, repo);
+        }
         const dest = path.join(appRoot, s.dest);
         fs.mkdirSync(path.dirname(dest), { recursive: true });
         fs.copyFileSync(path.join(task.dir, s.src), dest);
