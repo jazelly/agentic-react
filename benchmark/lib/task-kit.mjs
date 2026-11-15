@@ -97,8 +97,31 @@ export function isIgnorableChangedPath(f) {
   return (
     /(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f) ||
     /(^|\/)next-env\.d\.ts$/.test(f) ||
-    /(^|\/)tsconfig\.tsbuildinfo$/.test(f)
+    /(^|\/)tsconfig\.tsbuildinfo$/.test(f) ||
+    /(^|\/)prisma\/data\.db(-journal)?$/.test(f) ||
+    /(^|\/)other\/cache\.db(-journal)?$/.test(f)
   );
+}
+
+/**
+ * Local-path counterpart of Harbor `manifest.harbor.postInstall`.
+ * Idempotent: copy .env, prisma migrate + generate --sql, selective builds, etc.
+ * Call before local `--oracle` when the pinned clone was only `npm ci`/`pnpm install`.
+ */
+export function ensureRepoReady(repo) {
+  const repoRoot = path.join(REPOS, repo.id);
+  if (!fs.existsSync(repoRoot)) {
+    throw new Error(`missing clone ${repoRoot}; run node scripts/clone.mjs`);
+  }
+  const cmds = []
+    .concat(repo.harbor?.postInstall ?? [])
+    .map((c) => String(c).trim())
+    .filter(Boolean);
+  if (!cmds.length) return;
+  const r = sh(cmds.join(' && '), { cwd: repoRoot, timeoutSec: 1800, quiet: true });
+  if (!r.ok) {
+    throw new Error(`ensureRepoReady(${repo.id}) failed: ${r.output.slice(-1200)}`);
+  }
 }
 
 /**

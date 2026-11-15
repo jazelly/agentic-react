@@ -37,6 +37,13 @@ WORKDIR /app
 RUN npm ci
 WORKDIR /app
 
+# Harbor post-install (rr7-epic-stack).
+WORKDIR /app
+RUN test -f .env || cp .env.example .env \
+ && npx prisma migrate deploy \
+ && npx prisma generate --sql
+WORKDIR /app
+
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.
 RUN git config user.email bench@local \
  && git config user.name bench \

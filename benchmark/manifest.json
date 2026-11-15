@@ -112,7 +112,12 @@
         "build": false
       },
       "harbor": {
-        "nodeImage": "node:24-bookworm"
+        "nodeImage": "node:24-bookworm",
+        "ignoreInstallScripts": true,
+        "ignoreInstallScriptsWhy": "root prepare runs full monorepo build + rs hooks; fails in Docker. Install with --ignore-scripts then build client graph only.",
+        "postInstall": [
+          "corepack pnpm --filter @rsdoctor/client... build"
+        ]
       },
       "engines": {
         "node": ">=22.18.0"
@@ -314,7 +319,13 @@
       },
       "harbor": {
         "nodeImage": "node:22-bookworm",
-        "nodeImageWhy": "pinned repo engines.node is ^22.18.0; Node 24 is outside the caret range"
+        "nodeImageWhy": "pinned repo engines.node is ^22.18.0; Node 24 is outside the caret range",
+        "postInstall": [
+          "test -f .env || cp .env.example .env",
+          "npx prisma migrate deploy",
+          "npx prisma generate --sql"
+        ],
+        "postInstallWhy": "typecheck needs @prisma/client/sql searchUsers (generate --sql after migrate); vitest needs SESSION_SECRET from .env"
       },
       "engines": {
         "node": "^22.18.0"

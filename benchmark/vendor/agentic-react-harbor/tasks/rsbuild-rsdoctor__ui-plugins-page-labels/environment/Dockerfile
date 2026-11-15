@@ -34,7 +34,12 @@ RUN node /opt/bench/apply-edits.mjs "/app/packages/client" /opt/bench/setup-edit
 
 # Package manager install (from manifest.json). pnpm
 WORKDIR /app
-RUN pnpm config set dangerouslyAllowAllBuilds true && corepack pnpm install --frozen-lockfile
+RUN pnpm config set dangerouslyAllowAllBuilds true && corepack pnpm install --frozen-lockfile --ignore-scripts
+WORKDIR /app
+
+# Harbor post-install (rsbuild-rsdoctor).
+WORKDIR /app
+RUN corepack pnpm --filter @rsdoctor/client... build
 WORKDIR /app
 
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.

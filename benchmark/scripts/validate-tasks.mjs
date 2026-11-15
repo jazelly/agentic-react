@@ -5,12 +5,13 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { listTasks, repoById, REPOS, applyEdits, reverseEdits, prepareWorkspace, runChecks, RUNS, assertHostNodeForRepo } from '../lib/task-kit.mjs';
+import { listTasks, repoById, REPOS, applyEdits, reverseEdits, prepareWorkspace, runChecks, RUNS, assertHostNodeForRepo, ensureRepoReady } from '../lib/task-kit.mjs';
 
 const args = process.argv.slice(2);
 const oracle = args.includes('--oracle');
 const filter = args.filter((a) => !a.startsWith('--'))[0] ?? '';
 let bad = 0;
+const readyRepos = new Set();
 
 for (const task of listTasks(filter)) {
   const repo = repoById(task.repo);
@@ -18,6 +19,14 @@ for (const task of listTasks(filter)) {
   const problems = [];
   if (oracle) {
     try { assertHostNodeForRepo(repo); } catch (e) { problems.push(`node: ${e.message}`); }
+    if (!readyRepos.has(repo.id)) {
+      try {
+        ensureRepoReady(repo);
+        readyRepos.add(repo.id);
+      } catch (e) {
+        problems.push(`ready: ${e.message}`);
+      }
+    }
   }
   try { applyEdits(appRoot, task.setup?.edits, { dryRun: true }); } catch (e) { problems.push(`setup: ${e.message}`); }
   if (Array.isArray(task.solution)) {

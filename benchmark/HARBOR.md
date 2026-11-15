@@ -81,6 +81,15 @@ Local `validate-tasks --oracle` calls `assertHostNodeForRepo` and fails fast whe
 
 Tasks whose required checks use Vitest browser mode (or a non-optional `browser` step) install Chromium in the image (`playwright install chromium --with-deps`). Local oracle auto-runs the repo's `test:browser:install` (or `playwright install`) when the cache is empty.
 
+### Harbor post-install
+
+`manifest.harbor.postInstall` (shell commands) runs after package install and before the scratch baseline commit. Local `validate-tasks --oracle` mirrors this via `ensureRepoReady`.
+
+| Repo | Notes |
+|------|-------|
+| `rr7-epic-stack` | Copy `.env.example` → `.env`, then `prisma migrate deploy` + `prisma generate --sql` (typecheck + vitest) |
+| `rsbuild-rsdoctor` | `ignoreInstallScripts` (skip root `prepare` monorepo build), then `pnpm --filter @rsdoctor/client... build` |
+
 ## xstack
 
 **Not converted in this pass.** `xstack/` is a different schema (minimal stack templates × tasks, `app/` + `solution/` trees, Vitest/Playwright clean-room verify, always-on dev server + browser-keeper). Mapping it to Harbor would mean one Harbor task per `(task × stack)` with a different Dockerfile/verifier design. Keep using `xstack/harness/oracle.mjs` until a dedicated converter exists.

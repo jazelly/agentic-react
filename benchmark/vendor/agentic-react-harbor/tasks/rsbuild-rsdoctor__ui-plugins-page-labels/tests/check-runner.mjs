@@ -71,7 +71,9 @@ function isIgnorableChangedPath(f) {
   return (
     /(^|\/)(node_modules|\.next|dist|build|\.astro|\.turbo|\.vite|\.react-router|test-results)\//.test(f) ||
     /(^|\/)next-env\.d\.ts$/.test(f) ||
-    /(^|\/)tsconfig\.tsbuildinfo$/.test(f)
+    /(^|\/)tsconfig\.tsbuildinfo$/.test(f) ||
+    /(^|\/)prisma\/data\.db(-journal)?$/.test(f) ||
+    /(^|\/)other\/cache\.db(-journal)?$/.test(f)
   );
 }
 
