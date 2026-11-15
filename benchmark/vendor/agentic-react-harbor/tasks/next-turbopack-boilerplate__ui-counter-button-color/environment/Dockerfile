@@ -28,11 +28,9 @@ RUN git clone "$REPO_URL" . \
  && (git gc --prune=now || true) \
  && (git submodule update --init --recursive || true)
 
-COPY apply-edits.mjs /opt/bench/apply-edits.mjs
-COPY setup-edits.json /opt/bench/setup-edits.json
-RUN node /opt/bench/apply-edits.mjs "/app" /opt/bench/setup-edits.json
-
 # Package manager install (from manifest.json). npm
+# Setup edits are applied AFTER install/postInstall so injected bugs do not
+# break image builds (e.g. rsdoctor prepare/client build, next typegen).
 WORKDIR /app
 RUN npm ci
 WORKDIR /app
@@ -45,6 +43,10 @@ ENV NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/opt/bench/mocked-google-fonts.cjs
 WORKDIR /app
 RUN npx next typegen
 WORKDIR /app
+
+COPY apply-edits.mjs /opt/bench/apply-edits.mjs
+COPY setup-edits.json /opt/bench/setup-edits.json
+RUN node /opt/bench/apply-edits.mjs "/app" /opt/bench/setup-edits.json
 
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.
 RUN git config user.email bench@local \

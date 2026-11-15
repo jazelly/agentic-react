@@ -28,11 +28,9 @@ RUN git clone "$REPO_URL" . \
  && (git gc --prune=now || true) \
  && (git submodule update --init --recursive || true)
 
-COPY apply-edits.mjs /opt/bench/apply-edits.mjs
-COPY setup-edits.json /opt/bench/setup-edits.json
-RUN node /opt/bench/apply-edits.mjs "/app/apps/www" /opt/bench/setup-edits.json
-
 # Package manager install (from manifest.json). pnpm
+# Setup edits are applied AFTER install/postInstall so injected bugs do not
+# break image builds (e.g. rsdoctor prepare/client build, next typegen).
 WORKDIR /app
 RUN pnpm config set dangerouslyAllowAllBuilds true && pnpm install --frozen-lockfile
 WORKDIR /app
@@ -40,6 +38,10 @@ WORKDIR /app
 COPY prefetch-google-fonts.mjs /opt/bench/prefetch-google-fonts.mjs
 RUN node /opt/bench/prefetch-google-fonts.mjs --out /opt/bench --app "/app/apps/www"
 ENV NEXT_FONT_GOOGLE_MOCKED_RESPONSES=/opt/bench/mocked-google-fonts.cjs
+
+COPY apply-edits.mjs /opt/bench/apply-edits.mjs
+COPY setup-edits.json /opt/bench/setup-edits.json
+RUN node /opt/bench/apply-edits.mjs "/app/apps/www" /opt/bench/setup-edits.json
 
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.
 RUN git config user.email bench@local \

@@ -164,15 +164,17 @@ RUN git clone${repo.sparse?.length ? ' --sparse' : ''} "$REPO_URL" . \\
  && (git gc --prune=now || true) \\
  && (git submodule update --init --recursive || true)
 
-COPY apply-edits.mjs /opt/bench/apply-edits.mjs
-COPY setup-edits.json /opt/bench/setup-edits.json
-RUN node /opt/bench/apply-edits.mjs "${workdirApp}" /opt/bench/setup-edits.json
-
 # Package manager install (from manifest.json). ${pmHint}
+# Setup edits are applied AFTER install/postInstall so injected bugs do not
+# break image builds (e.g. rsdoctor prepare/client build, next typegen).
 WORKDIR ${installWorkdir}
 RUN ${pnpmAllowBuilds}${install}
 WORKDIR /app
 ${postInstallBlock}${googleFontsBlock}${nextTypegenBlock}${playwrightBlock}
+COPY apply-edits.mjs /opt/bench/apply-edits.mjs
+COPY setup-edits.json /opt/bench/setup-edits.json
+RUN node /opt/bench/apply-edits.mjs "${workdirApp}" /opt/bench/setup-edits.json
+
 # Scratch baseline: agent / oracle diffs are relative to post-setup tree.
 RUN git config user.email bench@local \\
  && git config user.name bench \\

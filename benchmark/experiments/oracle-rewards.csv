@@ -1,0 +1,5 @@
+variant,task,reward,ok
+control,rsbuild-rsdoctor__build-broken-import,,0
+control,rsbuild-rsdoctor__logic-windows-asset-paths,1,1
+control,rsbuild-rsdoctor__state-bundle-size-sort-order,1,1
+control,rsbuild-rsdoctor__ui-plugins-page-labels,1,1
