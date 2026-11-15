@@ -1,0 +1,3 @@
+# Isolation marker: makes this dir its own pnpm/vite workspace root so nothing resolves up into the agentic-react repo.
+packages:
+  - "."

@@ -1,0 +1,41 @@
+{
+  "id": "rr7-epic-stack/ssr-loader-missing-user-404",
+  "repo": "rr7-epic-stack",
+  "category": "ssr-error",
+  "prompt": "Visiting /users/<a username that does not exist> returns a 500 (`Cannot read properties of null (reading 'createdAt')`) instead of the 404 page. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "app/routes/users/$username/index.tsx",
+        "find": "\t})\n\n\tinvariantResponse(user, 'User not found', { status: 404 })\n\n\treturn { user,",
+        "replace": "\t})\n\n\treturn { user,"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/users/$username/index.tsx",
+        "pattern": "invariantResponse\\(\\s*user|status:\\s*404",
+        "expect": true
+      },
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (rr7-epic-stack)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

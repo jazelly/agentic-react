@@ -1,0 +1,36 @@
+{
+  "id": "rr7-epic-stack/ui-marketing-heading",
+  "repo": "rr7-epic-stack",
+  "category": "ui-locate-edit",
+  "prompt": "On the marketing home page, the big heading link reads \"The Epic Stack\". Change the visible text to \"Epic Notes\" but keep the link target.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "app/routes/_marketing/index.tsx",
+      "find": "<a href=\"https://www.epicweb.dev/stack\">The Epic Stack</a>",
+      "replace": "<a href=\"https://www.epicweb.dev/stack\">Epic Notes</a>"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "app/routes/_marketing/index.tsx",
+        "pattern": "<a href=\"https://www\\.epicweb\\.dev/stack\">\\s*Epic Notes\\s*</a>",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "app/routes/_marketing/index.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

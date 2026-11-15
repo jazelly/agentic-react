@@ -1,0 +1,13 @@
+{
+  "name": "@web-bench/test-util",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "bin": "./test.sh",
+  "scripts": {
+    "build": "",
+    "test": ""
+  },
+  "dependencies": {
+    "@playwright/test": "1.57.0"
+  }
+}

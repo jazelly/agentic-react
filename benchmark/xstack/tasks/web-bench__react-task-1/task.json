@@ -1,0 +1,43 @@
+{
+  "id": "web-bench/react-task-1",
+  "suite": "web-bench",
+  "category": "ui-build-from-spec",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "repo": "https://github.com/bytedance/web-bench",
+    "commit": "7b31ca2b786eef120dd49ce63dd03d0c0006046d",
+    "path": "projects/react (tasks.jsonl id task-1, test/task-1.spec.js, src-init/, reference src/)",
+    "paper": "Web-Bench: A LLM Code Benchmark Based on Web Standards and Frameworks (arXiv:2505.07473)",
+    "license": "Apache-2.0 (LICENSE-web-bench.md copied alongside)"
+  },
+  "upstreamPrompt": "1) Create components/Header.tsx that displays 'Hello Blog' at the top of the page with appealing background color. 2) Create components/Main.tsx where content is aligned at the top left and fills the remaining space. 3) Develop components/Blog.tsx that accepts 'title' and 'detail' as props. Display mock blog data in Main.tsx using this Blog component with the mock data: { title: 'Morning', detail: 'Morning My Friends' }. 4) Render Header.tsx And Main.tsx in App.tsx 4) The classname of title in Blog.tsx is 'blog-title', the width of blog-title is 'fit-content', fontSize is 24px",
+  "prompt": "1) Create components/Header.tsx that displays 'Hello Blog' at the top of the page with appealing background color. 2) Create components/Main.tsx where content is aligned at the top left and fills the remaining space. 3) Develop components/Blog.tsx that accepts 'title' and 'detail' as props. Display mock blog data in Main.tsx using this Blog component with the mock data: { title: 'Morning', detail: 'Morning My Friends' }. 4) Render Header.tsx And Main.tsx in App.tsx 4) The classname of title in Blog.tsx is 'blog-title', the width of blog-title is 'fit-content', fontSize is 24px\n\nThe project source root is `src/ui` (so `components/Header.tsx` means `src/ui/components/Header.tsx`); `src/ui/App.tsx` is the app's entry component.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/task-1.spec.cjs"
+    ],
+    "e2eSupport": [
+      {
+        "from": "tests/test-util/package.json",
+        "to": "node_modules/@web-bench/test-util/package.json"
+      },
+      {
+        "from": "tests/test-util/src/index.js",
+        "to": "node_modules/@web-bench/test-util/src/index.js"
+      },
+      {
+        "from": "tests/test-util/src/css.js",
+        "to": "node_modules/@web-bench/test-util/src/css.js"
+      }
+    ]
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "Initial state = Web-Bench projects/react/src-init (App.tsx + App.css, unchanged; upstream index.tsx/index.html are replaced by each stack's entry). Hidden check = upstream test/task-1.spec.js byte-identical (saved as .spec.cjs only because the isolated verifier package is type:module); its `@web-bench/test-util` dependency is the upstream libraries/test-util (Apache-2.0) placed in the spec's node_modules, unchanged. Upstream runs it against `vite` dev server on src/; here against each stack's production server. Reference solution = Web-Bench's official final reference implementation projects/react/src (passes all 20 task specs upstream; vastly exceeds task-1), copied into src/ui/ref and mounted client-side from App.tsx; edits: React 19 port of utils/toast.tsx (ReactDOM.render/unmountComponentAtNode -> createRoot), a cloneElement cast in Tooltip.tsx, type-only imports - no behavior change. Only task-1 is ported because Web-Bench publishes no intermediate per-task states (task-N starts from the agent's own task-(N-1) output). Prompt = upstream description verbatim + one sentence mapping paths to src/ui. React 18.3 -> 19.3."
+}

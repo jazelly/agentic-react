@@ -1,0 +1,31 @@
+{
+  "id": "astro",
+  "bundler": "vite (Astro 7)",
+  "framework": "Astro + React island (client:load)",
+  "render": "ssg+island",
+  "dev": "astro dev --port $PORT --host 127.0.0.1",
+  "build": "astro build",
+  "start": "astro preview --port $PORT --host 127.0.0.1",
+  "agentic": {
+    "adapter": "@agentic-react/vite (via astro vite.plugins)",
+    "packages": [
+      "@agentic-react/vite@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "astro.config.mjs",
+        "find": "import react from '@astrojs/react'\n",
+        "replace": "import react from '@astrojs/react'\nimport AgenticReact from '@agentic-react/vite'\n"
+      },
+      {
+        "file": "astro.config.mjs",
+        "find": "integrations: [react()],",
+        "replace": "integrations: [react()],\n  vite: { plugins: [AgenticReact()] },"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$PORT/mcp",
+    "note": "islands: verify runtime finds island roots"
+  },
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

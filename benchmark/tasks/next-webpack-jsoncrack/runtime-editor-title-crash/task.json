@@ -1,0 +1,36 @@
+{
+  "id": "next-webpack-jsoncrack/runtime-editor-title-crash",
+  "repo": "next-webpack-jsoncrack",
+  "category": "runtime-error",
+  "prompt": "Opening /editor without a saved file crashes the page with `TypeError: Cannot read properties of null (reading 'name')`. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/features/editor/BottomBar.tsx",
+        "find": "    if (data?.name) window.document.title",
+        "replace": "    if (data.name) window.document.title"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/editor/BottomBar.tsx",
+        "pattern": "if \\(data\\.name\\)",
+        "expect": false
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (next-webpack-jsoncrack)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

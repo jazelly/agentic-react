@@ -1,0 +1,30 @@
+{
+  "id": "astro-web-check/runtime-server-status-timings",
+  "repo": "astro-web-check",
+  "category": "runtime-error",
+  "prompt": "For some targets the Server Status card crashes the results view with `TypeError: Cannot read properties of undefined (reading 'dns')` — the API omits `timings` when the timing probe fails. Fix it so the card renders without the timing rows in that case.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/client/components/Results/ServerStatus.tsx",
+        "find": "serverStatus.timings?.[key] > 0 &&",
+        "replace": "serverStatus.timings[key] > 0 &&"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/client/components/Results/ServerStatus.tsx",
+        "pattern": "timings\\[key\\]\\s*>\\s*0",
+        "expect": false
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

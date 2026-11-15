@@ -1,0 +1,1 @@
+Long messages rendered with the line-clamped expandable message component (used for long errors/logs) no longer show the "Show more" toggle, so they are clipped with no way to expand them. Short messages look fine. Fix it.

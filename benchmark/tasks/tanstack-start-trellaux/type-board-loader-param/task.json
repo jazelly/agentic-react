@@ -1,0 +1,35 @@
+{
+  "id": "tanstack-start-trellaux/type-board-loader-param",
+  "repo": "tanstack-start-trellaux",
+  "category": "build-type-error",
+  "prompt": "Opening any board shows the error boundary instead of the board, and `pnpm build` fails at the `tsc --noEmit` step. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/routes/boards.$boardId.tsx",
+        "find": "boardQueries.detail(params.boardId)",
+        "replace": "boardQueries.detail(params.id)"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (tanstack-start-trellaux)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

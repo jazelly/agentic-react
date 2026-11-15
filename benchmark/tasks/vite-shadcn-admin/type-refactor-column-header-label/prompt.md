@@ -1,0 +1,1 @@
+We're renaming the `title` prop of `DataTableColumnHeader` to `label`. The component itself is already migrated, but `pnpm build` now fails with TypeScript errors. Finish the refactor across the codebase: call sites must pass `label`. Don't add `title` back to the component and don't use @ts-ignore / any.

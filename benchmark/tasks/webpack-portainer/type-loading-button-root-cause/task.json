@@ -1,0 +1,46 @@
+{
+  "id": "webpack-portainer/type-loading-button-root-cause",
+  "repo": "webpack-portainer",
+  "category": "build-type-error",
+  "prompt": "`pnpm typecheck` started failing with a large number of errors across the app after a recent change to the shared button components. Find the root cause and fix it with a minimal change. Don't edit the call sites and don't use @ts-ignore.",
+  "setup": {
+    "edits": [
+      {
+        "file": "app/react/components/buttons/LoadingButton.tsx",
+        "find": "  loadingText: string;",
+        "replace": "  loadingText: number;"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "only-changed",
+        "allow": [
+          "app/react/components/buttons/LoadingButton.tsx"
+        ]
+      },
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (webpack-portainer)"
+      },
+      {
+        "type": "cmd",
+        "run": "pnpm --ignore-workspace exec vitest run app/react/components/buttons/LoadingButton.test.tsx",
+        "timeoutSec": 600
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

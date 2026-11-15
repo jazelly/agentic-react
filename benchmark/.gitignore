@@ -1,0 +1,8 @@
+# Pinned third-party clones (recreate with: node scripts/clone.mjs)
+repos/
+# Scratch workspaces + agent transcripts
+runs/
+# Raw run results (commit curated summaries elsewhere if needed)
+results/
+node_modules/
+.DS_Store

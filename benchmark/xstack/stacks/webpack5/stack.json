@@ -1,0 +1,26 @@
+{
+  "id": "webpack5",
+  "bundler": "webpack 5 (swc-loader)",
+  "framework": "React SPA",
+  "render": "csr",
+  "dev": "webpack serve --mode development --port $PORT",
+  "build": "webpack --mode production",
+  "start": "@static dist",
+  "agentic": {
+    "adapter": "@agentic-react/webpack",
+    "packages": [
+      "@agentic-react/webpack@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "webpack.config.cjs",
+        "find": "module.exports = config\n",
+        "replace": "const withAgenticReactWebpack = require('@agentic-react/webpack').default\nmodule.exports = (env, argv) => withAgenticReactWebpack(config(env, argv), argv)\n"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$PORT/mcp",
+    "note": "adapter is ESM-only? verify require() interop"
+  },
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

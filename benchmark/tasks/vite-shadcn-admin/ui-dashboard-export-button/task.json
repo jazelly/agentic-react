@@ -1,0 +1,48 @@
+{
+  "id": "vite-shadcn-admin/ui-dashboard-export-button",
+  "repo": "vite-shadcn-admin",
+  "category": "ui-locate-edit",
+  "prompt": "On the Dashboard page, the button next to the \"Dashboard\" heading says \"Download\". Change it to an outline-style button labelled \"Export report\". Don't change any other button.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/features/dashboard/index.tsx",
+      "find": "<Button>Download</Button>",
+      "replace": "<Button variant='outline'>Export report</Button>"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/dashboard/index.tsx",
+        "pattern": "<Button[^>]*variant=\\{?['\"]outline['\"]\\}?[^>]*>\\s*Export report\\s*</Button>",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/features/dashboard/index.tsx",
+        "pattern": ">\\s*Download\\s*<",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/features/dashboard/index.tsx"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

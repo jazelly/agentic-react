@@ -1,0 +1,31 @@
+{
+  "id": "self/runtime-tasks-status-crash",
+  "suite": "self",
+  "category": "runtime-error",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "derivedFrom": "benchmark/tasks/vite-shadcn-admin/runtime-tasks-status-crash (satnaing/shadcn-admin, MIT)",
+    "license": "MIT (fixture authored for this benchmark)"
+  },
+  "prompt": "Opening the Tasks page crashes the app with `TypeError: Cannot read properties of undefined (reading 'icon')` and the error boundary is shown. Fix it so the Status column shows each task's status again; a task with an unknown status should render an empty cell instead of crashing.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/tasks.spec.ts"
+    ],
+    "component": [
+      "tests/component/tasks.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "The /tasks route of shadcn-admin (TanStack Table) becomes a dependency-free table with the same column-definition pattern (data.ts / columns.tsx / TasksTable / TasksPage) and an error boundary; the Tasks view is opened from in-app navigation instead of a route so it works identically on SPA and SSR stacks. Same injected defect: an unchecked statuses.find() result (here a type assertion) dereferenced for .icon, with one task carrying an unknown status."
+}

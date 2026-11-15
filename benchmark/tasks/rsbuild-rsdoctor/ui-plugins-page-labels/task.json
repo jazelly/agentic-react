@@ -1,0 +1,53 @@
+{
+  "id": "rsbuild-rsdoctor/ui-plugins-page-labels",
+  "repo": "rsbuild-rsdoctor",
+  "category": "ui-locate-edit",
+  "prompt": "On the Plugins page, rename the main card title from \"Plugins Overall\" to \"Plugin Overview\", and change the \"Hooks\" filter label next to the hook selector to \"Hook names\". Nothing else should change.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/pages/Plugins/index.tsx",
+      "find": "title=\"Plugins Overall\"",
+      "replace": "title=\"Plugin Overview\""
+    },
+    {
+      "file": "src/pages/Plugins/index.tsx",
+      "find": "<Typography.Text>Hooks</Typography.Text>",
+      "replace": "<Typography.Text>Hook names</Typography.Text>"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": "title=\"Plugin Overview\"",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": ">\\s*Hook names\\s*<",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/pages/Plugins/index.tsx",
+        "pattern": "Plugins Overall|>\\s*Hooks\\s*<",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/pages/Plugins/index.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

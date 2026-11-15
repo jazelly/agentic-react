@@ -1,0 +1,37 @@
+{
+  "id": "webpack-portainer/build-webpack-alias-resolution",
+  "repo": "webpack-portainer",
+  "category": "build-type-error",
+  "prompt": "`pnpm build` (webpack) fails with hundreds of `Module not found: Error: Can't resolve '@@/...'` / `'@/...'` errors, while `pnpm typecheck` and the unit tests still pass. Fix the webpack setup so the path aliases resolve again. Don't rewrite the imports.",
+  "setup": {
+    "edits": [
+      {
+        "file": "webpack/webpack.common.js",
+        "find": "    extensions: ['.js', '.ts', '.tsx'],\n    tsconfig: path.resolve(projectRoot, 'tsconfig.json'),\n",
+        "replace": "    extensions: ['.js', '.ts', '.tsx'],\n"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "only-changed",
+        "allow": [
+          "webpack/**",
+          "webpack.config.js",
+          "tsconfig.json"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

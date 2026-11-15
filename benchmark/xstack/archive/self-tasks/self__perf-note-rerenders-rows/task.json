@@ -1,0 +1,31 @@
+{
+  "id": "self/perf-note-rerenders-rows",
+  "suite": "self",
+  "category": "dev-loop-perf",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "derivedFrom": "new fixture for this benchmark (pattern from shadcn-admin contacts/users tables)",
+    "license": "MIT (fixture authored for this benchmark)"
+  },
+  "prompt": "On the Contacts page, typing in the \"Quick note\" box is laggy. Find out why and fix it so that typing a note no longer re-renders the contact rows. Search, row selection and the note itself must keep working. Keep the `useRenderCount` instrumentation in place (it feeds our perf dashboards).",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/rerenders.spec.ts"
+    ],
+    "component": [
+      "tests/component/rerenders.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "Framework-free by construction. ContactRow is already memo()'d, but the parent owns the note state and defeats memo with fresh row objects and an inline callback on every render, so each keystroke re-renders all 200 rows. Graded by the render counter: 0 additional ContactRow renders while typing 5 characters (jsdom and production build), plus search/selection/note behavior. Valid fixes include state colocation, useMemo/useCallback, or both. Relevant to agentic-react's get-unnecessary-rerenders tool."
+}

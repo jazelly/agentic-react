@@ -1,0 +1,42 @@
+{
+  "id": "tanstack-start-trellaux/ui-card-remove-order-badge",
+  "repo": "tanstack-start-trellaux",
+  "category": "ui-locate-edit",
+  "prompt": "Each card on a board shows a small faded number next to its delete icon (a debug leftover showing the card's sort order). Remove that number from the UI; keep the delete button.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/components/Card.tsx",
+      "find": "              <div className=\"opacity-50 text-xs\">{order}</div>\n",
+      "replace": ""
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/Card.tsx",
+        "pattern": "\\{order\\}\\s*</div>",
+        "expect": false
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/components/Card.tsx"
+        ]
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (tanstack-start-trellaux)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

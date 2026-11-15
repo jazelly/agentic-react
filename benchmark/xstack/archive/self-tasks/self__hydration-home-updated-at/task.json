@@ -1,0 +1,43 @@
+{
+  "id": "self/hydration-home-updated-at",
+  "suite": "self",
+  "category": "hydration-ssr",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "derivedFrom": "benchmark/tasks/tanstack-start-trellaux/hydration-home-updated-at (TanStack trellaux example, MIT)",
+    "license": "MIT (fixture authored for this benchmark)"
+  },
+  "prompt": "The Boards home page logs a React hydration mismatch coming from the small \"updated \u2026\" time next to the heading. Keep showing the time, but fix the hydration error.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/hydration.spec.ts"
+    ],
+    "component": [
+      "tests/component/updated-at.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable",
+    "vite-spa": {
+      "status": "na",
+      "reason": "client-only SPA stack: nothing is server-rendered, so there is no hydration and the defect cannot occur (an SPA variant would pass in its initial state)"
+    },
+    "webpack5": {
+      "status": "na",
+      "reason": "client-only SPA stack: nothing is server-rendered, so there is no hydration and the defect cannot occur (an SPA variant would pass in its initial state)"
+    },
+    "rsbuild": {
+      "status": "na",
+      "reason": "client-only SPA stack: nothing is server-rendered, so there is no hydration and the defect cannot occur (an SPA variant would pass in its initial state)"
+    }
+  },
+  "portingNotes": "The trellaux Boards home is reduced to a framework-free component tree with the same defect (time computed during render; millisecond precision guarantees server != client text). Applies to every stack that server-renders or prerenders the page: Next (prerendered at build), TanStack Start and React Router 7 (SSR per request), Astro (island prerendered + hydrated with client:load). Verified on the production server by listening for React's hydration errors (dev text or minified #418/#425) while checking the time is still shown."
+}

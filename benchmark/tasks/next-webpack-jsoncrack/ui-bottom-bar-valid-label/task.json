@@ -1,0 +1,42 @@
+{
+  "id": "next-webpack-jsoncrack/ui-bottom-bar-valid-label",
+  "repo": "next-webpack-jsoncrack",
+  "category": "ui-locate-edit",
+  "prompt": "In the editor's bottom status bar, the validity indicator next to the check icon says \"Valid\". Change it to \"Valid JSON\". Leave the \"Invalid\" state alone.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "src/features/editor/BottomBar.tsx",
+      "find": "<Text size=\"xs\">Valid</Text>",
+      "replace": "<Text size=\"xs\">Valid JSON</Text>"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/features/editor/BottomBar.tsx",
+        "pattern": ">\\s*Valid JSON\\s*<",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/features/editor/BottomBar.tsx",
+        "pattern": ">\\s*Invalid\\s*<",
+        "expect": true
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "src/features/editor/BottomBar.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

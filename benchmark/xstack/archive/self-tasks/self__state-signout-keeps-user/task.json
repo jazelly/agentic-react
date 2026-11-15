@@ -1,0 +1,31 @@
+{
+  "id": "self/state-signout-keeps-user",
+  "suite": "self",
+  "category": "state-bug",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "derivedFrom": "benchmark/tasks/vite-shadcn-admin/state-signout-keeps-user (satnaing/shadcn-admin, MIT)",
+    "license": "MIT (fixture authored for this benchmark)"
+  },
+  "prompt": "After clicking \"Sign out\" in the profile dropdown, the app still shows the previous user's name/email (e.g. in the sidebar) until a full page reload. The access-token cookie is cleared correctly. Fix the sign-out state handling.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "e2e": [
+      "tests/e2e/signout.spec.ts"
+    ],
+    "component": [
+      "tests/component/signout.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    }
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "shadcn-admin's zustand auth store becomes a dependency-free useSyncExternalStore store with the same shape (user, accessToken, setUser, setAccessToken, resetAccessToken, reset); the injected bug is the same (reset() clears the token but not the user). Layout split across Sidebar/NavUser/Header/ProfileDropdown so the agent must trace the stale value back to the store. Runs unchanged on all 8 stacks (SSR stacks render the signed-in user on the server; the store is module state)."
+}

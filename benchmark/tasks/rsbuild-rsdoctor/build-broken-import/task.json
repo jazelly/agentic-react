@@ -1,0 +1,34 @@
+{
+  "id": "rsbuild-rsdoctor/build-broken-import",
+  "repo": "rsbuild-rsdoctor",
+  "category": "build-type-error",
+  "prompt": "`pnpm --filter @rsdoctor/client build` fails during type checking, and the Plugins page throws at runtime in dev. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/pages/Plugins/index.tsx",
+        "find": "import { Size } from '../../constants';",
+        "replace": "import { Sizes as Size } from '../../constants';"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "forbid",
+        "pattern": "@ts-ignore|@ts-expect-error|\\bas any\\b|eslint-disable",
+        "why": "no type-system escape hatches in the agent diff"
+      },
+      {
+        "type": "cmd",
+        "run": "@build",
+        "timeoutSec": 1200
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

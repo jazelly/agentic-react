@@ -1,0 +1,30 @@
+{
+  "id": "vite-spa",
+  "bundler": "vite 8 (rolldown)",
+  "framework": "React SPA",
+  "render": "csr",
+  "dev": "vite --port $PORT --strictPort --host 127.0.0.1",
+  "build": "vite build",
+  "start": "vite preview --port $PORT --strictPort --host 127.0.0.1",
+  "agentic": {
+    "adapter": "@agentic-react/vite",
+    "packages": [
+      "@agentic-react/vite@0.3.0"
+    ],
+    "edits": [
+      {
+        "file": "vite.config.ts",
+        "find": "import react from '@vitejs/plugin-react'\n",
+        "replace": "import react from '@vitejs/plugin-react'\nimport AgenticReact from '@agentic-react/vite'\n"
+      },
+      {
+        "file": "vite.config.ts",
+        "find": "plugins: [react()],",
+        "replace": "plugins: [react(), AgenticReact()],"
+      }
+    ],
+    "mcp": "http://127.0.0.1:$PORT/mcp"
+  },
+  "pageEntry": "src/ui/App.tsx",
+  "taskDir": "src/ui"
+}

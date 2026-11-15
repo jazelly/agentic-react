@@ -1,0 +1,29 @@
+{
+  "id": "rsbuild-rsdoctor/state-bundle-size-sort-order",
+  "repo": "rsbuild-rsdoctor",
+  "category": "state-bug",
+  "prompt": "On the Bundle Size page, sorting the module tree by size puts the smallest modules/folders first. It should be largest first (the \"original order\" option must stay unchanged).",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/pages/BundleSize/components/module-tree-sort.ts",
+        "find": "(sizes.get(b.key)?.[sortBy] ?? 0) - (sizes.get(a.key)?.[sortBy] ?? 0),",
+        "replace": "(sizes.get(a.key)?.[sortBy] ?? 0) - (sizes.get(b.key)?.[sortBy] ?? 0),"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "corepack pnpm --filter @rsdoctor/client test -- module-tree-sort",
+        "timeoutSec": 600
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

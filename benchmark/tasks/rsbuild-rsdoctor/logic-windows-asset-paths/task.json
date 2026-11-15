@@ -1,0 +1,29 @@
+{
+  "id": "rsbuild-rsdoctor/logic-windows-asset-paths",
+  "repo": "rsbuild-rsdoctor",
+  "category": "state-bug",
+  "prompt": "With stats generated on Windows (paths like `static\\\\js\\\\main.js`), the Bundle Size page can't match assets: asset titles fall back to bare file names instead of resolving the asset. POSIX paths work. Fix the path handling.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/pages/BundleSize/components/asset-path.ts",
+        "find": "assetPath.replace(/\\\\/g, '/');",
+        "replace": "assetPath.replace('\\\\', '/');"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "cmd",
+        "run": "corepack pnpm --filter @rsdoctor/client test -- asset-path",
+        "timeoutSec": 600
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

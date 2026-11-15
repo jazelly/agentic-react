@@ -1,0 +1,38 @@
+{
+  "id": "vite-shadcn-admin/state-signout-keeps-user",
+  "repo": "vite-shadcn-admin",
+  "category": "state-bug",
+  "prompt": "After clicking \"Sign out\" in the profile dropdown, the app still shows the previous user's name/email (e.g. in the sidebar) until a full page reload. The access-token cookie is cleared correctly. Fix the sign-out state handling.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/stores/auth-store.ts",
+        "find": "            auth: { ...state.auth, user: null, accessToken: '' },",
+        "replace": "            auth: { ...state.auth, accessToken: '' },"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "hidden-test",
+        "src": "hidden/auth-store.reset.test.ts",
+        "dest": "src/stores/__bench__/auth-store.reset.test.ts",
+        "run": "pnpm --ignore-workspace exec vitest run --browser.headless src/stores/__bench__",
+        "timeoutSec": 600,
+        "why": "Vitest browser mode; needs `pnpm --ignore-workspace test:browser:install` once"
+      },
+      {
+        "type": "cmd",
+        "run": "@typecheck",
+        "timeoutSec": 600,
+        "why": "repo typecheck (vite-shadcn-admin)"
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

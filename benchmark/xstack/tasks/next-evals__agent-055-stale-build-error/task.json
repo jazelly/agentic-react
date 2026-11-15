@@ -1,0 +1,45 @@
+{
+  "id": "next-evals/agent-055-stale-build-error",
+  "suite": "next-evals",
+  "category": "build-type-error",
+  "tags": [
+    "core10"
+  ],
+  "source": {
+    "repo": "https://github.com/vercel/next.js",
+    "path": "evals/evals/agent-055-stale-build-error",
+    "ref": "canary",
+    "license": "MIT",
+    "upstreamPrompt": "The dashboard and `/reports/acme` are already running correctly in development, but the production build now fails from generated `.next/types` after recent work. Verify whether the project builds without cache issues, fix the failure, and confirm that the current development session still works when you are done."
+  },
+  "prompt": "The dashboard and the acme report view are already running correctly in development, but the type check (`pnpm typecheck`) and production build now fail after recent work. Verify whether the project type-checks and builds, fix the failure at its source, and confirm that the current development session still works when you are done. Don't remove routes or generateStaticParams, change the report project, hide the type error, or weaken type checking.",
+  "app": "app",
+  "solution": "solution",
+  "deps": [],
+  "verify": {
+    "typecheck": true,
+    "e2e": [
+      "tests/e2e/routes.spec.ts"
+    ],
+    "component": [
+      "tests/component/routes.test.tsx"
+    ],
+    "componentAliases": {
+      "@ui": "src/ui"
+    },
+    "static": [
+      {
+        "file": "src/ui/lib/routes.ts",
+        "pattern": "generateStaticParams:\\s*defineStaticParams\\('project',\\s*\\['acme'\\]\\)"
+      },
+      {
+        "file": "src/ui/lib/routes.ts",
+        "pattern": "generateStaticParams\\?:\\s*\\(\\)\\s*=>\\s*StaticParams"
+      }
+    ]
+  },
+  "stacks": {
+    "default": "applicable"
+  },
+  "portingNotes": "Equivalent variant. Upstream: eval-setup changes a shared helper (lib/route-params.ts) to `(_route: string) =>` so Next's generated .next/types check of generateStaticParams fails far from the defect, tempting a cache reset. Port: the same helper and the same mutation, but the contract is a framework-free route table (src/ui/lib/routes.ts) typed like generateStaticParams, so on every stack the type error surfaces at the consumer, not at the helper. Hidden gate: a fixed strict tsc over src/ui (no @ts-ignore/@ts-expect-error/@ts-nocheck), plus E2E/component checks that both views keep their content, plus static checks that the route contract was not weakened. Dropped (transcript-judged, Next-only): 'did not delete .next', 'verified via the already-running dev server'. On Next stacks `next build` also type-checks, so the build itself fails initially, like upstream."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "webpack-portainer/ui-add-button-default-label",
+  "repo": "webpack-portainer",
+  "category": "ui-locate-edit",
+  "prompt": "The generic \"+ Add\" button used by list views should read \"Create\" by default when no label is passed. Buttons that pass an explicit label must keep it.",
+  "setup": {
+    "edits": []
+  },
+  "solution": [
+    {
+      "file": "app/react/components/buttons/AddButton.tsx",
+      "find": "{children || 'Add'}",
+      "replace": "{children || 'Create'}"
+    }
+  ],
+  "check": {
+    "steps": [
+      {
+        "type": "hidden-test",
+        "src": "hidden/AddButton.default-label.test.tsx",
+        "dest": "app/react/components/buttons/__bench__/AddButton.default-label.test.tsx",
+        "run": "pnpm --ignore-workspace exec vitest run app/react/components/buttons",
+        "timeoutSec": 600
+      },
+      {
+        "type": "only-changed",
+        "allow": [
+          "app/react/components/buttons/AddButton.tsx"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}

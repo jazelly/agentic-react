@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "createdAt": "2026-11-13",
+  "notes": "Pinned shallow clones live in repos/<id>/ (gitignored). Run `node scripts/clone.mjs` to (re)create them at the pinned SHA. Every pnpm command for a repo WITHOUT its own pnpm-workspace.yaml must use --ignore-workspace, otherwise pnpm walks up to the agentic-react workspace root.",
+  "repos": [
+    {
+      "id": "vite-shadcn-admin",
+      "repo": "https://github.com/satnaing/shadcn-admin",
+      "sha": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+      "license": "MIT",
+      "bundler": "vite",
+      "bundlerVersion": "vite ^8.0.8 (Rolldown)",
+      "framework": "React SPA + TanStack Router",
+      "render": "csr",
+      "react": "^19.2.5",
+      "packageManager": "pnpm",
+      "appDir": ".",
+      "commands": {
+        "install": "pnpm install --ignore-workspace --frozen-lockfile",
+        "dev": "pnpm --ignore-workspace dev",
+        "devUrl": "http://localhost:5173",
+        "build": "pnpm --ignore-workspace build",
+        "typecheck": "pnpm --ignore-workspace exec tsc -b",
+        "test": "pnpm --ignore-workspace test",
+        "testNote": "Vitest browser mode (playwright chromium). One-time: pnpm --ignore-workspace test:browser:install"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/vite",
+        "status": "supported",
+        "configFile": "vite.config.ts"
+      },
+      "why": "Popular (16k★), actively maintained admin dashboard; Vite 8 + Rolldown; many routes/forms/tables; has Vitest browser tests.",
+      "verified": {
+        "clone": true,
+        "install": true,
+        "build": true,
+        "buildSeconds": 6.4,
+        "date": "2026-11-13",
+        "node": "24.15.0"
+      }
+    },
+    {
+      "id": "webpack-portainer",
+      "repo": "https://github.com/portainer/portainer",
+      "sha": "66c22cf97b3afb4a3968753f7a70ac1924ec4ef0",
+      "branch": "release/2.45 (default)",
+      "license": "Zlib",
+      "bundler": "webpack",
+      "bundlerVersion": "webpack ^5.107.2 + webpack-dev-server",
+      "framework": "React 17 SPA (AngularJS hybrid, UI-Router)",
+      "render": "csr",
+      "react": "^17.0.2",
+      "packageManager": "pnpm",
+      "appDir": ".",
+      "commands": {
+        "install": "pnpm install --ignore-workspace --frozen-lockfile",
+        "dev": "pnpm --ignore-workspace dev",
+        "devNote": "Full UI needs the Go backend (make dev). Tasks are designed to be verifiable with vitest + tsc only.",
+        "build": "pnpm --ignore-workspace build",
+        "typecheck": "pnpm --ignore-workspace typecheck",
+        "test": "pnpm --ignore-workspace exec vitest run"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/webpack",
+        "status": "supported",
+        "configFile": "webpack/webpack.common.js"
+      },
+      "why": "Real, large, actively maintained product (38k★) on plain webpack 5; React 17 (older React = different fiber/debug info); jsdom Vitest suite gives behavioral checks.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      }
+    },
+    {
+      "id": "rsbuild-rsdoctor",
+      "repo": "https://github.com/web-infra-dev/rsdoctor",
+      "sha": "32e78e6fb6af229e0a556ec9acafec58f61f9ab8",
+      "license": "MIT",
+      "bundler": "rsbuild",
+      "bundlerVersion": "Rsbuild/Rspack via Rstack CLI (`rs`, rstack.config.mts)",
+      "framework": "React SPA (antd)",
+      "render": "csr",
+      "react": "19.3.1 (pnpm catalog)",
+      "packageManager": "pnpm@12.6.0 (corepack; local pnpm is 10.6.5)",
+      "appDir": "packages/client",
+      "commands": {
+        "install": "corepack pnpm install --frozen-lockfile",
+        "dev": "corepack pnpm --filter @rsdoctor/client dev",
+        "build": "corepack pnpm --filter @rsdoctor/client... build",
+        "typecheck": "corepack pnpm --filter @rsdoctor/client exec tsc --noEmit -p tsconfig.json",
+        "test": "corepack pnpm --filter @rsdoctor/client test"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/webpack (Rspack compat) or new @agentic-react/rsbuild",
+        "status": "todo"
+      },
+      "why": "Built by the Rspack team on their own stack (Rsbuild + Rstest); real analysis UI (charts, trees, tables); unit tests via `rs test`.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      }
+    },
+    {
+      "id": "next-turbopack-boilerplate",
+      "repo": "https://github.com/ixartz/Next-js-Boilerplate",
+      "sha": "b83157a8018f55b926a3c25a4b7a7e14b0dfbc35",
+      "license": "MIT",
+      "bundler": "turbopack",
+      "bundlerVersion": "Turbopack (Next 16 default for dev and build)",
+      "framework": "Next.js 16.4 App Router (RSC, next-intl, Drizzle + PGlite, Clerk)",
+      "render": "ssr+rsc",
+      "react": "19.2.8",
+      "packageManager": "npm",
+      "appDir": ".",
+      "commands": {
+        "install": "npm ci",
+        "dev": "npm run dev",
+        "devUrl": "http://localhost:3000",
+        "build": "npm run build-local",
+        "typecheck": "npm run check:types",
+        "test": "npm test",
+        "e2e": "npm run test:e2e"
+      },
+      "env": {
+        "required": [
+          "CLERK_SECRET_KEY"
+        ],
+        "note": ".env ships a test publishable key; secret key must be provided (Clerk dev instance) or env validation skipped. OPEN DECISION."
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/next",
+        "status": "todo: current adapter hooks Next's webpack config only; Turbopack needs a new injection path"
+      },
+      "why": "13k★, actively maintained, Next 16 + Turbopack defaults, real server components/route handlers/i18n; Vitest + Playwright tests. Uses `logging.browserToTerminal` (Next's own agent-friendly feature) — useful as a strong baseline.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      }
+    },
+    {
+      "id": "next-webpack-jsoncrack",
+      "repo": "https://github.com/AykutSarac/jsoncrack.com",
+      "sha": "a46d0d0adb098e12e577a083e87ead7f61f90098",
+      "license": "Apache-2.0",
+      "bundler": "webpack",
+      "bundlerVersion": "webpack 5 via `next dev/build --webpack` (custom webpack(): asyncWebAssembly, layers)",
+      "framework": "Next.js 16.3 Pages Router, output: export (SSG + hydration)",
+      "render": "ssg",
+      "react": "19.3.0 (pnpm catalog)",
+      "packageManager": "pnpm@10.20.0",
+      "appDir": "apps/www",
+      "commands": {
+        "install": "pnpm install --frozen-lockfile",
+        "dev": "pnpm --filter jsoncrack-react build && pnpm --filter www dev",
+        "devUrl": "http://localhost:3000",
+        "build": "pnpm exec turbo run build --filter=www...",
+        "typecheck": "pnpm --filter jsoncrack-react build && pnpm --filter www exec tsc --noEmit"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/next",
+        "status": "supported (webpack mode)"
+      },
+      "why": "44k★, real product (JSON graph editor, Mantine + styled-components + zustand), explicitly runs Next on webpack with a custom webpack config — the Next --webpack cell.",
+      "verified": {
+        "clone": true,
+        "install": true,
+        "build": true,
+        "buildSeconds": 45.5,
+        "date": "2026-11-13",
+        "node": "24.15.0",
+        "note": "plain `next build` in apps/www fails until workspace package jsoncrack-react is built; use the turbo build command"
+      }
+    },
+    {
+      "id": "tanstack-start-trellaux",
+      "repo": "https://github.com/TanStack/router",
+      "sha": "e7358c36d8cde5275fc3c32cd5fd5bbf7ecc30f9",
+      "sparse": [
+        "examples/react/start-trellaux"
+      ],
+      "license": "MIT",
+      "bundler": "vite",
+      "bundlerVersion": "vite ^8.0.14 + @tanstack/react-start plugin",
+      "framework": "TanStack Start (SSR, server functions, TanStack Query, DnD board)",
+      "render": "ssr",
+      "react": "^19.0.0",
+      "packageManager": "pnpm",
+      "appDir": "examples/react/start-trellaux",
+      "commands": {
+        "install": "pnpm install --ignore-workspace",
+        "installNote": "No lockfile in the example dir (monorepo lock does not apply) -> resolution drifts. OPEN DECISION: freeze a lockfile under benchmark/locks/.",
+        "dev": "pnpm --ignore-workspace dev",
+        "devUrl": "http://localhost:3000",
+        "build": "pnpm --ignore-workspace build",
+        "typecheck": "pnpm --ignore-workspace exec tsc --noEmit"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/vite",
+        "status": "supported (needs SSR-safe injection check)"
+      },
+      "why": "No permissively-licensed, moderately-sized, actively maintained production TanStack Start app found (tanstack.com has no license). The official Trello-clone example is the most realistic licensed option.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      },
+      "commandsCwd": "appDir"
+    },
+    {
+      "id": "astro-web-check",
+      "repo": "https://github.com/lissy93/web-check",
+      "sha": "fd08be81f700254214ef49d093e71a991567841f",
+      "license": "MIT",
+      "bundler": "vite",
+      "bundlerVersion": "Astro 7 (Vite under the hood)",
+      "framework": "Astro 7 + @astrojs/react islands (client:only) + Svelte, Node adapter",
+      "render": "ssg+islands",
+      "react": "^19.3.1",
+      "packageManager": "yarn@1.22.22",
+      "appDir": ".",
+      "commands": {
+        "install": "yarn install --frozen-lockfile",
+        "installNote": "engines.node is ^22.23.4 || ^24.16.0 || >=26.3.0; Node 24.15 needs an upgrade or --ignore-engines.",
+        "dev": "yarn dev:astro",
+        "devUrl": "http://localhost:4321",
+        "build": "yarn build",
+        "typecheck": "yarn typecheck"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/vite via astro.config vite.plugins",
+        "status": "todo (islands: runtime must attach per island root)"
+      },
+      "why": "35k★, actively maintained, real Astro site where the main app is a React island; exercises island/hydration-directive bugs that SPAs never see.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      }
+    },
+    {
+      "id": "rr7-epic-stack",
+      "repo": "https://github.com/epicweb-dev/epic-stack",
+      "sha": "893610db76127fb5a5f1ffa786bee6b050637429",
+      "license": "MIT",
+      "bundler": "vite",
+      "bundlerVersion": "vite ^7.3.1 + @react-router/dev",
+      "framework": "React Router v7 framework mode (SSR, loaders/actions) + Express + Prisma/SQLite",
+      "render": "ssr",
+      "react": "^19.2.4",
+      "packageManager": "npm",
+      "appDir": ".",
+      "commands": {
+        "install": "npm ci",
+        "setup": "npm run setup  # build + prisma migrate + playwright install",
+        "dev": "npm run dev",
+        "devUrl": "http://localhost:3000",
+        "build": "npm run build",
+        "typecheck": "npm run typecheck",
+        "test": "npx vitest run",
+        "e2e": "npm run test:e2e:run"
+      },
+      "agenticReactAdapter": {
+        "package": "@agentic-react/vite",
+        "status": "supported (SSR)"
+      },
+      "why": "Kent C. Dodds' production-grade RR7 starter (5.5k★), real auth/notes/settings flows, mocks for external services, Vitest + Playwright.",
+      "verified": {
+        "clone": true,
+        "install": false,
+        "build": false
+      }
+    }
+  ],
+  "externalSuites": [
+    {
+      "id": "swe-marathon/nextjs-vite-rewrite",
+      "source": "../../agentic-node/benchmark/suites/swe-marathon (Apache-2.0, Abundant AI)",
+      "use": "Optional long-horizon stress task (10h, 370 Playwright tests). Reference only, not duplicated."
+    },
+    {
+      "id": "frontierswe-v2/fitness-recap-video-in-remotion",
+      "source": "../../agentic-node/benchmark/suites/frontierswe-v2 (no LICENSE, eval-only)",
+      "use": "Optional React + Remotion task. Reference only."
+    }
+  ],
+  "skipped": [
+    {
+      "cell": "parcel",
+      "reason": "optional; no actively maintained, permissive, moderate React app on Parcel 2 found quickly. Add later if needed."
+    },
+    {
+      "cell": "raw rspack (rspack.config.js)",
+      "reason": "covered by Rsbuild (Rspack under the hood); add Sentry-scale app only if needed (FSL license)."
+    }
+  ]
+}

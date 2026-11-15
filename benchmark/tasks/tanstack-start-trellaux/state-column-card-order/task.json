@@ -1,0 +1,36 @@
+{
+  "id": "tanstack-start-trellaux/state-column-card-order",
+  "repo": "tanstack-start-trellaux",
+  "category": "state-bug",
+  "prompt": "Cards inside every column render in reverse order: a newly added card appears at the top, and after drag-and-drop the card lands in the wrong slot. The columns themselves are ordered correctly. Fix it.",
+  "setup": {
+    "edits": [
+      {
+        "file": "src/components/Column.tsx",
+        "find": "() => [...items].sort((a, b) => a.order - b.order),",
+        "replace": "() => [...items].sort((a, b) => b.order - a.order),"
+      }
+    ]
+  },
+  "solution": "reverse-setup",
+  "check": {
+    "steps": [
+      {
+        "type": "regex",
+        "file": "src/components/Column.tsx",
+        "pattern": "a\\.order\\s*-\\s*b\\.order",
+        "expect": true
+      },
+      {
+        "type": "regex",
+        "file": "src/components/Column.tsx",
+        "pattern": "b\\.order\\s*-\\s*a\\.order",
+        "expect": false
+      }
+    ]
+  },
+  "budget": {
+    "timeoutMin": 30,
+    "maxTurns": 60
+  }
+}
