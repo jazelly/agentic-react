@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-11-15T11:11:18.821Z",
+  "force": false,
+  "results": [
+    {
+      "repoId": "vite-shadcn-admin",
+      "ref": "agentic-react/base-vite-shadcn-admin:6f2ff9a88a8a",
+      "key": "6f2ff9a88a8a",
+      "built": true,
+      "skipped": false,
+      "seconds": 61.081
+    },
+    {
+      "repoId": "webpack-portainer",
+      "ref": "agentic-react/base-webpack-portainer:a7ff2f7810dd",
+      "key": "a7ff2f7810dd",
+      "built": true,
+      "skipped": false,
+      "seconds": 69.869
+    },
+    {
+      "repoId": "rsbuild-rsdoctor",
+      "ref": "agentic-react/base-rsbuild-rsdoctor:64801ea3f590",
+      "key": "64801ea3f590",
+      "built": true,
+      "skipped": false,
+      "seconds": 82.274
+    },
+    {
+      "repoId": "next-turbopack-boilerplate",
+      "ref": "agentic-react/base-next-turbopack-boilerplate:96237baea691",
+      "key": "96237baea691",
+      "built": true,
+      "skipped": false,
+      "seconds": 80.094
+    },
+    {
+      "repoId": "next-webpack-jsoncrack",
+      "ref": "agentic-react/base-next-webpack-jsoncrack:c2afa5d5b7c0",
+      "key": "c2afa5d5b7c0",
+      "built": true,
+      "skipped": false,
+      "seconds": 52.972
+    },
+    {
+      "repoId": "tanstack-start-trellaux",
+      "ref": "agentic-react/base-tanstack-start-trellaux:d44ae96ff1ee",
+      "key": "d44ae96ff1ee",
+      "built": true,
+      "skipped": false,
+      "seconds": 102.669
+    },
+    {
+      "repoId": "astro-web-check",
+      "ref": "agentic-react/base-astro-web-check:3c1e7d2834c4",
+      "key": "3c1e7d2834c4",
+      "built": true,
+      "skipped": false,
+      "seconds": 182.518
+    },
+    {
+      "repoId": "rr7-epic-stack",
+      "ref": "agentic-react/base-rr7-epic-stack:764c6d30a24e",
+      "key": "764c6d30a24e",
+      "built": true,
+      "skipped": false,
+      "seconds": 53.457
+    }
+  ]
+}
