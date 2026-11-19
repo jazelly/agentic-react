@@ -1,0 +1,15 @@
+repo: next-turbopack-boilerplate
+pinned SHA: b83157a8018f55b926a3c25a4b7a7e14b0dfbc35
+task: -
+arm: control
+command: PORT=5301 DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5332/postgres npm run test:e2e
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy
+env: CLAUDECODE=1 AI_AGENT=claude-code; other host agent vars (CLAUDE*, CURSOR*, CODEX*, ...), CI, NO_COLOR, FORCE_COLOR, NODE_OPTIONS unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr combined into one file (non-TTY)
+node: v24.15.0
+tool versions: @playwright/test 1.62.1, next 16.4.0 (Turbopack dev via webServer), @electric-sql/pglite-socket 0.2.8, npm 11.18.0
+browser: Chromium headless shell 1255 (Chrome for Testing 159.0.8154.6) driven by the repo's pinned Playwright 1.62.1 via launchOptions.executablePath
+exit code: 1
+duration: 27.64s
+warm-up: yes: one discarded run of the same command with the same env (exit 1, 11.3s); its output is warmup/playwright-e2e.control.txt
+deviations: scratch workspace benchmark/runs/caps/<ws> made with task-kit prepareWorkspace (reused from the previous control-only pass). AGENTS.md restored to baseline before each arm's warm-up (Next under agent markers regenerates it once and may print its agent-addressed upgrade prompt, which then lands in the warm-up). no task edits. playwright.config.ts webServer `pglite-server -m 100` -> `pglite-server -m 100 -p 5332` (host 5432 held by Docker), env DATABASE_URL=...:5332 and PORT=5301 (repo default 3008); scratch-copy config edit: use.launchOptions.executablePath = <ms-playwright>/chromium_headless_shell-1255/... (latest Chromium; the pinned Playwright 1.62.1's own revision is not installed). CLERK_SECRET_KEY = the repo .env committed placeholder only.
+warm-up printed: Next 16.4's agent-addressed security-upgrade prompt, then the dev server exited (instructions not followed) (absent from the capture)

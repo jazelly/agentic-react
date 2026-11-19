@@ -1,0 +1,3 @@
+[debug] [astro] Initializing prefetch script
+[debug] [vite] connecting...
+[debug] [vite] connected.

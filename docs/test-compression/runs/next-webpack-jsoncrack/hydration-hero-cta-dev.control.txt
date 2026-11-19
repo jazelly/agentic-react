@@ -1,0 +1,84 @@
+
+> jsoncrack-react@1.0.5 build /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-hyd/packages/jsoncrack-react
+> vite build && tsc -p tsconfig.build.json
+
+vite v8.2.1 building client environment for production...
+[2Ktransforming...✓ 21 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.css   3.93 kB │ gzip:  1.38 kB
+dist/index.js   31.29 kB │ gzip: 10.57 kB
+
+✓ built in 51ms
+
+> www@0.0.0 dev /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-hyd/apps/www
+> next dev --webpack --port 5310
+
+▲ Next.js 16.3.5 (webpack)
+- Local:         http://localhost:5310
+- Network:       http://192.168.31.240:5310
+- Environments: .env.development, .env
+✓ Ready in 220ms
+⚠ Warning: Next.js ignored pnpm-workspace.yaml in /Users/jazelly/Desktop/github/my-proj/agentic-react because it is outside the current Git repository (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-hyd).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+
+✓ Running next.config.js took 7ms
+
+ GET / 200 in 1994ms (next.js: 1799ms, application-code: 196ms)
+[browser] Uncaught Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <main className="HeroSectio...">
+      <HeroSection__StyledHeroSectionBody>
+        <div className="HeroSectio...">
+          <@mantine/core/Stack flex="1" miw={250} mx="auto" align="center">
+            <@mantine/core/Box ref={null} className="m_6d731127..." style={{...}} variant={undefined} flex="1" miw={250} ...>
+              <div ref={null} style={{...}} className="m_6d731127..." data-variant={undefined} data-size={undefined} ...>
+                <LinkComponent>
+                <HeroSection__StyledHeroTitle>
+                <HeroSection__StyledHeroText>
+                <@mantine/core/Flex gap="xs" wrap="wrap" justify="center" hiddenFrom="xs">
+                  <@mantine/core/Box ref={null} className="m_8bffd616..." style={{gap:"var(-...", ...}} hiddenFrom="xs">
+                    <div ref={null} style={{gap:"var(-...", ...}} className="m_8bffd616..." data-variant={undefined} ...>
+                      <@mantine/core/Button component="a" color="#202842" href="/editor" size="md" radius="md" ...>
+                        <@mantine/core/UnstyledButton ref={null} className="mantine-ac..." style={{...}} ...>
+                          <@mantine/core/Box className="mantine-fo..." style={{...}} component="a" ref={null} ...>
+                            <a ref={null} style={{...}} className="mantine-fo..." data-variant={undefined} data-size="md" ...>
+                              <span className="m_80f1301b..." style={{}}>
+                                <@mantine/core/Box component="span" mod={{...}} className="m_811560b9..." style={{}}>
+                                  <span
+                                    ref={null}
+                                    style={{}}
+                                    className="m_811560b9 mantine-Button-label"
+                                    data-variant={undefined}
+                                    data-size={undefined}
+                                    size={undefined}
+                                  >
++                                   Open
+-                                   Go to Editor
+                                ...
+                ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at span (<anonymous>)
+    at HeroSection (src/layout/Landing/HeroSection.tsx:133:13)
+    at HomePage (src/pages/index.tsx:19:7)
+    at JSONCrackApp (src/pages/_app.tsx:115:13)
+  131 |
+  132 |           <Flex gap="xs" wrap="wrap" justify="center" hiddenFrom="xs">
+> 133 |             <Button
+      |             ^
+  134 |               component="a"
+  135 |               color="#202842"
+  136 |               href="/editor"
+[?25h

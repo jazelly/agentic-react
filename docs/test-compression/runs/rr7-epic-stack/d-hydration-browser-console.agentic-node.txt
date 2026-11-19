@@ -1,0 +1,42 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[error] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <App data-tsd-source="/app/root....">
+      <OpenImgContextProvider optimizerEndpoint="/resources..." getSrc={function getImgSrc} ...>
+        <div className="flex min-h..." data-tsd-source="/app/root....">
+          <header>
+          <div className="flex flex-..." data-tsd-source="/app/root....">
+            <Outlet data-tsd-source="/app/root....">
+              <RenderedRoute match={{params:{}, ...}} routeContext={{outlet:null, ...}}>
+                <WithComponentProps2>
+                  <Index params={{}} loaderData={null} actionData={undefined} matches={[...]}>
+                    <main className="font-poppi..." data-tsd-source="/app/route...">
+                      <div className="grid place..." data-tsd-source="/app/route...">
+                        <div className="flex max-w..." data-tsd-source="/app/route...">
+                          <a>
+                          <h1
+                            data-heading={true}
++                           data-viewport="xl"
+-                           data-viewport="server"
+                            className="animate-slide-top text-foreground xl:animate-slide-left mt-8 text-4xl font-medi..."
+                            data-tsd-source="/app/routes/_marketing/index.tsx:51:6"
+                          >
+                          ...
+                        ...
+          ...
+        ...
+
+[warning] The resource http://localhost:5221/app/components/ui/icons/sprite.svg was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.

@@ -1,0 +1,15 @@
+
+> pretest:e2e:run
+> npm run build
+
+
+> build
+> react-router build
+React Router: Future Flag Warning x5 kinds, each printed 10x: v8_middleware, v8_splitRouteModules, v8_viteEnvironmentApi, v8_passThroughRequests, v8_trailingSlashAwareDataRequests (https://reactrouter.com/upgrading/future-flags)
+vite client build ok: 991 modules, 15 empty chunks, 1 sourcemap warning (react-router dom-export.mjs); ssr build ok: 138 modules
+  warning: source maps are enabled in production
+(node:48996) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[WebServer] (node:48983) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+playwright: 26 passed (chromium, 1 worker) in 19.7s
+  web server: 1241 lines (request log, mock emails), no errors; 404 responses: /does-not-exist, /img/missing.png, /favicons/missing.png
+[agentic-react] full output: node_modules/.cache/agentic-react/logs/<MMDD-HHMMSS>-<pid>.log

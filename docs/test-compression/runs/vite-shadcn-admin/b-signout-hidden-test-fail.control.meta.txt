@@ -1,0 +1,18 @@
+repo: vite-shadcn-admin
+pinned_sha: e16c87f213a5ba5e45964e9b67c792105ec74d26
+task: vite-shadcn-admin/state-signout-keeps-user
+case: b-signout-hidden-test-fail
+arm: control
+command: pnpm --ignore-workspace exec vitest run --browser.headless src/stores/__bench__
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-signout
+node: v24.15.0
+exit_code: 1
+duration_s: 1.5
+warmup: yes (one discarded run with identical env/command immediately before; warm-up exit code 1)
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=unset AGENTIC_NODE_MODE=unset
+tools: vite 8.0.8, vitest 4.1.4 (browser mode, @vitest/browser-playwright 4.1.4, playwright 1.59.1 pinned by repo), react 19.2.5, pnpm 10.6.5; agentic-node 0.2.0 @ 4e604d36ccc0c7b3b491a02c28f654e474bce60b (agentic-node arm only)
+browser: Chrome for Testing 159.0.8154.6 (Playwright revision 1255)
+date: 2026-11-19
+deviations: Vitest browser provider pointed at the latest Chromium via launchOptions.executablePath=~/Library/Caches/ms-playwright/chromium_headless_shell-1255/chrome-headless-shell-mac-arm64/chrome-headless-shell in the scratch copy's vite.config.ts (playwright({ launchOptions: { executablePath } })); repo pins playwright 1.59.1 whose own revision is deleted.
+notes: Hidden test hidden/auth-store.reset.test.ts copied to src/stores/__bench__/ as runChecks does (removed afterwards). runChecks sets CI=1; CI is unset here per brief. __screenshots__ dirs deleted before every run.

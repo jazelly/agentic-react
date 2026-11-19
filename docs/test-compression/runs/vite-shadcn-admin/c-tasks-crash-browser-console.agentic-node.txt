@@ -1,0 +1,30 @@
+[debug] [vite] connecting...
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[debug] [vite] connected.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] [Table] Column with id 'label' does not exist.
+[error] %o
+
+%s
+
+%s
+ TypeError: Cannot read properties of undefined (reading 'icon')
+    at cell (http://localhost:5201/src/features/tasks/components/tasks-columns.tsx:113:23)
+    at Object.react_stack_bottom_frame (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:12868:12)
+    at renderWithHooks (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:4213:19)
+    at updateFunctionComponent (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:5569:16)
+    at beginWork (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:6140:20)
+    at runWithFiberInDEV (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:851:66)
+    at performUnitOfWork (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:8429:92)
+    at workLoopSync (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:8325:37)
+    at renderRootSync (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:8309:6)
+    at performWorkOnRoot (http://localhost:5201/node_modules/.vite/deps/client-LNhWYhdo.js?v=993307d7:7994:27) The above error occurred in the <cell> component. React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+[warning] Warning: Error in route match: __root__/

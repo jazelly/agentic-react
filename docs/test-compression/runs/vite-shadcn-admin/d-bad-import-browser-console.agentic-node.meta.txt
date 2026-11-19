@@ -1,0 +1,22 @@
+repo: vite-shadcn-admin
+pinned_sha: e16c87f213a5ba5e45964e9b67c792105ec74d26
+task: -
+case: d-bad-import-browser-console
+arm: agentic-node
+command: pnpm --ignore-workspace dev --port 5202 --strictPort
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-badimport
+url: http://localhost:5202/tasks
+node: v24.15.0
+exit_code: n/a (long-running dev server, stopped with SIGINT to its process group; wait status 0)
+readiness: ready=1 after 2s
+wall_s (start..stop incl. browser + settle): 11.2
+warmup: yes (one discarded server+browser session with identical env/command immediately before)
+browser_timezone: host default
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=--require /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/agentic-node-tool/node_modules/agentic-node/src/preload.cjs AGENTIC_NODE_MODE=auto
+tools: vite 8.0.8, vitest 4.1.4 (browser mode, @vitest/browser-playwright 4.1.4, playwright 1.59.1 pinned by repo), react 19.2.5, pnpm 10.6.5; agentic-node 0.2.0 @ 4e604d36ccc0c7b3b491a02c28f654e474bce60b (agentic-node arm only)
+browser: Chrome for Testing 159.0.8154.6 (Playwright revision 1255)
+date: 2026-11-19
+deviations: Port 5202 via --port 5202 --strictPort. AD-HOC change, not from any task: src/features/tasks/components/tasks-columns.tsx line 7 from './data-table-row-actions' -> './data-table-row-action' (typo, file does not exist); workspace is the same plain APFS copy used by the previous control-only pass.
+notes: Browser console (Playwright 1.65.1 from pw-latest; lines '[<type>] <text>' and '[pageerror] <stack>', in order) of the same session as d-bad-import-devserver.agentic-node.txt; the capture script ran without NODE_OPTIONS. 
+FINDING (agentic-node arm): agentic-node writes its raw log to <cwd>/.agentic-node/logs/ inside the Vite project root; the new file landing there while the import error is pending makes the open page re-fetch (second load with ?t=<timestamp> on the dynamic import), so the browser console shows the error sequence twice (control 10 messages, agentic-node 20; a separate repro run gave 14) and the dev-server log repeats the 'Failed to resolve import' block. Diagnostic re-run with AGENTIC_NODE_DIR outside the workspace: no reload, 10 messages (diag files in /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/bench-arms/diag/, not part of the captured cases).

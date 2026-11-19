@@ -1,0 +1,163 @@
+
+> dev
+> cross-env NODE_ENV=development MOCKS=true node index.ts
+
+🔶 Mock server installed
+Starting development server
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+🚀  We have liftoff!
+Local:            http://localhost:5221
+On Your Network:  http://192.168.31.240:5221
+Press Ctrl+C to stop
+(node:57626) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+GET / - - - - ms
+LOADER root triggered - 15.45ms
+INFO ⏰  Server timing for route root - root_loader [15.1ms]
+INFO ⏰  Server timing for route root - getUserId [0.3ms] ["getUserId in root"]
+LOADER root triggered - 2.42ms
+INFO ⏰  Server timing for route root - root_loader [2.3ms]
+INFO ⏰  Server timing for route root - getUserId [0.1ms] ["getUserId in root"]
+GET / 200 - - 99.402 ms
+LOADER root triggered - 1.44ms
+INFO ⏰  Server timing for route root - root_loader [1.4ms]
+INFO ⏰  Server timing for route root - getUserId [0.1ms] ["getUserId in root"]
+GET / 200 - - 77.834 ms
+GET /app/routes/_marketing/+logos/fly.svg 200 - - 0.849 ms
+GET /app/entry.client.tsx 200 - - 0.379 ms
+GET /app/routes/_marketing/+logos/prisma.svg 200 - - 0.285 ms
+GET /app/routes/_marketing/+logos/sqlite.svg 200 - - 0.157 ms
+GET /@id/__x00__virtual:react-router/browser-manifest 200 - - 398.589 ms
+LOADER root triggered - 361.71ms
+INFO ⏰  Server timing for route root - root_loader [361.6ms]
+INFO ⏰  Server timing for route root - getUserId [0.2ms] ["getUserId in root"]
+GET /app/styles/tailwind.css 200 - - 586.434 ms
+  (… 1 similar line omitted)
+GET /app/root.tsx 200 - - 588.609 ms
+GET /app/routes/_marketing/+logos/react-email.svg 200 - - 0.271 ms
+GET /app/routes/_marketing/+logos/zod.svg 200 - - 0.299 ms
+GET /app/routes/_marketing/+logos/fly.svg 304 - - 0.131 ms
+GET /app/routes/_marketing/+logos/sqlite.svg 304 - - 0.209 ms
+GET /app/routes/_marketing/index.tsx 304 - - 0.119 ms
+GET /@id/__x00__virtual:react-router/browser-manifest 304 - - 0.157 ms
+GET /app/routes/_marketing/+logos/docker.svg 200 - - 0.144 ms
+GET /app/routes/_marketing/+logos/playwright.svg 200 - - 0.282 ms
+GET /app/entry.client.tsx 304 - - 0.106 ms
+GET /app/root.tsx 304 - - 0.165 ms
+GET /app/routes/_marketing/+logos/prisma.svg 304 - - 0.266 ms
+GET /app/styles/tailwind.css 304 - - 0.106 ms
+GET /app/routes/_marketing/+logos/react-email.svg 304 - - 0.107 ms
+GET /app/routes/_marketing/+logos/testing-library.png 200 5803 - 0.094 ms
+GET /app/routes/_marketing/+logos/playwright.svg 200 - - 0.096 ms
+  (… 3 similar lines omitted)
+GET /app/routes/_marketing/+logos/zod.svg 200 - - 0.138 ms
+GET /app/components/ui/icons/sprite.svg 200 - - 0.117 ms
+GET / 200 - - 434.130 ms
+GET /app/components/ui/icons/sprite.svg 304 - - 0.223 ms
+GET /@id/__x00__virtual:react-router/inject-hmr-runtime 200 - - 0.876 ms
+GET /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1233cdbf 200 - - 0.080 ms
+  (… 1 similar line omitted)
+GET /node_modules/.vite/deps/openimg_react.js?v=1233cdbf 200 - - 0.068 ms
+GET /@id/__x00__virtual:react-router/hmr-runtime 200 - - 0.184 ms
+GET /app/assets/favicons/apple-touch-icon.png?import 200 - - 0.188 ms
+GET /app/assets/favicons/favicon.svg?import 200 - - 0.102 ms
+GET /node_modules/.vite/deps/remix-utils_honeypot_react.js?v=1233cdbf 200 - - 0.238 ms
+GET /app/components/error-boundary.tsx 200 - - 0.104 ms
+GET /@vite/client 200 - - 16.525 ms
+  (… 6 similar lines omitted)
+GET /app/components/user-dropdown.tsx 200 - - 0.101 ms
+GET /node_modules/.vite/deps/react-router-devtools_client.js?v=1233cdbf 200 - - 0.590 ms
+GET /app/routes/resources/theme-switch.tsx 200 - - 0.099 ms
+GET /app/styles/tailwind.css?url 200 - - 0.188 ms
+GET /app/utils/nonce-provider.ts 200 - - 0.092 ms
+  (… 2 similar lines omitted)
+GET /app/utils/user.ts 200 - - 0.189 ms
+GET /app/routes/_marketing/+logos/logos.ts 200 - - 0.096 ms
+GET /app/components/ui/tooltip.tsx 200 - - 0.102 ms
+GET /node_modules/.vite/deps/chunk-NKQYQQPA.js?v=1233cdbf 200 - - 0.175 ms
+  (… 4 similar lines omitted)
+GET /node_modules/.vite/deps/react.js?v=1233cdbf 200 - - 0.111 ms
+GET /app/components/ui/input.tsx 200 - - 0.080 ms
+  (… 2 similar lines omitted)
+GET /node_modules/vite/dist/client/env.mjs 200 - - 0.117 ms
+GET /node_modules/.vite/deps/spin-delay.js?v=1233cdbf 200 - - 0.084 ms
+GET /node_modules/.vite/deps/chunk-MZEPMGXX.js?v=1233cdbf 200 - - 0.647 ms
+GET /app/components/ui/icons/sprite.svg?import 200 - - 0.186 ms
+GET /node_modules/.vite/deps/@radix-ui_react-slot.js?v=1233cdbf 200 - - 0.161 ms
+  (… 1 similar line omitted)
+GET /node_modules/.vite/deps/@conform-to_react.js?v=1233cdbf 200 - - 0.092 ms
+GET /app/components/ui/dropdown-menu.tsx 200 - - 0.169 ms
+GET /node_modules/.vite/deps/sonner.js?v=1233cdbf 200 - - 0.327 ms
+  (… 3 similar lines omitted)
+GET /node_modules/.vite/deps/@conform-to_zod.js?v=1233cdbf 200 - - 0.138 ms
+GET /app/utils/request-info.ts 200 - - 0.086 ms
+GET /node_modules/.vite/deps/chunk-7IYNDNJC.js?v=1233cdbf 200 - - 0.074 ms
+  (… 9 similar lines omitted)
+GET /node_modules/.vite/deps/@epic-web_client-hints_time-zone.js?v=1233cdbf 200 - - 0.155 ms
+GET /app/routes/_marketing/+logos/docker.svg?import 200 - - 0.099 ms
+  (… 1 similar line omitted)
+GET /app/routes/_marketing/+logos/faker.svg?import 200 - - 0.087 ms
+GET /node_modules/.vite/deps/clsx.js?v=1233cdbf 200 - - 0.137 ms
+GET /app/routes/_marketing/+logos/eslint.svg?import 200 - - 0.181 ms
+GET /node_modules/.vite/deps/tailwind-merge.js?v=1233cdbf 200 - - 0.154 ms
+GET /node_modules/.vite/deps/chunk-AD67ZOKL.js?v=1233cdbf 200 - - 0.297 ms
+GET /app/routes/_marketing/+logos/github.svg?import 200 - - 0.133 ms
+  (… 16 similar lines omitted)
+GET /app/routes/_marketing/+logos/vitest.svg?import 200 - - 0.207 ms
+GET /node_modules/.vite/deps/@radix-ui_react-label.js?v=1233cdbf 200 - - 0.072 ms
+  (… 11 similar lines omitted)
+GET /node_modules/.vite/deps/PYVV4DLY-7JHDUT4N.js?v=1233cdbf 200 - - 43.481 ms
+(… repeated 2 more times: ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.)
+(… repeated 2 more times: ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.)
+(… repeated 2 more times: ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.)
+(… repeated 2 more times: ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.)
+(… repeated 2 more times: ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.)
+[agentic-node] full output: .agentic-node/logs/1119-085656-57588.log

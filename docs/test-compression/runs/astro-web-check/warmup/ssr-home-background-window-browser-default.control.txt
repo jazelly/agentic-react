@@ -1,0 +1,4 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[debug] [astro] Initializing prefetch script
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

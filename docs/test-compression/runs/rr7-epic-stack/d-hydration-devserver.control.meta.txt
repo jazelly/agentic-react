@@ -1,0 +1,21 @@
+repo: rr7-epic-stack
+pinned_sha: 893610db76127fb5a5f1ffa786bee6b050637429
+task: rr7-epic-stack/hydration-heading-viewport-attr
+case: d-hydration-devserver
+arm: control
+command: PORT=5221 npm run dev
+cwd: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/rr7-hydration
+url: http://localhost:5221/
+node: v22.22.2
+exit_code: n/a (long-running dev server, stopped with SIGINT to its process group; wait status 0)
+readiness: ready=1 after 4s
+wall_s (start..stop incl. browser + settle): 16.8
+warmup: yes (one discarded server+browser session with identical env/command immediately before)
+browser_timezone: host default
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=unset AGENTIC_NODE_MODE=unset
+tools: vite 7.3.1, vitest 4.0.18, react-router 7.16.0, @playwright/test 1.58.1 (pinned by repo), prisma 6.19.2, react 19.2.4, npm 10.9.7; agentic-node 0.2.0 @ 4e604d36ccc0c7b3b491a02c28f654e474bce60b (agentic-node arm only)
+browser: Chrome for Testing 159.0.8154.6 (chromium-headless-shell revision 1255) driven by Playwright 1.65.1 (pw-latest)
+date: 2026-11-19
+deviations: Workspace scratchpad/ws/rr7-hydration = rr7-base copy + task setup.edits (previous pass). PORT=5221 env (server/index.ts reads PORT).
+notes: Dev-server terminal output; browser console of the same session is d-hydration-browser-console.control.txt. Default Playwright viewport 1280x720, so the client renders data-viewport=xl.

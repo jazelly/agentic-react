@@ -1,0 +1,4 @@
+[goto-failed] page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5302/counter
+Call log:
+[2m  - navigating to "http://localhost:5302/counter", waiting until "networkidle"[22m
+

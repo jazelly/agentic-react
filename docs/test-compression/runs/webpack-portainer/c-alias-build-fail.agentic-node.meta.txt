@@ -1,0 +1,18 @@
+repo: webpack-portainer
+pinned_sha: 66c22cf97b3afb4a3968753f7a70ac1924ec4ef0
+task: webpack-portainer/build-webpack-alias-resolution
+case: c-alias-build-fail
+arm: agentic-node
+command: pnpm --ignore-workspace build
+cwd: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution
+node: v22.22.2
+exit_code: 1
+duration_s: 7.6
+warmup: yes (one discarded run with identical env/command immediately before; warm-up exit code 1)
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=--require /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/agentic-node-tool/node_modules/agentic-node/src/preload.cjs AGENTIC_NODE_MODE=auto
+tools: webpack 5.107.2, webpack-cli 6.0.1, vitest 4.1.8 (jsdom 24.1.3), vite 8.0.16, react 17.0.2, @testing-library/react 12.1.5, pnpm 10.26.2 (packageManager pin); agentic-node 0.2.0 @ 4e604d36ccc0c7b3b491a02c28f654e474bce60b (agentic-node arm only)
+browser: n/a (jsdom / webpack build, no browser)
+date: 2026-11-19
+deviations: Runs in a copy OUTSIDE the agentic-react monorepo (scratchpad/ws): inside benchmark/repos vite-tsconfig-paths walks up into the agentic-react pnpm workspace and prints a ~40-line TSConfckParseError (layout artifact). Install was pnpm install --ignore-workspace --no-frozen-lockfile per manifest, lockfile restored to pinned version (previous pass). (prepareWorkspace). dist/ deleted before every run (warm-up and captured) so each starts from the same tree; webpack/babel caches are WARM (warm-up run), unlike the previous pass's cold control capture.
+notes: The task cmd check (@build = webpack).

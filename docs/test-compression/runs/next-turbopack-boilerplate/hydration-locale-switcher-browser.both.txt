@@ -1,0 +1,13 @@
+[log] [Client Instrumentation Hook] Slow execution detected: 17ms (Note: Code download overhead is not included in this measurement)
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[log] [HMR] connected
+[pageerror] Hydration failed (text mismatch): server "EN" vs client "en"
+  at <option value="en"> in <LocaleSwitcher> src/components/LocaleSwitcher.tsx:33
+  via <BaseTemplate> < <Layout> (app/[locale] layout)
+  common causes: Date/locale formatting, Date.now()/Math.random(), typeof window branches. https://react.dev/link/hydration-mismatch
+  (react-dom frames x11 and full message in log)
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED (x4; URLs in log)
+[warning] Image with src "/_next/static/media/crowdin-dark.1pa0qderdbj5v.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[warning] Image with src "/_next/static/media/nextjs-boilerplate-saas.07y2sc_u0q7sj.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+
+[agentic-react] full output: node_modules/.cache/agentic-react/logs/<MMDD-HHMMSS>-<pid>.log

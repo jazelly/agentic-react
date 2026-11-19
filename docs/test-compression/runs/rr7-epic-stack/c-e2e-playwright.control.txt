@@ -1,0 +1,1586 @@
+
+> pretest:e2e:run
+> npm run build
+
+
+> build
+> react-router build
+
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+vite v7.3.1 building client environment for production...
+
+  ⚠️  Source maps are enabled in production
+     This makes your server code publicly
+     visible in the browser. This is highly
+     discouraged! If you insist, ensure that
+     you are using environment variables for
+     secrets and not hard-coding them in
+     your source code.
+
+transforming...
+node_modules/react-router/dist/development/dom-export.mjs (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+✓ 991 modules transformed.
+Generated an empty chunk: "me".
+Generated an empty chunk: "logout".
+Generated an empty chunk: "robots_._txt".
+Generated an empty chunk: "sitemap_._xml".
+Generated an empty chunk: "download-user-data".
+Generated an empty chunk: "healthcheck".
+Generated an empty chunk: "images".
+Generated an empty chunk: "theme-switch".
+Generated an empty chunk: "authentication".
+Generated an empty chunk: "registration".
+Generated an empty chunk: "sqlite".
+Generated an empty chunk: "index".
+Generated an empty chunk: "lru._cacheKey".
+Generated an empty chunk: "sqlite._cacheKey".
+Generated an empty chunk: "callback".
+rendering chunks...
+computing gzip size...
+build/client/assets/favicon-Xd7rFGOf.svg                     0.47 kB │ gzip:  0.30 kB
+build/client/assets/docker-CKYupBMy.svg                      4.88 kB │ gzip:  1.94 kB
+build/client/assets/playwright-D0Du3LFd.svg                  5.03 kB │ gzip:  2.04 kB
+build/client/assets/prisma-IaIz7Mrr.svg                      5.10 kB │ gzip:  2.19 kB
+build/client/assets/testing-library-DlPZpWfP.png             5.80 kB
+build/client/assets/prettier-DbIVlkV4.svg                    6.41 kB │ gzip:  0.84 kB
+build/client/assets/apple-touch-icon-Ds7s8IDz.png            8.99 kB
+build/client/assets/fly-COcofn25.svg                         9.78 kB │ gzip:  4.46 kB
+build/client/assets/sqlite-C780ctma.svg                      9.89 kB │ gzip:  3.97 kB
+build/client/assets/react-email-DKP-k4Ck.svg                11.49 kB │ gzip:  4.42 kB
+build/client/assets/sprite-ByNtxWnV.svg                     29.45 kB │ gzip:  9.84 kB
+build/client/.vite/manifest.json                            34.24 kB │ gzip:  3.35 kB
+build/client/assets/faker-D6l4cpmx.svg                      76.11 kB │ gzip: 23.81 kB
+build/client/assets/zod-TYtFcqGX.svg                       118.03 kB │ gzip: 83.66 kB
+build/client/assets/stars-C09PLoVz.jpg                     391.16 kB
+build/client/assets/tailwind-CtZ4yhEi.css                   48.64 kB │ gzip:  9.29 kB
+build/client/assets/me-l0sNRNKZ.js                           0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/logout-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/robots_._txt-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sitemap_._xml-l0sNRNKZ.js                0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/download-user-data-l0sNRNKZ.js           0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/healthcheck-l0sNRNKZ.js                  0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/images-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/theme-switch-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/authentication-l0sNRNKZ.js               0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/registration-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sqlite-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/index-l0sNRNKZ.js                        0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/lru._cacheKey-l0sNRNKZ.js                0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sqlite._cacheKey-l0sNRNKZ.js             0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/callback-l0sNRNKZ.js                     0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/privacy-DREM9onB.js                      0.14 kB │ gzip:  0.15 kB │ map:   0.36 kB
+build/client/assets/support-BwRi9MFC.js                      0.14 kB │ gzip:  0.15 kB │ map:   0.36 kB
+build/client/assets/about-AbqDLOnP.js                        0.15 kB │ gzip:  0.15 kB │ map:   0.35 kB
+build/client/assets/tos-BLW-TpPD.js                          0.15 kB │ gzip:  0.16 kB │ map:   0.36 kB
+build/client/assets/floating-toolbar-VQB8DV6X.js             0.18 kB │ gzip:  0.16 kB │ map:   0.40 kB
+build/client/assets/spacer-CKjENb_P.js                       0.26 kB │ gzip:  0.21 kB │ map:   1.28 kB
+build/client/assets/_layout-Byn_MRNB.js                      0.29 kB │ gzip:  0.25 kB │ map:   1.02 kB
+build/client/assets/index-BaXHmUg_.js                        0.41 kB │ gzip:  0.28 kB │ map:   1.93 kB
+build/client/assets/index-Do4OOozE.js                        0.52 kB │ gzip:  0.37 kB │ map:   1.75 kB
+build/client/assets/new-D0SbbBES.js                          0.58 kB │ gzip:  0.33 kB │ map:   0.59 kB
+build/client/assets/error-boundary-BlYJ87DM.js               0.59 kB │ gzip:  0.40 kB │ map:   2.30 kB
+build/client/assets/user-FGFeQ6c0.js                         0.65 kB │ gzip:  0.41 kB │ map:   3.02 kB
+build/client/assets/icon-DY7gEn-J.js                         0.65 kB │ gzip:  0.40 kB │ map:   2.98 kB
+build/client/assets/_-D3tstGOr.js                            0.75 kB │ gzip:  0.45 kB │ map:   2.51 kB
+build/client/assets/connections-CFUytNFn.js                  0.80 kB │ gzip:  0.49 kB │ map:   2.83 kB
+build/client/assets/honeypot-C2T96cXP.js                     0.85 kB │ gzip:  0.49 kB │ map:   2.64 kB
+build/client/assets/_noteId_.edit-Dbp676EM.js                0.91 kB │ gzip:  0.52 kB │ map:   2.07 kB
+build/client/assets/disable-RUquYmBY.js                      0.95 kB │ gzip:  0.58 kB │ map:   3.24 kB
+build/client/assets/user-validation-CZxgaGPG.js              1.01 kB │ gzip:  0.47 kB │ map:   3.05 kB
+build/client/assets/search-bar-D6W2iENZ.js                   1.05 kB │ gzip:  0.58 kB │ map:   3.04 kB
+build/client/assets/status-button-CkPci5hy.js                1.16 kB │ gzip:  0.54 kB │ map:   3.24 kB
+build/client/assets/_layout-DesgT6M_.js                      1.26 kB │ gzip:  0.66 kB │ map:   4.28 kB
+build/client/assets/index-DeKn6Dvs.js                        1.37 kB │ gzip:  0.70 kB │ map:   4.34 kB
+build/client/assets/toAuthenticatorAttachment-BAxCDoik.js    1.58 kB │ gzip:  0.78 kB │ map:   9.28 kB
+build/client/assets/change-email-B7nYWCh0.js                 1.62 kB │ gzip:  0.85 kB │ map:   6.64 kB
+build/client/assets/password_.create-B1PsX53C.js             1.65 kB │ gzip:  0.83 kB │ map:   6.21 kB
+build/client/assets/constraint-VVG8S3hk.js                   1.84 kB │ gzip:  0.86 kB │ map:   7.25 kB
+build/client/assets/index-DNOZwF1S.js                        1.89 kB │ gzip:  0.95 kB │ map:   4.83 kB
+build/client/assets/_layout-Bx2S48qL.js                      1.96 kB │ gzip:  0.96 kB │ map:   5.84 kB
+build/client/assets/password-RLHhsltM.js                     2.07 kB │ gzip:  0.97 kB │ map:   8.02 kB
+build/client/assets/reset-password-D_jjdIQm.js               2.10 kB │ gzip:  1.03 kB │ map:   7.37 kB
+build/client/assets/signup-6yoDHWv_.js                       2.18 kB │ gzip:  1.13 kB │ map:   8.26 kB
+build/client/assets/connections-DNDr6xB6.js                  2.21 kB │ gzip:  1.03 kB │ map:   9.77 kB
+build/client/assets/forgot-password-BABEF2Fb.js              2.23 kB │ gzip:  1.12 kB │ map:   8.24 kB
+build/client/assets/index-DBwsaOLK.js                        2.27 kB │ gzip:  1.01 kB │ map:   6.74 kB
+build/client/assets/verify-B93ad0Jc.js                       2.81 kB │ gzip:  1.30 kB │ map:   8.54 kB
+build/client/assets/photo-Dl0ycWJo.js                        2.81 kB │ gzip:  1.38 kB │ map:  11.29 kB
+build/client/assets/verify-DoA75naP.js                       2.85 kB │ gzip:  1.29 kB │ map:  10.56 kB
+build/client/assets/index-D_P4tJ9n.js                        3.16 kB │ gzip:  1.37 kB │ map:  11.61 kB
+build/client/assets/_provider-f_TNDSfp.js                    3.18 kB │ gzip:  1.38 kB │ map:  11.98 kB
+build/client/assets/index-BZ5gFOxP.js                        3.22 kB │ gzip:  1.34 kB │ map:  11.82 kB
+build/client/assets/_noteId-D_lNLJvp.js                      3.29 kB │ gzip:  1.58 kB │ map:  11.39 kB
+build/client/assets/button-DDnaEnzO.js                       3.58 kB │ gzip:  1.65 kB │ map:  15.21 kB
+build/client/assets/index-J4EzwpIk.js                        3.71 kB │ gzip:  1.42 kB │ map:  12.85 kB
+build/client/assets/index-adst_x9B.js                        4.38 kB │ gzip:  1.69 kB │ map:  16.41 kB
+build/client/assets/note-editor-C8kPsrIs.js                  4.99 kB │ gzip:  2.07 kB │ map:  16.15 kB
+build/client/assets/parse-BThLj8sj.js                        5.41 kB │ gzip:  2.02 kB │ map:  25.57 kB
+build/client/assets/dom-EeHuaMQO.js                          5.47 kB │ gzip:  2.37 kB │ map:  32.78 kB
+build/client/assets/index-BDus6hED.js                        6.42 kB │ gzip:  2.67 kB │ map:  34.13 kB
+build/client/assets/login-DEoiqAdr.js                        7.84 kB │ gzip:  3.36 kB │ map:  28.48 kB
+build/client/assets/passkeys-DAvOOFh_.js                    16.63 kB │ gzip:  6.08 kB │ map:  88.29 kB
+build/client/assets/forms-CClbG9mp.js                       21.09 kB │ gzip:  7.61 kB │ map:  66.51 kB
+build/client/assets/index-B0aNl6Wx.js                       23.77 kB │ gzip:  9.17 kB │ map:  32.01 kB
+build/client/assets/helpers-FHvNSYGi.js                     24.56 kB │ gzip:  8.35 kB │ map: 127.31 kB
+build/client/assets/misc-Cb-3dT5s.js                        30.44 kB │ gzip: 10.28 kB │ map: 162.50 kB
+build/client/assets/debug-build-BYX0I243.js                 32.16 kB │ gzip: 11.20 kB │ map: 226.36 kB
+build/client/assets/tooltip-DHJ95pXw.js                     38.86 kB │ gzip: 14.16 kB │ map: 207.37 kB
+build/client/assets/types-0S8AQ-Tg.js                       55.12 kB │ gzip: 12.79 kB │ map: 226.18 kB
+build/client/assets/root-CPMjRh5R.js                        94.72 kB │ gzip: 29.64 kB │ map: 400.51 kB
+build/client/assets/chunk-QUQL4437-B6ny4PKa.js             129.73 kB │ gzip: 43.79 kB │ map: 604.94 kB
+build/client/assets/entry.client-DGoruKL8.js               188.30 kB │ gzip: 59.79 kB │ map: 989.63 kB
+build/client/assets/monitoring.client-PDWHxzgs.js          197.45 kB │ gzip: 64.66 kB │ map: 952.76 kB
+✓ built in 2.20s
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+vite v7.3.1 building ssr environment for production...
+transforming...
+✓ 138 modules transformed.
+rendering chunks...
+build/server/assets/favicon-Xd7rFGOf.svg             0.47 kB
+build/server/.vite/manifest.json                     3.45 kB
+build/server/assets/docker-CKYupBMy.svg              4.88 kB
+build/server/assets/playwright-D0Du3LFd.svg          5.03 kB
+build/server/assets/prisma-IaIz7Mrr.svg              5.10 kB
+build/server/assets/testing-library-DlPZpWfP.png     5.80 kB
+build/server/assets/prettier-DbIVlkV4.svg            6.41 kB
+build/server/assets/apple-touch-icon-Ds7s8IDz.png    8.99 kB
+build/server/assets/fly-COcofn25.svg                 9.78 kB
+build/server/assets/sqlite-C780ctma.svg              9.89 kB
+build/server/assets/react-email-DKP-k4Ck.svg        11.49 kB
+build/server/assets/sprite-ByNtxWnV.svg             29.45 kB
+build/server/assets/faker-D6l4cpmx.svg              76.11 kB
+build/server/assets/zod-TYtFcqGX.svg               118.03 kB
+build/server/assets/stars-C09PLoVz.jpg             391.16 kB
+build/server/assets/tailwind-CtZ4yhEi.css           48.64 kB
+build/server/index.js                                0.40 kB │ map:   0.93 kB
+build/server/assets/server-build-vaCxiyZP.js       344.56 kB │ map: 549.37 kB
+
+✓ 14 assets cleaned from React Router server build.
+build/client/assets/tailwind-CtZ4yhEi.css
+build/client/assets/apple-touch-icon-Ds7s8IDz.png
+build/client/assets/favicon-Xd7rFGOf.svg
+build/client/assets/sprite-ByNtxWnV.svg
+build/client/assets/docker-CKYupBMy.svg
+build/client/assets/faker-D6l4cpmx.svg
+build/client/assets/fly-COcofn25.svg
+build/client/assets/playwright-D0Du3LFd.svg
+build/client/assets/prettier-DbIVlkV4.svg
+build/client/assets/prisma-IaIz7Mrr.svg
+build/client/assets/react-email-DKP-k4Ck.svg
+build/client/assets/sqlite-C780ctma.svg
+build/client/assets/testing-library-DlPZpWfP.png
+build/client/assets/zod-TYtFcqGX.svg
+
+✓ built in 478ms
+
+> test:e2e:run
+> cross-env CI=true playwright test
+
+[WebServer] 
+[WebServer] > start:mocks
+[WebServer] > cross-env NODE_ENV=production MOCKS=true node index.ts
+[WebServer] 
+[WebServer] 🔶 Mock server installed
+[WebServer] Starting production server
+[WebServer] Invalid Sentry Dsn: your-dsn
+[WebServer] 🚀  We have liftoff!
+[WebServer] [1mLocal:[22m            [36mhttp://localhost:5220[39m
+[WebServer] [1mOn Your Network:[22m  [36mhttp://192.168.31.240:5220[39m
+[WebServer] [1mPress Ctrl+C to stop[22m
+(node:48926) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 26 tests using 1 worker
+(node:48996) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:48983) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] GET /settings/profile 200 - - 906.897 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 1.650 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 2.543 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.830 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 2.672 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 1.332 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 1.679 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.871 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.011 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.931 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 2.737 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.295 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.113 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.910 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.221 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.181 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.148 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.399 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 3.320 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 3.849 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 3.455 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 2.564 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 1.579 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 2.193 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 2.293 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 1.479 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 6.967 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.522 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 1.497 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.567 ms
+[WebServer] GET /settings/profile 200 - - 15.616 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.960 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.781 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.453 ms
+[WebServer] GET /_layout-Byn_MRNB.js 200 292 - 0.538 ms
+[WebServer] GET /index-DeKn6Dvs.js 200 - - 0.846 ms
+[WebServer] GET /settings/profile/two-factor.data 200 - - 7.054 ms
+[WebServer] POST /settings/profile/two-factor.data?index 202 - - 6.090 ms
+[WebServer] GET /verify-DoA75naP.js 200 - - 0.588 ms
+[WebServer] GET /settings/profile/two-factor/verify.data 200 - - 24.533 ms
+[WebServer] POST /settings/profile/two-factor/verify.data 202 - - 13.852 ms
+[WebServer] GET /settings/profile/two-factor.data 200 - - 5.269 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 1.409 ms
+[WebServer] POST /logout.data 202 - - 2.588 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.705 ms
+[WebServer] GET /_root.data 200 - - 2.510 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.923 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 1.142 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 1.003 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.683 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.851 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.616 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 1.090 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.724 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.577 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 1.189 ms
+[WebServer] GET /login 200 - - 6.120 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.457 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.626 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.908 ms
+[WebServer] POST /login.data 202 - - 73.043 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.739 ms
+[WebServer] GET /verify.data?type=2fa&target=cmwnbdlh400008ot01xlse7vl 200 - - 2.957 ms
+[WebServer] POST /verify.data?type=2fa&target=cmwnbdlh400008ot01xlse7vl 202 - - 4.397 ms
+[WebServer] GET /_root.data 200 - - 3.884 ms
+·[WebServer] GET /does-not-exist 404 - - 5.587 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.856 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.737 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 1.436 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.722 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.605 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.744 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.751 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.724 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.485 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.511 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.729 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.438 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.641 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.010 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.865 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.789 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 1.401 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.081 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 1.219 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.693 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.740 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.648 ms
+[WebServer] GET /_-D3tstGOr.js 200 754 - 0.599 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.979 ms
+[WebServer] GET /does-not-exist 404 - - 6.891 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.528 ms
+·[WebServer] GET /users/oj_rosendo_grady26/notes 200 - - 6.874 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.738 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.652 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.663 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.325 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.604 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.632 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.512 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.718 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.707 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.668 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.734 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.735 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.664 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.023 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.203 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.219 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 1.471 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.340 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.825 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.548 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.679 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 1.216 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 2.380 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 2.546 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 1.343 ms
+[WebServer] GET /users/oj_rosendo_grady26/notes 200 - - 8.997 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.361 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.398 ms
+[WebServer] GET /users/oj_rosendo_grady26/notes/new.data 200 - - 3.948 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.753 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.859 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.601 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.763 ms
+[WebServer] POST /users/oj_rosendo_grady26/notes/new.data 202 - - 17.087 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.525 ms
+[WebServer] GET /users/oj_rosendo_grady26/notes/ozk78p236b78w3omyqj41lcd.data 200 - - 4.759 ms
+·[WebServer] GET /users/nh_ernestine_thompso/notes 200 - - 5.863 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.438 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.914 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.639 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.421 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.566 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.719 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.870 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.455 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.072 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.788 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.811 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.746 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.824 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.794 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.726 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.681 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.596 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.548 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.586 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.439 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.600 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.518 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.361 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.849 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.733 ms
+[WebServer] GET /users/nh_ernestine_thompso/notes 200 - - 7.757 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.384 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.528 ms
+[WebServer] GET /users/nh_ernestine_thompso/notes/new.data 200 - - 5.221 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.657 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.706 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.589 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.480 ms
+[WebServer] POST /users/nh_ernestine_thompso/notes/new.data 202 - - 9.193 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.722 ms
+[WebServer] GET /users/nh_ernestine_thompso/notes/rrt9xerxvf2rsu3fs1q5p9q2.data 200 - - 5.376 ms
+·[WebServer] GET /users/hx_duane_turcotte54/notes/cmwnbdo5z000d8ot0iafeckhe 200 - - 7.303 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.687 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.588 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.731 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.505 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.719 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.655 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.700 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.641 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.586 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.495 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.536 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.734 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.511 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.490 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.829 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.788 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.480 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.484 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.982 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 1.103 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.478 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 1.394 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 1.344 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.819 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 1.668 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 1.717 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.627 ms
+[WebServer] GET /users/hx_duane_turcotte54/notes/cmwnbdo5z000d8ot0iafeckhe 200 - - 7.815 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.322 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.835 ms
+[WebServer] GET /users/hx_duane_turcotte54/notes/cmwnbdo5z000d8ot0iafeckhe/edit.data 200 - - 4.564 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.305 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.425 ms
+[WebServer] POST /users/hx_duane_turcotte54/notes/cmwnbdo5z000d8ot0iafeckhe/edit.data 202 - - 7.155 ms
+[WebServer] GET /users/hx_duane_turcotte54/notes/cmwnbdo5z000d8ot0iafeckhe.data 200 - - 4.188 ms
+·[WebServer] GET /users/bi_lazaro_sawayn82/notes/cmwnbdoii000j8ot0kcpfuoi6 200 - - 5.765 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.428 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.858 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.579 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.555 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.402 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.719 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.507 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.625 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 2.303 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 2.752 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.739 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.174 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.441 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.490 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.688 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.893 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.829 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.883 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.820 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.382 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.416 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.483 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.387 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.313 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.917 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 1.028 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.173 ms
+[WebServer] GET /users/bi_lazaro_sawayn82/notes/cmwnbdoii000j8ot0kcpfuoi6 200 - - 6.568 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.298 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.432 ms
+[WebServer] GET /users/bi_lazaro_sawayn82/notes/cmwnbdoii000j8ot0kcpfuoi6/edit.data 200 - - 4.346 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.284 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.397 ms
+[WebServer] POST /users/bi_lazaro_sawayn82/notes/cmwnbdoii000j8ot0kcpfuoi6/edit.data 202 - - 5.387 ms
+[WebServer] GET /users/bi_lazaro_sawayn82/notes/cmwnbdoii000j8ot0kcpfuoi6.data 200 - - 3.533 ms
+·[WebServer] GET /users/gs_alysa_flatley/notes 200 - - 6.227 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.726 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.900 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.867 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.579 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.470 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.968 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.539 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.135 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.036 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.964 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.790 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.563 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.884 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.702 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.074 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.867 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.626 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.679 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.693 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.476 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.735 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.606 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.608 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.387 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.530 ms
+[WebServer] GET /users/gs_alysa_flatley/notes 200 - - 5.724 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.376 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.411 ms
+[WebServer] GET /users/gs_alysa_flatley/notes/new.data 200 - - 3.870 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.522 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.625 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.651 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.552 ms
+·[WebServer] GET /users/qs_juanita_deckow87/notes/cmwnbdp4m000s8ot04jsv18al 200 - - 5.915 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.767 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.650 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 1.189 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.754 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.362 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.637 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 1.969 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.101 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.678 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.596 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.531 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.685 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.846 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.695 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.786 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.732 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.542 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.373 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.603 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.530 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.577 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.713 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.058 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.538 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.577 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.650 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.423 ms
+[WebServer] GET /users/qs_juanita_deckow87/notes/cmwnbdp4m000s8ot04jsv18al 200 - - 13.367 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.462 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.432 ms
+[WebServer] GET /users/qs_juanita_deckow87/notes/cmwnbdp4m000s8ot04jsv18al/edit.data 200 - - 4.629 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.348 ms
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.485 ms
+[WebServer] POST /users/qs_juanita_deckow87/notes/cmwnbdp4m000s8ot04jsv18al/edit.data 202 - - 5.211 ms
+[WebServer] GET /users/qs_juanita_deckow87/notes/cmwnbdp4m000s8ot04jsv18al.data 200 - - 5.669 ms
+·[WebServer] GET /users/ga_charley_lockman/notes/cmwnbdph6000x8ot0590937iw 200 - - 8.085 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.653 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.981 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.611 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.521 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.522 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.512 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.674 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.572 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.606 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.553 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.503 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.580 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.688 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.641 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.835 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.736 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.726 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.586 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.659 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.588 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.591 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.558 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.487 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.646 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.355 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.646 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.390 ms
+[WebServer] GET /users/ga_charley_lockman/notes/cmwnbdph6000x8ot0590937iw 200 - - 6.366 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 1.842 ms
+[WebServer] POST /users/ga_charley_lockman/notes/cmwnbdph6000x8ot0590937iw.data 202 - - 6.687 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.656 ms
+[WebServer] GET /users/ga_charley_lockman/notes.data 200 - - 4.073 ms
+·[WebServer] GET / 200 - - 4.643 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.856 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.683 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.656 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.238 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.506 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.530 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.598 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.687 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.761 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.555 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.698 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.471 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.417 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.171 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.714 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.752 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.927 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.707 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.793 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.485 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.474 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.562 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.611 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.453 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.500 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.636 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.424 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 1.340 ms
+[WebServer] GET /playwright-D0Du3LFd.svg - - - - ms
+[WebServer] GET / 200 - - 4.684 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.313 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.267 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.475 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.434 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.494 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.369 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.347 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.414 ms
+[WebServer] GET /login.data 200 - - 1.862 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.475 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.491 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.714 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.647 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.837 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.353 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.650 ms
+[WebServer] GET /signup.data 200 - - 2.048 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'mz_cecil_reilly@example.com'[39m,
+[WebServer]   subject: [32m'Welcome to Epic Notes!'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Welcome to Epic Notes!</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>D8PHF3</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link to get started:</p></p><a href="http://localhost:5220/verify?type=onboarding&amp;target=mz_cecil_reilly%40example.com&amp;code=D8PHF3" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=onboarding&amp;target=mz_cecil_reilly%40example.com&amp;code=D8PHF3</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'WELCOME TO EPIC NOTES!\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"Here's your verification code: D8PHF3\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Or click the link to get started:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'http://localhost:5220/verify?type=onboarding&target=mz_cecil_reilly%40example.com&code=D8PHF3'[39m
+[WebServer] }
+[WebServer] POST /signup.data 202 - - 15.442 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.519 ms
+[WebServer] GET /verify.data?type=onboarding&target=mz_cecil_reilly@example.com 200 - - 1.648 ms
+[WebServer] GET /verify?type=onboarding&target=mz_cecil_reilly@example.com&code=D8PHF3 200 - - 4.348 ms
+[WebServer] POST /verify.data?type=onboarding&target=mz_cecil_reilly@example.com&code=D8PHF3 202 - - 4.421 ms
+[WebServer] GET /index-BZ5gFOxP.js 200 - - 0.364 ms
+[WebServer] GET /onboarding.data 200 - - 1.811 ms
+[WebServer] POST /onboarding.data?index 202 - - 66.705 ms
+[WebServer] GET /_root.data 200 - - 3.223 ms
+[WebServer] GET /index-DBwsaOLK.js 200 - - 0.494 ms
+[WebServer] GET /users/mz_cecil_reilly.data 200 - - 13.585 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 0.452 ms
+[WebServer] POST /logout.data 202 - - 2.279 ms
+[WebServer] GET /_root.data 200 - - 1.623 ms
+·[WebServer] GET /signup 200 - - 3.006 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.708 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.701 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.603 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.365 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.493 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.489 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.442 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.610 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.590 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.506 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.381 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.342 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.444 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.384 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.273 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.321 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.755 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.690 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.885 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.611 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.566 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.462 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.659 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.830 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.821 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.843 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.802 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.686 ms
+[WebServer] GET /signup 200 - - 5.435 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.458 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'b9_corrine_cremin@example.com'[39m,
+[WebServer]   subject: [32m'Welcome to Epic Notes!'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Welcome to Epic Notes!</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>Y4QPEP</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link to get started:</p></p><a href="http://localhost:5220/verify?type=onboarding&amp;target=b9_corrine_cremin%40example.com&amp;code=Y4QPEP" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=onboarding&amp;target=b9_corrine_cremin%40example.com&amp;code=Y4QPEP</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'WELCOME TO EPIC NOTES!\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"Here's your verification code: Y4QPEP\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Or click the link to get started:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'http://localhost:5220/verify?type=onboarding&target=b9_corrine_cremin%40example.com&code=Y4QPEP'[39m
+[WebServer] }
+[WebServer] POST /signup.data 202 - - 8.751 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.800 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.561 ms
+[WebServer] GET /verify.data?type=onboarding&target=b9_corrine_cremin@example.com 200 - - 2.967 ms
+[WebServer] POST /verify.data?type=onboarding&target=b9_corrine_cremin@example.com 202 - - 4.282 ms
+[WebServer] GET /index-BZ5gFOxP.js 200 - - 0.565 ms
+[WebServer] GET /onboarding.data 200 - - 1.803 ms
+·[WebServer] GET /signup 200 - - 2.665 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.666 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.923 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.540 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.271 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.683 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.450 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.498 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.501 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.573 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.614 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.242 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.270 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.331 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.318 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.008 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.653 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.743 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.041 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.622 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.887 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.510 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.282 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.581 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.302 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.158 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.410 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.593 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 2.000 ms
+[WebServer] GET /signup 200 - - 3.892 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.733 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.861 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.457 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.396 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.491 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.431 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.441 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.711 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.461 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.677 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.437 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.268 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.337 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.452 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.676 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.571 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.837 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.782 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.620 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.500 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.647 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.325 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.576 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.646 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.518 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.670 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.616 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.443 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.223 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.355 ms
+[WebServer] GET /index-l0sNRNKZ.js 200 1 - 0.359 ms
+[WebServer] POST /auth/github.data 202 - - 2.099 ms
+[WebServer] GET /callback-l0sNRNKZ.js 200 1 - 0.453 ms
+[WebServer] GET /auth/github/callback.data?code=71b6f7556e01136dd800-e84c174a153f8a66f3d8&state=no6hnlb4ocd4vsh4m0mw7euo 202 - - 6.802 ms
+[WebServer] GET /_provider-f_TNDSfp.js 200 - - 0.368 ms
+[WebServer] GET /onboarding/github.data?redirectTo=/signup 200 - - 2.080 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.466 ms
+[WebServer] POST /onboarding/github.data?redirectTo=/signup 202 - - 9.905 ms
+[WebServer] GET /signup.data 202 - - 3.078 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.478 ms
+[WebServer] GET /_root.data 200 - - 4.406 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.853 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.755 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.779 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.877 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.897 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.491 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.450 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.818 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.495 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.460 ms
+·[WebServer] GET /signup 200 - - 3.192 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.381 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.478 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.652 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.238 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.776 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.820 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.627 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.446 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.488 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.589 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.189 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.546 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.361 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.343 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.811 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.606 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.953 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.924 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.315 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.682 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.453 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.653 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.649 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.640 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.219 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.827 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.911 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 1.397 ms
+[WebServer] GET /signup 200 - - 4.032 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.666 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.435 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 1.136 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.387 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.656 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.451 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.223 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.869 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.732 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.672 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.509 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.455 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.444 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.565 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.383 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.305 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.871 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.852 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.495 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.072 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.581 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.472 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.380 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.618 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.038 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.780 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.167 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.516 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.334 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.378 ms
+[WebServer] GET /index-l0sNRNKZ.js 200 1 - 0.411 ms
+[WebServer] POST /auth/github.data 202 - - 1.947 ms
+[WebServer] GET /callback-l0sNRNKZ.js 200 1 - 1.394 ms
+[WebServer] GET /auth/github/callback.data?code=71b6f7556e01136dd800-f007761c5edb8b2b195a&state=ufkirp1ln9nk5k37x2aqb2st 202 - - 9.050 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.359 ms
+[WebServer] GET /_root.data 200 - - 3.102 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.541 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.689 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.421 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.593 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.431 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.400 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.600 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.468 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.346 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.470 ms
+·[WebServer] GET /signup 200 - - 4.403 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.517 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.593 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.584 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.759 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.797 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.715 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.606 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.808 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.504 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.378 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.193 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.314 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.309 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.815 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.718 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.646 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.534 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.684 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.500 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.372 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.619 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.714 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.801 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.820 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.382 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 2.416 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 2.669 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 2.468 ms
+[WebServer] GET /signup 200 - - 5.394 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.646 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.709 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.427 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.373 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.452 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.571 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.582 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.552 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.597 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.323 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.469 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.212 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.483 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.251 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.221 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.269 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 1.237 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.433 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.933 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.323 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.512 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.788 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.135 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.231 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.040 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 1.777 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.851 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.282 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.319 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.385 ms
+[WebServer] GET /index-l0sNRNKZ.js 200 1 - 0.380 ms
+[WebServer] POST /auth/github.data 202 - - 1.833 ms
+[WebServer] GET /callback-l0sNRNKZ.js 200 1 - 0.464 ms
+[WebServer] GET /auth/github/callback.data?code=71b6f7556e01136dd800-09f44d4951a2f3c53e14&state=g2nhepzxkf6ifgywgfd3qk0l 202 - - 5.307 ms
+[WebServer] GET /_provider-f_TNDSfp.js 200 - - 0.676 ms
+[WebServer] GET /onboarding/github.data?redirectTo=/signup 200 - - 2.139 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.360 ms
+[WebServer] POST /onboarding/github.data?redirectTo=/signup 202 - - 14.646 ms
+[WebServer] GET /signup.data 202 - - 5.521 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.679 ms
+[WebServer] GET /_root.data 200 - - 4.344 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 1.195 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.718 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.818 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.965 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.763 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.529 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.603 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 1.081 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.609 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.330 ms
+·[WebServer] GET /login 200 - - 2.801 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.501 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.609 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.469 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.516 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.454 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.768 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.390 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.720 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.526 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.459 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.528 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.464 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.393 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.529 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.479 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.504 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.404 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.866 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.799 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.470 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.594 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.557 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.443 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.302 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.479 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.781 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.764 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.944 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.854 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.735 ms
+[WebServer] GET /login 200 - - 3.977 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.450 ms
+[WebServer] POST /login.data 202 - - 64.938 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.733 ms
+[WebServer] GET /_root.data 200 - - 3.306 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.519 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.740 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.497 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.469 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.442 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.492 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.617 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.595 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.403 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.651 ms
+·[WebServer] GET /login 200 - - 2.884 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.625 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.720 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.857 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.742 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.575 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.620 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.498 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.538 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.616 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.443 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.406 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.527 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.452 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.736 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.596 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.564 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.442 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.315 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.744 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.600 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.659 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.747 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.388 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.398 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.372 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.322 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.734 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.968 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.806 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.859 ms
+[WebServer] GET /login 200 - - 3.683 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.432 ms
+[WebServer] GET /forgot-password-BABEF2Fb.js 200 - - 0.403 ms
+[WebServer] GET /forgot-password.data 200 - - 2.507 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'kz_joana_welch@example.com'[39m,
+[WebServer]   subject: [32m'Epic Notes Password Reset'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>JXXN4P</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="http://localhost:5220/verify?type=reset-password&amp;target=kz_joana_welch&amp;code=JXXN4P" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=reset-password&amp;target=kz_joana_welch&amp;code=JXXN4P</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"Here's your verification code: JXXN4P\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'http://localhost:5220/verify?type=reset-password&target=kz_joana_welch&code=JXXN4P'[39m
+[WebServer] }
+[WebServer] POST /forgot-password.data 202 - - 9.816 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.446 ms
+[WebServer] GET /verify.data?type=reset-password&target=kz_joana_welch 200 - - 1.718 ms
+[WebServer] GET /verify?type=reset-password&target=kz_joana_welch&code=JXXN4P 200 - - 3.002 ms
+[WebServer] POST /verify.data?type=reset-password&target=kz_joana_welch&code=JXXN4P 202 - - 4.460 ms
+[WebServer] GET /reset-password-D_jjdIQm.js 200 - - 0.656 ms
+[WebServer] GET /reset-password.data 200 - - 1.674 ms
+[WebServer] POST /reset-password.data 202 - - 66.047 ms
+[WebServer] GET /login.data 200 - - 1.488 ms
+[WebServer] POST /login.data 400 - - 63.719 ms
+[WebServer] POST /login.data 202 - - 64.463 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.592 ms
+[WebServer] GET /_root.data 200 - - 3.356 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.467 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.588 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.515 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.311 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.848 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.493 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.433 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.466 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.288 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.361 ms
+·[WebServer] GET /login 200 - - 3.234 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.415 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.665 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.506 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.482 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.336 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.387 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.498 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.561 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.586 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.498 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.611 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.498 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.320 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.875 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.739 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.761 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.679 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.651 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.648 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.654 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.864 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.676 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.497 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.233 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.368 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.843 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.645 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.701 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.827 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.676 ms
+[WebServer] GET /login 200 - - 3.258 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.376 ms
+[WebServer] GET /forgot-password-BABEF2Fb.js 200 - - 0.357 ms
+[WebServer] GET /forgot-password.data 200 - - 2.499 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'rn_issac_mann@example.com'[39m,
+[WebServer]   subject: [32m'Epic Notes Password Reset'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>RUWMUX</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="http://localhost:5220/verify?type=reset-password&amp;target=rn_issac_mann&amp;code=RUWMUX" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=reset-password&amp;target=rn_issac_mann&amp;code=RUWMUX</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"Here's your verification code: RUWMUX\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'http://localhost:5220/verify?type=reset-password&target=rn_issac_mann&code=RUWMUX'[39m
+[WebServer] }
+[WebServer] POST /forgot-password.data 202 - - 6.847 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.506 ms
+[WebServer] GET /verify.data?type=reset-password&target=rn_issac_mann 200 - - 2.688 ms
+[WebServer] POST /verify.data?type=reset-password&target=rn_issac_mann 202 - - 4.632 ms
+[WebServer] GET /reset-password-D_jjdIQm.js 200 - - 0.535 ms
+[WebServer] GET /reset-password.data 200 - - 1.775 ms
+·[WebServer] GET /settings/profile/passkeys 200 - - 4.662 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.414 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.872 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.572 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.442 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.460 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.630 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.656 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.490 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.589 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.448 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.734 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.617 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.739 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.686 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.662 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.711 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.788 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.600 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.662 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.489 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.543 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.343 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.683 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.734 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.645 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.476 ms
+[WebServer] GET /passkeys-DAvOOFh_.js 200 - - 0.721 ms
+[WebServer] GET /settings/profile/passkeys 200 - - 5.602 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.342 ms
+[WebServer] GET /webauthn/registration 200 - - 3.294 ms
+[WebServer] POST /webauthn/registration 200 - - 5.272 ms
+[WebServer] GET /settings/profile/passkeys.data 200 - - 3.930 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 0.494 ms
+[WebServer] POST /logout.data 202 - - 1.641 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.698 ms
+[WebServer] GET /_root.data 200 - - 1.942 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 1.878 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 1.830 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 1.909 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 1.622 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.493 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.626 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 1.705 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.655 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.527 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.681 ms
+[WebServer] GET /login 200 - - 3.103 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.525 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.647 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.534 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.713 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.727 ms
+[WebServer] GET /webauthn/authentication 200 - - 3.710 ms
+[WebServer] POST /webauthn/authentication 200 - - 6.903 ms
+[WebServer] GET /_root.data 200 - - 3.174 ms
+[WebServer] GET /settings/profile/passkeys 200 - - 5.151 ms
+[WebServer] POST /settings/profile/passkeys.data 200 - - 3.809 ms
+[WebServer] GET /settings/profile/passkeys.data 200 - - 4.441 ms
+[WebServer] POST /logout.data 202 - - 3.232 ms
+[WebServer] GET /_root.data 200 - - 2.089 ms
+[WebServer] GET /login 200 - - 6.796 ms
+[WebServer] GET /webauthn/authentication 200 - - 1.597 ms
+[WebServer] POST /webauthn/authentication 400 - - 2.083 ms
+·[WebServer] GET /settings/profile/passkeys 200 - - 4.731 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.494 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.871 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.715 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.401 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.567 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.637 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.663 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.647 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.694 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.631 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.734 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.812 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.582 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.415 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.751 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.835 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.605 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.782 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.581 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.931 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.898 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.751 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.582 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.871 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.810 ms
+[WebServer] GET /passkeys-DAvOOFh_.js 200 - - 0.509 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 1.500 ms
+[WebServer] GET /settings/profile/passkeys 200 - - 6.195 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.319 ms
+[WebServer] GET /webauthn/registration 200 - - 3.692 ms
+·[WebServer] GET / 200 - - 3.300 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.513 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.680 ms
+[WebServer] GET /sqlite-C780ctma.svg 200 - - 0.626 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.576 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.394 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.419 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.519 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.437 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.579 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.606 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.565 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.668 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.506 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.450 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.819 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.618 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.671 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.476 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.664 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.514 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.510 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.727 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.986 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 1.480 ms
+[WebServer] GET /prisma-IaIz7Mrr.svg 200 - - 0.334 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.686 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.660 ms
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 2.784 ms
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.323 ms
+[WebServer] GET /testing-library-DlPZpWfP.png - - - - ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.233 ms
+[WebServer] GET / 200 - - 4.155 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 1.189 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 1.294 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 0.429 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.451 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.375 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.357 ms
+[WebServer] GET /index-DNOZwF1S.js 200 - - 0.791 ms
+[WebServer] GET /users.data?search=qj_alfredo_bode15 200 - - 3.241 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.370 ms
+[WebServer] GET /users.data?search=__nonexistent__ 200 - - 2.847 ms
+·[WebServer] GET /settings/profile 200 - - 5.175 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.603 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.717 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 1.159 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.499 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.747 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.491 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.590 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.093 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.591 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.319 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.829 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.937 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.920 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.197 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.227 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.310 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.981 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.708 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.481 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 1.021 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 1.163 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 1.005 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.594 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.633 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.928 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.848 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.913 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.880 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.887 ms
+[WebServer] GET /settings/profile 200 - - 9.011 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.330 ms
+·[WebServer] GET /settings/profile 200 - - 5.962 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.725 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.589 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.823 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.364 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.558 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.265 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.900 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.758 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.747 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.402 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.639 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.923 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.889 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.576 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.097 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.658 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.597 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.313 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.751 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.595 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.635 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.678 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.376 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.376 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.271 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.929 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.999 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.116 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 1.779 ms
+[WebServer] GET /settings/profile 200 - - 9.025 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.325 ms
+[WebServer] GET /password-RLHhsltM.js 200 - - 0.563 ms
+[WebServer] GET /settings/profile/password.data 200 - - 4.514 ms
+[WebServer] POST /settings/profile/password.data 202 - - 127.366 ms
+[WebServer] GET /settings/profile.data 200 - - 4.152 ms
+·[WebServer] GET /settings/profile 200 - - 6.540 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.588 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.654 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.730 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.388 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.674 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.474 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.552 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.382 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.573 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.455 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.439 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.389 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.584 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.487 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.750 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.621 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.445 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 0.550 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.894 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.608 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.412 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.691 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.824 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.305 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.346 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.367 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.909 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.278 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.877 ms
+[WebServer] GET /settings/profile 200 - - 6.753 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.342 ms
+[WebServer] GET /photo-Dl0ycWJo.js 200 - - 1.181 ms
+[WebServer] GET /settings/profile/photo.data 200 - - 5.651 ms
+[WebServer] GET /img/user.png 200 3012 - 0.669 ms
+[WebServer] POST /settings/profile/photo.data 202 - - 6.755 ms
+[WebServer] GET /settings/profile.data 200 - - 4.051 ms
+·[WebServer] GET /settings/profile 200 - - 5.501 ms
+[WebServer] GET /manifest-b33f9996.js 200 - - 0.509 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.601 ms
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.476 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.481 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.369 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.627 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.509 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.442 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.433 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.516 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.394 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.315 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.403 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.533 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.683 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.733 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.890 ms
+[WebServer] GET /parse-BThLj8sj.js 200 - - 0.946 ms
+[WebServer] GET /helpers-FHvNSYGi.js 200 - - 0.844 ms
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.792 ms
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.577 ms
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.452 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.351 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.364 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.592 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.567 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.637 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.602 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 1.622 ms
+[WebServer] GET /settings/profile 200 - - 7.395 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.382 ms
+[WebServer] GET /change-email-B7nYWCh0.js 200 - - 0.581 ms
+[WebServer] GET /settings/profile/change-email.data 200 - - 6.402 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'madelynn91@hotmail.com'[39m,
+[WebServer]   subject: [32m'Epic Notes Email Change Verification'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Email Change</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>Y8WHEJ</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="http://localhost:5220/verify?type=change-email&amp;target=cmwnbdyow001i8ot0wp23m9oj&amp;code=Y8WHEJ" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=change-email&amp;target=cmwnbdyow001i8ot0wp23m9oj&amp;code=Y8WHEJ</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'EPIC NOTES EMAIL CHANGE\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"Here's your verification code: Y8WHEJ\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'http://localhost:5220/verify?type=change-email&target=cmwnbdyow001i8ot0wp23m9oj&code=Y8WHEJ'[39m
+[WebServer] }
+[WebServer] POST /settings/profile/change-email.data 202 - - 10.001 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 2.065 ms
+[WebServer] GET /verify.data?type=change-email&target=cmwnbdyow001i8ot0wp23m9oj 200 - - 5.577 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'h9_darrin_sporer93@example.com'[39m,
+[WebServer]   subject: [32m'Epic Stack email changed'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Your Epic Notes email has been changed</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">We&#x27;re writing to let you know that your Epic Notes email has been changed.</p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">If you changed your email address, then you can safely ignore this. But if you did not change your email address, then please contact support immediately.</p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Your Account ID: <!-- -->cmwnbdyow001i8ot0wp23m9oj</p></p></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'YOUR EPIC NOTES EMAIL HAS BEEN CHANGED\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m"We're writing to let you know that your Epic Notes email has been changed.\n"[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'If you changed your email address, then you can safely ignore this. But if you did not change your email address, then please contact support immediately.\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'\n'[39m +
+[WebServer]     [32m'Your Account ID: cmwnbdyow001i8ot0wp23m9oj\n'[39m +
+[WebServer]     [32m'\n'[39m
+[WebServer] }
+[WebServer] POST /verify.data?type=change-email&target=cmwnbdyow001i8ot0wp23m9oj 202 - - 11.735 ms
+[WebServer] GET /settings/profile.data 200 - - 5.316 ms
+·[WebServer] GET /img/user.png 200 3012 - 0.368 ms
+[WebServer] GET /favicons/android-chrome-192x192.png 200 10041 - 0.502 ms
+·[WebServer] GET /img/missing.png 404 9 - 0.615 ms
+[WebServer] GET /favicons/missing.png 404 9 - 0.129 ms
+·
+  26 passed (19.7s)

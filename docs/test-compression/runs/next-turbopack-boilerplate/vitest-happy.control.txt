@@ -1,0 +1,15 @@
+
+> test
+> vitest run
+
+
+ RUN  v4.1.10 /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy
+
+ ✓ |unit| src/utils/Helpers.test.ts (2 tests) 1ms
+ ✓ |ui (chromium)| src/templates/BaseTemplate.test.tsx (2 tests) 21ms
+
+ Test Files  2 passed (2)
+      Tests  4 passed (4)
+   Start at  19:20:33
+   Duration  738ms (transform 20ms, setup 0ms, import 343ms, tests 22ms, environment 0ms)
+

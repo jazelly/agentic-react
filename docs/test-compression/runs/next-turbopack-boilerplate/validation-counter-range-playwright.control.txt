@@ -1,0 +1,82 @@
+[WebServer] ⚠ Warning: Next.js ignored pnpm-workspace.yaml in /Users/jazelly/Desktop/github/my-proj/agentic-react because it is outside the current Git repository (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-val).
+[WebServer]  To use this directory, set `turbopack.root` in your Next.js config.
+[WebServer] 
+[WebServer] ✦Aj WARN Arcjet will use 127.0.0.1 when missing public IP address in development mode
+[WebServer] ⚠ Your version of Next.js is affected by a known security vulnerability. This command is continuing after the upgrade reminder.
+[WebServer] Reference: https://registry.npmjs.org/-/npm/v1/security/advisories/bulk
+
+Running 6 tests using 2 workers
+
+  ✓  1 [chromium] › tests/integration/Counter.integ.ts:6:5 › Counter › Basic database operations › shouldn't increment the counter with an invalid input (144ms)
+  ✓  3 [chromium] › tests/integration/Counter.integ.ts:16:5 › Counter › Basic database operations › shouldn't increment the counter with a negative number (39ms)
+  ✓  4 [chromium] › tests/integration/Counter.integ.ts:26:5 › Counter › Basic database operations › shouldn't increment the counter with a number greater than 3 (39ms)
+  ✘  5 [chromium] › tests/integration/Counter.integ.ts:36:5 › Counter › Basic database operations › should increment the counter and update the counter correctly (76ms)
+  ✓  2 [chromium] › tests/e2e/Counter.e2e.ts:7:5 › Counter › Increment operation › should display error message when incrementing with negative number (707ms)
+  ✘  6 [chromium] › tests/e2e/Counter.e2e.ts:24:5 › Counter › Increment operation › should increment the counter and validate the count (15.4s)
+
+
+  1) [chromium] › tests/e2e/Counter.e2e.ts:24:5 › Counter › Increment operation › should increment the counter and validate the count 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByText('Count:')
+    Expected: "Count: 2"
+    Received: "Count: 0"
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveText" with timeout 15000ms
+      - waiting for getByText('Count:')
+        34 × locator resolved to <div>Count: 0</div>
+           - unexpected value "Count: 0"
+
+
+      42 |       await page.getByRole('button', { name: 'Increment' }).click();
+      43 |
+    > 44 |       await expect(page.getByText('Count:')).toHaveText(`Count: ${countNumber + 2}`);
+         |                                              ^
+      45 |
+      46 |       await page.getByLabel('Increment by').fill('3');
+      47 |       await page.getByRole('button', { name: 'Increment' }).isEnabled();
+        at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-val/tests/e2e/Counter.e2e.ts:44:46
+
+    Error Context: test-results/e2e-Counter.e2e.ts-Counter-cb086-nter-and-validate-the-count-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-Counter.e2e.ts-Counter-cb086-nter-and-validate-the-count-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-Counter.e2e.ts-Counter-cb086-nter-and-validate-the-count-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/integration/Counter.integ.ts:36:5 › Counter › Basic database operations › should increment the counter and update the counter correctly 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 422
+
+      64 |       counterJson = await counter.json();
+      65 |
+    > 66 |       expect(counter.status()).toBe(200);
+         |                                ^
+      67 |       expect(counterJson.count).toEqual(count + 2);
+      68 |
+      69 |       counter = await page.request.put('/api/counter', {
+        at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-val/tests/integration/Counter.integ.ts:66:32
+
+    Error Context: test-results/integration-Counter.integ.-fcf12-pdate-the-counter-correctly-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/integration-Counter.integ.-fcf12-pdate-the-counter-correctly-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/integration-Counter.integ.-fcf12-pdate-the-counter-correctly-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › tests/e2e/Counter.e2e.ts:24:5 › Counter › Increment operation › should increment the counter and validate the count 
+    [chromium] › tests/integration/Counter.integ.ts:36:5 › Counter › Basic database operations › should increment the counter and update the counter correctly 
+  4 passed (20.9s)

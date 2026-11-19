@@ -1,0 +1,94 @@
+
+[1m[35m Preparing to start build of Web Check.... [0m
+ [35m[2mCompiling for "node" using "static" mode, to deploy to "https://web-check.xyz" at "/"[0m
+ [2m[36m🛟 For documentation and support, visit the GitHub repo: https://github.com/lissy93/web-check 
+ 💖 Found Web-Check useful? Consider sponsoring us on GitHub to help fund maintenance & development.[0m
+
+19:28:47 [@astrojs/node] Enabling sessions with filesystem storage
+19:28:47 [types] Generated 50ms
+19:28:47 [build] output: "static"
+19:28:47 [build] mode: "server"
+19:28:47 [build] directory: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-happy/dist/
+19:28:47 [build] adapter: @astrojs/node
+19:28:47 [build] Collecting build info...
+19:28:47 [build] ✓ Completed in 94ms.
+19:28:47 [build] Building server entrypoints...
+19:28:48 [vite] ✓ built in 441ms
+19:28:48 [vite] ✓ built in 163ms
+19:28:48 [WARN] [vite] [plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+19:28:48 [vite] ✓ built in 235ms
+
+ prerendering static routes 
+19:28:48   ├─ /404.html (+6ms) 
+19:28:48   ├─ /500.html (+2ms) 
+19:28:48   ├─ /about/index.html (+1ms) 
+19:28:48   ├─ /account/index.html (+1ms) 
+19:28:48   ├─ /check/about/index.html (+0ms) (file not created, response body was empty)
+19:28:48   ├─ /checks/index.html (+4ms) 
+19:28:48   ├─ /glossary/index.html (+2ms) 
+19:28:48   ├─ /robots.txt (+1ms) 
+19:28:48   ├─ /self-hosted-setup/index.html (+2ms) 
+19:28:48   ├─ /web-check-api/spec/index.html (+1ms) 
+19:28:48   ├─ /web-check-api/index.html (+1ms) 
+19:28:48   ├─ /security/index.html (+1ms) 
+19:28:48   ├─ /seo/index.html (+1ms) 
+19:28:48   ├─ /server/index.html (+1ms) 
+19:28:48   ├─ /domain/index.html (+1ms) 
+19:28:48   ├─ /email/index.html (+1ms) 
+19:28:48   ├─ /performance/index.html (+1ms) 
+19:28:48   ├─ /privacy/index.html (+1ms) 
+19:28:48   ├─ /get-ip/index.html (+1ms) 
+19:28:48   ├─ /ssl/index.html (+1ms) 
+19:28:48   ├─ /dns/index.html (+1ms) 
+19:28:48   ├─ /cookies/index.html (+0ms) 
+19:28:48   ├─ /robots-txt/index.html (+1ms) 
+19:28:48   ├─ /headers/index.html (+1ms) 
+19:28:48   ├─ /quality/index.html (+1ms) 
+19:28:48   ├─ /location/index.html (+1ms) 
+19:28:48   ├─ /hosts/index.html (+0ms) 
+19:28:48   ├─ /redirects/index.html (+0ms) 
+19:28:48   ├─ /txt-records/index.html (+0ms) 
+19:28:48   ├─ /status/index.html (+0ms) 
+19:28:48   ├─ /ports/index.html (+0ms) 
+19:28:48   ├─ /trace-route/index.html (+0ms) 
+19:28:48   ├─ /carbon/index.html (+1ms) 
+19:28:48   ├─ /server-info/index.html (+0ms) 
+19:28:48   ├─ /vulnerabilities/index.html (+0ms) 
+19:28:48   ├─ /whois-lookup/index.html (+0ms) 
+19:28:48   ├─ /domain-info/index.html (+0ms) 
+19:28:48   ├─ /dnssec/index.html (+0ms) 
+19:28:48   ├─ /caa-records/index.html (+1ms) 
+19:28:48   ├─ /hsts/index.html (+0ms) 
+19:28:48   ├─ /dns-server/index.html (+1ms) 
+19:28:48   ├─ /tech-stack/index.html (+0ms) 
+19:28:48   ├─ /sitemap/index.html (+0ms) 
+19:28:48   ├─ /security-txt/index.html (+0ms) 
+19:28:48   ├─ /linked-pages/index.html (+1ms) 
+19:28:48   ├─ /social-tags/index.html (+1ms) 
+19:28:48   ├─ /social-presence/index.html (+0ms) 
+19:28:48   ├─ /mail-config/index.html (+0ms) 
+19:28:48   ├─ /firewall/index.html (+0ms) 
+19:28:48   ├─ /http-security/index.html (+0ms) 
+19:28:48   ├─ /mixed-content/index.html (+0ms) 
+19:28:48   ├─ /archives/index.html (+0ms) 
+19:28:48   ├─ /rank/index.html (+1ms) 
+19:28:48   ├─ /block-lists/index.html (+1ms) 
+19:28:48   ├─ /threats/index.html (+1ms) 
+19:28:48   ├─ /breaches/index.html (+1ms) 
+19:28:48   ├─ /trackers/index.html (+1ms) 
+19:28:48   ├─ /tls-connection/index.html (+1ms) 
+19:28:48   ├─ /tls-security-audit/index.html (+0ms) 
+19:28:48   ├─ /tls-client-compat/index.html (+0ms) 
+19:28:48   ├─ /screenshot/index.html (+0ms) 
+19:28:48   ├─ /subdomains/index.html (+0ms) 
+19:28:48 ✓ Completed in 96ms.
+
+19:28:48 [build] Rearranging server assets...
+19:28:48 [build] ✓ Completed in 994ms.
+19:28:48 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
+19:28:48 [build] Server built in 1.15s
+19:28:48 [build] Complete!

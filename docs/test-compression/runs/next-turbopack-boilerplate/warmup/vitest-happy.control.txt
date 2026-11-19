@@ -1,0 +1,16 @@
+
+> test
+> vitest run
+
+
+ RUN  v4.1.10 /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy
+
+7:20:31 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+ ✓ |unit| src/utils/Helpers.test.ts (2 tests) 2ms
+ ✓ |ui (chromium)| src/templates/BaseTemplate.test.tsx (2 tests) 26ms
+
+ Test Files  2 passed (2)
+      Tests  4 passed (4)
+   Start at  19:20:31
+   Duration  787ms (transform 32ms, setup 0ms, import 378ms, tests 27ms, environment 0ms)
+

@@ -1,0 +1,56 @@
+$ rs dev --port 5320
+Rsbuild v2.3.1
+
+(node:57134) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/config/constants.ts?fresh-import-3sicqxuigom=0,file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/rstack.config.mts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ➜  Local:  
+  -  index    http://localhost:5320/
+  -  diff     http://localhost:5320/diff
+  ➜  Network:  use --host to expose
+
+warn    [rsbuild] `dev.setupMiddlewares` is deprecated, use `server.setup` instead
+start   build started...
+error   Build errors: 
+File: ./src/pages/Plugins/index.tsx:20:29-45
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[20:28]
+ 18 │             title: "Plugins Overall",
+ 19 │             bodyStyle: {
+ 20 │                 paddingTop: Size.BasePadding / 3
+    ·                             ────────────────
+ 21 │             },
+ 22 │             extra: /*#__PURE__*/ _jsxDEV(BuildConfigurationViewer, {
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+
+File: ./src/pages/Plugins/index.tsx:44:51-67
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[44:50]
+ 42 │                             return /*#__PURE__*/ _jsxDEV(Space, {
+ 43 │                                 style: {
+ 44 │                                     marginBottom: Size.BasePadding / 2
+    ·                                                   ────────────────
+ 45 │                                 },
+ 46 │                                 children: [
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+
+error   build failed in 0.27s
+[ELIFECYCLE] Command failed with exit code 143.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in /Users/jazelly/Desktop/github/my-proj/
+  │ agentic-react/benchmark/runs/caps/rsd-imp/packages/client
+

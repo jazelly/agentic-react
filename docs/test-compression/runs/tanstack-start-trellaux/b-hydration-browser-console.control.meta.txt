@@ -1,0 +1,21 @@
+repo: tanstack-start-trellaux
+pinned_sha: e7358c36d8cde5275fc3c32cd5fd5bbf7ecc30f9
+task: tanstack-start-trellaux/hydration-home-updated-at
+case: b-hydration-browser-console
+arm: control
+command: pnpm --ignore-workspace dev --port 5211 --strictPort
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/trellaux-hydration
+url: http://localhost:5211/
+node: v24.15.0
+exit_code: n/a (long-running dev server, stopped with SIGINT to its process group; wait status 0)
+readiness: ready=1 after 2s
+wall_s (start..stop incl. browser + settle): 12.9
+warmup: yes (one discarded server+browser session with identical env/command immediately before)
+browser_timezone: UTC
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=unset AGENTIC_NODE_MODE=unset
+tools: vite 8.3.8, @tanstack/react-start 1.169.5 (pinned by manifest harbor.preInstall), @tanstack/react-router 1.170.46, react 19.3.1, pnpm 10.6.5; agentic-node 0.2.0 @ 4e604d36ccc0c7b3b491a02c28f654e474bce60b (agentic-node arm only)
+browser: Chrome for Testing 159.0.8154.6 (chromium-headless-shell revision 1255) driven by Playwright 1.65.1 (pw-latest)
+date: 2026-11-19
+deviations: Port via --port 5211 --strictPort. Browser context timezoneId=UTC (host is ACDT): a client in a different timezone than the server is the realistic trigger; same-zone clients render the same toLocaleTimeString() and no mismatch fires. Workspace: trellaux-base copy + task setup.edits (previous pass).
+notes: Browser console (Playwright 1.65.1 from pw-latest; lines '[<type>] <text>' and '[pageerror] <stack>', in order) of the same session as b-hydration-devserver.control.txt; the capture script ran without NODE_OPTIONS. 

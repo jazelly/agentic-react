@@ -1,0 +1,373 @@
+$ rs test -- module-tree-sort
+(node:63143) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-sort/packages/client/config/constants.ts?fresh-import-v9sv03mdrar=0,file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-sort/packages/client/rstack.config.mts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-sort/packages/client/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+---
+tool: "@rstest/core@0.12.5"
+timestamp: "2026-11-19T08:58:02.123Z"
+runtime: {"node":"v24.15.0","platform":"darwin","cwd":"/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-sort/packages/client"}
+---
+
+# Rstest Test Execution Report
+
+## Summary
+
+```json
+{
+  "status": "fail",
+  "counts": {
+    "testFiles": 17,
+    "failedFiles": 1,
+    "tests": 78,
+    "failedTests": 5,
+    "passedTests": 73,
+    "skippedTests": 0,
+    "todoTests": 0
+  },
+  "durationMs": {
+    "total": 4124,
+    "build": 129,
+    "tests": 3995
+  },
+  "snapshot": {
+    "added": 0,
+    "updated": 0,
+    "unmatched": 0,
+    "removed": 0,
+    "unchecked": 0
+  }
+}
+```
+
+## Failures
+
+### [F01] tests/pages/BundleSize/components/module-tree-sort.test.ts :: BundleSize module tree sorting > sorts root files and aggregated directories, then every nested level
+
+repro:
+
+```bash
+pnpm exec rstest 'tests/pages/BundleSize/components/module-tree-sort.test.ts' --testNamePattern 'BundleSize module tree sorting > sorts root files and aggregated directories, then every nested level'
+```
+
+details:
+
+```json
+{
+  "testPath": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+  "project": "rstest",
+  "fullName": "BundleSize module tree sorting > sorts root files and aggregated directories, then every nested level",
+  "status": "fail",
+  "duration": 5,
+  "retryCount": 0,
+  "errors": [
+    {
+      "type": "AssertionError",
+      "message": "expected [ 'standalone.js', 'src' ] to deeply equal [ 'src', 'standalone.js' ]",
+      "topFrame": {
+        "file": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+        "line": 130,
+        "column": 26,
+        "method": "<unknown>"
+      },
+      "stackFrames": []
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+      "line": 130
+    }
+  ]
+}
+```
+
+diff:
+
+```diff
+- Expected
++ Received
+
+  [
+-   "src",
+    "standalone.js",
++   "src",
+  ]
+```
+
+codeFrame (error 1):
+
+```text
+128 |     const sorted = sortModuleTree(tree, sizes, 'parsedSize');
+129 | 
+130 |     expect(keys(sorted)).toEqual(['src', 'standalone.js']);
+    |                          ^
+131 |     expect(keys(sorted[0].children!)).toEqual(['src/nested', 'src/small.js']);
+132 |     expect(keys(sorted[0].children![0].children!)).toEqual([
+```
+
+### [F02] tests/pages/BundleSize/components/module-tree-sort.test.ts :: BundleSize module tree sorting > sorts bundled and source sizes independently without replacing zero
+
+repro:
+
+```bash
+pnpm exec rstest 'tests/pages/BundleSize/components/module-tree-sort.test.ts' --testNamePattern 'BundleSize module tree sorting > sorts bundled and source sizes independently without replacing zero'
+```
+
+details:
+
+```json
+{
+  "testPath": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+  "project": "rstest",
+  "fullName": "BundleSize module tree sorting > sorts bundled and source sizes independently without replacing zero",
+  "status": "fail",
+  "duration": 1,
+  "retryCount": 0,
+  "errors": [
+    {
+      "type": "AssertionError",
+      "message": "expected [ Array(2) ] to deeply equal [ Array(2) ]",
+      "topFrame": {
+        "file": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+        "line": 146,
+        "column": 61,
+        "method": "<unknown>"
+      },
+      "stackFrames": []
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+      "line": 146
+    }
+  ]
+}
+```
+
+diff:
+
+```diff
+- Expected
++ Received
+
+  [
+-   "bundle-heavy.js",
+    "source-heavy.js",
++   "bundle-heavy.js",
+  ]
+```
+
+codeFrame (error 1):
+
+```text
+144 |     const sizes = getModuleTreeSizes(tree, modules, modules);
+145 | 
+146 |     expect(keys(sortModuleTree(tree, sizes, 'parsedSize'))).toEqual([
+    |                                                             ^
+147 |       'bundle-heavy.js',
+148 |       'source-heavy.js',
+```
+
+### [F03] tests/pages/BundleSize/components/module-tree-sort.test.ts :: BundleSize module tree sorting > preserves input order for ties and missing size entries
+
+repro:
+
+```bash
+pnpm exec rstest 'tests/pages/BundleSize/components/module-tree-sort.test.ts' --testNamePattern 'BundleSize module tree sorting > preserves input order for ties and missing size entries'
+```
+
+details:
+
+```json
+{
+  "testPath": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+  "project": "rstest",
+  "fullName": "BundleSize module tree sorting > preserves input order for ties and missing size entries",
+  "status": "fail",
+  "duration": 0,
+  "retryCount": 0,
+  "errors": [
+    {
+      "type": "AssertionError",
+      "message": "expected [ Array(4) ] to deeply equal [ Array(4) ]",
+      "topFrame": {
+        "file": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+        "line": 165,
+        "column": 61,
+        "method": "<unknown>"
+      },
+      "stackFrames": []
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+      "line": 165
+    }
+  ]
+}
+```
+
+diff:
+
+```diff
+- Expected
++ Received
+
+  [
+-   "z.js",
+-   "a.js",
+    "zero.js",
+    "missing",
++   "z.js",
++   "a.js",
+  ]
+```
+
+codeFrame (error 1):
+
+```text
+163 |     const sizes = getModuleTreeSizes(tree.slice(0, 3), modules, modules);
+164 | 
+165 |     expect(keys(sortModuleTree(tree, sizes, 'parsedSize'))).toEqual([
+    |                                                             ^
+166 |       'z.js',
+167 |       'a.js',
+```
+
+### [F04] tests/pages/BundleSize/components/module-tree-sort.test.ts :: BundleSize module tree sorting > leaves the original tree intact so its order can be restored
+
+repro:
+
+```bash
+pnpm exec rstest 'tests/pages/BundleSize/components/module-tree-sort.test.ts' --testNamePattern 'BundleSize module tree sorting > leaves the original tree intact so its order can be restored'
+```
+
+details:
+
+```json
+{
+  "testPath": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+  "project": "rstest",
+  "fullName": "BundleSize module tree sorting > leaves the original tree intact so its order can be restored",
+  "status": "fail",
+  "duration": 1,
+  "retryCount": 0,
+  "errors": [
+    {
+      "type": "AssertionError",
+      "message": "expected [ 'src/small', 'src/large' ] to deeply equal [ 'src/large', 'src/small' ]",
+      "topFrame": {
+        "file": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+        "line": 184,
+        "column": 39,
+        "method": "<unknown>"
+      },
+      "stackFrames": []
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+      "line": 184
+    }
+  ]
+}
+```
+
+diff:
+
+```diff
+- Expected
++ Received
+
+  [
+-   "src/large",
+    "src/small",
++   "src/large",
+  ]
+```
+
+codeFrame (error 1):
+
+```text
+182 |     const sorted = sortModuleTree(tree, sizes, 'parsedSize');
+183 | 
+184 |     expect(keys(sorted[0].children!)).toEqual(['src/large', 'src/small']);
+    |                                       ^
+185 |     expect(keys(tree[0].children!)).toEqual(['src/small', 'src/large']);
+186 |     expect(sortModuleTree(tree, sizes, 'original')).toBe(tree);
+```
+
+### [F05] tests/pages/BundleSize/components/module-tree-sort.test.ts :: BundleSize module tree sorting > preserves flattened keys, paths and lazy titles without evaluating them
+
+repro:
+
+```bash
+pnpm exec rstest 'tests/pages/BundleSize/components/module-tree-sort.test.ts' --testNamePattern 'BundleSize module tree sorting > preserves flattened keys, paths and lazy titles without evaluating them'
+```
+
+details:
+
+```json
+{
+  "testPath": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+  "project": "rstest",
+  "fullName": "BundleSize module tree sorting > preserves flattened keys, paths and lazy titles without evaluating them",
+  "status": "fail",
+  "duration": 0,
+  "retryCount": 0,
+  "errors": [
+    {
+      "type": "AssertionError",
+      "message": "expected [ 'src-src/nested', 42 ] to deeply equal [ 42, 'src-src/nested' ]",
+      "topFrame": {
+        "file": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+        "line": 213,
+        "column": 26,
+        "method": "<unknown>"
+      },
+      "stackFrames": []
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "tests/pages/BundleSize/components/module-tree-sort.test.ts",
+      "line": 213
+    }
+  ]
+}
+```
+
+diff:
+
+```diff
+- Expected
++ Received
+
+  [
+-   42,
+    "src-src/nested",
++   42,
+  ]
+```
+
+codeFrame (error 1):
+
+```text
+211 |     const sorted = sortModuleTree(tree, sizes, 'parsedSize');
+212 | 
+213 |     expect(keys(sorted)).toEqual([42, 'src-src/nested']);
+    |                          ^
+214 |     expect(sorted[1].__RESOURCEPATH__).toBe('src/nested');
+215 |     expect(sorted[1].__BASENAME__).toBe('src/nested');
+```
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in /Users/jazelly/Desktop/github/my-proj/
+  │ agentic-react/benchmark/runs/caps/rsd-sort/packages/client
+

@@ -1,0 +1,43 @@
+
+ RUN  v4.1.4 /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-signout
+
+ ❯ |chromium| src/stores/__bench__/auth-store.reset.test.ts (1 test | 1 failed) 91ms
+     × clears user and access token 90ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |chromium| src/stores/__bench__/auth-store.reset.test.ts > auth store reset (sign out) > clears user and access token
+AssertionError: expected { accountNo: 'ACC001', …(3) } to be null
+
+Failure screenshot:
+  - src/stores/__bench__/__screenshots__/auth-store.reset.test.ts/auth-store-reset--sign-out--clears-user-and-access-token-1.png
+
+[32m- Expected:[39m
+null
+
+[31m+ Received:[39m
+{
+  "accountNo": "ACC001",
+  "email": "a@b.c",
+  "exp": 1795077901444,
+  "role": [
+    "user",
+  ],
+}
+
+ ❯ src/stores/__bench__/auth-store.reset.test.ts:12:23
+     10|     useAuthStore.getState().auth.reset()
+     11|     const after = useAuthStore.getState().auth
+     12|     expect(after.user).toBeNull()
+       |                       ^
+     13|     expect(after.accessToken).toBe('')
+     14|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  19:14:00
+   Duration  580ms (transform 0ms, setup 0ms, import 15ms, tests 91ms, environment 0ms)
+

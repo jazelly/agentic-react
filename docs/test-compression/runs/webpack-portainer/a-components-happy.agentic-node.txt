@@ -1,0 +1,36 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+ RUN  v4.1.8 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base
+
+(node:27210) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:27211) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Error: Uncaught [Error: Invalid query param value for tab]
+  at reportException (jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+  … 21 more frames in jsdom, react-dom, @testing-library/react
+  at Proxy.render (@testing-library/react/dist/pure.js:97:26)
+  at renderWidgetTabs (app/react/components/Widget/WidgetTabs.test.tsx:60:10)
+  at app/react/components/Widget/WidgetTabs.test.tsx:140:9
+  at Proxy.assertThrows (chai/index.js:2798:5)
+  … 3 more frames in chai, @vitest/expect
+  source: app/react/components/Widget/WidgetTabs.test.tsx:60:10
+    60 | return render(<WidgetTabs {...defaultProps} {...props} />);
+       |        ^
+    at Proxy.<anonymous> (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/@vitest+expect@4.1.8/node_modules/@vitest/expect/dist/index.js:1552:16) Error: Invalid query param value for tab
+  at WidgetTabs (app/react/components/Widget/WidgetTabs.tsx:32:11)
+  at renderWithHooks (react-dom/cjs/react-dom.development.js:14985:18)
+  … 25 more frames in react-dom, jsdom, @testing-library/react
+  at Proxy.render (@testing-library/react/dist/pure.js:97:26)
+  at renderWidgetTabs (app/react/components/Widget/WidgetTabs.test.tsx:60:10)
+  at app/react/components/Widget/WidgetTabs.test.tsx:140:9
+  source: app/react/components/Widget/WidgetTabs.tsx:32:11
+    32 | throw new Error('Invalid query param value for tab');
+       |       ^
+ Test Files  62 passed | 1 skipped (63)
+      Tests  416 passed | 2 todo (418)
+   Duration  16.25s (transform 16.74s, setup 112.79s, import 68.94s, tests 6.52s, environment 206.82s)
+
+(… repeated 61 more times: (node:27210) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userlan…)
+[agentic-node] full output: .agentic-node/logs/1119-084901-27164.log
