@@ -86,7 +86,7 @@ One setup file for Vitest (`setupFiles`) or Jest (`setupFilesAfterEach`):
   - the query that failed (`role="button" name="Save"`);
   - a **DOM excerpt** around the best candidate: the closest accessible elements by role, then label/text similarity, with their nearest component ancestor and source location;
   - a short candidate list (other elements with the same role, or with matching text under another role).
-  The excerpt keeps the candidate's ancestors up to the nearest landmark/form and its siblings, collapses unrelated subtrees to `<… 12 nodes>`, and strips class-name noise. If no candidate scores above a threshold, it falls back to a larger excerpt (whole nearest landmark), never to nothing. The digest never contains ANSI codes (testing-library colours its dump even when `NO_COLOR` is set; see 8.2), and the raw log gets the uncoloured full dump.
+  The excerpt keeps the candidate's ancestors up to the nearest landmark/form and its siblings, collapses unrelated subtrees to `<… 12 nodes>`, and strips class-name noise. If no candidate scores above a threshold, it falls back to a larger excerpt (whole nearest landmark), never to nothing. The digest never contains ANSI codes, and the raw log gets the uncoloured full dump.
 - imports `bippy` before React so fiber data is available in jsdom / happy-dom;
 - patches `console.error`/`console.warn` to dedupe React warnings (5.5).
 
@@ -110,7 +110,7 @@ Recognised families: missing `key`, `act(...)`, hydration mismatch (React 18 tex
 - for hydration mismatches keep the server/client values from React's diff and the component path (`<LastUpdated> … via <Header> …`);
 - unknown `console.error` text passes through unchanged (deduped only when byte-identical, with a count).
 
-Where the dedupe happens: in Playwright and Cypress, in the fixture / support file, summarised by the reporter for the whole run. In Vitest and Jest, test files run in isolated module scopes, so the setup file dedupes per test file and prints one summary line per file from `afterAll` (see the RTL warnings target in 8.2). It does not try to dedupe across files; that would need shared state for little gain. Under Vitest's agent reporter, console output of passing files is dropped, including this summary; failing files keep it.
+Where the dedupe happens: in Playwright and Cypress, in the fixture / support file, summarised by the reporter for the whole run. In Vitest and Jest, test files run in isolated module scopes, so the setup file dedupes per test file and prints one summary line per file from `afterAll`. It does not try to dedupe across files; that would need shared state for little gain. Under Vitest's agent reporter, console output of passing files is dropped, including this summary; failing files keep it.
 
 ## 6. Bundler integration
 
@@ -140,7 +140,7 @@ Order, by user reach and by how much is already in place:
 
 - **Dev server:** the plugin's `config` hook supplies a `customLogger` that keeps Vite's normal lines but digests errors: transform/import-analysis errors become `vite: <message> at <file:line:col>` + a code frame trimmed to 3 lines + the importer chain, repeated identical errors on every HMR update print once with a count. Startup banner and HMR update lines are left to the generic layer (agentic-node) and are untouched here.
 - **Build:** `buildEnd` / `closeBundle` errors get the same digest; the Rollup/Rolldown plugin-stack noise goes to the raw log.
-- **Repeated errors:** identical error blocks (same message, file, position) print once, followed by one `same error repeated: … xN` line when the burst ends. The capture in 8.2 shows Vite 8 printing the same `Pre-transform error` block 63 to 5,780 times after one broken import.
+- **Repeated errors:** identical error blocks (same message, file, position) print once, followed by one `same error repeated: … xN` line when the burst ends.
 - **Browser:** Vite 8 already forwards the browser console to the terminal when it detects an agent (`forwardConsole`), so React warnings arrive there as repeated multi-line `[console.error]` entries. The logger dedupes those and annotates them with component + source from the page runtime. On Vite majors without `forwardConsole`, or when it is off, the existing client runtime forwards deduped errors and React warnings over the existing bridge instead. Either way the agent reads them in the dev-server output it already has, without opening a browser tool just for the console.
 - To verify in the spike: that `customLogger` set from a plugin `config` hook is honoured by the installed Vite majors (6, 7, 8), and how `forwardConsole` lines reach the logger.
 
@@ -181,209 +181,7 @@ Reuses the selection-context machinery; nothing new is invented here:
 
 ## 8. Before/after output
 
-### 8.1 How these were produced
-
-- **Before = real output.** A throwaway fixture app (Vite 8 + React 19.3 + React Router, a settings page and a tasks page, ~10 components) was run with the stock tools: `@playwright/test` 1.65.1, Cypress 16.3.0, Vitest 5.1.1 (jsdom 31 + `@testing-library/react` 16.3.3, and browser mode with `@vitest/browser-playwright`), webpack 5.112.2, Node 24.15. Commands ran non-TTY with `CI` unset and `NO_COLOR=1 FORCE_COLOR=0`, with all AI-agent env markers removed, unless the case name ends in `.agent` (then `CLAUDECODE=1` and `AI_AGENT` set, i.e. what an agent in Claude Code sees). The files are committed unmodified in [`docs/test-compression/before/`](test-compression/before/), each with a `.meta.txt` that has the exact command, versions, env and exit code.
-- **After = hand-written target, not output of any code.** Nothing is implemented. Each file in [`docs/test-compression/after/`](test-compression/after/) is the digest this design commits to produce for the same run, written by hand from the real capture. Where agentic-react only replaces part of the output (testing-library, Vitest browser mode), the target was made by splicing the block into the real capture, so the runner's own lines are unchanged.
-- **Tokens:** o200k_base via `gpt-tokenizer` 4.1.2, computed by [`docs/test-compression/compare.mjs`](test-compression/compare.mjs).
-
-These counts are **targets that the fixtures (11.3) must meet or beat**, not measurements of agentic-react. They are not evidence for the 20% goal: tool output is only part of an agent's total tokens.
-
-### 8.2 Token counts
-
-| Case | Before (real) | After (target) | Change |
-|---|---:|---:|---:|
-| Playwright, 20 passing | 534 | 58 | -89.1% |
-| Playwright, 1 locator failure | 831 | 314 | -62.2% |
-| Cypress, 10 passing | 749 | 91 | -87.9% |
-| Cypress, 1 failure | 930 | 300 | -67.7% |
-| RTL `Unable to find` (Vitest + jsdom) | 11,227 | 681 | -93.9% |
-| RTL, 16 passing with React `key`/`act` warnings | 770 | 307 | -60.1% |
-| Vitest browser mode, locator failure | 4,298 | 773 | -82.0% |
-| Hydration mismatch, browser console | 744 | 188 | -74.7% |
-| Vite dev server, broken import (agent env) | 26,183 | 267 | -99.0% |
-| webpack, broken import | 1,034 | 122 | -88.2% |
-
-Things the captures showed that matter for the design:
-
-1. **Playwright output is already lean on the happy path**; the absolute saving there is small (534 → 58). The Playwright "before" excludes 14 `NO_COLOR is ignored` Node warnings that were an artefact of the capture env. On failure, Playwright prints a pointer to `error-context.md` (an ARIA snapshot of the page, 1,884 tokens here), which an agent usually opens next; failure + that file is 2,715 tokens. The target block inlines a source-mapped excerpt so that read becomes unnecessary; the path is still printed.
-2. **The RTL dump is mostly ANSI codes.** `@testing-library/dom` ignores `NO_COLOR` and only honours `COLORS=false`, so an agent gets colour codes in a non-TTY. The same dump without colour is 3,633 tokens. The digest never emits ANSI.
-3. **Vitest already has an agent reporter.** `--reporter=agent` is Vitest's `minimal` reporter, and Vitest selects it by default when `std-env` detects an agent (`CLAUDECODE`, `AI_AGENT`, `CURSOR_AGENT`, `CODEX_*`, …). It prints only failures and drops console output of passing tests (`silent: 'passed-only'`): the warning run is 125 tokens with it, so the warnings disappear entirely. Our target (307) is deliberately larger, because it keeps one deduped line per React warning with its source. That is a tie-break choice for review (13). On failures the agent reporter prints the same testing-library dump as the default reporter, so the RTL and browser-mode savings stack with it.
-4. **Vite 8 forwards the browser console to the terminal when it detects an agent** (`forwardConsole`). In the agent run, Playwright's `[WebServer]` output then carries 11 copies of the same React `key` warning. Section 6.2 is adjusted: agentic-react dedupes and annotates what Vite forwards rather than opening a second channel.
-5. **Vite repeats `Pre-transform error` blocks.** After one broken import, Vite 8.3.8 printed the same 8-line block 107 times in the agent run; other runs of the same flow printed 63 to 5,780 copies, so 26,183 tokens is not a stable baseline. The cause is not investigated yet. Deduping identical errors is the single largest saving found.
-
-### 8.3 Examples
-
-Long absolute paths of the fixture directory are shortened to `<fixture>` below for reading; the committed files are unmodified. `[… N lines]` marks lines left out of this page only.
-
-**Playwright, locator failure.** Before (real, list reporter, capture-env warnings removed):
-
-```text
-Running 20 tests using 14 workers
-[1/20] [chromium] › e2e/navigation.spec.ts:21:1 › sidebar lists projects
-[… 18 lines, one per test]
-[20/20] [chromium] › e2e/tasks.spec.ts:39:1 › adds a new task
-  1) [chromium] › e2e/settings.spec.ts:12:1 › saves profile changes ────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.click: Test timeout of 30000ms exceeded.
-    Call log:
-      - waiting for getByRole('button', { name: 'Save', exact: true })
-
-      13 |   await page.getByLabel('Full name').fill('Maya Chen-Park');
-      14 |   await page.getByLabel('Bio').fill('Engineering manager');
-    > 15 |   await page.getByRole('button', { name: 'Save', exact: true }).click();
-         |                                                                 ^
-      16 |   await expect(page.getByRole('status')).toHaveText('Profile saved.');
-        at <fixture>/e2e/settings.spec.ts:15:65
-
-    Error Context: test-results/settings-saves-profile-changes-chromium/error-context.md
-
-  1 failed
-    [chromium] › e2e/settings.spec.ts:12:1 › saves profile changes ─────────────────────────────────
-  19 passed (31.0s)
-```
-
-After (target, fixture + standalone reporter):
-
-```text
-playwright: 1 failed, 19 passed (chromium, 14 workers) in 31.0s
-  React warnings (all tests): key x11 <TaskTable> src/components/TaskTable.tsx:30
-
-FAIL e2e/settings.spec.ts:12 › saves profile changes
-  locator.click: Test timeout of 30000ms exceeded.
-  waiting for getByRole('button', { name: 'Save', exact: true })
-    > 15 |   await page.getByRole('button', { name: 'Save', exact: true }).click();
-  no match; closest: button "Save changes" <ProfileForm> src/components/ProfileForm.tsx:43
-    <form aria-labelledby="profile-heading">   (form "Profile")
-      <h2>Profile</h2>
-      <… 4 labelled fields: Full name, Email address, Bio, Time zone>
-      <button type="button">Reset</button>
-      <button type="submit">Save changes</button>   <- closest
-    </form>
-  other buttons: "Maya Chen" <UserMenu> src/components/UserMenu.tsx:7, "Delete account" <SettingsPage> src/routes/SettingsPage.tsx:20
-  browser console (this test): no errors
-  error context: test-results/settings-saves-profile-changes-chromium/error-context.md
-[agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
-```
-
-**RTL `Unable to find`.** Before (real; 869 lines, ANSI codes removed for this page):
-
-```text
- FAIL  tests/rtl-fail/SettingsPage.test.tsx > SettingsPage > saves the profile
-TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Save"
-
-Here are the accessible roles:
-
-  banner:
-
-  Name "":
-  <header
-    class="app-header"
-  />
-
-  --------------------------------------------------
-  link:
-
-  Name "Acme Workspace":
-  <a
-    class="logo"
-    href="/"
-  />
-[… ~780 lines: every accessible role on the page, then the whole document.body pretty-printed]
-</body>
- ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
- [… 3 node_modules frames]
- ❯ tests/rtl-fail/SettingsPage.test.tsx:21:29
-     21|     await user.click(screen.getByRole('button', { name: 'Save' }))
-```
-
-After (target; only the error body changes, Vitest's own lines are untouched):
-
-```text
- FAIL  tests/rtl-fail/SettingsPage.test.tsx > SettingsPage > saves the profile
-TestingLibraryElementError: Unable to find role="button" name="Save"
-  closest: button "Save changes" <ProfileForm> src/components/ProfileForm.tsx:43
-    <form aria-labelledby="profile-heading">   (form "Profile")
-      <h2>Profile</h2>
-      <… 4 labelled fields: Full name, Email address, Bio, Time zone>
-      <button type="button">Reset</button>
-      <button type="submit">Save changes</button>   <- closest
-    </form>
-  other buttons: "Maya Chen" <UserMenu> src/components/UserMenu.tsx:7, "Delete account" <SettingsPage> src/routes/SettingsPage.tsx:20
-  [agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
- ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
- [… unchanged]
-```
-
-**Hydration mismatch in the browser console** (as a browser tool would list it). Before (real):
-
-```text
-[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
-[… 9 lines of generic causes and a link]
-  <BrowserRouter>
-    <Router basename={undefined} location={{pathname:"/", ...}} navigationType="POP" navigator={{action:"POP", ...}} ...>
-      <AppShell lastSyncedAt={1795017600000}>
-        <div className="app-shell">
-          [… 8 lines of tree]
-                  <SyncStatus lastSyncedAt={1795017600000}>
-                    <p className="sync-status">
-                      <time>
-+                       11/18/2026, 8:00:00 AM
--                       11/18/2026, 4:00:00 PM
-
-    at throwOnHydrationMismatch (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:3120:51)
-    [… 9 more react-dom frames]
-```
-
-After (target):
-
-```text
-[pageerror] Hydration failed (text mismatch): server "11/18/2026, 4:00:00 PM" vs client "11/18/2026, 8:00:00 AM"
-  at <time> in <SyncStatus> ssr/SyncStatus.tsx:4
-  via <ActivityPanel> ssr/ActivityPanel.tsx:11 < <AppShell> ssr/AppShell.tsx < <Router> < <BrowserRouter>
-  common causes: Date/locale formatting, Date.now()/Math.random(), typeof window branches. https://react.dev/link/hydration-mismatch
-  (react-dom frames x10 and full message in log)
-```
-
-**Vite dev server, broken import (agent env).** Before (real): the startup banner, one `Internal server error` block with 9 `node_modules/vite` frames, then this 8-line block **107 times**:
-
-```text
-3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
-  Plugin: vite:import-analysis
-  File: <fixture>/src/components/ProfileForm.tsx:2:29
-  1  |  import { useState } from "react";
-  2  |  import { isValidEmail } from "./DoesNotExist";
-     |                                ^
-  3  |  var _jsxFileName = "<fixture>/src/components/ProfileForm.tsx...
-  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
-```
-
-After (target):
-
-```text
-3:50:12 PM [vite] (client) hmr update /src/components/ProfileForm.tsx
-3:50:12 PM [vite] error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
-  at src/components/ProfileForm.tsx:2:29 (vite:import-analysis)
-    2 | import { isValidEmail } from "./DoesNotExist";
-      |                               ^
-3:50:12 PM [vite] (client) [console.error] [vite] Failed to reload /src/components/ProfileForm.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
-3:50:12 PM [vite] same error repeated: internal server error x2, pre-transform error x107 (last 3:50:14 PM)
-[agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
-```
-
-**Cypress, 10 passing.** Before (real, 95 lines): a run-start box (Cypress, browser, Node, specs), an Electron deprecation warning, per spec a header, the test list and a 9-row results box, then a run-finished table. After (target):
-
-```text
-cypress: 10 passed in 2 specs (Electron 150 headless) in 2s
-  settings.cy.ts 5/5, tasks.cy.ts 5/5
-  warning: Electron is deprecated as a test browser (details in log)
-  browser console: no errors; React warnings: none
-[agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
-```
-
-The remaining targets (Cypress failure, RTL warnings, Vitest browser mode, webpack) are in [`docs/test-compression/after/`](test-compression/after/) next to their captures.
+**Pending.** The "before" output will be captured from the 8 pinned benchmark repos in `benchmark/repos/`: the repos' own test suites for the happy path, and the existing tasks' `setup.edits` for failures (test failures, runtime errors, hydration mismatches, compile errors). Each capture will record repo, pinned SHA, task id, command, versions, env and exit code, and be committed unmodified under `docs/test-compression/before/<repo>/`. "After" will be target digests derived from those captures, labelled as targets until the implementation produces them.
 
 ## 9. Boundary with agentic-node
 
@@ -415,7 +213,7 @@ One log per process under `.agentic-react/logs/`, named `<MMDD-HHMMSS>-<pid>.log
 | `both` | control + both templates ("both" variant of the templates) |
 | `vitest-agent` (comparison, Vitest tasks only) | control with Vitest's own agent reporter selected |
 
-**Agent env markers are part of the arm definition.** Vitest switches to its agent reporter and Vite 8 turns on `forwardConsole` when they see `CLAUDECODE`, `AI_AGENT`, `CURSOR_AGENT` and similar variables (8.2). So the stock behaviour of `control` depends on which agent runs it. The harness sets the same markers in every arm (whatever the agent under test sets naturally), records them and the Vitest reporter actually selected in each result, and the `vitest-agent` arm forces `--reporter=agent` so that comparison does not depend on detection.
+**Agent env markers are part of the arm definition.** Vitest switches to its agent reporter and Vite 8 turns on `forwardConsole` when they see `CLAUDECODE`, `AI_AGENT`, `CURSOR_AGENT` and similar variables. So the stock behaviour of `control` depends on which agent runs it. The harness sets the same markers in every arm (whatever the agent under test sets naturally), records them and the Vitest reporter actually selected in each result, and the `vitest-agent` arm forces `--reporter=agent` so that comparison does not depend on detection.
 
 Every arm gets the same `AGENTS.md`/prompt, except that the `agentic-react` and `both` arms keep the short snippet (its tokens are counted). The current snippet (`benchmark/arms/agentic/AGENTS.snippet.md`) says "Long command output is compacted", which is not true until this work ships; it must stay out of runs until then.
 
@@ -489,8 +287,8 @@ This work stops at fixtures and oracle runs; the real runs (Cursor `composer-2.5
 | Silencing stock output in webpack / Next breaks other plugins | intercept only where a clean hook exists, otherwise leave stock output and skip the digest |
 | Version drift (React 19 warning formats, Next majors, Playwright/Cypress majors) | warning families matched by stable fragments; unknown text passes through deduped |
 | Fairness of browser-tool decision | same tool in all arms (11.2), reported in results |
-| Stock tools already adapting to agents (Vitest agent reporter, Vite `forwardConsole`, Playwright `error-context.md`) | measure against the agent-adapted stock behaviour, not the human default (11.1); targets in 8.2 are stated against both where they differ |
-| Non-deterministic baselines (Vite's repeated pre-transform errors varied 63–5,780 copies) | report fixture token counts as medians over several runs; do not quote a single run as typical |
+| Stock tools already adapting to agents (Vitest agent reporter, Vite `forwardConsole`, Playwright `error-context.md`) | measure against the agent-adapted stock behaviour, not the human default (11.1); captures record both where they differ |
+| Non-deterministic baselines (repeated dev-server errors vary run to run) | report fixture token counts as medians over several runs; do not quote a single run as typical |
 
 ## 13. Decisions requested in review
 
@@ -501,5 +299,5 @@ This work stops at fixtures and oracle runs; the real runs (Cursor `composer-2.5
 5. **Cypress coverage:** fixtures only (proposed, no benchmark repo uses Cypress) vs adding Cypress to one benchmark repo through setup edits.
 6. **Default mode:** compact by default once installed, `AGENTIC_REACT_OUT=raw` to opt out (proposed) vs opt-in compact.
 7. **Turbopack terminal output:** left untouched in V1 (proposed), browser-side capture only.
-8. **React warnings in passing tests:** keep one deduped line per warning with its source (proposed; costs a few hundred tokens, see the RTL warnings case in 8.2) vs drop them like Vitest's agent reporter does. Proposed because an agent that never sees an `act`/`key` warning cannot fix it, and the brief's tie-break says output more when unsure.
-9. **Evidence files:** the real captures and hand-written targets are committed under `docs/test-compression/` so every number in section 8 can be recomputed (proposed). They move to `benchmark/fixtures/` as real fixtures in the fixtures step.
+8. **React warnings in passing tests:** keep one deduped line per warning with its source (proposed) vs drop them like Vitest's agent reporter does. Proposed because an agent that never sees an `act`/`key` warning cannot fix it, and the brief's tie-break says output more when unsure.
+9. **Evidence files:** the benchmark captures are committed unmodified under `docs/test-compression/before/<repo>/` so every number in section 8 can be recomputed (proposed).

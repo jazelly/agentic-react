@@ -1,3 +1,0 @@
-playwright: 20 passed (chromium, 14 workers) in 2.2s
-  browser console: no errors; React warnings: none
-[agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
