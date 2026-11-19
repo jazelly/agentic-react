@@ -1,6 +1,0 @@
-yarn run v1.22.22
-(node:99108) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-$ PUBLIC_API_ENDPOINT=http://localhost:3001/api astro dev --port 5331
-{"message":"Dev server running at http://localhost:5331 (pid 99124)\n  Stop:   astro dev stop\n  Status: astro dev status\n  Logs:   astro dev logs","label":"SKIP_FORMAT","level":"info"}
-Done in 2.22s.

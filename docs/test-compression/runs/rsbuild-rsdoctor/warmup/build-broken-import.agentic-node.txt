@@ -1,0 +1,83 @@
+$ rs lib
+Rslib v1.0.5
+
+info    build started...
+ready   built in 0.07s (esm1)
+ready   built in 0.08s (esm0)
+start   generating declaration files... (esm0)
+start   generating declaration files... (esm1)
+info    declaration files prepared with tsgo in 0.22 s (esm1)
+ready   declaration files generated with tsgo in 0.26 s (esm0)
+ready   declaration files bundled successfully: dist/collection.d.ts in 0.43 s (esm1)
+
+129 files generated in dist, total: 161.8 kB (esm0)
+
+File (esm1)          Size      
+dist/collection.js   50.6 kB
+
+info    Publint found 1 suggestion:
+info    pkg.repository.url is https://github.com/web-infra-dev/rsdoctor but could be a full git URL like "git+https://github.com/web-infra-dev/rsdoctor.git".
+$ rs build
+Rsbuild v2.3.1
+
+(node:54589) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/config/constants.ts?fresh-import-4lhknu56f62=0,file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/rstack.config.mts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp/packages/client/package.json.
+info    Type checker is enabled.
+info    build started...
+error   Build errors: 
+File: ./src/pages/Plugins/index.tsx:8:10
+  × TS2724: '"../../constants"' has no exported member named 'Sizes'. Did you mean 'Size'?
+  │      6 | import { ServerAPIProvider } from '../../components/Manifest';
+  │      7 | import { PluginsDataTable } from '../../components/Plugins/plugins';
+  │   >  8 | import { Sizes as Size } from '../../constants';
+  │        |          ^^^^^
+  │      9 | import './index.scss';
+  │     10 |
+  │     11 | export const Page: React.FC = () => {
+
+File: ./src/pages/Plugins/index.tsx:18:29-45
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[18:28]
+ 16 │             title: "Plugins Overall",
+ 17 │             bodyStyle: {
+ 18 │                 paddingTop: Size.BasePadding / 3
+    ·                             ───
+ 19 │             },
+ 20 │             extra: /*#__PURE__*/ _jsx(BuildConfigurationViewer, {
+    ╰───
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+
+File: ./src/pages/Plugins/index.tsx:38:51-67
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[38:50]
+ 36 │                             return /*#__PURE__*/ _jsxs(Space, {
+ 37 │                                 style: {
+ 38 │                                     marginBottom: Size.BasePadding / 2
+    ·                                                   ───
+ 39 │                                 },
+ 40 │                                 children: [
+    ╰───
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+
+error   build failed in 0.45s
+error   Rspack build failed.
+  at @rsbuild/core/dist/m.js:10078:153
+  … 1 more frame in @rspack/core
+[ELIFECYCLE] Command failed with exit code 1.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in /Users/jazelly/Desktop/github/my-proj/
+  │ agentic-react/benchmark/runs/caps/rsd-imp/packages/client
+
+[agentic-node] full output: .agentic-node/logs/1119-085632-54460.log

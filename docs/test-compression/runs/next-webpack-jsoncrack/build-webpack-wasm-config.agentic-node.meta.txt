@@ -1,0 +1,15 @@
+repo: next-webpack-jsoncrack
+pinned SHA: a46d0d0adb098e12e577a083e87ead7f61f90098
+task: next-webpack-jsoncrack/build-webpack-wasm-config
+arm: agentic-node
+command: pnpm exec turbo run build --filter=www...
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-wasm
+env: CLAUDECODE=1 AI_AGENT=claude-code; other host agent vars (CLAUDE*, CURSOR*, CODEX*, ...), CI, NO_COLOR, FORCE_COLOR, NODE_OPTIONS unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr combined into one file (non-TTY)
+agentic-node: NODE_OPTIONS="--require <SCRATCH>/agentic-node-tool/node_modules/agentic-node/src/preload.cjs" AGENTIC_NODE_MODE=auto (agentic-node github:jazelly/agentic-node#4e604d36ccc0c7b3b491a02c28f654e474bce60b); .agentic-node logs: copied to agentic-node-logs/build-webpack-wasm-config/ (2 files)
+node: v24.15.0
+tool versions: turbo 2.10.10, next 16.3.5 (webpack), react 19.3.0, typescript 5.9.3, pnpm 10.20.0 (host pnpm; repo packageManager pnpm@10.20.0), vite (jsoncrack-react prebuild)
+exit code: 1
+duration: 2.75s
+warm-up: yes: one discarded run of the same command with the same env (exit 1, 2.87s); its output is warmup/build-webpack-wasm-config.agentic-node.txt
+deviations: scratch workspace benchmark/runs/caps/njc-wasm (prepareWorkspace with the task edit: experiments line removed from next.config.js; reused from the previous pass, edit verified). Command = manifest @build, cwd = workspace root as task-kit does; CI unset (runChecks sets CI=1).
+warm-up printed: no known one-off lines beyond what the capture also shows (see warmup file)

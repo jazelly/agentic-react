@@ -1,0 +1,17 @@
+repo: next-turbopack-boilerplate
+pinned SHA: b83157a8018f55b926a3c25a4b7a7e14b0dfbc35
+task: -
+arm: agentic-node
+command: PORT=5301 npm run test:e2e
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy
+env: CLAUDECODE=1 AI_AGENT=claude-code; other host agent vars (CLAUDE*, CURSOR*, CODEX*, ...), CI, NO_COLOR, FORCE_COLOR, NODE_OPTIONS unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr combined into one file (non-TTY)
+agentic-node: NODE_OPTIONS="--require <SCRATCH>/agentic-node-tool/node_modules/agentic-node/src/preload.cjs" AGENTIC_NODE_MODE=auto (agentic-node github:jazelly/agentic-node#4e604d36ccc0c7b3b491a02c28f654e474bce60b); .agentic-node logs: copied to agentic-node-logs/playwright-e2e-port5432-conflict/ (2 files)
+node: v24.15.0
+tool versions: @playwright/test 1.62.1, next 16.4.0, @electric-sql/pglite-socket 0.2.8, npm 11.18.0
+browser: Chromium headless shell 1255 (Chrome for Testing 159.0.8154.6) driven by the repo's pinned Playwright 1.62.1 via launchOptions.executablePath (never launched: webServer fails first)
+exit code: 1
+duration: 1.67s
+warm-up: yes: one discarded run of the same command with the same env (exit 1, 1.7s); its output is warmup/playwright-e2e-port5432-conflict.agentic-node.txt
+deviations: scratch workspace benchmark/runs/caps/<ws> made with task-kit prepareWorkspace (reused from the previous control-only pass). AGENTS.md restored to baseline before each arm's warm-up (Next under agent markers regenerates it once and may print its agent-addressed upgrade prompt, which then lands in the warm-up). Previous pass ran this in benchmark/repos/next-turbopack-boilerplate; now run in the ntb-happy scratch copy with playwright.config.ts = repo original (pglite default port 5432) + scratch-copy config edit: use.launchOptions.executablePath = <ms-playwright>/chromium_headless_shell-1255/... (latest Chromium; the pinned Playwright 1.62.1's own revision is not installed), to keep benchmark/repos untouched.
+notes: real output on this host: pglite-server (Playwright webServer) cannot bind 127.0.0.1:5432 because a local Docker container already listens there.
+warm-up printed: no known one-off lines beyond what the capture also shows (see warmup file)

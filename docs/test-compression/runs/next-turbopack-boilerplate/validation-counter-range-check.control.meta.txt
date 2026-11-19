@@ -1,0 +1,15 @@
+repo: next-turbopack-boilerplate
+pinned SHA: b83157a8018f55b926a3c25a4b7a7e14b0dfbc35
+task: next-turbopack-boilerplate/validation-counter-range
+arm: control
+command: node --input-type=module -e "const {CounterValidation:v}=await import('./src/validations/CounterValidation.ts');const ok=n=>v.safeParse({increment:n}).success;if(!(ok(1)&&ok(2)&&ok(3)&&!ok(0)&&!ok(4)))process.exit(1)"
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-val
+env: CLAUDECODE=1 AI_AGENT=claude-code; other host agent vars (CLAUDE*, CURSOR*, CODEX*, ...), CI, NO_COLOR, FORCE_COLOR, NODE_OPTIONS unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr combined into one file (non-TTY)
+node: v24.15.0
+tool versions: node 24.15.0 native TS type stripping, zod 4.4.3
+exit code: 1
+duration: 0.3s
+warm-up: yes: one discarded run of the same command with the same env (exit 1, 0.32s); its output is warmup/validation-counter-range-check.control.txt
+deviations: scratch workspace benchmark/runs/caps/ntb-val (prepareWorkspace with the task edit max(3)->max(1)); cwd = appRoot as in task-kit runChecks; CI unset (runChecks would set CI=1).
+notes: the check prints nothing; the only signal is the exit code.
+warm-up printed: no known one-off lines beyond what the capture also shows (see warmup file)

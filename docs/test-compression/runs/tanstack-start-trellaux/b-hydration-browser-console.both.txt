@@ -1,0 +1,9 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[pageerror] Hydration failed (text mismatch): server "7:22:29 PM" vs client "8:52:30 AM"
+  at <span> in <Home> src/routes/index.tsx:18
+  via <MatchInnerImpl routeId="/"> < <OutletImpl> (TanStack Router)
+  common causes: Date/locale formatting, Date.now()/Math.random(), typeof window branches. https://react.dev/link/hydration-mismatch
+  (react-dom frames x10 and full message in log)
+[agentic-react] full output: node_modules/.cache/agentic-react/logs/<MMDD-HHMMSS>-<pid>.log

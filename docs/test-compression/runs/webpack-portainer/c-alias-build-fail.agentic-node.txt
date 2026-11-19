@@ -1,0 +1,211 @@
+
+> @portainer/ce@2.45.3 build /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution
+> webpack
+
+Failed to load ./.env.
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+assets by info 24.5 MiB [immutable]
+  assets by chunk 211 KiB (auxiliary name: vendor) 5 assets
+  assets by path *.js 23.1 MiB 4 assets
+  assets by path *.png 4.31 KiB 3 assets
+  assets by chunk 833 KiB (auxiliary name: main) 2 assets
+  assets by path *.css 388 KiB
+    asset main.4f09544a941c1c1fc8cc.css 207 KiB [emitted] [immutable] (name: main)
+    asset vendor.ba222505cf69e61b6701.css 181 KiB [emitted] [immutable] (name: vendor) (id hint: vendor)
+  asset 79045ffd18ae77130869.ico 1.12 KiB [emitted] [immutable] [from: app/assets/ico/favicon.ico]
+  asset 6d50eaeb9f128c130ed9.xml 249 bytes [emitted] [immutable] [from: app/assets/ico/browserconfig.xml]
+assets by path *.html 21.1 KiB
+  asset index.html 13.8 KiB [emitted]
+  asset timeout.html 7.3 KiB [emitted]
+asset locales/en/translation.json 765 bytes [emitted] [from: translations/en/translation.json] [copied]
+Entrypoint main 23.5 MiB (1.02 MiB) = runtime.484ca31e21b5497ffc5b.js 16.6 KiB vendor.ba222505cf69e61b6701.css 181 KiB vendor.b2d6fb4f138e45d8aa06.js 16 MiB main.4f09544a941c1c1fc8cc.css 207 KiB main.74b5059b74b25e694fc4.js 7.09 MiB 7 auxiliary assets
+cached modules 9.76 MiB (javascript) 388 KiB (css/mini-extract) 10.2 KiB (runtime) [cached] 3655 modules
+
+ERROR in ./app/azure/index.ts 30:0-65
+Module not found: Error: Can't resolve '@/portainer/services/notifications' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure'
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 3:0-50
+Module not found: Error: Can't resolve '@/react-tools/react2angular' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 4:0-74
+Module not found: Error: Can't resolve '@/react/azure/container-instances/CreateView' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 5:0-70
+Module not found: Error: Can't resolve '@/react/azure/container-instances/ItemView' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 6:0-70
+Module not found: Error: Can't resolve '@/react/azure/container-instances/ListView' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 7:0-60
+Module not found: Error: Can't resolve '@/react/azure/DashboardView' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 8:0-64
+Module not found: Error: Can't resolve '@/react-tools/withCurrentUser' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 9:0-62
+Module not found: Error: Can't resolve '@/react-tools/withReactQuery' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 10:0-58
+Module not found: Error: Can't resolve '@/react-tools/withUIRouter' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/docker/helpers/logHelper/constants.ts 1:0-56
+Module not found: Error: Can't resolve '@/react/constants' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/helpers/logHelper'
+ @ ./app/docker/helpers/logHelper/index.ts 3:0-47 3:0-47
+ @ ./app/docker/services/containerService.js 13:0-50 129:11-21
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/containerService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/models/containerDetails.ts 17:0-108
+Module not found: Error: Can't resolve '@/react/portainer/access-control/models/ResourceControlViewModel' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/models'
+ @ ./app/docker/services/containerService.js 11:0-71 70:15-40
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/containerService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/models/network.ts 17:0-108
+Module not found: Error: Can't resolve '@/react/portainer/access-control/models/ResourceControlViewModel' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/models'
+ @ ./app/docker/services/networkService.js 7:0-53 38:15-31 56:29-45
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/networkService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/models/secret.ts 17:0-108
+Module not found: Error: Can't resolve '@/react/portainer/access-control/models/ResourceControlViewModel' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/models'
+ @ ./app/docker/services/secretService.js 6:0-51 31:15-30 39:29-44
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/secretService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/models/service.ts 17:0-108
+Module not found: Error: Can't resolve '@/react/portainer/access-control/models/ResourceControlViewModel' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/models'
+ @ ./app/docker/services/serviceService.js 8:0-53 38:29-45 47:15-31
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/serviceService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/models/volume.ts 18:0-108
+Module not found: Error: Can't resolve '@/react/portainer/access-control/models/ResourceControlViewModel' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/models'
+ @ ./app/docker/services/volumeService.js 6:0-51 35:29-44 44:15-30 93:15-30
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./docker/services/volumeService.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/docker/react/components/index.ts 3:0-50
+Module not found: Error: Can't resolve '@/react-tools/react2angular' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/react/components'
+ @ ./app/docker/react/index.ts 3:0-48 5:80-96
+ @ ./app/docker/__module.js 27:0-38 28:53-64
+ @ ./app/index.js 9:0-27
+
+ERROR in ./app/docker/react/components/index.ts 4:0-72
+Module not found: Error: Can't resolve '@/react-tools/withControlledInput' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/react/components'
+ @ ./app/docker/react/index.ts 3:0-48 5:80-96
+ @ ./app/docker/__module.js 27:0-38 28:53-64
+ @ ./app/index.js 9:0-27
+
+ERROR in ./app/docker/react/components/index.ts 5:0-64
+Module not found: Error: Can't resolve '@/react-tools/withCurrentUser' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/docker/react/components'
+… 4924 lines omitted …
+Module not found: Error: Can't resolve '@/react/portainer/settings/AuthenticationView/ldap-options' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/settings/authentication'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/settings/authentication/settingsAuthenticationController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/settings/authentication/settingsAuthenticationController.js 6:0-72
+Module not found: Error: Can't resolve '@/react/portainer/settings/types' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/settings/authentication'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/settings/authentication/settingsAuthenticationController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/settings/authentication/settingsAuthenticationController.js 7:0-128
+Module not found: Error: Can't resolve '@/react/portainer/settings/AuthenticationView/SessionLifetimeSelect' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/settings/authentication'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/settings/authentication/settingsAuthenticationController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/stacks/stacksController.js 2:0-77
+Module not found: Error: Can't resolve '@/react/common/processItemsInBatches' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/stacks'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/stacks/stacksController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/users/edit/userController.js 1:0-38
+Module not found: Error: Can't resolve '@@/modals' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/users/edit'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/users/edit/userController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/users/edit/userController.js 2:0-53
+Module not found: Error: Can't resolve '@@/modals/utils' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/users/edit'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/users/edit/userController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/users/edit/userController.js 3:0-82
+Module not found: Error: Can't resolve '@@/modals/confirm' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/users/edit'
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/views/users/edit/userController.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/components/product-list/product-item/productItem.html 2:33-73
+Module not found: Error: Can't resolve '@/assets/images/support_1.png' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/components/product-list/product-item'
+ @ ./app/portainer/components/product-list/product-item/product-item.js 1:38-67
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/components/product-list/product-item/product-item.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/components/product-list/product-item/productItem.html 3:33-73
+Module not found: Error: Can't resolve '@/assets/images/support_2.png' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/components/product-list/product-item'
+ @ ./app/portainer/components/product-list/product-item/product-item.js 1:38-67
+ @ ./app/ sync ^(?%21.*\.test\.js$).*\.js$im ./portainer/components/product-list/product-item/product-item.js
+ @ ./app/index.js 39:14-72
+
+ERROR in ./app/portainer/views/auth/auth.html 2:33-72
+Module not found: Error: Can't resolve '@/assets/images/logo_alt.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/auth'
+ @ ./app/portainer/__module.js 3:38-71
+ @ ./app/index.js 11:0-30
+
+ERROR in ./app/portainer/views/auth/auth.html 3:33-78
+Module not found: Error: Can't resolve '@/assets/images/logo_alt_black.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/auth'
+ @ ./app/portainer/__module.js 3:38-71
+ @ ./app/index.js 11:0-30
+
+ERROR in ./app/portainer/views/init/admin/initAdmin.html 2:33-72
+Module not found: Error: Can't resolve '@/assets/images/logo_alt.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/init/admin'
+ @ ./app/portainer/__module.js 6:38-82
+ @ ./app/index.js 11:0-30
+
+ERROR in ./app/portainer/views/init/admin/initAdmin.html 3:33-78
+Module not found: Error: Can't resolve '@/assets/images/logo_alt_black.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/init/admin'
+ @ ./app/portainer/__module.js 6:38-82
+ @ ./app/index.js 11:0-30
+
+ERROR in ./app/portainer/views/logout/logout.html 2:33-72
+Module not found: Error: Can't resolve '@/assets/images/logo_alt.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/logout'
+ @ ./app/portainer/__module.js 4:38-75
+ @ ./app/index.js 11:0-30
+
+ERROR in ./app/portainer/views/logout/logout.html 3:33-78
+Module not found: Error: Can't resolve '@/assets/images/logo_alt_black.svg' in '/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-build-webpack-alias-resolution/app/portainer/views/logout'
+ @ ./app/portainer/__module.js 4:38-75
+ @ ./app/index.js 11:0-30
+
+896 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.107.2 compiled with 896 errors in 1031 ms
+ ELIFECYCLE  Command failed with exit code 1.
+[agentic-node] full output: .agentic-node/logs/1119-085026-31889.log

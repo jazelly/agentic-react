@@ -1,0 +1,47 @@
+
+> jsoncrack-react@1.0.5 build /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title/packages/jsoncrack-react
+> vite build && tsc -p tsconfig.build.json
+
+vite v8.2.1 building client environment for production...
+[2Ktransforming...✓ 21 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.css   3.93 kB │ gzip:  1.38 kB
+dist/index.js   31.29 kB │ gzip: 10.57 kB
+
+✓ built in 73ms
+
+> www@0.0.0 dev /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title/apps/www
+> next dev --webpack --port 5311
+
+▲ Next.js 16.3.5 (webpack)
+- Local:         http://localhost:5311
+- Network:       http://192.168.31.240:5311
+- Environments: .env.development, .env
+✓ Ready in 277ms
+⚠ Warning: Next.js ignored pnpm-workspace.yaml in /Users/jazelly/Desktop/github/my-proj/agentic-react because it is outside the current Git repository (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+
+✓ Running next.config.js took 8ms
+
+Watchpack Error (watcher): Error: ENOTDIR: not a directory, watch '/Applications/Grok Bot.app/Contents/Resources/app.asar/dist'
+Watchpack Error (watcher): Error: ENOTDIR: not a directory, watch '/Applications/Grok Bot.app/Contents/Resources/app.asar/dist/deps'
+Watchpack Error (initial scan): Error: ENOTDIR: not a directory, scandir '/Applications/Grok Bot.app/Contents/Resources/app.asar'
+Watchpack Error (initial scan): Error: ENOTDIR: not a directory, scandir '/Applications/Grok Bot.app/Contents/Resources/app.asar/dist'
+Watchpack Error (initial scan): Error: ENOTDIR: not a directory, scandir '/Applications/Grok Bot.app/Contents/Resources/app.asar/dist/deps'
+ GET /editor 200 in 2.8s (next.js: 2.7s, application-code: 110ms)
+[browser] "TypeError: Cannot read properties of null (reading 'name')\n" +
+  '    at BottomBar.useEffect (src/features/editor/BottomBar.tsx:100:14)\n' +
+  '   98 |\n' +
+  '   99 |   React.useEffect(() => {\n' +
+  '> 100 |     if (data.name) window.document.title = `${data.name} | JSON Crack`;\n' +
+  '      |              ^\n' +
+  '  101 |   }, [data]);\n' +
+  '  102 |\n' +
+  '  103 |   return ('
+
+The above error occurred in the <BottomBar> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+
+[?25h

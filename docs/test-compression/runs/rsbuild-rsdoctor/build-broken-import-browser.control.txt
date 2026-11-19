@@ -1,0 +1,94 @@
+[info] [rsbuild] WebSocket connecting...
+[log] i18next: languageChanged en
+[log] i18next: initialized {debug: true, initImmediate: true, ns: Array(1), defaultNS: translations, fallbackLng: Array(1)}
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[info] [rsbuild] WebSocket connected.
+[warning] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+[warning] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+[error] File: ./src/pages/Plugins/index.tsx:20:29-45
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[20:28]
+ 18 │             title: "Plugins Overall",
+ 19 │             bodyStyle: {
+ 20 │                 paddingTop: Size.BasePadding / 3
+    ·                             ────────────────
+ 21 │             },
+ 22 │             extra: /*#__PURE__*/ _jsxDEV(BuildConfigurationViewer, {
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+[error] File: ./src/pages/Plugins/index.tsx:44:51-67
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[44:50]
+ 42 │                             return /*#__PURE__*/ _jsxDEV(Space, {
+ 43 │                                 style: {
+ 44 │                                     marginBottom: Size.BasePadding / 2
+    ·                                                   ────────────────
+ 45 │                                 },
+ 46 │                                 children: [
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+[log] [development]-default
+[log] [DataLoader] isLocal:  false
+[log] i18next::translator: missingKey en translations FAQ FAQ
+[log] i18next::translator: missingKey en translations Introduction Introduction
+[log] i18next::translator: missingKey en translations Plugin Analysis Plugin Analysis
+[error] Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release.
+[error] %o
+
+%s
+
+%s
+ TypeError: Cannot read properties of undefined (reading 'forEach')
+    at groupBundleAlerts (http://localhost:5320/resource/js/src_common_styles_base_scss-src_components_BaseApp_tsx-node_modules_pnpm_rc-dialog_9_1_0_reac-d2e0a4.js:8673:16)
+    at BundleAlert (http://localhost:5320/resource/js/src_common_styles_base_scss-src_components_BaseApp_tsx-node_modules_pnpm_rc-dialog_9_1_0_reac-d2e0a4.js:8749:79)
+    at Object.react_stack_bottom_frame (http://localhost:5320/resource/js/react.js:28574:20)
+    at renderWithHooks (http://localhost:5320/resource/js/react.js:8033:22)
+    at updateFunctionComponent (http://localhost:5320/resource/js/react.js:10572:19)
+    at beginWork (http://localhost:5320/resource/js/react.js:12208:18)
+    at runWithFiberInDEV (http://localhost:5320/resource/js/react.js:1049:30)
+    at performUnitOfWork (http://localhost:5320/resource/js/react.js:19179:22)
+    at workLoopSync (http://localhost:5320/resource/js/react.js:19007:41)
+    at renderRootSync (http://localhost:5320/resource/js/react.js:18988:11) The above error occurred in the <BundleAlert> component. React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[clear] console.clear
+[error] File: ./src/pages/Plugins/index.tsx:20:29-45
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[20:28]
+ 18 │             title: "Plugins Overall",
+ 19 │             bodyStyle: {
+ 20 │                 paddingTop: Size.BasePadding / 3
+    ·                             ────────────────
+ 21 │             },
+ 22 │             extra: /*#__PURE__*/ _jsxDEV(BuildConfigurationViewer, {
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×
+[error] File: ./src/pages/Plugins/index.tsx:44:51-67
+  × ESModulesLinkingError: export 'Sizes' (imported as 'Size') was not found in '../../constants' (possible exports: APILoaderMode4Dev, Color, ComponentState, MAIN_BG, PageState, ROOT_BG_COLOR, Size, TAG_PALLETE, Theme, ViewMode, drawerWidth)
+    ╭─[44:50]
+ 42 │                             return /*#__PURE__*/ _jsxDEV(Space, {
+ 43 │                                 style: {
+ 44 │                                     marginBottom: Size.BasePadding / 2
+    ·                                                   ────────────────
+ 45 │                                 },
+ 46 │                                 children: [
+    ╰────
+Import traces (entry → error):
+  ./src/diff.tsx
+  ./src/DiffApp.tsx
+  ... (1 hidden)
+  ./src/pages/index.ts
+  ./src/pages/Plugins/index.tsx ×

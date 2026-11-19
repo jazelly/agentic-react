@@ -1,0 +1,39 @@
+
+> test:e2e
+> playwright test
+
+[WebServer] Socket server error: Error: listen EADDRINUSE: address already in use 127.0.0.1:5432
+[WebServer]     at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+[WebServer]     at listenInCluster (node:net:2065:12)
+[WebServer]     at node:net:2274:7
+[WebServer]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[WebServer]   code: 'EADDRINUSE',
+[WebServer]   errno: -48,
+[WebServer]   syscall: 'listen',
+[WebServer]   address: '127.0.0.1',
+[WebServer]   port: 5432
+[WebServer] }
+[WebServer] Failed to start PGLiteSocketServer: Error: listen EADDRINUSE: address already in use 127.0.0.1:5432
+[WebServer]     at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+[WebServer]     at listenInCluster (node:net:2065:12)
+[WebServer]     at node:net:2274:7
+[WebServer]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[WebServer]   code: 'EADDRINUSE',
+[WebServer]   errno: -48,
+[WebServer]   syscall: 'listen',
+[WebServer]   address: '127.0.0.1',
+[WebServer]   port: 5432
+[WebServer] }
+[WebServer] Unhandled error: Error: listen EADDRINUSE: address already in use 127.0.0.1:5432
+[WebServer]     at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+[WebServer]     at listenInCluster (node:net:2065:12)
+[WebServer]     at node:net:2274:7
+[WebServer]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[WebServer]   code: 'EADDRINUSE',
+[WebServer]   errno: -48,
+[WebServer]   syscall: 'listen',
+[WebServer]   address: '127.0.0.1',
+[WebServer]   port: 5432
+[WebServer] }
+Error: Process from config.webServer was not able to start. Exit code: 1
+

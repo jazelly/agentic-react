@@ -1,0 +1,1049 @@
+
+> pretest:e2e:run
+> npm run build
+
+
+> build
+> react-router build
+
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+  ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+  ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+  ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+  ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+  ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+vite v7.3.1 building client environment for production...
+
+  ⚠️  Source maps are enabled in production
+     This makes your server code publicly
+     visible in the browser. This is highly
+     discouraged! If you insist, ensure that
+     you are using environment variables for
+     secrets and not hard-coding them in
+     your source code.
+
+transforming...
+node_modules/react-router/dist/development/dom-export.mjs (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+✓ 991 modules transformed.
+Generated an empty chunk: "me".
+Generated an empty chunk: "logout".
+Generated an empty chunk: "robots_._txt".
+Generated an empty chunk: "sitemap_._xml".
+Generated an empty chunk: "download-user-data".
+Generated an empty chunk: "healthcheck".
+Generated an empty chunk: "images".
+Generated an empty chunk: "theme-switch".
+Generated an empty chunk: "authentication".
+Generated an empty chunk: "registration".
+Generated an empty chunk: "sqlite".
+Generated an empty chunk: "index".
+Generated an empty chunk: "lru._cacheKey".
+Generated an empty chunk: "sqlite._cacheKey".
+Generated an empty chunk: "callback".
+rendering chunks...
+computing gzip size...
+build/client/assets/favicon-Xd7rFGOf.svg                     0.47 kB │ gzip:  0.30 kB
+build/client/assets/docker-CKYupBMy.svg                      4.88 kB │ gzip:  1.94 kB
+build/client/assets/playwright-D0Du3LFd.svg                  5.03 kB │ gzip:  2.04 kB
+build/client/assets/prisma-IaIz7Mrr.svg                      5.10 kB │ gzip:  2.19 kB
+build/client/assets/testing-library-DlPZpWfP.png             5.80 kB
+build/client/assets/prettier-DbIVlkV4.svg                    6.41 kB │ gzip:  0.84 kB
+build/client/assets/apple-touch-icon-Ds7s8IDz.png            8.99 kB
+build/client/assets/fly-COcofn25.svg                         9.78 kB │ gzip:  4.46 kB
+build/client/assets/sqlite-C780ctma.svg                      9.89 kB │ gzip:  3.97 kB
+build/client/assets/react-email-DKP-k4Ck.svg                11.49 kB │ gzip:  4.42 kB
+build/client/assets/sprite-ByNtxWnV.svg                     29.45 kB │ gzip:  9.84 kB
+build/client/.vite/manifest.json                            34.24 kB │ gzip:  3.35 kB
+build/client/assets/faker-D6l4cpmx.svg                      76.11 kB │ gzip: 23.81 kB
+build/client/assets/zod-TYtFcqGX.svg                       118.03 kB │ gzip: 83.66 kB
+build/client/assets/stars-C09PLoVz.jpg                     391.16 kB
+build/client/assets/tailwind-CtZ4yhEi.css                   48.64 kB │ gzip:  9.29 kB
+build/client/assets/me-l0sNRNKZ.js                           0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/logout-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/robots_._txt-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sitemap_._xml-l0sNRNKZ.js                0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/download-user-data-l0sNRNKZ.js           0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/healthcheck-l0sNRNKZ.js                  0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/images-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/theme-switch-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/authentication-l0sNRNKZ.js               0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/registration-l0sNRNKZ.js                 0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sqlite-l0sNRNKZ.js                       0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/index-l0sNRNKZ.js                        0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/lru._cacheKey-l0sNRNKZ.js                0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/sqlite._cacheKey-l0sNRNKZ.js             0.00 kB │ gzip:  0.02 kB │ map:   0.11 kB
+build/client/assets/callback-l0sNRNKZ.js                     0.00 kB │ gzip:  0.02 kB │ map:   0.10 kB
+build/client/assets/privacy-DREM9onB.js                      0.14 kB │ gzip:  0.15 kB │ map:   0.36 kB
+build/client/assets/support-BwRi9MFC.js                      0.14 kB │ gzip:  0.15 kB │ map:   0.36 kB
+build/client/assets/about-AbqDLOnP.js                        0.15 kB │ gzip:  0.15 kB │ map:   0.35 kB
+build/client/assets/tos-BLW-TpPD.js                          0.15 kB │ gzip:  0.16 kB │ map:   0.36 kB
+build/client/assets/floating-toolbar-VQB8DV6X.js             0.18 kB │ gzip:  0.16 kB │ map:   0.40 kB
+build/client/assets/spacer-CKjENb_P.js                       0.26 kB │ gzip:  0.21 kB │ map:   1.28 kB
+build/client/assets/_layout-Byn_MRNB.js                      0.29 kB │ gzip:  0.25 kB │ map:   1.02 kB
+build/client/assets/index-BaXHmUg_.js                        0.41 kB │ gzip:  0.28 kB │ map:   1.93 kB
+build/client/assets/index-Do4OOozE.js                        0.52 kB │ gzip:  0.37 kB │ map:   1.75 kB
+build/client/assets/new-D0SbbBES.js                          0.58 kB │ gzip:  0.33 kB │ map:   0.59 kB
+build/client/assets/error-boundary-BlYJ87DM.js               0.59 kB │ gzip:  0.40 kB │ map:   2.30 kB
+build/client/assets/user-FGFeQ6c0.js                         0.65 kB │ gzip:  0.41 kB │ map:   3.02 kB
+build/client/assets/icon-DY7gEn-J.js                         0.65 kB │ gzip:  0.40 kB │ map:   2.98 kB
+build/client/assets/_-D3tstGOr.js                            0.75 kB │ gzip:  0.45 kB │ map:   2.51 kB
+build/client/assets/connections-CFUytNFn.js                  0.80 kB │ gzip:  0.49 kB │ map:   2.83 kB
+build/client/assets/honeypot-C2T96cXP.js                     0.85 kB │ gzip:  0.49 kB │ map:   2.64 kB
+build/client/assets/_noteId_.edit-Dbp676EM.js                0.91 kB │ gzip:  0.52 kB │ map:   2.07 kB
+build/client/assets/disable-RUquYmBY.js                      0.95 kB │ gzip:  0.58 kB │ map:   3.24 kB
+build/client/assets/user-validation-CZxgaGPG.js              1.01 kB │ gzip:  0.47 kB │ map:   3.05 kB
+build/client/assets/search-bar-D6W2iENZ.js                   1.05 kB │ gzip:  0.58 kB │ map:   3.04 kB
+build/client/assets/status-button-CkPci5hy.js                1.16 kB │ gzip:  0.54 kB │ map:   3.24 kB
+build/client/assets/_layout-DesgT6M_.js                      1.26 kB │ gzip:  0.66 kB │ map:   4.28 kB
+build/client/assets/index-DeKn6Dvs.js                        1.37 kB │ gzip:  0.70 kB │ map:   4.34 kB
+build/client/assets/toAuthenticatorAttachment-BAxCDoik.js    1.58 kB │ gzip:  0.78 kB │ map:   9.28 kB
+build/client/assets/change-email-B7nYWCh0.js                 1.62 kB │ gzip:  0.85 kB │ map:   6.64 kB
+build/client/assets/password_.create-B1PsX53C.js             1.65 kB │ gzip:  0.83 kB │ map:   6.21 kB
+build/client/assets/constraint-VVG8S3hk.js                   1.84 kB │ gzip:  0.86 kB │ map:   7.25 kB
+build/client/assets/index-DNOZwF1S.js                        1.89 kB │ gzip:  0.95 kB │ map:   4.83 kB
+build/client/assets/_layout-Bx2S48qL.js                      1.96 kB │ gzip:  0.96 kB │ map:   5.84 kB
+build/client/assets/password-RLHhsltM.js                     2.07 kB │ gzip:  0.97 kB │ map:   8.02 kB
+build/client/assets/reset-password-D_jjdIQm.js               2.10 kB │ gzip:  1.03 kB │ map:   7.37 kB
+build/client/assets/signup-6yoDHWv_.js                       2.18 kB │ gzip:  1.13 kB │ map:   8.26 kB
+build/client/assets/connections-DNDr6xB6.js                  2.21 kB │ gzip:  1.03 kB │ map:   9.77 kB
+build/client/assets/forgot-password-BABEF2Fb.js              2.23 kB │ gzip:  1.12 kB │ map:   8.24 kB
+build/client/assets/index-DBwsaOLK.js                        2.27 kB │ gzip:  1.01 kB │ map:   6.74 kB
+build/client/assets/verify-B93ad0Jc.js                       2.81 kB │ gzip:  1.30 kB │ map:   8.54 kB
+build/client/assets/photo-Dl0ycWJo.js                        2.81 kB │ gzip:  1.38 kB │ map:  11.29 kB
+build/client/assets/verify-DoA75naP.js                       2.85 kB │ gzip:  1.29 kB │ map:  10.56 kB
+build/client/assets/index-D_P4tJ9n.js                        3.16 kB │ gzip:  1.37 kB │ map:  11.61 kB
+build/client/assets/_provider-f_TNDSfp.js                    3.18 kB │ gzip:  1.38 kB │ map:  11.98 kB
+build/client/assets/index-BZ5gFOxP.js                        3.22 kB │ gzip:  1.34 kB │ map:  11.82 kB
+build/client/assets/_noteId-D_lNLJvp.js                      3.29 kB │ gzip:  1.58 kB │ map:  11.39 kB
+build/client/assets/button-DDnaEnzO.js                       3.58 kB │ gzip:  1.65 kB │ map:  15.21 kB
+build/client/assets/index-J4EzwpIk.js                        3.71 kB │ gzip:  1.42 kB │ map:  12.85 kB
+build/client/assets/index-adst_x9B.js                        4.38 kB │ gzip:  1.69 kB │ map:  16.41 kB
+build/client/assets/note-editor-C8kPsrIs.js                  4.99 kB │ gzip:  2.07 kB │ map:  16.15 kB
+build/client/assets/parse-BThLj8sj.js                        5.41 kB │ gzip:  2.02 kB │ map:  25.57 kB
+build/client/assets/dom-EeHuaMQO.js                          5.47 kB │ gzip:  2.37 kB │ map:  32.78 kB
+build/client/assets/index-BDus6hED.js                        6.42 kB │ gzip:  2.67 kB │ map:  34.13 kB
+build/client/assets/login-DEoiqAdr.js                        7.84 kB │ gzip:  3.36 kB │ map:  28.48 kB
+build/client/assets/passkeys-DAvOOFh_.js                    16.63 kB │ gzip:  6.08 kB │ map:  88.29 kB
+build/client/assets/forms-CClbG9mp.js                       21.09 kB │ gzip:  7.61 kB │ map:  66.51 kB
+build/client/assets/index-B0aNl6Wx.js                       23.77 kB │ gzip:  9.17 kB │ map:  32.01 kB
+build/client/assets/helpers-FHvNSYGi.js                     24.56 kB │ gzip:  8.35 kB │ map: 127.31 kB
+build/client/assets/misc-Cb-3dT5s.js                        30.44 kB │ gzip: 10.28 kB │ map: 162.50 kB
+build/client/assets/debug-build-BYX0I243.js                 32.16 kB │ gzip: 11.20 kB │ map: 226.36 kB
+build/client/assets/tooltip-DHJ95pXw.js                     38.86 kB │ gzip: 14.16 kB │ map: 207.37 kB
+build/client/assets/types-0S8AQ-Tg.js                       55.12 kB │ gzip: 12.79 kB │ map: 226.18 kB
+build/client/assets/root-CPMjRh5R.js                        94.72 kB │ gzip: 29.64 kB │ map: 400.51 kB
+build/client/assets/chunk-QUQL4437-B6ny4PKa.js             129.73 kB │ gzip: 43.79 kB │ map: 604.94 kB
+build/client/assets/entry.client-DGoruKL8.js               188.30 kB │ gzip: 59.79 kB │ map: 989.63 kB
+build/client/assets/monitoring.client-PDWHxzgs.js          197.45 kB │ gzip: 64.66 kB │ map: 952.76 kB
+✓ built in 2.18s
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+     You can use the `future.v8_middleware` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_middleware
+     You can use the `future.v8_splitRouteModules` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_splitRouteModules
+     You can use the `future.v8_viteEnvironmentApi` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_viteEnvironmentApi
+     You can use the `future.v8_passThroughRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_passThroughRequests
+     You can use the `future.v8_trailingSlashAwareDataRequests` flag to opt in early.
+     -> https://reactrouter.com/upgrading/future-flags#v8_trailingSlashAwareDataRequests
+vite v7.3.1 building ssr environment for production...
+transforming...
+✓ 138 modules transformed.
+rendering chunks...
+build/server/assets/favicon-Xd7rFGOf.svg             0.47 kB
+build/server/.vite/manifest.json                     3.45 kB
+build/server/assets/docker-CKYupBMy.svg              4.88 kB
+build/server/assets/playwright-D0Du3LFd.svg          5.03 kB
+build/server/assets/prisma-IaIz7Mrr.svg              5.10 kB
+build/server/assets/testing-library-DlPZpWfP.png     5.80 kB
+build/server/assets/prettier-DbIVlkV4.svg            6.41 kB
+build/server/assets/apple-touch-icon-Ds7s8IDz.png    8.99 kB
+build/server/assets/fly-COcofn25.svg                 9.78 kB
+build/server/assets/sqlite-C780ctma.svg              9.89 kB
+build/server/assets/react-email-DKP-k4Ck.svg        11.49 kB
+build/server/assets/sprite-ByNtxWnV.svg             29.45 kB
+build/server/assets/faker-D6l4cpmx.svg              76.11 kB
+build/server/assets/zod-TYtFcqGX.svg               118.03 kB
+build/server/assets/stars-C09PLoVz.jpg             391.16 kB
+build/server/assets/tailwind-CtZ4yhEi.css           48.64 kB
+build/server/index.js                                0.40 kB │ map:   0.93 kB
+build/server/assets/server-build-vaCxiyZP.js       344.56 kB │ map: 549.37 kB
+
+✓ 14 assets cleaned from React Router server build.
+build/client/assets/tailwind-CtZ4yhEi.css
+build/client/assets/apple-touch-icon-Ds7s8IDz.png
+build/client/assets/favicon-Xd7rFGOf.svg
+build/client/assets/sprite-ByNtxWnV.svg
+build/client/assets/docker-CKYupBMy.svg
+build/client/assets/faker-D6l4cpmx.svg
+build/client/assets/fly-COcofn25.svg
+build/client/assets/playwright-D0Du3LFd.svg
+build/client/assets/prettier-DbIVlkV4.svg
+build/client/assets/prisma-IaIz7Mrr.svg
+build/client/assets/react-email-DKP-k4Ck.svg
+build/client/assets/sqlite-C780ctma.svg
+build/client/assets/testing-library-DlPZpWfP.png
+build/client/assets/zod-TYtFcqGX.svg
+
+✓ built in 412ms
+(… repeated 8 more times: ⚠️  Future Flag Warning: Route middleware support is changing in React Router v8.)
+(… repeated 8 more times: ⚠️  Future Flag Warning: Route module splitting behavior is changing in React Router v8.)
+(… repeated 8 more times: ⚠️  Future Flag Warning: Vite Environment API usage is changing in React Router v8.)
+(… repeated 8 more times: ⚠️  Future Flag Warning: Request handling behavior is changing in React Router v8.)
+(… repeated 8 more times: ⚠️  Future Flag Warning: Data request URL formats are changing in React Router v8.)
+> test:e2e:run
+> cross-env CI=true playwright test
+
+[WebServer] 
+[WebServer] > start:mocks
+[WebServer] > cross-env NODE_ENV=production MOCKS=true node index.ts
+[WebServer] 
+[WebServer] 🔶 Mock server installed
+[WebServer] Starting production server
+[WebServer] Invalid Sentry Dsn: your-dsn
+[WebServer] 🚀  We have liftoff!
+[WebServer] [1mLocal:[22m            [36mhttp://localhost:5220[39m
+[WebServer] [1mOn Your Network:[22m  [36mhttp://192.168.31.240:5220[39m
+[WebServer] [1mPress Ctrl+C to stop[22m
+(node:51734) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+
+Running 26 tests using 1 worker
+(node:51809) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[WebServer] (node:51800) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] GET /settings/profile 200 - - 901.499 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.806 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.630 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 2.203 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 2.613 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 1.838 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.746 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 3.737 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 3.957 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 2.969 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 2.183 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 3.023 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 2.698 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 2.725 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.587 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 1.800 ms
+[WebServer] GET /forms-CClbG9mp.js - - - - ms
+[WebServer] GET /user-validation-CZxgaGPG.js - - - - ms
+[WebServer] GET /index-adst_x9B.js - - - - ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 3.577 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 3.704 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 1.304 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.906 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.298 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.357 ms
+[WebServer] GET /_layout-Byn_MRNB.js 200 292 - 0.662 ms
+[WebServer] GET /index-DeKn6Dvs.js 200 - - 0.610 ms
+[WebServer] GET /settings/profile/two-factor.data 200 - - 6.257 ms
+[WebServer] POST /settings/profile/two-factor.data?index 202 - - 9.067 ms
+[WebServer] GET /verify-DoA75naP.js 200 - - 1.208 ms
+[WebServer] GET /settings/profile/two-factor/verify.data 200 - - 25.138 ms
+[WebServer] POST /settings/profile/two-factor/verify.data 202 - - 17.002 ms
+[WebServer] GET /settings/profile/two-factor.data 200 - - 5.550 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 0.507 ms
+[WebServer] POST /logout.data 202 - - 2.964 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 1.222 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.945 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 1.077 ms
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.812 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /login 200 - - 6.113 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.638 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.545 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.898 ms
+[WebServer] POST /login.data 202 - - 72.438 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.713 ms
+[WebServer] GET /verify.data?type=2fa&target=cmwnbenxl00008oz5kptpsffo 200 - - 2.194 ms
+[WebServer] POST /verify.data?type=2fa&target=cmwnbenxl00008oz5kptpsffo 202 - - 4.861 ms
+[WebServer] GET /_root.data 200 - - 4.439 ms
+·[WebServer] GET /does-not-exist 404 - - 4.895 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 1.026 ms
+  (… 4 similar lines omitted)
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.430 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.259 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.679 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.724 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.747 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.665 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.170 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.176 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.457 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 1.327 ms
+[WebServer] GET /_-D3tstGOr.js 200 754 - 0.361 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.960 ms
+[WebServer] GET /does-not-exist 404 - - 21.270 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.514 ms
+·[WebServer] GET /users/1g_otis_erdman/notes 200 - - 6.326 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.670 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.430 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.740 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 1.126 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.706 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.536 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.678 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.813 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 2.421 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.475 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 2.071 ms
+  (… 1 similar line omitted)
+[WebServer] GET /index-BDus6hED.js 200 - - 1.339 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.371 ms
+[WebServer] GET /tooltip-DHJ95pXw.js 200 - - 1.299 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.172 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.870 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.927 ms
+  (… 1 similar line omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.392 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.395 ms
+[WebServer] GET /users/1g_otis_erdman/notes/new.data 200 - - 4.505 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.574 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.605 ms
+  (… 1 similar line omitted)
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.589 ms
+[WebServer] POST /users/1g_otis_erdman/notes/new.data 202 - - 16.670 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.490 ms
+[WebServer] GET /users/1g_otis_erdman/notes/j5ob09ct28pgffmeynl7p7a2.data 200 - - 4.655 ms
+·[WebServer] GET /users/kd_precious_prosacco/notes 200 - - 6.025 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.573 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.412 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.928 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.995 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 1.039 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.839 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.373 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.831 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.701 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.588 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.785 ms
+  (… 9 similar lines omitted)
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 1.614 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.606 ms
+[WebServer] GET /users/kd_precious_prosacco/notes 200 - - 7.938 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.354 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.387 ms
+[WebServer] GET /users/kd_precious_prosacco/notes/new.data 200 - - 4.991 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.541 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.446 ms
+  (… 1 similar line omitted)
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.606 ms
+[WebServer] POST /users/kd_precious_prosacco/notes/new.data 202 - - 9.046 ms
+[WebServer] GET /_noteId-D_lNLJvp.js 200 - - 0.762 ms
+[WebServer] GET /users/kd_precious_prosacco/notes/rchj0nuzqt56g1v0ng2qz2bf.data 200 - - 6.351 ms
+·[WebServer] GET /users/dg_nick_okon/notes/cmwnbeqoi000d8oz5x5uuocpx 200 - - 6.979 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.528 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.673 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.618 ms
+  (… 1 similar line omitted)
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.009 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.712 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.144 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.115 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.066 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.468 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.992 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.170 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 0.878 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.887 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.672 ms
+  (… 4 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.587 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.386 ms
+[WebServer] GET /users/dg_nick_okon/notes/cmwnbeqoi000d8oz5x5uuocpx/edit.data 200 - - 4.546 ms
+  (… 1 similar line omitted)
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.452 ms
+[WebServer] POST /users/dg_nick_okon/notes/cmwnbeqoi000d8oz5x5uuocpx/edit.data 202 - - 7.759 ms
+[WebServer] GET /users/dg_nick_okon/notes/cmwnbeqoi000d8oz5x5uuocpx.data 200 - - 3.852 ms
+·[WebServer] GET /users/yb_morgan_wisozk_kee/notes/cmwnber1i000j8oz55iprtw4y 200 - - 6.274 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.904 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.767 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.483 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.490 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.812 ms
+  (… 1 similar line omitted)
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.048 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.712 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.091 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.863 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.155 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.089 ms
+  (… 8 similar lines omitted)
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 0.694 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.530 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.717 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.393 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.472 ms
+[WebServer] GET /users/yb_morgan_wisozk_kee/notes/cmwnber1i000j8oz55iprtw4y/edit.data 200 - - 4.598 ms
+  (… 1 similar line omitted)
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.470 ms
+[WebServer] POST /users/yb_morgan_wisozk_kee/notes/cmwnber1i000j8oz55iprtw4y/edit.data 202 - - 5.793 ms
+[WebServer] GET /users/yb_morgan_wisozk_kee/notes/cmwnber1i000j8oz55iprtw4y.data 200 - - 3.567 ms
+·[WebServer] GET /users/uh_jordane_marks40/notes 200 - - 5.335 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 1.097 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.755 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.570 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.383 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.349 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.835 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.815 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.657 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.589 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.511 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 3.177 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.671 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.835 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.510 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.413 ms
+[WebServer] GET /users/uh_jordane_marks40/notes 200 - - 21.315 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.339 ms
+[WebServer] GET /new-D0SbbBES.js 200 575 - 0.392 ms
+[WebServer] GET /users/uh_jordane_marks40/notes/new.data 200 - - 4.142 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.518 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.430 ms
+  (… 1 similar line omitted)
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.569 ms
+·[WebServer] GET /users/od_moshe_stehr58/notes/cmwnbero6000s8oz5o9jhphay 200 - - 6.120 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.541 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.942 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.641 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.356 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.374 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.601 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.040 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.020 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.908 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.309 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.160 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.325 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.383 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /dom-EeHuaMQO.js 200 - - 1.162 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 0.599 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 0.975 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.371 ms
+[WebServer] GET /_noteId_.edit-Dbp676EM.js 200 910 - 0.344 ms
+[WebServer] GET /users/od_moshe_stehr58/notes/cmwnbero6000s8oz5o9jhphay/edit.data 200 - - 4.790 ms
+  (… 1 similar line omitted)
+[WebServer] GET /note-editor-C8kPsrIs.js 200 - - 0.422 ms
+[WebServer] POST /users/od_moshe_stehr58/notes/cmwnbero6000s8oz5o9jhphay/edit.data 202 - - 5.014 ms
+[WebServer] GET /users/od_moshe_stehr58/notes/cmwnbero6000s8oz5o9jhphay.data 200 - - 6.528 ms
+·[WebServer] GET /users/5m_david_littel11/notes/cmwnbes19000x8oz5nzw3z7f0 200 - - 4.912 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.212 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.995 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.766 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.185 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.875 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.729 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.557 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.969 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 2.366 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 2.469 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 2.789 ms
+  (… 8 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.256 ms
+[WebServer] GET /floating-toolbar-VQB8DV6X.js 200 180 - 1.033 ms
+[WebServer] GET /_layout-Bx2S48qL.js 200 - - 1.218 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.368 ms
+[WebServer] POST /users/5m_david_littel11/notes/cmwnbes19000x8oz5nzw3z7f0.data 202 - - 8.172 ms
+[WebServer] GET /index-Do4OOozE.js 200 524 - 0.690 ms
+[WebServer] GET /users/5m_david_littel11/notes.data 200 - - 4.034 ms
+·[WebServer] GET / 200 - - 5.823 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.716 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 0.721 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.733 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 1.348 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.689 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.931 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.561 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 1.004 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.306 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.280 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.756 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.191 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.719 ms
+  (… 13 similar lines omitted)
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.464 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.441 ms
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.707 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.327 ms
+[WebServer] GET / 200 - - 22.982 ms
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.419 ms
+  (… 1 similar line omitted)
+[WebServer] GET /login.data 200 - - 1.944 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.702 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.745 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.767 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 0.887 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /signup.data 200 - - 2.182 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'np_edythe_schuppe@example.com'[39m,
+[WebServer]   subject: [32m'Welcome to Epic Notes!'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Welcome to Epic Notes!</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>BSABS5</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link to get started:</p></p><a href="http://localhost:5220/verify?type=onboarding&amp;target=np_edythe_schuppe%40example.com&amp;code=BSABS5" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=onboarding&amp;target=np_edythe_schuppe%40example.com&amp;code=BSABS5</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'WELCOME TO EPIC NOTES!\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"Here's your verification code: BSABS5\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Or click the link to get started:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m'http://localhost:5220/verify?type=onboarding&target=np_edythe_schuppe%40example.com&code=BSABS5'[39m
+[WebServer] }
+[WebServer] POST /signup.data 202 - - 18.383 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.648 ms
+[WebServer] GET /verify.data?type=onboarding&target=np_edythe_schuppe@example.com 200 - - 1.740 ms
+[WebServer] GET /verify?type=onboarding&target=np_edythe_schuppe@example.com&code=BSABS5 200 - - 4.725 ms
+[WebServer] POST /verify.data?type=onboarding&target=np_edythe_schuppe@example.com&code=BSABS5 202 - - 4.366 ms
+[WebServer] GET /index-BZ5gFOxP.js 200 - - 0.751 ms
+[WebServer] GET /onboarding.data 200 - - 3.743 ms
+[WebServer] POST /onboarding.data?index 202 - - 72.438 ms
+[WebServer] GET /_root.data 200 - - 2.980 ms
+  (… 1 similar line omitted)
+[WebServer] GET /users/np_edythe_schuppe.data 200 - - 16.142 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 0.489 ms
+[WebServer] POST /logout.data 202 - - 2.783 ms
+[WebServer] GET /_root.data 200 - - 1.502 ms
+·[WebServer] GET /signup 200 - - 3.406 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.428 ms
+  (… 1 similar line omitted)
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.915 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.789 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.767 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.584 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.036 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.259 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.607 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.798 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.639 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.139 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.153 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.079 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.944 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.068 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.475 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.212 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.351 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 1.688 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.397 ms
+[WebServer] 🔶 mocked email contents: {
+[WebServer]   from: [32m'hello@epicstack.dev'[39m,
+[WebServer]   to: [32m'zc_kareem_nitzsche@example.com'[39m,
+[WebServer]   subject: [32m'Welcome to Epic Notes!'[39m,
+[WebServer]   html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Welcome to Epic Notes!</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>XUTGC3</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link to get started:</p></p><a href="http://localhost:5220/verify?type=onboarding&amp;target=zc_kareem_nitzsche%40example.com&amp;code=XUTGC3" style="color:#067df7;text-decoration-line:none" target="_blank">http://localhost:5220/verify?type=onboarding&amp;target=zc_kareem_nitzsche%40example.com&amp;code=XUTGC3</a></td></tr></tbody></table><!--/$--></html>'[39m,
+[WebServer]   text: [32m'WELCOME TO EPIC NOTES!\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"Here's your verification code: XUTGC3\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Or click the link to get started:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m'http://localhost:5220/verify?type=onboarding&target=zc_kareem_nitzsche%40example.com&code=XUTGC3'[39m
+[WebServer] }
+[WebServer] POST /signup.data 202 - - 8.245 ms
+[WebServer] GET /verify-B93ad0Jc.js 200 - - 0.489 ms
+[WebServer] GET /verify.data?type=onboarding&target=zc_kareem_nitzsche@example.com 200 - - 1.741 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.270 ms
+[WebServer] POST /verify.data?type=onboarding&target=zc_kareem_nitzsche@example.com 202 - - 5.052 ms
+[WebServer] GET /index-BZ5gFOxP.js 200 - - 0.522 ms
+[WebServer] GET /onboarding.data 200 - - 2.010 ms
+·[WebServer] GET /signup 200 - - 3.189 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.484 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.785 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.997 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.951 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 1.191 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.524 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.575 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.452 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.911 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.003 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 2.057 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.997 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 2.390 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 0.809 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.501 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.582 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.582 ms
+[WebServer] GET /constraint-VVG8S3hk.js 200 - - 0.573 ms
+  (… 4 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.498 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.586 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.431 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.173 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.675 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.661 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.668 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.973 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.044 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.230 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.138 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.077 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.307 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.486 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.023 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.305 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 1.298 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.407 ms
+[WebServer] GET /index-l0sNRNKZ.js 200 1 - 0.435 ms
+[WebServer] POST /auth/github.data 202 - - 2.267 ms
+[WebServer] GET /callback-l0sNRNKZ.js 200 1 - 0.619 ms
+[WebServer] GET /auth/github/callback.data?code=71b6f7556e01136dd800-e84c174a153f8a66f3d8&state=a2uu90tsfl88ycjjacgf0d8x 202 - - 8.659 ms
+[WebServer] GET /_provider-f_TNDSfp.js 200 - - 0.449 ms
+[WebServer] GET /onboarding/github.data?redirectTo=/signup 200 - - 2.324 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.468 ms
+[WebServer] POST /onboarding/github.data?redirectTo=/signup 202 - - 17.085 ms
+[WebServer] GET /signup.data 202 - - 3.379 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.487 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.724 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.741 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 1.203 ms
+  (… 1 similar line omitted)
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 1.012 ms
+·[WebServer] GET /signup 200 - - 3.052 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.516 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.565 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.516 ms
+  (… 1 similar line omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.460 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.674 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.552 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.493 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.696 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.540 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.522 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.576 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.733 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.529 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.748 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.138 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.799 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.132 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.592 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.692 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.227 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.847 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.631 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.549 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.469 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.704 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.591 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.710 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.103 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.630 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.622 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.060 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.185 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.711 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.395 ms
+[WebServer] GET /index-l0sNRNKZ.js 200 1 - 0.389 ms
+[WebServer] POST /auth/github.data 202 - - 2.195 ms
+[WebServer] GET /callback-l0sNRNKZ.js 200 1 - 0.429 ms
+[WebServer] GET /auth/github/callback.data?code=71b6f7556e01136dd800-f007761c5edb8b2b195a&state=rhxnk07ndogi2u3kqriz5duu 202 - - 9.143 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.387 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /react-email-DKP-k4Ck.svg 200 - - 0.433 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 0.921 ms
+[WebServer] GET /prettier-DbIVlkV4.svg 200 - - 1.108 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 1.158 ms
+·[WebServer] GET /signup 200 - - 3.144 ms
+[WebServer] GET /sprite-ByNtxWnV.svg 200 - - 0.903 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.347 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.796 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.850 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 1.616 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 1.356 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.847 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.778 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.564 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.665 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.554 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.031 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.176 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.556 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 1.052 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 1.136 ms
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 1.268 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.198 ms
+… 9 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.380 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.903 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.769 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.642 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.070 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.250 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.665 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /signup-6yoDHWv_.js 200 - - 0.677 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.839 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.927 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.113 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /docker-CKYupBMy.svg 200 - - 0.277 ms
+·… 25 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.338 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.247 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.177 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.240 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.128 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.442 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 1.687 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.758 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 1.494 ms
+  (… 1 similar line omitted)
+[WebServer] GET /forms-CClbG9mp.js 200 - - 1.099 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.668 ms
+·… 19 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.033 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.285 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.799 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.357 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.316 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.311 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.004 ms
+  (… 9 similar lines omitted)
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.726 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.633 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.882 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.665 ms
+… 8 lines omitted (output budget; see raw log) …
+[WebServer]   text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"Here's your verification code: XSEQTN\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m'http://localhost:5220/verify?type=reset-password&target=uu_alfred_roob54&code=XSEQTN'[39m
+[WebServer] }
+[WebServer] POST /forgot-password.data 202 - - 12.109 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /faker-D6l4cpmx.svg 200 - - 0.332 ms
+·… 22 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.725 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.973 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.181 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.275 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.194 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.384 ms
+  (… 8 similar lines omitted)
+[WebServer] GET /login-DEoiqAdr.js 200 - - 0.369 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 1.283 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.838 ms
+[WebServer] GET /toAuthenticatorAttachment-BAxCDoik.js 200 - - 1.663 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.707 ms
+… 8 lines omitted (output budget; see raw log) …
+[WebServer]   text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"Here's your verification code: KAC6AF\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m'http://localhost:5220/verify?type=reset-password&target=ui_brandt_herzog&code=KAC6AF'[39m
+[WebServer] }
+[WebServer] POST /forgot-password.data 202 - - 8.053 ms
+[WebServer] GET /reset-password.data 200 - - 1.797 ms
+·… 13 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.832 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 1.528 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.403 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.737 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.928 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.937 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /types-0S8AQ-Tg.js 200 - - 1.075 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.818 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.675 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /webauthn/registration 200 - - 3.753 ms
+[WebServer] POST /webauthn/registration 200 - - 5.486 ms
+[WebServer] GET /settings/profile/passkeys.data 200 - - 4.051 ms
+[WebServer] GET /logout-l0sNRNKZ.js 200 1 - 0.719 ms
+[WebServer] POST /logout.data 202 - - 2.882 ms
+[WebServer] GET /index-B0aNl6Wx.js 200 - - 0.718 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /playwright-D0Du3LFd.svg 200 - - 0.630 ms
+[WebServer] GET /testing-library-DlPZpWfP.png 200 5803 - 1.322 ms
+[WebServer] GET /zod-TYtFcqGX.svg 200 - - 0.655 ms
+  (… 3 similar lines omitted)
+[WebServer] GET /login 200 - - 4.987 ms
+[WebServer] GET /connections-CFUytNFn.js 200 799 - 0.796 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.668 ms
+[WebServer] GET /login-DEoiqAdr.js 200 - - 1.149 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /webauthn/authentication 200 - - 1.764 ms
+[WebServer] POST /webauthn/authentication 200 - - 7.487 ms
+[WebServer] GET /_root.data 200 - - 3.152 ms
+[WebServer] GET /settings/profile/passkeys 200 - - 5.334 ms
+[WebServer] POST /settings/profile/passkeys.data 200 - - 4.145 ms
+[WebServer] GET /settings/profile/passkeys.data 200 - - 3.810 ms
+[WebServer] POST /logout.data 202 - - 2.591 ms
+[WebServer] GET /_root.data 200 - - 1.963 ms
+  (… 1 similar line omitted)
+[WebServer] GET /webauthn/authentication 200 - - 1.830 ms
+[WebServer] POST /webauthn/authentication 400 - - 2.287 ms
+·[WebServer] GET /settings/profile/passkeys 200 - - 4.885 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /index-J4EzwpIk.js 200 - - 0.830 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.347 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.315 ms
+[WebServer] GET /root-CPMjRh5R.js 200 - - 0.755 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.606 ms
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.606 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.610 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.507 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.387 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.586 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 1.195 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.816 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /debug-build-BYX0I243.js 200 - - 1.281 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.633 ms
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.750 ms
+  (… 5 similar lines omitted)
+[WebServer] GET /webauthn/registration 200 - - 3.117 ms
+·[WebServer] GET / 200 - - 4.357 ms
+[WebServer] GET /fly-COcofn25.svg 200 - - 0.477 ms
+  (… 4 similar lines omitted)
+[WebServer] GET /chunk-QUQL4437-B6ny4PKa.js 200 - - 0.812 ms
+[WebServer] GET /honeypot-C2T96cXP.js 200 848 - 0.629 ms
+[WebServer] GET /tailwind-CtZ4yhEi.css 200 - - 1.219 ms
+[WebServer] GET /misc-Cb-3dT5s.js 200 - - 0.838 ms
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 1.008 ms
+[WebServer] GET /entry.client-DGoruKL8.js 200 - - 0.941 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.923 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.754 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.538 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.683 ms
+·… 23 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.976 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.815 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.085 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.148 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.912 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 1.343 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.419 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.734 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 1.008 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.587 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.711 ms
+  (… 2 similar lines omitted)
+[WebServer] GET /monitoring.client-PDWHxzgs.js 200 - - 0.345 ms
+·… 10 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.763 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.962 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.151 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.773 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.645 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.877 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 1.132 ms
+  (… 6 similar lines omitted)
+[WebServer] GET /status-button-CkPci5hy.js 200 - - 0.537 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 1.195 ms
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 1.648 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 1.806 ms
+·… 15 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.906 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.530 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 0.508 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 0.900 ms
+[WebServer] GET /button-DDnaEnzO.js 200 - - 0.762 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.902 ms
+[WebServer] GET /index-BDus6hED.js 200 - - 0.869 ms
+  (… 7 similar lines omitted)
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.797 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 1.539 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 1.174 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 1.278 ms
+·… 12 lines omitted (output budget; see raw log) …
+[WebServer] GET /error-boundary-BlYJ87DM.js 200 586 - 0.697 ms
+[WebServer] GET /icon-DY7gEn-J.js 200 654 - 0.602 ms
+[WebServer] GET /user-FGFeQ6c0.js 200 650 - 1.190 ms
+[WebServer] GET /index-BaXHmUg_.js 200 407 - 0.968 ms
+[WebServer] GET /search-bar-D6W2iENZ.js 200 - - 1.525 ms
+  (… 9 similar lines omitted)
+[WebServer] GET /_layout-DesgT6M_.js 200 - - 0.220 ms
+[WebServer] GET /spacer-CKjENb_P.js 200 259 - 0.640 ms
+[WebServer] GET /index-adst_x9B.js 200 - - 0.608 ms
+[WebServer] GET /user-validation-CZxgaGPG.js 200 1010 - 0.928 ms
+[WebServer] GET /forms-CClbG9mp.js 200 - - 0.634 ms
+  (… 4 similar lines omitted)
+… 6 lines omitted (output budget; see raw log) …
+[WebServer]   text: [32m'EPIC NOTES EMAIL CHANGE\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"Here's your verification code: 2V9221\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Or click the link:\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m'http://localhost:5220/verify?type=change-email&target=cmwnbf1j0001i8oz5z27ccyad&code=2V9221'[39m
+[WebServer] }
+[WebServer] POST /settings/profile/change-email.data 202 - - 10.656 ms
+… 7 lines omitted (output budget; see raw log) …
+[WebServer]   text: [32m'YOUR EPIC NOTES EMAIL HAS BEEN CHANGED\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 2 more times)
+[WebServer]     [32m"We're writing to let you know that your Epic Notes email has been changed.\n"[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'If you changed your email address, then you can safely ignore this. But if you did not change your email address, then please contact support immediately.\n'[39m +
+[WebServer]     [32m'\n'[39m +
+  (previous line repeated 4 more times)
+[WebServer]     [32m'Your Account ID: cmwnbf1j0001i8oz5z27ccyad\n'[39m +
+[WebServer]     [32m'\n'[39m
+[WebServer] }
+·[WebServer] POST /verify.data?type=change-email&target=cmwnbf1j0001i8oz5z27ccyad 202 - - 11.480 ms
+[WebServer] GET /settings/profile.data 200 - - 5.275 ms
+·[WebServer] GET /img/user.png 200 3012 - 0.331 ms
+[WebServer] GET /favicons/android-chrome-192x192.png 200 10041 - 0.202 ms
+·[WebServer] GET /img/missing.png 404 9 - 0.825 ms
+[WebServer] GET /favicons/missing.png 404 9 - 0.123 ms
+
+  26 passed (20.2s)
+[agentic-node] full output: .agentic-node/logs/1119-085520-51594.log

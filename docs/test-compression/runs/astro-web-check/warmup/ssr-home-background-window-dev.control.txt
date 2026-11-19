@@ -1,0 +1,21 @@
+yarn run v1.22.22
+(node:77626) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+$ PUBLIC_API_ENDPOINT=http://localhost:3001/api astro dev --port 5330
+{"message":"Dev server running at http://localhost:5330 (pid 77643)\n  Stop:   astro dev stop\n  Status: astro dev status\n  Logs:   astro dev logs","label":"SKIP_FORMAT","level":"info"}
+Done in 2.29s.
+
+[1m[35m Preparing to start build of Web Check.... [0m
+ [35m[2mCompiling for "node" using "static" mode, to deploy to "https://web-check.xyz" at "/"[0m
+ [2m[36m🛟 For documentation and support, visit the GitHub repo: https://github.com/lissy93/web-check 
+ 💖 Found Web-Check useful? Consider sponsoring us on GitHub to help fund maintenance & development.[0m
+
+{"message":"Enabling sessions with filesystem storage","label":"@astrojs/node","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 0ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":" astro  v7.4.2 ready in 1184 ms\n┃ Local    http://localhost:5330/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] / 34ms","label":null,"level":"info"}
+{"message":"Unable to render HomeBackground!\n\nThis component likely uses @astrojs/react, @astrojs/preact, @astrojs/solid-js, @astrojs/vue or @astrojs/svelte,\nbut Astro encountered an error during server-side rendering.\n\nPlease ensure that HomeBackground:\n1. Does not unconditionally access browser-specific globals like `window` or `document`.\n   If this is unavoidable, use the `client:only` hydration directive.\n2. Does not conditionally return `null` or `undefined` when rendered on the server.\n3. If using multiple JSX frameworks at the same time (e.g. React + Preact), pass the correct `include`/`exclude` options to integrations.\n\nIf you're still stuck, please open an issue on GitHub or join us at https://astro.build/chat.\n  Hint:\n    Browser APIs are not available on the server.\n    \n    If the code is in a framework component, try to access these objects after rendering using lifecycle methods or use a `client:only` directive to make the component exclusively run on the client.\n    \n    See https://docs.astro.build/en/guides/troubleshooting/#document-or-window-is-not-defined for more information.\n    \t\t\n  Stack trace:\n    at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-ssr/node_modules/astro/dist/runtime/server/render/component.js:160:7\n    [...] See full stack trace in the browser, or rerun with --verbose.","label":null,"level":"error"}

@@ -1,0 +1,17 @@
+
+> jsoncrack-react@1.0.5 build /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title/packages/jsoncrack-react
+> vite build && tsc -p tsconfig.build.json
+
+vite v8.2.1 building client environment for production...
+[2Ktransforming...✓ 21 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.css   3.93 kB │ gzip:  1.38 kB
+dist/index.js   31.29 kB │ gzip: 10.57 kB
+
+✓ built in 48ms
+src/features/editor/BottomBar.tsx(100,9): error TS18047: 'data' is possibly 'null'.
+src/features/editor/BottomBar.tsx(100,47): error TS18047: 'data' is possibly 'null'.
+undefined
+/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title/apps/www:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: tsc --noEmit

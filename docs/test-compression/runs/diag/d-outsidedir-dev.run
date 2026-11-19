@@ -1,0 +1,12 @@
+arm: agentic-node
+command: pnpm --ignore-workspace dev --port 5202 --strictPort
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-badimport
+url: http://localhost:5202/tasks
+node: v24.15.0
+exit_code: n/a (long-running dev server, stopped with SIGINT to its process group; wait status 0)
+readiness: ready=1 after 2s
+wall_s (start..stop incl. browser + settle): 11.0
+warmup: yes (one discarded server+browser session with identical env/command immediately before)
+browser_timezone: host default
+stdio: stdin=/dev/null, stdout+stderr -> one file (non-TTY)
+env: CLAUDECODE=1 AI_AGENT=claude-code CI=unset NO_COLOR=unset FORCE_COLOR=unset TERM=tmux-256color COLORTERM=truecolor NODE_OPTIONS=--require /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/agentic-node-tool/node_modules/agentic-node/src/preload.cjs AGENTIC_NODE_MODE=auto

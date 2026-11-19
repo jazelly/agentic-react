@@ -1,0 +1,166 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-state-expandable-message-toggle
+
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+(node:29322) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ ❯ app/react/components/ExpandableMessageByLines.test.tsx (7 tests | 4 failed) 44ms
+       × should show expand button only when text is truncated 14ms
+       × should toggle between Show more and Show less when button is clicked 4ms
+       × should show button for single space strings when truncated 3ms
+       × should handle different maxLines values 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  app/react/components/ExpandableMessageByLines.test.tsx > ExpandableMessageByLines > Basic Rendering > should show expand button only when text is truncated
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Show more"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col items-start"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"overflow-hidden whitespace-pre-wrap break-words line-clamp-[10]"[39m
+      [36m>[39m
+        [0mThis is test content that should be truncated[0m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/config.js:38:19
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:111:19
+ ❯ app/react/components/ExpandableMessageByLines.test.tsx:50:16
+     48|
+     49|       expect(
+     50|         screen.getByRole('button', { name: 'Show more' })
+       |                ^
+     51|       ).toBeInTheDocument();
+     52|       expect(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  app/react/components/ExpandableMessageByLines.test.tsx > ExpandableMessageByLines > Expand/Collapse Functionality > should toggle between Show more and Show less when button is clicked
+TestingLibraryElementError: Unable to find an accessible element with the role "button"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col items-start"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"overflow-hidden whitespace-pre-wrap break-words line-clamp-[10]"[39m
+      [36m>[39m
+        [0mThis is a long text that should be truncated and show the expand button[0m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/config.js:38:19
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:111:19
+ ❯ app/react/components/ExpandableMessageByLines.test.tsx:84:29
+     82|       render(<ExpandableMessageByLines>{text}</ExpandableMessageByLine…
+     83|
+     84|       const button = screen.getByRole('button');
+       |                             ^
+     85|
+     86|       // Initially should show "Show more"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  app/react/components/ExpandableMessageByLines.test.tsx > ExpandableMessageByLines > Text Content Handling > should show button for single space strings when truncated
+TestingLibraryElementError: Unable to find an accessible element with the role "button"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col items-start"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"overflow-hidden whitespace-pre-wrap break-words line-clamp-[10]"[39m
+      [36m>[39m
+        [0m [0m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/config.js:38:19
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:111:19
+ ❯ app/react/components/ExpandableMessageByLines.test.tsx:117:21
+    115|       render(<ExpandableMessageByLines> </ExpandableMessageByLines>);
+    116|
+    117|       expect(screen.getByRole('button')).toBeInTheDocument();
+       |                     ^
+    118|     });
+    119|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  app/react/components/ExpandableMessageByLines.test.tsx > ExpandableMessageByLines > Text Content Handling > should handle different maxLines values
+TestingLibraryElementError: Unable to find an accessible element with the role "button"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col items-start"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"overflow-hidden whitespace-pre-wrap break-words line-clamp-[5]"[39m
+      [36m>[39m
+        [0mLine 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7
+Line 8
+Line 9
+Line 10
+Line 11
+Line 12[0m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/config.js:38:19
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+ ❯ node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:111:19
+ ❯ app/react/components/ExpandableMessageByLines.test.tsx:133:21
+    131|       );
+    132|
+    133|       expect(screen.getByRole('button')).toBeInTheDocument();
+       |                     ^
+    134|       expect(screen.getByText('Show more')).toBeInTheDocument();
+    135|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 3 passed (7)
+   Start at  19:19:46
+   Duration  1.17s (transform 529ms, setup 358ms, import 512ms, tests 44ms, environment 178ms)
+

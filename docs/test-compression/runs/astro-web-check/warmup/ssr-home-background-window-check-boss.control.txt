@@ -1,0 +1,120 @@
+
+[1m[35m Preparing to start build of Web Check.... [0m
+ [35m[2mCompiling for "node" using "static" mode, to deploy to "https://web-check.xyz" at "/"[0m
+ [2m[36m🛟 For documentation and support, visit the GitHub repo: https://github.com/lissy93/web-check 
+ 💖 Found Web-Check useful? Consider sponsoring us on GitHub to help fund maintenance & development.[0m
+
+19:33:02 [@astrojs/node] Enabling sessions with filesystem storage
+19:33:02 [types] Generated 26ms
+19:33:02 [build] output: "static"
+19:33:02 [build] mode: "server"
+19:33:02 [build] directory: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-ssr/dist/
+19:33:02 [build] adapter: @astrojs/node
+19:33:02 [build] Collecting build info...
+19:33:02 [build] ✓ Completed in 58ms.
+19:33:02 [build] Building server entrypoints...
+19:33:02 [vite] ✓ built in 427ms
+19:33:02 [vite] ✓ built in 153ms
+19:33:03 [WARN] [vite] [plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+19:33:03 [vite] ✓ built in 216ms
+
+ prerendering static routes 
+19:33:03   ├─ /404.html (+6ms) 
+19:33:03   ├─ /500.html (+1ms) 
+19:33:03   ├─ /about/index.html (+2ms) 
+19:33:03   ├─ /account/index.html (+1ms) 
+19:33:03   ├─ /check/about/index.html (+0ms) (file not created, response body was empty)
+19:33:03   ├─ /checks/index.html (+5ms) 
+19:33:03   ├─ /glossary/index.html (+2ms) 
+19:33:03   ├─ /robots.txt (+1ms) 
+19:33:03   ├─ /self-hosted-setup/index.html (+2ms) 
+19:33:03   ├─ /web-check-api/spec/index.html (+1ms) 
+19:33:03   ├─ /web-check-api/index.html (+1ms) 
+19:33:03   ├─ /security/index.html (+2ms) 
+19:33:03   ├─ /seo/index.html (+1ms) 
+19:33:03   ├─ /server/index.html (+1ms) 
+19:33:03   ├─ /domain/index.html (+1ms) 
+19:33:03   ├─ /email/index.html (+1ms) 
+19:33:03   ├─ /performance/index.html (+1ms) 
+19:33:03   ├─ /privacy/index.html (+1ms) 
+19:33:03   ├─ /get-ip/index.html (+1ms) 
+19:33:03   ├─ /ssl/index.html (+1ms) 
+19:33:03   ├─ /dns/index.html (+1ms) 
+19:33:03   ├─ /cookies/index.html (+1ms) 
+19:33:03   ├─ /robots-txt/index.html (+1ms) 
+19:33:03   ├─ /headers/index.html (+1ms) 
+19:33:03   ├─ /quality/index.html (+1ms) 
+19:33:03   ├─ /location/index.html (+1ms) 
+19:33:03   ├─ /hosts/index.html (+1ms) 
+19:33:03   ├─ /redirects/index.html (+1ms) 
+19:33:03   ├─ /txt-records/index.html (+1ms) 
+19:33:03   ├─ /status/index.html (+1ms) 
+19:33:03   ├─ /ports/index.html (+0ms) 
+19:33:03   ├─ /trace-route/index.html (+0ms) 
+19:33:03   ├─ /carbon/index.html (+1ms) 
+19:33:03   ├─ /server-info/index.html (+1ms) 
+19:33:03   ├─ /vulnerabilities/index.html (+1ms) 
+19:33:03   ├─ /whois-lookup/index.html (+1ms) 
+19:33:03   ├─ /domain-info/index.html (+1ms) 
+19:33:03   ├─ /dnssec/index.html (+0ms) 
+19:33:03   ├─ /caa-records/index.html (+0ms) 
+19:33:03   ├─ /hsts/index.html (+0ms) 
+19:33:03   ├─ /dns-server/index.html (+0ms) 
+19:33:03   ├─ /tech-stack/index.html (+0ms) 
+19:33:03   ├─ /sitemap/index.html (+1ms) 
+19:33:03   ├─ /security-txt/index.html (+0ms) 
+19:33:03   ├─ /linked-pages/index.html (+0ms) 
+19:33:03   ├─ /social-tags/index.html (+0ms) 
+19:33:03   ├─ /social-presence/index.html (+0ms) 
+19:33:03   ├─ /mail-config/index.html (+0ms) 
+19:33:03   ├─ /firewall/index.html (+1ms) 
+19:33:03   ├─ /http-security/index.html (+0ms) 
+19:33:03   ├─ /mixed-content/index.html (+0ms) 
+19:33:03   ├─ /archives/index.html (+1ms) 
+19:33:03   ├─ /rank/index.html (+1ms) 
+19:33:03   ├─ /block-lists/index.html (+1ms) 
+19:33:03   ├─ /threats/index.html (+0ms) 
+19:33:03   ├─ /breaches/index.html (+0ms) 
+19:33:03   ├─ /trackers/index.html (+0ms) 
+19:33:03   ├─ /tls-connection/index.html (+1ms) 
+19:33:03   ├─ /tls-security-audit/index.html (+0ms) 
+19:33:03   ├─ /tls-client-compat/index.html (+0ms) 
+19:33:03   ├─ /screenshot/index.html (+0ms) 
+19:33:03   ├─ /subdomains/index.html (+0ms) 
+19:33:03   ├─ /index.html19:33:03 [ERROR] [build] Caught error rendering /: Error: Unable to render HomeBackground!
+
+This component likely uses @astrojs/react, @astrojs/preact, @astrojs/solid-js, @astrojs/vue or @astrojs/svelte,
+but Astro encountered an error during server-side rendering.
+
+Please ensure that HomeBackground:
+1. Does not unconditionally access browser-specific globals like `window` or `document`.
+   If this is unavoidable, use the `client:only` hydration directive.
+2. Does not conditionally return `null` or `undefined` when rendered on the server.
+3. If using multiple JSX frameworks at the same time (e.g. React + Preact), pass the correct `include`/`exclude` options to integrations.
+
+If you're still stuck, please open an issue on GitHub or join us at https://astro.build/chat.
+Unable to render HomeBackground!
+
+This component likely uses @astrojs/react, @astrojs/preact, @astrojs/solid-js, @astrojs/vue or @astrojs/svelte,
+but Astro encountered an error during server-side rendering.
+
+Please ensure that HomeBackground:
+1. Does not unconditionally access browser-specific globals like `window` or `document`.
+   If this is unavoidable, use the `client:only` hydration directive.
+2. Does not conditionally return `null` or `undefined` when rendered on the server.
+3. If using multiple JSX frameworks at the same time (e.g. React + Preact), pass the correct `include`/`exclude` options to integrations.
+
+If you're still stuck, please open an issue on GitHub or join us at https://astro.build/chat.
+  Hint:
+    Browser APIs are not available on the server.
+    
+    If the code is in a framework component, try to access these objects after rendering using lifecycle methods or use a `client:only` directive to make the component exclusively run on the client.
+    
+    See https://docs.astro.build/en/guides/troubleshooting/#document-or-window-is-not-defined for more information.
+    		
+  Stack trace:
+    at renderFrameworkComponent (file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-ssr/dist/server/.prerender/chunks/server_BBzYQ4iD.mjs:2909:17)

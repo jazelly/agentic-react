@@ -1,0 +1,17 @@
+repo: next-turbopack-boilerplate
+pinned SHA: b83157a8018f55b926a3c25a4b7a7e14b0dfbc35
+task: next-turbopack-boilerplate/hydration-locale-switcher
+arm: control
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-hyd
+env: CLAUDECODE=1 AI_AGENT=claude-code; other host agent vars (CLAUDE*, CURSOR*, CODEX*, ...), CI, NO_COLOR, FORCE_COLOR, NODE_OPTIONS unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr combined into one file (non-TTY)
+node: v24.15.0
+tool versions: next 16.4.0 (Turbopack), react 19.2.8, npm 11.18.0, agentic-node 0.2.0 (agentic-node arm only)
+warm-up: yes: one discarded run with the identical procedure and env (ready=yes after 0.77s, page: , 12.92s); output in warmup/hydration-locale-switcher-dev.control.txt / warmup/hydration-locale-switcher-browser.control.txt
+deviations: scratch workspace benchmark/runs/caps/<ws> (task-kit prepareWorkspace with the task setup.edits; reused from the previous control-only pass, edit verified present). Captured `npm run dev:next -- --port <p>` instead of `npm run dev` (run-p db-server:file dev:* = pglite on fixed port 5432 [held by a Docker container on this host] + Spotlight via npx + next dev). A separate in-memory pglite-server on 127.0.0.1:5332 (migrated with npm run db:migrate) serves DATABASE_URL. CLERK_SECRET_KEY = the repo .env committed placeholder only. AGENTS.md restored to baseline (git checkout) before each arm's warm-up, so Next's one-time 'Generated AGENTS.md' line lands in the warm-up for both arms. .next build cache from earlier runs reused (warm). Before any capture, two exploratory control-env runs in ntb-hyd: the first printed Next 16.4's agent-addressed security-upgrade prompt and exited (instructions not followed); the second printed the one-line 'continuing after the upgrade reminder' warning and served normally.
+command: node next-console.mjs <pw-latest playwright> http://localhost:5303/ 4000  (records page 'console' events as [type] text and 'pageerror' as [pageerror] stack, waitUntil networkidle + 4s)
+browser: Playwright 1.65.1, chromium headless shell 1255 (Chrome for Testing 159.0.8154.6)
+page response: # HTTP 200 http://localhost:5303/
+dev server command: DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5332/postgres npm run dev:next -- --port 5303 (same process as hydration-locale-switcher-dev.control.txt)
+exit code: 0
+duration: 7.03s
+warm-up printed: browser: '[goto-failed] page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:5303/' (absent from the capture)

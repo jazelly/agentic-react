@@ -1,0 +1,15 @@
+[debug] [vite] connecting...
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[debug] [vite] connected.
+[error] Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[error] Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+[error] %o
+
+%s
+
+%s
+ TypeError: Failed to fetch dynamically imported module: http://localhost:5202/src/routes/_authenticated/tasks/index.tsx?tsr-split=component The above error occurred in the <Lazy> component. React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+[warning] Warning: Error in route match: __root__/

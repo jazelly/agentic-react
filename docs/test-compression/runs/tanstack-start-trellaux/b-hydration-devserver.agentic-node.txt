@@ -1,0 +1,51 @@
+
+> tanstack-start-example-trellaux@ dev /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/trellaux-hydration
+> vite dev --port 5211 --strictPort
+
+
+  VITE v8.3.8  ready in 373 ms
+
+  ➜  Local:   http://localhost:5211/
+  ➜  Network: use --host to expose
+7:22:27 PM [vite] (ssr) connected.
+7:22:30 PM [vite] (client) [Unhandled error] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <div className="grow min-h...">
+      <OutletImpl>
+        <Suspense fallback={null}>
+          <MatchImpl routeId="/">
+            <Suspense fallback={<Context>}>
+              <CatchBoundary getResetKey={function getResetKey} errorComponent={function DefaultCatchBoundary} ...>
+                <MatchInnerImpl match={{id:"//",ssr:true, ...}}>
+                  <Lazy>
+                    <Home>
+                      <div className="p-8 space-y-2">
+                        <h1 className="text-2xl f...">
+                          <span className="text-xs te...">
++                           8:52:30 AM
+-                           7:22:29 PM
+                        ...
+      ...
+
+ > throwOnHydrationMismatch node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:5547:10
+ > completeWork node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:13206:25
+ > runWithFiberInDEV node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > completeUnitOfWork node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:19320:18
+ > performUnitOfWork node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:19193:10
+ > workLoopConcurrentByScheduler node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:19170:8
+ > renderRootConcurrent node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:19152:14
+ > performWorkOnRoot node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:18014:10
+ > performWorkOnRootViaSchedulerTask node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.development.js:20665:6
+ > MessagePort.performWorkUntilDeadline node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.development.js:45:47
+

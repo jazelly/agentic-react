@@ -1,9 +1,0 @@
-
-> shadcn-admin@2.2.1 dev /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-crash
-> vite --port 5201 --strictPort
-
-
-  VITE v8.0.8  ready in 1745 ms
-
-  ➜  Local:   http://localhost:5201/
-  ➜  Network: use --host to expose

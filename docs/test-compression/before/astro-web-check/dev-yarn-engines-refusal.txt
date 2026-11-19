@@ -1,6 +1,0 @@
-yarn run v1.22.22
-(node:92362) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-error web-check@2.4.0: The engine "node" is incompatible with this module. Expected version "^22.23.4 || ^24.16.0 || >=26.3.0". Got "24.15.0"
-error Commands cannot run with an incompatible environment.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
