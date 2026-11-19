@@ -1,0 +1,31 @@
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 105 modules transformed.
+✗ Build failed in 35ms
+error during build:
+Build failed with 1 error:
+
+[31m[UNRESOLVED_IMPORT] [0mCould not resolve './DoesNotExist' in src/components/ProfileForm.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/ProfileForm.tsx:2:30 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mV[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249mi[0m[38;5;249md[0m[38;5;249mE[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m"./DoesNotExist"[38;5;249m;[0m
+ [38;5;240m  │[0m                              ────────┬───────  
+ [38;5;240m  │[0m                                      ╰───────── Module not found.
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: 'src/components/ProfileForm.tsx' is imported by the following path:
+ [38;5;240m  │[0m         - src/components/ProfileForm.tsx
+ [38;5;240m  │[0m         - src/routes/SettingsPage.tsx
+ [38;5;240m  │[0m         - src/App.tsx
+ [38;5;240m  │[0m         - src/main.tsx
+ [38;5;240m  │[0m         - index.html
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/rolldown/dist/shared/error-CLo6EJKG.mjs:50:18)
+    at unwrapBindingResult (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/rolldown/dist/shared/error-CLo6EJKG.mjs:20:128)
+    at #build (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/rolldown/dist/shared/rolldown-AohEFLrh.mjs:146:34)
+    at async buildEnvironment (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:34787:66)
+    at async Object.build (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:35208:19)
+    at async Object.buildApp (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:35205:153)
+    at async CAC.<anonymous> (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/cli.js:789:3) {
+  errors: [Getter/Setter]
+}

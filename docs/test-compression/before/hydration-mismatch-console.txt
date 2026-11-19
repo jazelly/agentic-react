@@ -1,0 +1,44 @@
+[debug] [vite] connecting...
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  <BrowserRouter>
+    <Router basename={undefined} location={{pathname:"/", ...}} navigationType="POP" navigator={{action:"POP", ...}} ...>
+      <AppShell lastSyncedAt={1795017600000}>
+        <div className="app-shell">
+          <Header>
+          <div className="app-body">
+            <Sidebar>
+            <main className="content" id="main">
+              <h1>
+              <ActivityPanel lastSyncedAt={1795017600000}>
+                <section className="activity" aria-label="Activity">
+                  <h2>
+                  <ul>
+                  <SyncStatus lastSyncedAt={1795017600000}>
+                    <p className="sync-status">
+                      <time>
++                       11/18/2026, 8:00:00 AM
+-                       11/18/2026, 4:00:00 PM
+
+    at throwOnHydrationMismatch (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:3120:51)
+    at prepareToHydrateHostInstance (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:3173:18)
+    at completeWork (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:6590:46)
+    at runWithFiberInDEV (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:941:66)
+    at completeUnitOfWork (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:9211:15)
+    at performUnitOfWork (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:9147:23)
+    at workLoopSync (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:9041:37)
+    at renderRootSync (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:9025:6)
+    at performWorkOnRoot (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:8675:181)
+    at performWorkOnRootViaSchedulerTask (http://localhost:5292/node_modules/.vite/deps/react-dom_client.js?v=6d83223d:9831:4)
+[debug] [vite] connected.

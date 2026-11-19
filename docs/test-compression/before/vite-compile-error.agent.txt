@@ -1,0 +1,897 @@
+3:50:10 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+
+  VITE v8.3.8  ready in 110 ms
+
+  ➜  Local:   http://localhost:5291/
+  ➜  Network: use --host to expose
+3:50:12 PM [vite] (client) hmr update /src/components/ProfileForm.tsx
+3:50:12 PM [vite] Internal server error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 1)
+      at async TransformPluginContext.transform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:20112:26)
+      at async viteTransformMiddleware (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:20332:20)
+3:50:12 PM [vite] (client) [console.error] [vite] Failed to reload /src/components/ProfileForm.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:12 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] Internal server error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 1)
+      at async TransformPluginContext.transform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/node_modules/vite/dist/node/chunks/node.js:20112:26)
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+3:50:14 PM [vite] (client) Pre-transform error: Failed to resolve import "./DoesNotExist" from "src/components/ProfileForm.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/src/components/ProfileForm.tsx:2:29
+  1  |  import { useState } from "react";
+  2  |  import { isValidEmail } from "./DoesNotExist";
+     |                                ^
+  3  |  var _jsxFileName = "/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8...
+  4  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";

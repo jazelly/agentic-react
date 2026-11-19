@@ -1,0 +1,15 @@
+cypress: 1 failed, 9 passed in 2 specs (Electron 150 headless) in 6s
+  settings.cy.ts 4/5, tasks.cy.ts 5/5
+  warning: Electron is deprecated as a test browser (details in log)
+
+FAIL cypress/e2e/settings.cy.ts:14 › Settings page › saves profile changes
+  AssertionError: Timed out retrying after 4000ms: Expected to find content: '/^Save$/' within the selector: 'button' but never did.
+  buttons on page: "Save changes" <ProfileForm> src/components/ProfileForm.tsx:43, "Reset" <ProfileForm> src/components/ProfileForm.tsx:42, "Maya Chen" <UserMenu> src/components/UserMenu.tsx:7, "Delete account" <SettingsPage> src/routes/SettingsPage.tsx:20
+    <form aria-labelledby="profile-heading">   (form "Profile")
+      <… 4 labelled fields>
+      <button type="button">Reset</button>
+      <button type="submit">Save changes</button>   <- closest text match
+    </form>
+  browser console (this test): no errors
+  screenshot: cypress/screenshots/settings.cy.ts/Settings page -- saves profile changes (failed).png
+[agentic-react] full output: .agentic-react/logs/1119-154301-30566.log

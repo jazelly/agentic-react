@@ -1,0 +1,8 @@
+[debug] [vite] connecting...
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[pageerror] Hydration failed (text mismatch): server "11/18/2026, 4:00:00 PM" vs client "11/18/2026, 8:00:00 AM"
+  at <time> in <SyncStatus> ssr/SyncStatus.tsx:4
+  via <ActivityPanel> ssr/ActivityPanel.tsx:11 < <AppShell> ssr/AppShell.tsx < <Router> < <BrowserRouter>
+  common causes: Date/locale formatting, Date.now()/Math.random(), typeof window branches. https://react.dev/link/hydration-mismatch
+  (react-dom frames x10 and full message in log)
+[debug] [vite] connected.

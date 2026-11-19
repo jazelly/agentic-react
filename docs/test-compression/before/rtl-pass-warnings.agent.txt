@@ -1,0 +1,9 @@
+
+ RUN  v5.1.1 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app
+
+
+ Test Files  3 passed (3)
+      Tests  16 passed (16)
+   Start at  15:44:44
+   Duration  588ms (environment 45%, tests 30%, import 11%, setup 8%, transform 6%, worker 1%)
+

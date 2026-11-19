@@ -1,0 +1,82 @@
+
+ RUN  v5.1.1 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app
+
+stderr | tests/unit/TasksPage.test.tsx > TasksPage > renders the heading
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TaskTable`. See https://react.dev/link/warning-keys for more information.
+
+stderr | tests/unit/TasksPage.test.tsx > TasksPage > renders the heading
+An update to StatsCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | tests/unit/Layout.test.tsx > Layout > renders primary navigation
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TaskTable`. See https://react.dev/link/warning-keys for more information.
+
+stderr | tests/unit/Layout.test.tsx > Layout > renders primary navigation
+An update to StatsCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | tests/unit/Layout.test.tsx > Layout > lists projects in the sidebar
+An update to StatsCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | tests/unit/TasksPage.test.tsx > TasksPage > renders a row per task
+An update to StatsCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | tests/unit/TasksPage.test.tsx > TasksPage > shows the summary labels
+An update to StatsCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/unit/Layout.test.tsx (3 tests) 72ms
+ ✓ tests/unit/SettingsPage.test.tsx (5 tests) 149ms
+ ✓ tests/unit/TasksPage.test.tsx (8 tests) 199ms
+
+ Test Files  3 passed (3)
+      Tests  16 passed (16)
+   Start at  15:44:43
+   Duration  580ms (environment 47%, tests 30%, import 12%, setup 8%, transform 3%, worker 1%)
+

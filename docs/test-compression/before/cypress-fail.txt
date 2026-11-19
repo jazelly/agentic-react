@@ -1,0 +1,110 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.3.0                                                                         │
+  │ Browser:        Electron 150 (headless) (deprecated)                                           │
+  │ Node Version:   v24.15.0 (/Users/jazelly/.nvm/versions/node/v24.15.0/bin/node)                 │
+  │ Specs:          2 found (settings.cy.ts, tasks.cy.ts)                                          │
+  │ Searched:       cypress/e2e/**/*.cy.{js,jsx,ts,tsx}                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  settings.cy.ts                                                                  (1 of 2)
+
+
+  Settings page
+    ✓ prefills profile fields (245ms)
+    1) saves profile changes
+    ✓ reset restores defaults (341ms)
+    ✓ enables push notifications (149ms)
+    ✓ navigates back to tasks (155ms)
+
+
+  4 passing (6s)
+  1 failing
+
+  1) Settings page
+       saves profile changes:
+     AssertionError: Timed out retrying after 4000ms: Expected to find content: '/^Save$/' within the selector: 'button' but never did.
+      at Context.eval (webpack://fixture-app/./cypress/e2e/settings.cy.ts:14:7)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        5                                                                                │
+  │ Passing:      4                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  1                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     5 seconds                                                                        │
+  │ Spec Ran:     settings.cy.ts                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1    (2560x1440)
+     a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app/cypress/screenshots/set               
+     tings.cy.ts/Settings page -- saves profile changes (failed).png                                
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  tasks.cy.ts                                                                     (2 of 2)
+
+
+  Tasks page
+    ✓ renders all tasks (202ms)
+    ✓ shows stats after loading (63ms)
+    ✓ filters by text (211ms)
+    ✓ filters by status (194ms)
+    ✓ adds a new task (278ms)
+
+
+  5 passing (1s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        5                                                                                │
+  │ Passing:      5                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     1 second                                                                         │
+  │ Spec Ran:     tasks.cy.ts                                                                      │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  settings.cy.ts                           00:05        5        4        1        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  tasks.cy.ts                              00:01        5        5        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 2 failed (50%)                      00:06       10        9        1        -        -  
+

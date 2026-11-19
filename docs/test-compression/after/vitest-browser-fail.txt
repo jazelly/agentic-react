@@ -1,0 +1,51 @@
+
+ RUN  v5.1.1 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app
+
+ ✓ |chromium| tests-browser/TasksPage.test.tsx (2 tests) 31ms
+ ❯ |chromium| tests-browser/SettingsPage.test.tsx (4 tests | 1 failed) 15139ms
+   ❯ SettingsPage (browser) (4)
+     ✓ renders the settings heading 22ms
+     ✓ prefills the full name 5ms
+     ✓ enables push notifications 67ms
+     × shows the save button 15044ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |chromium| tests-browser/SettingsPage.test.tsx > SettingsPage (browser) > shows the save button
+VitestBrowserElementError: Cannot find element with locator: getByRole('button', { name: 'Save' })
+  closest: button "Save changes" <ProfileForm> src/components/ProfileForm.tsx:43
+    <form aria-labelledby="profile-heading">   (form "Profile")
+      <h2>Profile</h2>
+      <… 4 labelled fields: Full name, Email address, Bio, Time zone>
+      <button type="button">Reset</button>
+      <button type="submit">Save changes</button>   <- closest
+    </form>
+  other buttons: "Maya Chen" <UserMenu> src/components/UserMenu.tsx:7, "Delete account" <SettingsPage> src/routes/SettingsPage.tsx:20
+  [agentic-react] full output: .agentic-react/logs/1119-154301-30566.log
+
+Failure screenshot:
+  - .vitest/attachments/failure-screenshots/SettingsPage.test.tsx/SettingsPage--browser----shows-the-save-button.png
+
+ ❯ tests-browser/SettingsPage.test.tsx:34:83
+     32|   it('shows the save button', async () => {
+     33|     await renderApp('/settings')
+     34|     await expect.element(page.getByRole('button', { name: 'Save', exac…
+       |                                                                                   ^
+     35|   })
+     36| })
+
+Caused by: Error: Matcher did not succeed in time.
+
+Trace:
+  step               locator                                start  duration  location
+  react.render       page                                    +3ms         -  tests-browser/SettingsPage.test.tsx:33:5
+  toBeInTheDocument  getByRole('button', { name: 'Save' })   +3ms   14920ms  tests-browser/SettingsPage.test.tsx:34:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 5 passed (6)
+   Start at  15:46:46
+   Duration  15.77s (tests 94%, worker 4%, import 1%)
+

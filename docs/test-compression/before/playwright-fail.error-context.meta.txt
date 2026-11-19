@@ -1,0 +1,2 @@
+source: copied from app/test-results/settings-saves-profile-changes-chromium/error-context.md after the playwright-fail run
+notes: Not terminal output: the file test-results/settings-saves-profile-changes-chromium/error-context.md that Playwright writes and references from the terminal output ('Error Context: ...'). Includes an ARIA snapshot of the page. Identical in agent mode.

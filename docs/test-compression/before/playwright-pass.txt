@@ -1,0 +1,66 @@
+
+Running 20 tests using 14 workers
+
+(node:30568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30569) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30571) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30567) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30579) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30574) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30575) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30578) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:30577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/20] [chromium] › e2e/navigation.spec.ts:14:1 › primary nav goes to settings
+[2/20] [chromium] › e2e/notifications.spec.ts:7:1 › email notifications enabled by default
+[3/20] [chromium] › e2e/settings.spec.ts:7:1 › prefills profile fields
+[4/20] [chromium] › e2e/navigation.spec.ts:3:1 › redirects root to tasks
+[5/20] [chromium] › e2e/navigation.spec.ts:28:1 › user menu opens
+[6/20] [chromium] › e2e/navigation.spec.ts:21:1 › sidebar lists projects
+[7/20] [chromium] › e2e/notifications.spec.ts:12:1 › enables push notifications
+[8/20] [chromium] › e2e/navigation.spec.ts:9:1 › has page title
+[9/20] [chromium] › e2e/notifications.spec.ts:17:1 › selects weekly digest
+[10/20] [chromium] › e2e/settings.spec.ts:12:1 › saves profile changes
+[11/20] [chromium] › e2e/settings.spec.ts:19:1 › reset restores defaults
+[12/20] [chromium] › e2e/tasks.spec.ts:7:1 › renders all tasks
+[13/20] [chromium] › e2e/settings.spec.ts:30:1 › shows danger zone
+[14/20] [chromium] › e2e/settings.spec.ts:25:1 › changes time zone
+[15/20] [chromium] › e2e/tasks.spec.ts:11:1 › shows stats after loading
+[16/20] [chromium] › e2e/tasks.spec.ts:17:1 › filters by text
+[17/20] [chromium] › e2e/tasks.spec.ts:23:1 › filters by status
+[18/20] [chromium] › e2e/tasks.spec.ts:28:1 › shows empty state
+[19/20] [chromium] › e2e/tasks.spec.ts:33:1 › toggles a task as done
+[20/20] [chromium] › e2e/tasks.spec.ts:39:1 › adds a new task
+  20 passed (2.2s)

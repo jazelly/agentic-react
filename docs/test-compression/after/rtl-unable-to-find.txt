@@ -1,0 +1,40 @@
+
+ RUN  v5.1.1 /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/captures/app
+
+ ❯ tests/rtl-fail/SettingsPage.test.tsx (1 test | 1 failed) 101ms
+   ❯ SettingsPage (1)
+     × saves the profile 99ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/rtl-fail/SettingsPage.test.tsx > SettingsPage > saves the profile
+TestingLibraryElementError: Unable to find role="button" name="Save"
+  closest: button "Save changes" <ProfileForm> src/components/ProfileForm.tsx:43
+    <form aria-labelledby="profile-heading">   (form "Profile")
+      <h2>Profile</h2>
+      <… 4 labelled fields: Full name, Email address, Bio, Time zone>
+      <button type="button">Reset</button>
+      <button type="submit">Save changes</button>   <- closest
+    </form>
+  other buttons: "Maya Chen" <UserMenu> src/components/UserMenu.tsx:7, "Delete account" <SettingsPage> src/routes/SettingsPage.tsx:20
+  [agentic-react] full output: .agentic-react/logs/1119-154301-30566.log[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/rtl-fail/SettingsPage.test.tsx:21:29
+     19|     await user.clear(screen.getByLabelText('Full name'))
+     20|     await user.type(screen.getByLabelText('Full name'), 'Maya Chen-Par…
+     21|     await user.click(screen.getByRole('button', { name: 'Save' }))
+       |                             ^
+     22|
+     23|     expect(screen.getByRole('status')).toHaveTextContent('Profile save…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  15:44:45
+   Duration  450ms (environment 49%, tests 26%, import 12%, setup 7%, transform 6%, worker 1%)
+
