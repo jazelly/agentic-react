@@ -1,0 +1,129 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.8 [39m[90m/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base[39m
+
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+(node:67201) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67202) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67199) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67200) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67203) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67198) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:67204) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/buttons/ButtonGroup.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/Button.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/AddButton.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/CopyButton/CopyButton.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/LoadingButton.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/MenuButton.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [31m❯[39m app/react/components/buttons/__bench__/AddButton.default-label.test.tsx [2m([22m[2m2 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 1030[2mms[22m[39m
+[31m   [31m×[31m defaults to "Create" when no label is given[39m[33m 1024[2mms[22m[39m
+   [90m·[39m keeps an explicit label
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m app/react/components/buttons/__bench__/AddButton.default-label.test.tsx[2m > [22mdefaults to "Create" when no label is given
+[31m[1mTestingLibraryElementError[22m: Unable to find an element with the text: Create. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<div>[31m
+      [0mRoot[0m
+    [36m</div>[31m
+    [36m<div />[31m
+    [36m<a[31m
+      [33mclass[31m=[32m"btn btn-primary btn-sm !m-0"[31m
+      [33mdata-cy[31m=[32m"bench-add-button"[31m
+      [33mtype[31m=[32m"button"[31m
+    [36m>[31m
+      [36m<svg[31m
+        [33maria-hidden[31m=[32m"true"[31m
+        [33mclass[31m=[32m"lucide lucide-plus icon inline-flex icon-sm"[31m
+        [33mfill[31m=[32m"none"[31m
+        [33mheight[31m=[32m"24"[31m
+        [33mrole[31m=[32m"img"[31m
+        [33mstroke[31m=[32m"currentColor"[31m
+        [33mstroke-linecap[31m=[32m"round"[31m
+        [33mstroke-linejoin[31m=[32m"round"[31m
+        [33mstroke-width[31m=[32m"2"[31m
+        [33mviewBox[31m=[32m"0 0 24 24"[31m
+        [33mwidth[31m=[32m"24"[31m
+        [33mxmlns[31m=[32m"http://www.w3.org/2000/svg"[31m
+      [36m>[31m
+        [36m<path[31m
+          [33md[31m=[32m"M5 12h14"[31m
+        [36m/>[31m
+        [36m<path[31m
+          [33md[31m=[32m"M12 5v14"[31m
+        [36m/>[31m
+      [36m</svg>[31m
+      [0mAdd[0m
+    [36m</a>[31m
+  [36m</div>[31m
+[36m</body>[31m
+
+Ignored nodes: comments, <script />, <style />
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<div>[31m
+      [0mRoot[0m
+    [36m</div>[31m
+    [36m<div />[31m
+    [36m<a[31m
+      [33mclass[31m=[32m"btn btn-primary btn-sm !m-0"[31m
+      [33mdata-cy[31m=[32m"bench-add-button"[31m
+      [33mtype[31m=[32m"button"[31m
+    [36m>[31m
+      [36m<svg[31m
+        [33maria-hidden[31m=[32m"true"[31m
+        [33mclass[31m=[32m"lucide lucide-plus icon inline-flex icon-sm"[31m
+        [33mfill[31m=[32m"none"[31m
+        [33mheight[31m=[32m"24"[31m
+        [33mrole[31m=[32m"img"[31m
+        [33mstroke[31m=[32m"currentColor"[31m
+        [33mstroke-linecap[31m=[32m"round"[31m
+        [33mstroke-linejoin[31m=[32m"round"[31m
+        [33mstroke-width[31m=[32m"2"[31m
+        [33mviewBox[31m=[32m"0 0 24 24"[31m
+        [33mwidth[31m=[32m"24"[31m
+        [33mxmlns[31m=[32m"http://www.w3.org/2000/svg"[31m
+      [36m>[31m
+        [36m<path[31m
+          [33md[31m=[32m"M5 12h14"[31m
+        [36m/>[31m
+        [36m<path[31m
+          [33md[31m=[32m"M12 5v14"[31m
+        [36m/>[31m
+      [36m</svg>[31m
+      [0mAdd[0m
+    [36m</a>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m waitForWrapper node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/wait-for.js:[2m187:27[22m[39m
+[90m [2m❯[22m node_modules/.pnpm/@testing-library+dom@8.11.1/node_modules/@testing-library/dom/dist/query-helpers.js:[2m101:33[22m[39m
+[36m [2m❯[22m app/react/components/buttons/__bench__/AddButton.default-label.test.tsx:[2m35:16[22m[39m
+    [90m 33|[39m [34mtest[39m([32m'defaults to "Create" when no label is given'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m 34|[39m   [35mconst[39m { findByText[33m,[39m queryByText } [33m=[39m [34mrenderButton[39m()[33m;[39m
+    [90m 35|[39m   [34mexpect[39m([35mawait[39m [34mfindByText[39m([32m'Create'[39m))[33m.[39m[34mtoBeTruthy[39m()[33m;[39m
+    [90m   |[39m                [31m^[39m
+    [90m 36|[39m   [34mexpect[39m([34mqueryByText[39m([32m'Add'[39m))[33m.[39m[34mtoBeNull[39m()[33m;[39m
+    [90m 37|[39m })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m6 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m18 passed[39m[22m[90m (20)[39m
+[2m   Start at [22m 18:30:05
+[2m   Duration [22m 2.23s[2m (transform 2.09s, setup 2.50s, import 2.20s, tests 1.22s, environment 2.64s)[22m
+

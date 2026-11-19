@@ -1,0 +1,63 @@
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[log] [HMR] connected
+[warning] [HMR] Invalid message: {"type":"isrManifest","data":{"/":true}}
+TypeError: Cannot read properties of undefined (reading 'components')
+    at handleStaticIndicator (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/next@16.3.5_@types+node@25.9.5_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/client/dev/hot-reloader/pages/hot-reloader-pages.js:177:46)
+    at processMessage (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/next@16.3.5_@types+node@25.9.5_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/client/dev/hot-reloader/pages/hot-reloader-pages.js:191:17)
+    at eval (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/next@16.3.5_@types+node@25.9.5_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/client/dev/hot-reloader/pages/hot-reloader-pages.js:69:13)
+    at WebSocket.handleMessage (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/next@16.3.5_@types+node@25.9.5_react-dom@19.3.0_react@19.3.0__react@19.3.0/node_modules/next/dist/client/dev/hot-reloader/pages/websocket.js:68:17)
+[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <main className="HeroSectio...">
+      <HeroSection__StyledHeroSectionBody>
+        <div className="HeroSectio...">
+          <@mantine/core/Stack flex="1" miw={250} mx="auto" align="center">
+            <@mantine/core/Box ref={null} className="m_6d731127..." style={{...}} variant={undefined} flex="1" miw={250} ...>
+              <div ref={null} style={{...}} className="m_6d731127..." data-variant={undefined} data-size={undefined} ...>
+                <LinkComponent>
+                <HeroSection__StyledHeroTitle>
+                <HeroSection__StyledHeroText>
+                <@mantine/core/Flex gap="xs" wrap="wrap" justify="center" hiddenFrom="xs">
+                  <@mantine/core/Box ref={null} className="m_8bffd616..." style={{gap:"var(-...", ...}} hiddenFrom="xs">
+                    <div ref={null} style={{gap:"var(-...", ...}} className="m_8bffd616..." data-variant={undefined} ...>
+                      <@mantine/core/Button component="a" color="#202842" href="/editor" size="md" radius="md" ...>
+                        <@mantine/core/UnstyledButton ref={null} className="mantine-ac..." style={{...}} ...>
+                          <@mantine/core/Box className="mantine-fo..." style={{...}} component="a" ref={null} ...>
+                            <a ref={null} style={{...}} className="mantine-fo..." data-variant={undefined} data-size="md" ...>
+                              <span className="m_80f1301b..." style={{}}>
+                                <@mantine/core/Box component="span" mod={{...}} className="m_811560b9..." style={{}}>
+                                  <span
+                                    ref={null}
+                                    style={{}}
+                                    className="m_811560b9 mantine-Button-label"
+                                    data-variant={undefined}
+                                    data-size={undefined}
+                                    size={undefined}
+                                  >
++                                   Open
+-                                   Go to Editor
+                                ...
+                ...
+
+    at throwOnHydrationMismatch (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:5548:11)
+    at prepareToHydrateHostInstance (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:5644:21)
+    at completeWork (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:13010:15)
+    at runWithFiberInDEV (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:1046:30)
+    at completeUnitOfWork (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:19321:19)
+    at performUnitOfWork (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:19194:11)
+    at workLoopSync (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:19005:41)
+    at renderRootSync (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:18986:11)
+    at performWorkOnRoot (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:18016:11)
+    at performWorkOnRootViaSchedulerTask (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/react-dom@19.3.0_react@19.3.0/node_modules/react-dom/cjs/react-dom-client.development.js:20666:7)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///(pages-dir-browser)/../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.development.js:45:48)

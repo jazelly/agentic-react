@@ -1,0 +1,13 @@
+repo: astro-web-check
+pinned SHA: fd08be81f700254214ef49d093e71a991567841f
+task: astro-web-check/ssr-home-background-window
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-ssr
+node: v24.15.0
+env: agent markers removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; non-TTY (redirected to file)
+command: yarn --ignore-engines dev:astro --port 5330
+procedure: dev server started in background; waited for readiness (log matched /Local +http/Local +http) (ready=yes after 1.83s); then loaded http://localhost:5330/ in headless chromium via console.mjs (if browser capture); waited 4s; sent SIGTERM to the process group. Output is everything the dev process printed until kill.
+exit code: n/a (killed by SIGTERM after capture)
+duration (start to kill): 14.0s
+tool versions: astro 7.4.2 (Vite inside), @astrojs/react, @astrojs/node adapter, yarn 1.22.22; node 24.15.0 is outside package engines (^22.23.4 || ^24.16.0 || >=26.3.0): deps installed with yarn --ignore-engines; astro itself runs on 24.15 without complaint.
+deviations: scratch workspace benchmark/runs/caps/awc-ssr (prepareWorkspace with task edit client:only="react" -> client:load on HomeBackground). CI unset.
+notes: default env (no BOSS_SERVER): GET / is answered by a 301 redirect to /check, so the injected bug never executes; terminal shows only [301] / and [200] /check. Contains ANSI from the repo banner and an Astro update notice.

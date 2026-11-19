@@ -1,0 +1,10 @@
+
+> tanstack-start-example-trellaux@ dev /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/trellaux-base
+> vite dev --port 5210 --strictPort
+
+
+  VITE v8.3.8  ready in 385 ms
+
+  ➜  Local:   http://localhost:5210/
+  ➜  Network: use --host to expose
+6:30:57 PM [vite] (ssr) connected.

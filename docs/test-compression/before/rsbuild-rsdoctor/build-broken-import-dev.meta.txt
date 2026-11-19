@@ -1,0 +1,13 @@
+repo: rsbuild-rsdoctor
+pinned SHA: 32e78e6fb6af229e0a556ec9acafec58f61f9ab8
+task: rsbuild-rsdoctor/build-broken-import
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-imp
+node: v24.15.0
+env: agent markers removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; non-TTY (redirected to file)
+command: corepack pnpm --filter @rsdoctor/client dev --port 5320
+procedure: dev server started in background; waited for readiness (log matched /Local:|error/Local:|error) (ready=yes after 0.83s); then loaded http://localhost:5320/ in headless chromium via console.mjs (if browser capture); waited 4s; sent SIGTERM to the process group. Output is everything the dev process printed until kill.
+exit code: n/a (killed by SIGTERM after capture)
+duration (start to kill): 13.64s
+tool versions: pnpm 12.6.0 via corepack, @rstest/core 0.12.5, @rstackjs/cli 0.9.0 (rs), react 19.3.1 Rstack CLI 'rs' (rstack.config.mts); @rsbuild/core 2.3.1, @rspack/core 2.3.1, playwright 1.62.1 chromium headless
+deviations: scratch workspace benchmark/runs/caps/rsd-imp (task edit applied). Dev command = manifest @dev with '--port 5320' appended, cwd workspace root. Agent variant run: dev and browser output identical except timings/pid, not kept.
+notes: in dev only the two ESModulesLinkingError blocks appear (TS2724 from the type checker did not show before the kill, ~10s after start). The final '[ELIFECYCLE] Command failed with exit code 143' + ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL box is caused by our SIGTERM, not by the build error.

@@ -1,0 +1,13 @@
+repo: rsbuild-rsdoctor
+pinned SHA: 32e78e6fb6af229e0a556ec9acafec58f61f9ab8
+task: rsbuild-rsdoctor/state-bundle-size-sort-order
+command: corepack pnpm --filter @rsdoctor/client test -- module-tree-sort
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/rsd-sort/packages/client
+node: v24.15.0
+env: agent markers (CLAUDE*, AI_AGENT, CURSOR*, CODEX*, SAND_AGENT, AGENT_TRANSCRIPTS) removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr redirected to file (non-TTY)
+agent variant: CLAUDECODE=1 AI_AGENT=claude-code set
+exit code: 1
+duration: 4.51s
+tool versions: pnpm 12.6.0 via corepack, @rstest/core 0.12.5, @rstackjs/cli 0.9.0 (rs), react 19.3.1 Rstack CLI 'rs' (rstack.config.mts)
+deviations: scratch workspace benchmark/runs/caps/rsd-sort (prepareWorkspace with the task edit swapping a/b in the comparator). cwd = appRoot packages/client as task-kit runChecks does for non-@ commands; CI unset (runChecks would set CI=1).
+notes: agent-mode Markdown report is LARGER than the human output here (373 vs 172 lines): each failure gets a repro command, a details JSON block (testPath, fullName, errors[], topFrame, candidateFiles), a diff block and a code frame.

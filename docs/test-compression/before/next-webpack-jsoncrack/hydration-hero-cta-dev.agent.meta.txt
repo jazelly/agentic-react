@@ -1,0 +1,13 @@
+repo: next-webpack-jsoncrack
+pinned SHA: a46d0d0adb098e12e577a083e87ead7f61f90098
+task: next-webpack-jsoncrack/hydration-hero-cta
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-hyd
+node: v24.15.0
+env: agent markers removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; non-TTY (redirected to file)
+agent variant: CLAUDECODE=1 AI_AGENT=claude-code set on the dev server process
+command: pnpm --filter jsoncrack-react build && pnpm --filter www dev --port 5310
+procedure: dev server started in background; waited for readiness (log matched /Ready in/Ready in) (ready=yes after 2.33s); then loaded http://localhost:5310/ in headless chromium via console.mjs (if browser capture); waited 4s; sent SIGTERM to the process group. Output is everything the dev process printed until kill.
+exit code: n/a (killed by SIGTERM after capture)
+duration (start to kill): 18.77s
+deviations: scratch workspace benchmark/runs/caps/njc-hyd (prepareWorkspace with task setup.edits). Dev command = manifest @dev with `--port 5310` appended (repo default 3000), cwd workspace root. Browser viewport 375x800 (VIEWPORT_W=375) because the injected bug only diverges when window.innerWidth < 400; at Playwright default 1280x720 server and client render the same text and no error appears. tool versions: next 16.3.5 (next dev --webpack), react 19.3.0, vite 8.2.1 (jsoncrack-react prebuild), playwright 1.62.1 chromium headless, pnpm 10.6.5.
+notes: agent env: only difference vs the non-agent run (besides timings) is "✓ Generated AGENTS.md and CLAUDE.md for AI agents..." - next dev 16.3.5 wrote untracked apps/www/AGENTS.md and apps/www/CLAUDE.md into the workspace. No security nudge in 16.3.5. Ran with the .next left by the non-agent run.

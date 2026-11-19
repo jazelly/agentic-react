@@ -1,0 +1,61 @@
+[log] [Client Instrumentation Hook] Slow execution detected: 19ms (Note: Code download overhead is not included in this measurement)
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED
+[log] [HMR] connected
+[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{locale:"en"}} renderTree={{...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="layout" pagePath="[locale]/(...">
+        <SegmentTrieNode>
+        <script>
+        <script>
+        <Layout>
+          <div>
+          <BaseTemplate>
+            <div className="w-full px-...">
+              <div className="mx-auto ma...">
+                <header className="border-b b...">
+                  <div>
+                  <div className="flex justi...">
+                    <nav>
+                    <nav>
+                      <ul className="flex flex-...">
+                        <li>
+                        <li>
+                        <li>
+                          <LocaleSwitcher>
+                            <select defaultValue="en" onChange={function handleChange} className="border bor..." ...>
+                              <option value="en">
++                               en
+-                               EN
+                              ...
+                ...
+
+    at throwOnHydrationMismatch (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:3143:56)
+    at prepareToHydrateHostInstance (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:3197:23)
+    at completeWork (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:6781:60)
+    at runWithFiberInDEV (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:778:74)
+    at completeUnitOfWork (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:9508:23)
+    at performUnitOfWork (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:9443:28)
+    at workLoopConcurrentByScheduler (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:9437:58)
+    at renderRootConcurrent (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:9420:71)
+    at performWorkOnRoot (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:8948:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:5303/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js:10141:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:5303/_next/static/chunks/node_modules_next_dist_compiled_01j8bfh0qbme8._.js:1976:64)
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED
+[warning] Image with src "/_next/static/media/crowdin-dark.1pa0qderdbj5v.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[warning] Image with src "/_next/static/media/nextjs-boilerplate-saas.07y2sc_u0q7sj.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED
+[error] Failed to load resource: net::ERR_CONNECTION_REFUSED

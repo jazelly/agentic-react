@@ -1,0 +1,13 @@
+
+> shadcn-admin@2.2.1 test /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/repos/vite-shadcn-admin
+> vitest run --browser.headless
+
+
+ RUN  v4.1.4 /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/repos/vite-shadcn-admin
+
+
+ Test Files  21 passed (21)
+      Tests  130 passed (130)
+   Start at  18:21:02
+   Duration  4.22s (transform 0ms, setup 0ms, import 4.85s, tests 9.85s, environment 0ms)
+

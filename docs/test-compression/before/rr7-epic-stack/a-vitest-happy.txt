@@ -1,0 +1,136 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/rr7-base[39m
+
+ [32m✓[39m app/utils/misc.error-message.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m app/utils/sentry-event-filters.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m app/utils/headers.server.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m app/routes/resources/theme-switch.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m app/utils/misc.use-double-check.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 139[2mms[22m[39m
+ [32m✓[39m app/routes/_auth/reset-password.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 214[2mms[22m[39m
+[90mstdout[2m | app/routes/_auth/forgot-password.test.ts[2m > [22m[2memailed reset link ignores an untrusted X-Forwarded-Host
+[22m[39m🔶 mocked email contents: {
+  from: [32m'hello@epicstack.dev'[39m,
+  to: [32m'5b_liza_orn@example.com'[39m,
+  subject: [32m'Epic Notes Password Reset'[39m,
+  html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>DBSDEN</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="https://www.epicstack.dev/verify?type=reset-password&amp;target=5b_liza_orn&amp;code=DBSDEN" style="color:#067df7;text-decoration-line:none" target="_blank">https://www.epicstack.dev/verify?type=reset-password&amp;target=5b_liza_orn&amp;code=DBSDEN</a></td></tr></tbody></table><!--/$--></html>'[39m,
+  text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m"Here's your verification code: DBSDEN\n"[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'Or click the link:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'https://www.epicstack.dev/verify?type=reset-password&target=5b_liza_orn&code=DBSDEN'[39m
+}
+
+[90mstdout[2m | app/routes/_auth/forgot-password.test.ts[2m > [22m[2memailed reset link falls back to the canonical host for an untrusted Host header
+[22m[39m🔶 mocked email contents: {
+  from: [32m'hello@epicstack.dev'[39m,
+  to: [32m's4_mariah_wolff@example.com'[39m,
+  subject: [32m'Epic Notes Password Reset'[39m,
+  html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>21R37D</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="https://www.epicstack.dev/verify?type=reset-password&amp;target=s4_mariah_wolff%40example.com&amp;code=21R37D" style="color:#067df7;text-decoration-line:none" target="_blank">https://www.epicstack.dev/verify?type=reset-password&amp;target=s4_mariah_wolff%40example.com&amp;code=21R37D</a></td></tr></tbody></table><!--/$--></html>'[39m,
+  text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m"Here's your verification code: 21R37D\n"[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'Or click the link:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'https://www.epicstack.dev/verify?type=reset-password&target=s4_mariah_wolff%40example.com&code=21R37D'[39m
+}
+
+[90mstdout[2m | app/routes/_auth/forgot-password.test.ts[2m > [22m[2memailed reset link uses the request host when it is allowed
+[22m[39m🔶 mocked email contents: {
+  from: [32m'hello@epicstack.dev'[39m,
+  to: [32m'4v_eulalia_collins4@example.com'[39m,
+  subject: [32m'Epic Notes Password Reset'[39m,
+  html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>LDFXS9</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="https://epicstack.dev/verify?type=reset-password&amp;target=4v_eulalia_collins4&amp;code=LDFXS9" style="color:#067df7;text-decoration-line:none" target="_blank">https://epicstack.dev/verify?type=reset-password&amp;target=4v_eulalia_collins4&amp;code=LDFXS9</a></td></tr></tbody></table><!--/$--></html>'[39m,
+  text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m"Here's your verification code: LDFXS9\n"[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'Or click the link:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'https://epicstack.dev/verify?type=reset-password&target=4v_eulalia_collins4&code=LDFXS9'[39m
+}
+
+[90mstdout[2m | app/routes/_auth/forgot-password.test.ts[2m > [22m[2mthe Fly.io app hostname is allowed without configuration
+[22m[39m🔶 mocked email contents: {
+  from: [32m'hello@epicstack.dev'[39m,
+  to: [32m'gn_kelton_davis25@example.com'[39m,
+  subject: [32m'Epic Notes Password Reset'[39m,
+  html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>JZJY37</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="https://epic-stack-test.fly.dev/verify?type=reset-password&amp;target=gn_kelton_davis25&amp;code=JZJY37" style="color:#067df7;text-decoration-line:none" target="_blank">https://epic-stack-test.fly.dev/verify?type=reset-password&amp;target=gn_kelton_davis25&amp;code=JZJY37</a></td></tr></tbody></table><!--/$--></html>'[39m,
+  text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m"Here's your verification code: JZJY37\n"[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'Or click the link:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'https://epic-stack-test.fly.dev/verify?type=reset-password&target=gn_kelton_davis25&code=JZJY37'[39m
+}
+
+[90mstdout[2m | app/routes/_auth/forgot-password.test.ts[2m > [22m[2mfalls back to the Fly.io app hostname for an untrusted host
+[22m[39m🔶 mocked email contents: {
+  from: [32m'hello@epicstack.dev'[39m,
+  to: [32m'7s_bernhard_hyatt@example.com'[39m,
+  subject: [32m'Epic Notes Password Reset'[39m,
+  html: [32m'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><!--html--><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><h1><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Epic Notes Password Reset</p></h1><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Here&#x27;s your verification code: <strong>DBS9Z9</strong></p></p><p><p style="font-size:14px;line-height:24px;margin-top:16px;margin-bottom:16px">Or click the link:</p></p><a href="https://epic-stack-test.fly.dev/verify?type=reset-password&amp;target=7s_bernhard_hyatt&amp;code=DBS9Z9" style="color:#067df7;text-decoration-line:none" target="_blank">https://epic-stack-test.fly.dev/verify?type=reset-password&amp;target=7s_bernhard_hyatt&amp;code=DBS9Z9</a></td></tr></tbody></table><!--/$--></html>'[39m,
+  text: [32m'EPIC NOTES PASSWORD RESET\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m"Here's your verification code: DBS9Z9\n"[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'Or click the link:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'https://epic-stack-test.fly.dev/verify?type=reset-password&target=7s_bernhard_hyatt&code=DBS9Z9'[39m
+}
+
+ [32m✓[39m app/routes/_auth/forgot-password.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+ [32m✓[39m app/routes/_auth/verify.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m app/routes/_auth/auth.$provider/callback.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 83[2mms[22m[39m
+ [32m✓[39m app/routes/users/$username/index.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 148[2mms[22m[39m
+ [32m✓[39m app/utils/auth.server.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 1021[2mms[22m[39m
+     [33m[2m✓[22m[39m checkIsCommonPassword times out after 1 second [33m 1002[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[32m42 passed[39m[22m[90m (42)[39m
+[2m   Start at [22m 18:35:05
+[2m   Duration [22m 2.00s[2m (transform 1.28s, setup 7.95s, import 2.72s, tests 1.76s, environment 1.07s)[22m
+

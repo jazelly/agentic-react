@@ -1,0 +1,48 @@
+
+> shadcn-admin@2.2.1 test /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-signout
+> vitest run --browser.headless
+
+
+ RUN  v4.1.4 /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/shadcn-signout
+
+ ❯ |chromium| src/stores/auth-store.test.ts (5 tests | 1 failed) 275ms
+     × reset clears user and access token and drops persistence 220ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |chromium| src/stores/auth-store.test.ts > useAuthStore > reset clears user and access token and drops persistence
+AssertionError: expected { accountNo: 'ACC-1', …(3) } to be null
+
+Failure screenshot:
+  - src/stores/__screenshots__/auth-store.test.ts/useAuthStore-reset-clears-user-and-access-token-and-drops-persistence-1.png
+
+[32m- Expected:[39m
+null
+
+[31m+ Received:[39m
+{
+  "accountNo": "ACC-1",
+  "email": "user@example.com",
+  "exp": 1700000000,
+  "role": [
+    "user",
+  ],
+}
+
+ ❯ src/stores/auth-store.test.ts:67:46
+     65|     useAuthStore.getState().auth.reset()
+     66|
+     67|     expect(useAuthStore.getState().auth.user).toBeNull()
+       |                                              ^
+     68|     expect(useAuthStore.getState().auth.accessToken).toBe('')
+     69|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 20 passed (21)
+      Tests  1 failed | 129 passed (130)
+   Start at  18:22:45
+   Duration  3.40s (transform 0ms, setup 0ms, import 4.64s, tests 8.77s, environment 0ms)
+
+ ELIFECYCLE  Test failed. See above for more details.

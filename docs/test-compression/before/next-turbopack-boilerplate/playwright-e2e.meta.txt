@@ -1,0 +1,13 @@
+repo: next-turbopack-boilerplate
+pinned SHA: b83157a8018f55b926a3c25a4b7a7e14b0dfbc35
+task: -
+command: PORT=5301 DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5332/postgres npm run test:e2e
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy
+node: v24.15.0
+env: agent markers (CLAUDE*, AI_AGENT, CURSOR*, CODEX*, SAND_AGENT, AGENT_TRANSCRIPTS) removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; stdout+stderr redirected to file (non-TTY)
+exit code: 1
+duration: 38.03s
+tool versions: @playwright/test 1.62.1 (chromium), next 16.4.0 (Turbopack dev via webServer), @electric-sql/pglite-socket server, npm 11.18.0
+deviations: run in a scratch copy (benchmark/runs/caps/ntb-happy, made with task-kit prepareWorkspace, no task edits) because host port 5432 is held by a Docker container; the only change is playwright.config.ts webServer command `pglite-server -m 100` -> `pglite-server -m 100 -p 5332`, plus env DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5332/postgres and PORT=5301 (repo default 3008).
+CLERK_SECRET_KEY: the repo's committed .env placeholder value (not a real key) was used as-is; nothing was invented or fetched.
+result: 15 passed, 1 failed (I18n sign-in page test: Clerk rejects the placeholder secret key -> "Handshake token verification failed ... secret-key-invalid", sign-in form never renders). The "Next.js ignored pnpm-workspace.yaml in .../agentic-react" warning is a host-layout artefact (the clone sits inside the agentic-react pnpm workspace).

@@ -146,7 +146,7 @@ Order, by user reach and by how much is already in place:
 
 ### 6.3 webpack and Next (webpack mode)
 
-- A webpack plugin taps `compiler.hooks.done` and prints a digest of `stats.compilation.errors`/`warnings`: module path → `file:line:col`, loader name, message, trimmed code frame, deduped `ModuleNotFoundError` chains. The stock stats output goes to the raw log. How to suppress the stock printing without changing `stats` semantics for other plugins (CLI vs `webpack-dev-server` vs Next's own printer) is verified per host in the spike.
+- A webpack plugin taps `compiler.hooks.done` and prints a digest of `stats.compilation.errors`/`warnings`: module path → `file:line:col`, loader name, message, trimmed code frame, deduped `ModuleNotFoundError` chains. Large error sets are grouped: `Module not found` errors are grouped by the unresolved specifier's prefix, and when every unresolved specifier uses a path alias the digest says which of those prefixes `resolve.alias` / `resolve.tsconfig` do not cover (the portainer case in 8.4: 896 errors, three prefixes). The stock stats output goes to the raw log. How to suppress the stock printing without changing `stats` semantics for other plugins (CLI vs `webpack-dev-server` vs Next's own printer) is verified per host in the spike.
 - Next webpack mode reuses this inside `withAgenticReactNext`'s `webpack()` hook; Next prints its own compile errors, so for Next the digest replaces Next's error block only when we can intercept it cleanly, otherwise it is skipped (no double printing).
 - `webpack-portainer` overlay: wrap the CJS `webpack/webpack.common.js` export with the adapter's CJS entry and leave the AngularJS entry untouched (fixes known gap 1 for this repo).
 
@@ -157,7 +157,8 @@ Turbopack does not run webpack plugins, so the current adapter has no effect. Pa
 - client runtime injection through `instrumentation-client.ts` (Next ≥ 15.3) instead of a webpack entry;
 - the bridge server and MCP start from `instrumentation.ts` `register()` in dev on their own port, since there is no dev-server middleware hook;
 - compile errors: Turbopack prints them itself; we digest what reaches the browser overlay / `__nextjs_original-stack-frames` and leave the terminal untouched in V1;
-- source mapping uses Next's original-stack-frames endpoint, which the core already calls.
+- source mapping uses Next's original-stack-frames endpoint, which the core already calls;
+- Next 16.4's own agent mode (appends to `AGENTS.md`, prints a security-upgrade prompt and stalls the first request; see 8.3) is not something agentic-react changes or depends on. The README template documents it, and the benchmark handles it in the arm definition (11.1).
 
 ### 6.5 Rsbuild / Rspack
 
@@ -165,7 +166,7 @@ Turbopack does not run webpack plugins, so the current adapter has no effect. Pa
 
 ### 6.6 Astro islands
 
-`@agentic-react/astro` is an Astro integration: `astro:config:setup` adds the Vite plugin through `updateConfig` and injects the client runtime with `injectScript('page', …)`. Each React island is its own React root; the runtime tracks all roots so annotation works per island. Compile errors come from Vite and reuse 6.2.
+`@agentic-react/astro` is an Astro integration: `astro:config:setup` adds the Vite plugin through `updateConfig` and injects the client runtime with `injectScript('page', …)`. Each React island is its own React root; the runtime tracks all roots so annotation works per island. Compile errors come from Vite and reuse 6.2. Astro 7.4 runs `astro dev` in the background when it detects an agent and serves its log as JSON lines through `astro dev logs` (8.3); the integration digests through Astro's integration logger so both the foreground terminal and `astro dev logs` get the compact form, and JSON lines stay valid JSON.
 
 ## 7. Source and component mapping
 
@@ -181,7 +182,196 @@ Reuses the selection-context machinery; nothing new is invented here:
 
 ## 8. Before/after output
 
-**Pending.** The "before" output will be captured from the 8 pinned benchmark repos in `benchmark/repos/`: the repos' own test suites for the happy path, and the existing tasks' `setup.edits` for failures (test failures, runtime errors, hydration mismatches, compile errors). Each capture will record repo, pinned SHA, task id, command, versions, env and exit code, and be committed unmodified under `docs/test-compression/before/<repo>/`. "After" will be target digests derived from those captures, labelled as targets until the implementation produces them.
+### 8.1 How these were produced
+
+- **Before = real output from the benchmark repos.** All captures come from the 8 pinned repos in `benchmark/repos/`, at their pinned SHAs. Happy paths use each repo's own test suite or dev server. Failures use the existing tasks' `setup.edits`, applied in a scratch workspace with `lib/task-kit.mjs#prepareWorkspace`, and run with the command from the task's `check.steps`. Browser-console captures open the affected page in headless Chromium and list every `console` message and `pageerror` in order, the way a browser tool shows them. Commands ran non-TTY with `CI`, `NO_COLOR` and `FORCE_COLOR` unset and all AI-agent env markers removed. Files ending in `.agent.txt` repeat the run with `CLAUDECODE=1 AI_AGENT=claude-code`, and exist only where the output differed.
+- Every capture is committed unmodified under [`docs/test-compression/before/<repo>/`](test-compression/before/). Each one has a `.meta.txt` with the task id, exact command, cwd, versions, env, exit code and any deviation, and each repo has a `TOKENS.md`. Deviations worth knowing: `vite-shadcn-admin` has no task that breaks compilation, so its compile-error case is one ad-hoc broken import (marked in its meta); `webpack-portainer` ran in a copy outside the agentic-react monorepo, because `vite-tsconfig-paths` otherwise walks up into this repo's workspace and adds ~40 unrelated error lines; the TanStack Start hydration case uses a UTC browser timezone so the mismatch triggers reliably; `next-turbopack-boilerplate` dev runs used another pglite port because 5432 was taken on the host.
+- **After = hand-written target, not output of any code.** Nothing is implemented. Each file in [`docs/test-compression/after/<repo>/`](test-compression/after/) is the digest this design commits to produce for that same capture, written by hand from it. Where agentic-react replaces only part of the output, the target splices the replacement into the real capture, so the runner's own lines stay exactly as captured.
+- **Tokens:** o200k_base via `gpt-tokenizer` 4.1.2, on the raw files (ANSI bytes included), recomputed by [`docs/test-compression/compare.mjs`](test-compression/compare.mjs).
+
+These numbers are **targets the fixtures (11.3) must meet**, not measurements of agentic-react, and not evidence for the 20% goal: tool output is only part of an agent's total tokens.
+
+### 8.2 Targets for six benchmark cases
+
+| Repo / case | Task | Before (real) | After (target) | Change | Who owns the saving |
+|---|---|---:|---:|---:|---|
+| `webpack-portainer` webpack build | `build-webpack-alias-resolution` | 143,119 | 554 | -99.6% | agentic-react (bundler errors) |
+| `rr7-epic-stack` Playwright e2e, 26 passing | (repo suite) | 40,258 | 247 | -99.4% | split, see below |
+| `next-turbopack-boilerplate` hydration, browser console | `hydration-locale-switcher` | 1,218 | 368 | -69.8% | agentic-react (React warning) |
+| `tanstack-start-trellaux` hydration, browser console | `hydration-home-updated-at` | 695 | 153 | -78.0% | agentic-react (React warning) |
+| `rsbuild-rsdoctor` Rsbuild build | `build-broken-import` | 1,190 | 648 | -45.5% | agentic-react (bundler errors) |
+| `webpack-portainer` RTL hidden test | `ui-add-button-default-label` | 3,608 | 2,287 | -36.6% | agentic-react (DOM dump); rest is generic |
+
+How to read the last two columns:
+
+- **rr7 e2e:** of the 40,258 tokens, 31,930 are the app's own web server log that Playwright passes through as `[WebServer]` lines (1,234 lines of request logs and mock emails), 7,671 are the `pretest` production build (Vite asset table, the same 5 React Router future-flag warnings printed 4 times), and 656 are Playwright itself. The build digest is agentic-react's (Vite / framework output). Routing `[WebServer]` lines to the log is runner-level: agentic-react's standalone Playwright reporter does it, and in the "both" setup agentic-node's reporter does instead.
+- **portainer RTL:** agentic-react removes the two identical DOM dumps (the `findByText` retry prints the same body twice). The remaining 2,287 tokens are generic runner output (7 `punycode` deprecation warnings, one per worker, a Browserslist notice, Vitest's own lines), which is agentic-node's domain. The saving with both installed would be larger; this table only counts what agentic-react itself would remove.
+- **Rsbuild** already prints compact, well-formatted errors. The saving comes from merging one bad import that is reported three times (one TS2724 and two `ESModulesLinkingError` with transpiled code frames) into one root cause.
+
+### 8.3 What the captures changed in the design
+
+1. **Bundler error floods are the largest single cost.** One removed `resolve.tsconfig` line in portainer gives 896 `Module not found` errors (143k tokens). All 896 share three alias prefixes, so the digest groups by unresolved specifier prefix and checks the resolver config (6.3).
+2. **Agent detection in stock tools changes the control arm.** With `CLAUDECODE`/`AI_AGENT` set:
+   - Vitest ≥ 4.1 switches to its agent (minimal) reporter (`vite-shadcn-admin` happy path 2,314 → 145 tokens). Vitest 4.0 (`rr7-epic-stack`) has no such reporter.
+   - Vite 8 forwards the browser console into the dev-server terminal, which makes dev output longer (TanStack hydration dev server 108 → 853 tokens).
+   - **Next 16.4** appends a `nextjs-agent-rules` block to `AGENTS.md`, and on the first request prints a security-upgrade prompt addressed to the agent and stops responding (`ERR_EMPTY_RESPONSE`) until restarted, hiding the real SSR/hydration error. Next 16.3 (`jsoncrack`) only writes `AGENTS.md`/`CLAUDE.md`.
+   - **Astro 7.4** backgrounds `astro dev`: it prints one JSON line and exits 0; logs are read with `astro dev logs` as JSON lines.
+   - **Rstest** agent output is shorter on success but longer on failure (1,838 → 2,619 tokens).
+   These are fixed in the arm definition (11.1) and handled per integration (6.4, 6.6).
+3. **ANSI codes reach agents in non-TTY runs.** Vitest 4 colours output whenever `TERM` is not `dumb`, without checking for a TTY, and testing-library colours its DOM dumps. agentic-react's own blocks never emit ANSI.
+4. **Browser console noise around the real error.** The hydration captures carry dev-tool banners, repeated `ERR_CONNECTION_REFUSED` lines and unrelated image warnings; the digest keeps them but dedupes byte-identical repeats (5.5).
+
+### 8.4 Examples
+
+Long absolute workspace paths are shortened to `<ws>` here; the committed files are unmodified. `[… N lines]` marks lines left out of this page only.
+
+**webpack-portainer, `build-webpack-alias-resolution`.** Before (real, 5,187 lines):
+
+```text
+> @portainer/ce@2.45.3 build <ws>
+> webpack
+
+Failed to load ./.env.
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+[… 6 lines: Browserslist notice, babel-plugin-lodash deprecation trace]
+assets by info 24.5 MiB [immutable]
+[… 33 lines of asset and module summary]
+
+ERROR in ./app/azure/index.ts 30:0-65
+Module not found: Error: Can't resolve '@/portainer/services/notifications' in '<ws>/app/azure'
+ @ ./app/index.js 8:0-38 37:277-288
+
+ERROR in ./app/azure/react/views/index.ts 3:0-50
+Module not found: Error: Can't resolve '@/react-tools/react2angular' in '<ws>/app/azure/react/views'
+ @ ./app/azure/react/index.ts 4:0-38 5:66-77
+ @ ./app/azure/index.ts 31:0-38 32:60-71
+ @ ./app/index.js 8:0-38 37:277-288
+[… 894 more ERROR blocks, ~5,100 lines]
+
+896 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.107.2 compiled with 896 errors in 6678 ms
+```
+
+After (target; the lines before the stats block are kept as captured):
+
+```text
+webpack 5.107.2 compiled with 896 errors in 6678 ms
+ERROR Module not found x896; every unresolved specifier uses a path alias:
+  '@/...'   x844  top: @/react-tools/react2angular x50, @/react-tools/withUIRouter x41, @/react-tools/withCurrentUser x36
+  '@@/...'  x51   top: @@/modals/confirm x18
+  '@api/...' x1   @api/sdk.gen
+  webpack resolve: alias has no '@', '@@' or '@api' entry; resolve.tsconfig is not set
+  first: app/azure/index.ts:30 imports '@/portainer/services/notifications' (via app/index.js:8)
+  asset/module summary and all 896 errors with import chains: see log
+[agentic-react] full output: .agentic-react/logs/1119-183005-67201.log
+```
+
+**webpack-portainer, `ui-add-button-default-label` hidden test (React 17, RTL).** Before (real; the error body, printed twice):
+
+```text
+TestingLibraryElementError: Unable to find an element with the text: Create. This could be because the text is broken up by multiple elements. [...]
+
+Ignored nodes: comments, <script />, <style />
+<body>
+  <div>
+    <div>
+      Root
+    </div>
+    <div />
+    <a
+      class="btn btn-primary btn-sm !m-0"
+      data-cy="bench-add-button"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+[… 20 lines of svg attributes and paths]
+      Add
+    </a>
+  </div>
+</body>
+
+Ignored nodes: comments, <script />, <style />
+<body>
+[… the same 38 lines again]
+</body>
+```
+
+After (target):
+
+```text
+TestingLibraryElementError: Unable to find text "Create"
+  closest text: "Add" in <a data-cy="bench-add-button"> <AddButton> app/react/components/buttons/AddButton.tsx:26 (via <Button>, <Link>)
+    <div>Root</div>
+    <a class="btn btn-primary btn-sm" data-cy="bench-add-button">
+      <svg lucide-plus />
+      Add            <- closest
+    </a>
+  (findByText retried for 1000ms; same DOM on every retry. Full DOM in log)
+  [agentic-react] full output: .agentic-react/logs/1119-183005-67201.log
+```
+
+**tanstack-start-trellaux, `hydration-home-updated-at`, browser console.** Before (real):
+
+```text
+[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+[… 9 lines of generic causes and a link]
+  ...
+    <div className="grow min-h...">
+      <OutletImpl>
+        <Suspense fallback={null}>
+          <MatchImpl routeId="/">
+            [… 4 lines of router internals]
+                    <Home>
+                      <div className="p-8 space-y-2">
+                        <h1 className="text-2xl f...">
+                          <span className="text-xs te...">
++                           8:03:08 AM
+-                           6:33:08 PM
+                        ...
+    at throwOnHydrationMismatch (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:3121:51)
+    [… 9 more react-dom frames]
+```
+
+After (target):
+
+```text
+[pageerror] Hydration failed (text mismatch): server "6:33:08 PM" vs client "8:03:08 AM"
+  at <span> in <Home> src/routes/index.tsx:18
+  via <MatchInnerImpl routeId="/"> < <OutletImpl> (TanStack Router)
+  common causes: Date/locale formatting, Date.now()/Math.random(), typeof window branches. https://react.dev/link/hydration-mismatch
+  (react-dom frames x10 and full message in log)
+```
+
+**rr7-epic-stack, Playwright e2e, 26 passing.** Before (real, 1,593 lines): `npm run build` output with 20 future-flag warnings and a 90-line asset table, then 1,234 `[WebServer]` lines interleaved with Playwright's dot reporter, ending in `26 passed (21.4s)`. After (target):
+
+```text
+> pretest:e2e:run
+> npm run build
+
+> build
+> react-router build
+
+React Router: Future Flag Warning x5 kinds, each printed 4x: v8_middleware, v8_splitRouteModules, v8_viteEnvironmentApi, v8_passThroughRequests, v8_trailingSlashAwareDataRequests (https://reactrouter.com/upgrading/future-flags)
+vite v7.3.1 client build ok: 991 modules, 15 empty chunks, 1 sourcemap warning (react-router dom-export.mjs); ssr build ok: 138 modules
+  warning: source maps are enabled in production
+(node:82850) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+playwright: 26 passed (chromium, 1 worker) in 21.4s
+  web server: 1234 lines (request log, mock emails), no errors; 4 responses 404: /does-not-exist x2, /img/missing.png, /favicons/missing.png
+[agentic-react] full output: .agentic-react/logs/1119-183005-67201.log
+```
+
+The Rsbuild and Next Turbopack targets are in [`docs/test-compression/after/`](test-compression/after/) next to their captures.
+
+### 8.5 Coverage gaps in the captures
+
+- **Cypress:** none of the 8 repos uses Cypress, so there is no benchmark output for it (decision 5 in section 13).
+- **Three tasks whose checks do not behave as written** (found while capturing; to fix in the benchmark step):
+  - `astro-web-check/ssr-home-background-window`: with the bug injected, `npx astro build` still exits 0, because without `BOSS_SERVER=true` the home page redirects to `/check` and `index.astro` never renders. With `BOSS_SERVER=true` it fails with "Unable to render HomeBackground!".
+  - `rsbuild-rsdoctor/state-bundle-size-sort-order`: the `-- module-tree-sort` filter in its check command has no effect; all 17 test files run.
+  - `next-turbopack-boilerplate/validation-counter-range`: its check prints nothing and exits 1; the repo's own Counter Playwright test was captured instead to show the failure.
 
 ## 9. Boundary with agentic-node
 
@@ -213,7 +403,7 @@ One log per process under `.agentic-react/logs/`, named `<MMDD-HHMMSS>-<pid>.log
 | `both` | control + both templates ("both" variant of the templates) |
 | `vitest-agent` (comparison, Vitest tasks only) | control with Vitest's own agent reporter selected |
 
-**Agent env markers are part of the arm definition.** Vitest switches to its agent reporter and Vite 8 turns on `forwardConsole` when they see `CLAUDECODE`, `AI_AGENT`, `CURSOR_AGENT` and similar variables. So the stock behaviour of `control` depends on which agent runs it. The harness sets the same markers in every arm (whatever the agent under test sets naturally), records them and the Vitest reporter actually selected in each result, and the `vitest-agent` arm forces `--reporter=agent` so that comparison does not depend on detection.
+**Agent env markers are part of the arm definition.** Vitest switches to its agent reporter and Vite 8 turns on `forwardConsole` when they see `CLAUDECODE`, `AI_AGENT`, `CURSOR_AGENT` and similar variables. So the stock behaviour of `control` depends on which agent runs it. Next 16.4, Astro 7.4 and Rstest also change behaviour on these markers (8.3); Next 16.4 even stalls its first dev request with an upgrade prompt. The harness sets the same markers in every arm (whatever the agent under test sets naturally), records them and the Vitest reporter actually selected in each result, and the `vitest-agent` arm forces `--reporter=agent` so that comparison does not depend on detection. Base images run `next dev` once during the build so the one-time Next prompt is not paid inside a trial, and that warm-up is recorded.
 
 Every arm gets the same `AGENTS.md`/prompt, except that the `agentic-react` and `both` arms keep the short snippet (its tokens are counted). The current snippet (`benchmark/arms/agentic/AGENTS.snippet.md`) says "Long command output is compacted", which is not true until this work ships; it must stay out of runs until then.
 
@@ -228,13 +418,13 @@ Every arm gets the same `AGENTS.md`/prompt, except that the `agentic-react` and 
 
 ### 11.3 Fixtures (deterministic, no model)
 
-Under `benchmark/fixtures/<framework-or-bundler>/<case>/`: a small app + a command, captured output, and a list of facts that must survive compression. A runner executes each case twice (`AGENTIC_REACT_OUT=raw` and compact) and checks:
+Under `benchmark/fixtures/<repo>/<case>/`. Every fixture is a case on one of the 8 pinned benchmark repos, not a synthetic app: repo id, an optional task id whose `setup.edits` are applied, the command, and a list of facts that must survive compression. The cases in section 8 are the starting set. A runner executes each case twice (`AGENTIC_REACT_OUT=raw` and compact) and checks:
 
 - o200k token count raw vs compressed (reported, per case);
 - every preserved fact appears in the digest: failing test title, failing step, locator / query, component name, `file:line`, error message, server vs client values for hydration, attachment paths, log path;
 - exit code identical in both modes.
 
-Cases: for each framework (Playwright, Cypress, RTL on Vitest and Jest, Vitest browser) one happy path, one locator/query failure, one run with repeated React warnings; for each bundler one compile error and, where the framework renders on the server, one hydration mismatch. These run in CI and are the only numbers this work will publish.
+Coverage: for each test framework the benchmark repos use (Playwright: `rr7-epic-stack`, `next-turbopack-boilerplate`; RTL on Vitest: `webpack-portainer`, `rr7-epic-stack`; Vitest browser mode: `vite-shadcn-admin`, `next-turbopack-boilerplate`; Rstest: `rsbuild-rsdoctor`) one happy path and one failure; for each bundler repo one compile/build error; for each SSR repo one hydration mismatch, using the existing `hydration-*` tasks. Runs need the repo base images (Docker), so they run in the benchmark job, not in the packages' unit-test CI. These are the only numbers this work will publish.
 
 ### 11.4 New benchmark tasks
 
@@ -246,7 +436,7 @@ The 32 existing tasks are mostly scenario 3 (fix failures) plus UI locate-and-ed
 | 2 | Implement UI with dev server and e2e in the loop | `next-turbopack-boilerplate`, `rr7-epic-stack`, `vite-shadcn-admin`, `tanstack-start-trellaux` | hidden e2e / component test |
 | 3 | Fix failing front-end tests / hydration / compile errors | all 8 (existing tasks) + one failing-e2e task on `rr7-epic-stack` | existing `check.steps` |
 
-Two tasks per repo listed for scenarios 1 and 2 (16 new tasks). None of the 8 repos uses Cypress; Cypress is covered by fixtures only unless review decides otherwise (13).
+Two tasks per repo listed for scenarios 1 and 2 (16 new tasks). None of the 8 repos uses Cypress; see decision 5 in section 13.
 
 Mapping existing categories: `ui-locate-edit` counts as scenario 2; `runtime-error`, `ssr-error`, `hydration`, `build-type-error`, `state-bug` count as scenario 3.
 
@@ -257,6 +447,7 @@ Mapping existing categories: `ui-locate-edit` counts as scenario 2; `runtime-err
 1. **Arms identical to control in 4 repos.** Closed by 6.3 (`webpack-portainer` overlay), 6.4 (`next-turbopack-boilerplate`), 6.5 (`rsbuild-rsdoctor`), 6.6 (`astro-web-check`). The four-arm oracle run checks that each repo's `agentic-react` variant actually differs from control (overlay applied, adapter loaded).
 2. **`webpack-portainer` installs with `--no-frozen-lockfile`.** The repo pins `packageManager: pnpm@10.26.2`. Install with that exact pnpm through corepack and `--frozen-lockfile`; if the `pnpmfileChecksum` mismatch remains, pin the lockfile the base image produces as a committed setup artefact. Either way the install becomes frozen.
 3. **Browser tools for control:** 11.2.
+4. **Task checks that do not behave as written:** `astro-web-check/ssr-home-background-window` (check passes with the bug unless `BOSS_SERVER=true`), `rsbuild-rsdoctor/state-bundle-size-sort-order` (test filter ignored), `next-turbopack-boilerplate/validation-counter-range` (silent check). Details in 8.5; fixed and re-run through the oracle before any arm comparison.
 
 ### 11.6 Metrics: the 20% target and the success-rate floor
 
@@ -287,7 +478,7 @@ This work stops at fixtures and oracle runs; the real runs (Cursor `composer-2.5
 | Silencing stock output in webpack / Next breaks other plugins | intercept only where a clean hook exists, otherwise leave stock output and skip the digest |
 | Version drift (React 19 warning formats, Next majors, Playwright/Cypress majors) | warning families matched by stable fragments; unknown text passes through deduped |
 | Fairness of browser-tool decision | same tool in all arms (11.2), reported in results |
-| Stock tools already adapting to agents (Vitest agent reporter, Vite `forwardConsole`, Playwright `error-context.md`) | measure against the agent-adapted stock behaviour, not the human default (11.1); captures record both where they differ |
+| Stock tools already adapting to agents (Vitest ≥ 4.1 agent reporter, Vite 8 `forwardConsole`, Next 16.4 agent rules and upgrade prompt, Astro 7.4 background dev, Rstest agent output) | measure against the agent-adapted stock behaviour, not the human default (11.1); captures record both where they differ |
 | Non-deterministic baselines (repeated dev-server errors vary run to run) | report fixture token counts as medians over several runs; do not quote a single run as typical |
 
 ## 13. Decisions requested in review
@@ -296,7 +487,7 @@ This work stops at fixtures and oracle runs; the real runs (Cursor `composer-2.5
 2. **Browser tool for all arms:** `playwright-cli` in every arm (proposed) vs none vs chrome-devtools-mcp.
 3. **Pass-rate floor:** −3 percentage points pooled + no fully lost task (proposed).
 4. **Scenario weights:** 0.4 / 0.4 / 0.2 (proposed).
-5. **Cypress coverage:** fixtures only (proposed, no benchmark repo uses Cypress) vs adding Cypress to one benchmark repo through setup edits.
+5. **Cypress coverage:** none of the 8 benchmark repos uses Cypress, so nothing in this design measures it yet. Options: (a) add Cypress e2e to one benchmark repo through committed setup edits (proposed: `vite-shadcn-admin`, a CSR app with no e2e suite today), so Cypress is measured on a real project like everything else; (b) ship the Cypress integration without benchmark numbers in this work.
 6. **Default mode:** compact by default once installed, `AGENTIC_REACT_OUT=raw` to opt out (proposed) vs opt-in compact.
 7. **Turbopack terminal output:** left untouched in V1 (proposed), browser-side capture only.
 8. **React warnings in passing tests:** keep one deduped line per warning with its source (proposed) vs drop them like Vitest's agent reporter does. Proposed because an agent that never sees an `act`/`key` warning cannot fix it, and the brief's tie-break says output more when unsure.

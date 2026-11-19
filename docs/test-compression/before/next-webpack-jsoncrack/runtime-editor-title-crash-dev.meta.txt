@@ -1,0 +1,12 @@
+repo: next-webpack-jsoncrack
+pinned SHA: a46d0d0adb098e12e577a083e87ead7f61f90098
+task: next-webpack-jsoncrack/runtime-editor-title-crash
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/njc-title
+node: v24.15.0
+env: agent markers removed; CI, NO_COLOR, FORCE_COLOR unset (harness shell had NO_COLOR=1 FORCE_COLOR=0); TERM=tmux-256color inherited; stdin=/dev/null; non-TTY (redirected to file)
+command: pnpm --filter jsoncrack-react build && pnpm --filter www dev --port 5311
+procedure: dev server started in background; waited for readiness (log matched /Ready in/Ready in) (ready=yes after 2.8s); then loaded http://localhost:5311/editor in headless chromium via console.mjs (if browser capture); waited 4s; sent SIGTERM to the process group. Output is everything the dev process printed until kill.
+exit code: n/a (killed by SIGTERM after capture)
+duration (start to kill): 24.85s
+deviations: scratch workspace benchmark/runs/caps/njc-title (prepareWorkspace with task edit). Dev command = manifest @dev with `--port 5311` appended, cwd workspace root; page /editor. tool versions: next 16.3.5 (next dev --webpack), react 19.3.0, playwright 1.62.1 chromium headless. Agent variant not re-run for this case: hydration-hero-cta-dev.agent.txt already shows the only agent-marker difference for this Next version (one "Generated AGENTS.md and CLAUDE.md" line).
+notes: 5 "Watchpack Error ... /Applications/Grok Bot.app/Contents/Resources/app.asar" lines are a host artefact (webpack watcher trying to watch an .asar file on this Mac), not repo output. Next forwards the browser error as a JS string-concatenation literal ("..." + newline-escaped lines), i.e. util.inspect of a multi-line string.

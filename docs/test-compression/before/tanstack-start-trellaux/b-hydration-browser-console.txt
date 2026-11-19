@@ -1,0 +1,43 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[pageerror] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <div className="grow min-h...">
+      <OutletImpl>
+        <Suspense fallback={null}>
+          <MatchImpl routeId="/">
+            <Suspense fallback={<Context>}>
+              <CatchBoundary getResetKey={function getResetKey} errorComponent={function DefaultCatchBoundary} ...>
+                <MatchInnerImpl match={{id:"//",ssr:true, ...}}>
+                  <Lazy>
+                    <Home>
+                      <div className="p-8 space-y-2">
+                        <h1 className="text-2xl f...">
+                          <span className="text-xs te...">
++                           8:03:08 AM
+-                           6:33:08 PM
+                        ...
+      ...
+
+    at throwOnHydrationMismatch (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:3121:51)
+    at completeWork (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:6682:19)
+    at runWithFiberInDEV (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:942:66)
+    at completeUnitOfWork (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:9212:15)
+    at performUnitOfWork (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:9148:23)
+    at workLoopConcurrentByScheduler (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:9142:55)
+    at renderRootConcurrent (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:9125:64)
+    at performWorkOnRoot (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:8676:145)
+    at performWorkOnRootViaSchedulerTask (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:9832:4)
+    at MessagePort.performWorkUntilDeadline (http://localhost:5211/node_modules/.vite/deps/react-dom_client.js?v=d68d78cf:36:38)

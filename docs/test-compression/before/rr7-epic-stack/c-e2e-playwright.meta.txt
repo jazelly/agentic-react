@@ -1,0 +1,16 @@
+repo: rr7-epic-stack
+pinned_sha: 893610db76127fb5a5f1ffa786bee6b050637429
+task: -
+case: c-e2e-playwright
+command: PORT=5220 npm run test:e2e:run
+cwd: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/rr7-base
+cwd_desc: scratchpad/ws/rr7-base
+node: v22.22.2
+tools: vite 7.3.1, vitest 4.0.18, react-router 7.16.0, @playwright/test 1.58.1 (chromium-1208), prisma 6.19.2, react 19.2.4, npm 10.9.7
+env_markers: none
+env_check: CI=unset FORCE_COLOR=unset NO_COLOR=unset CLAUDECODE=unset AI_AGENT=unset TERM=tmux-256color
+exit_code: 0
+duration_s: 26.9
+date: 2026-11-19
+notes: manifest commands.e2e. The script itself sets CI=true (cross-env), so webServer = `npm run start:mocks` against a production build; `npm run build` and `npx playwright install chromium` (chromium-1208) were run beforehand, not captured. PORT=5220 set to stay in the assigned port range (playwright.config reads PORT). Reporter is html (writes playwright-report/, not opened).
+common: Env: agent markers stripped (CLAUDE*, CLAUDECODE, AI_AGENT, CURSOR_*, CODEX_*, SAND_AGENT, AGENT_TRANSCRIPTS), FORCE_COLOR/NO_COLOR/CI unset, TERM=tmux-256color and COLORTERM=truecolor inherited from the host shell, stdin=/dev/null, stdout+stderr redirected to one file (non-TTY). ".agent" variants additionally set CLAUDECODE=1 AI_AGENT=claude-code.

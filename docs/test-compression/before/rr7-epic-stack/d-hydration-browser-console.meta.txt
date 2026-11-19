@@ -1,0 +1,16 @@
+repo: rr7-epic-stack
+pinned_sha: 893610db76127fb5a5f1ffa786bee6b050637429
+task: rr7-epic-stack/hydration-heading-viewport-attr
+case: d-hydration-browser-console
+command: PORT=5221 npm run dev   (browser: playwright chromium -> http://localhost:5221/)
+cwd: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/rr7-hydration
+cwd_desc: scratchpad/ws/rr7-hydration
+node: v22.22.2
+tools: vite 7.3.1, vitest 4.0.18, react-router 7.16.0, @playwright/test 1.58.1 (chromium-1208), prisma 6.19.2, react 19.2.4, npm 10.9.7
+env_markers: none
+env_check: CI=unset FORCE_COLOR=unset NO_COLOR=unset CLAUDECODE=unset AI_AGENT=unset TERM=tmux-256color
+exit_code: n/a (long-running dev server, stopped with SIGINT)
+wall_s (start..stop incl. browser + settle): 17.2
+date: 2026-11-19
+notes: Browser console. Default Playwright viewport 1280x720, so client renders data-viewport="xl". Dev-server capture: server started in background with output to file; readiness polled with curl (those probe requests can appear in the log); then a headless Chromium (playwright 1.59.1) opened the URL, waited for networkidle + settle, then the server process group got SIGINT. Browser console file lines are "[<console type>] <msg.text()>" and "[pageerror] <error.stack>", in order.
+common: Env: agent markers stripped (CLAUDE*, CLAUDECODE, AI_AGENT, CURSOR_*, CODEX_*, SAND_AGENT, AGENT_TRANSCRIPTS), FORCE_COLOR/NO_COLOR/CI unset, TERM=tmux-256color and COLORTERM=truecolor inherited from the host shell, stdin=/dev/null, stdout+stderr redirected to one file (non-TTY). ".agent" variants additionally set CLAUDECODE=1 AI_AGENT=claude-code.

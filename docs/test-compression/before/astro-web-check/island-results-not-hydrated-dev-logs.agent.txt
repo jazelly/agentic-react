@@ -1,0 +1,26 @@
+
+[1m[35m Preparing to start build of Web Check.... [0m
+ [35m[2mCompiling for "node" using "static" mode, to deploy to "https://web-check.xyz" at "/"[0m
+ [2m[36m🛟 For documentation and support, visit the GitHub repo: https://github.com/lissy93/web-check 
+ 💖 Found Web-Check useful? Consider sponsoring us on GitHub to help fund maintenance & development.[0m
+
+{"message":"Enabling sessions with filesystem storage","label":"@astrojs/node","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 1ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":" astro  v7.4.2 ready in 1157 ms\n┃ Local    http://localhost:5331/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[301] / 4ms","label":null,"level":"info"}
+ReferenceError: document is not defined
+    at getUrlBasedHistory (file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-router/dist/production/lib/router/history.js:270:17)
+    at createBrowserHistory (file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-router/dist/production/lib/router/history.js:153:9)
+    at BrowserRouter (file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-router/dist/production/lib/dom/lib.js:153:55)
+    at Object.react_stack_bottom_frame (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:10956:18)
+    at renderWithHooks (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:5633:19)
+    at renderElement (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:6068:23)
+    at retryNode (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:7099:31)
+    at renderNodeDestructive (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:7044:11)
+    at finishFunctionComponent (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:5677:13)
+    at renderElement (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-dom/cjs/react-dom-server.node.development.js:6123:11)
+{"message":"[200] /check/example.com 21ms","label":null,"level":"info"}
+{"message":"document is not defined\n  Hint:\n    Browser APIs are not available on the server.\n    \n    If the code is in a framework component, try to access these objects after rendering using lifecycle methods or use a `client:only` directive to make the component exclusively run on the client.\n    \n    See https://docs.astro.build/en/guides/troubleshooting/#document-or-window-is-not-defined for more information.\n    \t\t\n  Stack trace:\n    at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-isl/node_modules/react-router/dist/production/lib/router/history.js:270:17\n    [...] See full stack trace in the browser, or rerun with --verbose.","label":null,"level":"error"}

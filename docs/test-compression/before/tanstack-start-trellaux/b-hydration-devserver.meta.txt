@@ -1,0 +1,16 @@
+repo: tanstack-start-trellaux
+pinned_sha: e7358c36d8cde5275fc3c32cd5fd5bbf7ecc30f9
+task: tanstack-start-trellaux/hydration-home-updated-at
+case: b-hydration-devserver
+command: pnpm --ignore-workspace dev --port 5211 --strictPort
+cwd: /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/trellaux-hydration
+cwd_desc: benchmark/runs/caps/trellaux-hydration (trellaux-base copy + task setup.edits via applyEdits)
+node: v24.15.0
+tools: vite 8.3.8, @tanstack/react-start 1.169.5 (pinned by manifest harbor.preInstall), @tanstack/react-router 1.170.46, react 19.3.1, pnpm 10.6.5; browser driven by playwright 1.59.1 chromium-1217
+env_markers: none
+env_check: CI=unset FORCE_COLOR=unset NO_COLOR=unset CLAUDECODE=unset AI_AGENT=unset TERM=tmux-256color
+exit_code: n/a (long-running dev server, stopped with SIGINT)
+wall_s (start..stop incl. browser + settle): 14.3
+date: 2026-11-19
+notes: URL http://localhost:5211/. DEVIATION: the browser context used timezoneId=UTC (host is ACDT). Without it, server and client render toLocaleTimeString() in the same second/zone and no mismatch fired in 2 attempts; a client in a different timezone than the server is the realistic trigger. Dev-server capture: server started in background with output to file; readiness polled with curl (those probe requests can appear in the log); then a headless Chromium (playwright 1.59.1) opened the URL, waited for networkidle + settle, then the server process group got SIGINT. Browser console file lines are "[<console type>] <msg.text()>" and "[pageerror] <error.stack>", in order. Agent variant: Vite 8 forwards the unhandled hydration error to the terminal. A discarded warm-up run with the same env preceded the captured run (Vite dep-optimizer cache is keyed on env; toggling agent markers otherwise adds a one-off "Re-optimizing dependencies because vite config has changed" line).
+common: Env: agent markers stripped (CLAUDE*, CLAUDECODE, AI_AGENT, CURSOR_*, CODEX_*, SAND_AGENT, AGENT_TRANSCRIPTS), FORCE_COLOR/NO_COLOR/CI unset, TERM=tmux-256color and COLORTERM=truecolor inherited from the host shell, stdin=/dev/null, stdout+stderr redirected to one file (non-TTY). ".agent" variants additionally set CLAUDECODE=1 AI_AGENT=claude-code.

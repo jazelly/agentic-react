@@ -1,0 +1,77 @@
+
+> dev:next
+> next dev --port 5303
+
+▲ Next.js 16.4.0 (Turbopack)
+- Local:         http://localhost:5303
+- Network:       http://192.168.31.240:5303
+- Environments: .env
+✓ Ready in 388ms
+⚠ Warning: Next.js ignored pnpm-workspace.yaml in /Users/jazelly/Desktop/github/my-proj/agentic-react because it is outside the current Git repository (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-hyd).
+ To use this directory, set `turbopack.root` in your Next.js config.
+
+✓ Running next.config.ts took 3.2s
+- Experiments (use with caution):
+  · clientTraceMetadata
+  ✓ turbopackGc
+  ⨯ turbopackRustReactCompiler
+
+✦Aj WARN Arcjet will use 127.0.0.1 when missing public IP address in development mode
+ GET / 200 in 2.6s (next.js: 1964ms, proxy.ts: 224ms, generate-params: 178ms, application-code: 213ms)
+[browser] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools
+[browser] Uncaught Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{locale:"en"}} renderTree={{...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="layout" pagePath="[locale]/(...">
+        <SegmentTrieNode>
+        <script>
+        <script>
+        <Layout>
+          <div>
+          <BaseTemplate>
+            <div className="w-full px-...">
+              <div className="mx-auto ma...">
+                <header className="border-b b...">
+                  <div>
+                  <div className="flex justi...">
+                    <nav>
+                    <nav>
+                      <ul className="flex flex-...">
+                        <li>
+                        <li>
+                        <li>
+                          <LocaleSwitcher>
+                            <select defaultValue="en" onChange={function handleChange} className="border bor..." ...>
+                              <option value="en">
++                               en
+-                               EN
+                              ...
+                ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at option (<anonymous>)
+    at <unknown> (src/components/LocaleSwitcher.tsx:33:9)
+    at Array.map (<anonymous>)
+    at LocaleSwitcher (src/components/LocaleSwitcher.tsx:32:24)
+    at Layout (src/app/[locale]/(marketing)/layout.tsx:69:15)
+  31 |     >
+  32 |       {routing.locales.map((elt) => (
+> 33 |         <option key={elt} value={elt}>
+     |         ^
+  34 |           {typeof window === 'undefined' ? elt.toUpperCase() : elt}
+  35 |         </option>
+  36 |       ))}
+[browser] Image with src "/_next/static/media/crowdin-dark.1pa0qderdbj5v.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[browser] Image with src "/_next/static/media/nextjs-boilerplate-saas.07y2sc_u0q7sj.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[?25h

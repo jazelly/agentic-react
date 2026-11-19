@@ -1,0 +1,16 @@
+repo: webpack-portainer
+pinned_sha: 66c22cf97b3afb4a3968753f7a70ac1924ec4ef0
+task: webpack-portainer/ui-add-button-default-label
+case: b-addbutton-hidden-test-fail
+command: pnpm --ignore-workspace exec vitest run app/react/components/buttons
+cwd: /private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base
+cwd_desc: scratchpad/ws/portainer-base
+node: v22.22.2
+tools: webpack 5.107.2, webpack-cli 6.0.1, vitest 4.1.8 (jsdom 24.1.3), vite 8.0.16, react 17.0.2, @testing-library/react 12.1.5, pnpm 10.26.2 (packageManager pin)
+env_markers: none
+env_check: CI=unset FORCE_COLOR=unset NO_COLOR=unset CLAUDECODE=unset AI_AGENT=unset TERM=tmux-256color
+exit_code: 1
+duration_s: 3.4
+date: 2026-11-19
+notes: Task has no setup edits (stock code is the "bug"). Hidden test copied to app/react/components/buttons/__bench__/ as runChecks does, removed afterwards. A discarded warm-up run with the same env preceded the captured run (Vite dep-optimizer cache is keyed on env; toggling agent markers otherwise adds a one-off "Re-optimizing dependencies because vite config has changed" line).
+common: Env: agent markers stripped (CLAUDE*, CLAUDECODE, AI_AGENT, CURSOR_*, CODEX_*, SAND_AGENT, AGENT_TRANSCRIPTS), FORCE_COLOR/NO_COLOR/CI unset, TERM=tmux-256color and COLORTERM=truecolor inherited from the host shell, stdin=/dev/null, stdout+stderr redirected to one file (non-TTY). ".agent" variants additionally set CLAUDECODE=1 AI_AGENT=claude-code.

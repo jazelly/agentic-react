@@ -1,0 +1,67 @@
+
+> test:e2e
+> playwright test
+
+[WebServer] ⚠ Warning: Next.js ignored pnpm-workspace.yaml in /Users/jazelly/Desktop/github/my-proj/agentic-react because it is outside the current Git repository (/Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy).
+[WebServer]  To use this directory, set `turbopack.root` in your Next.js config.
+[WebServer] 
+[WebServer] ✦Aj WARN Arcjet will use 127.0.0.1 when missing public IP address in development mode
+
+Running 16 tests using 5 workers
+
+  ✓   1 [chromium] › tests/e2e/Sanity.check.e2e.ts:12:5 › Sanity › Static pages › should display the homepage (1.8s)
+  ✓   3 [chromium] › tests/integration/Counter.integ.ts:6:5 › Counter › Basic database operations › shouldn't increment the counter with an invalid input (2.0s)
+  ✓   7 [chromium] › tests/integration/Counter.integ.ts:16:5 › Counter › Basic database operations › shouldn't increment the counter with a negative number (74ms)
+  ✓   2 [chromium] › tests/e2e/I18n.e2e.ts:5:5 › I18n › Language Switching › should switch language from English to French using dropdown and verify text on the homepage (2.1s)
+  ✓   8 [chromium] › tests/integration/Counter.integ.ts:26:5 › Counter › Basic database operations › shouldn't increment the counter with a number greater than 3 (70ms)
+  ✓  10 [chromium] › tests/integration/Counter.integ.ts:36:5 › Counter › Basic database operations › should increment the counter and update the counter correctly (86ms)
+  ✓   5 [chromium] › tests/e2e/Visual.e2e.ts:5:5 › Visual testing › Static pages › should take screenshot of the homepage (2.6s)
+  ✓   4 [chromium] › tests/e2e/Counter.e2e.ts:7:5 › Counter › Increment operation › should display error message when incrementing with negative number (2.7s)
+  ✓  12 [chromium] › tests/e2e/Counter.e2e.ts:24:5 › Counter › Increment operation › should increment the counter and validate the count (721ms)
+  ✓   6 [chromium] › tests/e2e/Sanity.check.e2e.ts:22:5 › Sanity › Static pages › should navigate to the about page (1.8s)
+  ✓  13 [chromium] › tests/e2e/Sanity.check.e2e.ts:32:5 › Sanity › Static pages › should navigate to the portfolio page (471ms)
+  ✓  11 [chromium] › tests/e2e/Visual.e2e.ts:17:5 › Visual testing › Static pages › should take screenshot of the portfolio page (1.9s)
+  ✓  14 [chromium] › tests/e2e/Visual.e2e.ts:25:5 › Visual testing › Static pages › should take screenshot of the about page (858ms)
+  ✓  15 [chromium] › tests/e2e/Visual.e2e.ts:33:5 › Visual testing › Static pages › should take screenshot of the portfolio details page (1.8s)
+[WebServer] ⨯ Error: Clerk: Handshake token verification failed: The provided Clerk Secret Key is invalid. Make sure that your Clerk Secret Key is correct. Contact support@clerk.com (reason=secret-key-invalid, token-carrier=undefined).
+[WebServer]     at ignore-listed frames
+  ✓  16 [chromium] › tests/e2e/Visual.e2e.ts:41:5 › Visual testing › Static pages › should take screenshot of the French homepage (805ms)
+  ✘   9 [chromium] › tests/e2e/I18n.e2e.ts:25:5 › I18n › Language Switching › should switch language from English to French using URL and verify text on the sign-in page (20.8s)
+
+
+  1) [chromium] › tests/e2e/I18n.e2e.ts:25:5 › I18n › Language Switching › should switch language from English to French using URL and verify text on the sign-in page 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Email address')
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 15000ms
+      - waiting for getByText('Email address')
+
+
+      28 |       await page.goto('/sign-in');
+      29 |
+    > 30 |       await expect(page.getByText('Email address')).toBeVisible();
+         |                                                     ^
+      31 |
+      32 |       await page.goto('/fr/sign-in');
+      33 |
+        at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/ntb-happy/tests/e2e/I18n.e2e.ts:30:53
+
+    Error Context: test-results/e2e-I18n.e2e.ts-I18n-Langu-61c0d-fy-text-on-the-sign-in-page-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-I18n.e2e.ts-I18n-Langu-61c0d-fy-text-on-the-sign-in-page-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-I18n.e2e.ts-I18n-Langu-61c0d-fy-text-on-the-sign-in-page-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/I18n.e2e.ts:25:5 › I18n › Language Switching › should switch language from English to French using URL and verify text on the sign-in page 
+  15 passed (36.5s)

@@ -1,0 +1,45 @@
+$ rs test
+  Rstest v0.12.5
+
+(node:85000) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/repos/rsbuild-rsdoctor/packages/client/config/constants.ts?fresh-import-zwv2ejp2iza=0,file:///Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/repos/rsbuild-rsdoctor/packages/client/rstack.config.mts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/repos/rsbuild-rsdoctor/packages/client/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+log | tests/utils/data/local.test.ts > LocalServerDataLoader > disposes subscriptions when request body strings contain delimiters
+[DataLoader] isLocal:  true
+
+
+log | tests/utils/data/local.test.ts > LocalServerDataLoader > loads APIs through websocket requests
+[DataLoader] isLocal:  true
+
+ ✓ tests/utils/data/local.test.ts (2)
+
+log | tests/utils/data/remote.test.ts > RemoteDataLoader > loads hydrated static manifest data when cloudData is unavailable
+[DataLoader] isLocal:  false
+
+
+log | tests/utils/data/remote.test.ts > RemoteDataLoader > prefers cloudData over data
+[DataLoader] isLocal:  false
+
+ ✓ tests/utils/data/remote.test.ts (2)
+ ✓ tests/utils/hooks.test.ts (6)
+ ✓ tests/components/Charts/tooltips.test.ts (2)
+ ✓ tests/pages/TreeShaking/side-effects-data.test.ts (9)
+ ✓ tests/utils/request.test.ts (4)
+ ✓ tests/utils/socket.test.ts (7)
+ ✓ tests/utils/url.test.ts (13)
+ ✓ tests/components/Alerts/bundle-alert-data.test.ts (1)
+ ✓ tests/pages/BundleSize/components/module-tree-sort.test.ts (9)
+ ✓ tests/components/base/DiffViewer/beautify.test.ts (3)
+ ✓ tests/components/Alerts/horizontal-tab-scroll.test.ts (3)
+ ✓ tests/utils/i18n.test.ts (1)
+ ✓ tests/components/Charts/treeMapSize.test.ts (6)
+ ✓ tests/pages/Resources/BundleDiff/moduleDiff.test.ts (4)
+ ✓ tests/pages/BundleSize/components/asset-path.test.ts (3)
+ ✓ tests/components/Charts/timelineAxis.test.ts (3)
+
+ Test Files 17 passed
+      Tests 78 passed
+   Duration 4.41s (build 131ms, tests 4.28s)
+

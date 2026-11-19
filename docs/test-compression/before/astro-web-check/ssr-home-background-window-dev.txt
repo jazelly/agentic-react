@@ -1,0 +1,41 @@
+yarn run v1.22.22
+(node:95193) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+$ PUBLIC_API_ENDPOINT=http://localhost:3001/api astro dev --port 5330
+
+[1m[35m Preparing to start build of Web Check.... [0m
+ [35m[2mCompiling for "node" using "static" mode, to deploy to "https://web-check.xyz" at "/"[0m
+ [2m[36m🛟 For documentation and support, visit the GitHub repo: https://github.com/lissy93/web-check 
+ 💖 Found Web-Check useful? Consider sponsoring us on GitHub to help fund maintenance & development.[0m
+
+18:46:35 [@astrojs/node] Enabling sessions with filesystem storage
+18:46:35 [vite] connected.
+18:46:35 [types] Generated 0ms
+18:46:35 [vite] connected.
+ astro  v7.4.2 ready in 728 ms
+┃ Local    http://localhost:5330/
+┃ Network  use --host to expose
+18:46:35 watching for file changes...
+18:46:37 [200] / 40ms
+18:46:37 [ERROR] Unable to render HomeBackground!
+
+This component likely uses @astrojs/react, @astrojs/preact, @astrojs/solid-js, @astrojs/vue or @astrojs/svelte,
+but Astro encountered an error during server-side rendering.
+
+Please ensure that HomeBackground:
+1. Does not unconditionally access browser-specific globals like `window` or `document`.
+   If this is unavoidable, use the `client:only` hydration directive.
+2. Does not conditionally return `null` or `undefined` when rendered on the server.
+3. If using multiple JSX frameworks at the same time (e.g. React + Preact), pass the correct `include`/`exclude` options to integrations.
+
+If you're still stuck, please open an issue on GitHub or join us at https://astro.build/chat.
+  Hint:
+    Browser APIs are not available on the server.
+    
+    If the code is in a framework component, try to access these objects after rendering using lifecycle methods or use a `client:only` directive to make the component exclusively run on the client.
+    
+    See https://docs.astro.build/en/guides/troubleshooting/#document-or-window-is-not-defined for more information.
+    		
+  Stack trace:
+    at /Users/jazelly/Desktop/github/my-proj/agentic-react/benchmark/runs/caps/awc-ssr/node_modules/astro/dist/runtime/server/render/component.js:160:7
+    [...] See full stack trace in the browser, or rerun with --verbose.

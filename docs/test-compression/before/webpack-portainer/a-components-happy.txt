@@ -1,0 +1,224 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.8 [39m[90m/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base[39m
+
+(node:62997) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63000) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63004) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:62996) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63014) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63001) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63018) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:62998) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63013) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63024) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63002) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63022) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63017) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63006) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63008) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63003) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63009) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63005) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63016) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:62999) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63012) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63011) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63020) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63010) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63019) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63015) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63007) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/Terminal/Terminal.test.tsx [2m([22m[2m16 tests[22m[2m | [22m[90m1 todo[39m[2m)[22m[33m 820[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/Slider/Slider.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m app/react/components/StatusSummaryBar/StatusSummaryBar.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 103[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/ColorPicker/ColorPicker.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+(node:63069) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/DropdownMenu/DropdownMenu.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[32m 195[2mms[22m[39m
+ [32m✓[39m app/react/components/CollapseExpandButton.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/MenuButton.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m app/react/components/Charts/StatsLineChart.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 217[2mms[22m[39m
+ [32m✓[39m app/react/components/SortableList/SortByGroup.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 154[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/ReactSelect.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[33m 343[2mms[22m[39m
+Error: Uncaught [Error: Invalid query param value for tab]
+    at reportException (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:353:9)
+    at invokeEventListeners (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:22779:12) Error: Invalid query param value for tab
+    at WidgetTabs (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/app/react/components/Widget/WidgetTabs.tsx:32:11)
+    at renderWithHooks (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+    at mountIndeterminateComponent (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+    at beginWork (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+    at HTMLUnknownElement.callCallback (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/react-dom@17.0.2_react@17.0.2/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:350:25)
+    at invokeEventListeners (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/private/tmp/claude-501/-Users-jazelly-Desktop-github-my-proj-agentic-react/34f1a0f1-f92e-47ab-b8c7-ea3534f779ef/scratchpad/ws/portainer-base/node_modules/.pnpm/jsdom@24.1.3/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+ [32m✓[39m app/react/components/Widget/WidgetTabs.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 59[2mms[22m[39m
+ [32m✓[39m app/react/components/datatables/Filter.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[32m 292[2mms[22m[39m
+ [32m✓[39m app/react/components/datatables/TableHeaderRow.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[32m 202[2mms[22m[39m
+ [32m✓[39m app/react/components/ResourceDetailHeader/ResourceDetailHeader.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m app/react/components/TagSelector/TagSelector.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m app/react/components/CodeEditor/CodeEditor.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[32m 197[2mms[22m[39m
+ [32m✓[39m app/react/components/SortableList/SortableListHeader.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[32m 231[2mms[22m[39m
+ [32m✓[39m app/react/components/CustomTemplateSelector.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 117[2mms[22m[39m
+ [32m✓[39m app/react/components/ExpandableMessageByLines.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 67[2mms[22m[39m
+ [32m✓[39m app/react/components/SortableList/SortableList.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+ [32m✓[39m app/react/components/CommandPalette/CommandPalette.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[32m 171[2mms[22m[39m
+ [32m✓[39m app/react/components/SortableList/StatusFilteredList.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[33m 556[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/FilePicker/FilePicker.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 214[2mms[22m[39m
+ [32m✓[39m app/react/components/PageHeader/HeaderTitle.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m app/react/components/PageHeader/PageHeader.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 73[2mms[22m[39m
+(node:63070) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/ResourceDetailHeader/ResourceStatBlock.test.tsx [2m([22m[2m28 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+(node:63071) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/datatables/Datatable.test.tsx [2m([22m[2m19 tests[22m[2m)[22m[33m 475[2mms[22m[39m
+     [33m[2m✓[22m[39m shows indeterminate state and correct footer text when hidden rows are selected [33m 348[2mms[22m[39m
+(node:63072) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/ImageConfigFieldset/ImageConfigFieldset.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+(node:63074) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63073) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63075) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63076) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63077) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63078) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63079) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63080) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63081) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63082) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63083) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63084) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63085) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63086) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63087) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/PageHeader/Breadcrumbs/Breadcrumbs.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+(node:63091) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63089) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63092) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63096) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63104) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63106) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/StatsItem.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m app/react/components/PageHeader/PageTitle.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/LoadingButton.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+(node:63107) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/DetailsTable/DetailsTable.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 30[2mms[22m[39m
+(node:63109) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/form-components/FilePicker/SelectedPanel.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/CopyButton/CopyButton.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/SwitchField/SwitchField.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m app/react/components/datatables/useTableStateFromUrl.test.ts [2m([22m[2m30 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m app/react/components/DashboardItem/DashboardItem.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/SwitchField/Switch.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/ButtonGroup.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/AddButton.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m app/react/components/CodeEditor/DiffViewer.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m app/react/components/Stepper/useWizardSteps.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m app/react/components/EdgeIndicator.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/FileUpload/FileUploadField.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m app/react/components/StatusSummaryBar/FilterBarButton.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m app/react/components/NavTabs/NavTabs.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m app/react/components/BoxSelector/BoxSelector.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/FileUpload/FileUploadForm.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m app/react/components/StickyFooter/StickyFooter.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m app/react/components/Badge/Badge.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+(node:63121) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/form-components/FormControl/FormControl.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m app/react/components/InsightsBox/InsightsBox.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m app/react/components/Tip/TextTip/TextTip.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m app/react/components/buttons/Button.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 15[2mms[22m[39m
+(node:63127) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63128) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63133) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63136) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63137) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63138) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:63139) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ [32m✓[39m app/react/components/form-components/FormSectionTitle/FormSectionTitle.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m app/react/components/datatables/groupSortState.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/FilePicker/utils.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m app/react/components/CommandPalette/utils.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m app/react/components/ImageConfigFieldset/findRegistryMatch.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m app/react/components/form-components/InputList/utils.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+ [2m[90m↓[39m[22m app/react/components/ui-router.test.tsx [2m([22m[2m1 test[22m[2m | [22m[90m1 todo[39m[2m)[22m
+ [32m✓[39m app/react/components/Code/Code.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 15[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m62 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (63)[39m
+[2m      Tests [22m [1m[32m416 passed[39m[22m[2m | [22m[90m2 todo[39m[90m (418)[39m
+[2m   Start at [22m 18:27:25
+[2m   Duration [22m 18.59s[2m (transform 18.61s, setup 127.65s, import 76.63s, tests 6.12s, environment 242.65s)[22m
+
